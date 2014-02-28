@@ -15,10 +15,7 @@ namespace HomeAutomexLibrary.Repositorio.Map
         {
             ToTable("USUARIO");
 
-            //MapToStoredProcedures(e => e.Insert(i =>                 
-            //    i.HasName("PROCEDURE_1")
-            //    .Parameter(p => p.Chave,"ID_USUARIO")
-            //));
+      
             HasKey(e => e.Chave)
                 .Property(e => e.Chave)
                 .HasColumnName("CD_USUARIO")
@@ -26,10 +23,10 @@ namespace HomeAutomexLibrary.Repositorio.Map
 
             Property(e => e.Nome).HasColumnName("DS_NOME").IsRequired();
             Property(e => e.Login).HasColumnName("DS_USUARIO");
-            Property(e => e.Senha).HasColumnName("DS_SENHA");
             Property(e => e.Telefone).HasColumnName("NM_TELEFONE");
             Property(e => e.Celular).HasColumnName("NM_CELULAR");
             Property(e => e.Email).HasColumnName("DS_EMAIL");
+            Property(e => e.Senha).HasColumnName("DS_SENHA");
         }
 
     }

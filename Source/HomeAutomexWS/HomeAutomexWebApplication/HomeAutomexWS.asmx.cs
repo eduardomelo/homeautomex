@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using HomeAutomexLibrary.Fachada;
 
 namespace HomeAutomexWebApplication
 {
@@ -19,21 +20,27 @@ namespace HomeAutomexWebApplication
     // [System.Web.Script.Services.ScriptService]
     public class HomeAutomexWS : System.Web.Services.WebService
     {
+        private Fachada fachada;
+        private Usuario usuario;
+        public HomeAutomexWS() {
+            this.usuario = new Usuario();
+            this.fachada = new Fachada();
+        }
 
         [WebMethod]
-        public void HelloWorld()
+        public void Inserir()
         {
-            UsuarioRepositorio rep = new UsuarioRepositorio(new DatabaseContext());
-            var usuario = new Usuario
+          
+             usuario = new Usuario
             {
-                Nome = "João",
+                Nome = "Edson Gouveia",
                 Celular = "(81)9999-9999",
                 Telefone = "(81)9999-9999",
                 Senha = "senha",
                 Email = "email@email.com",
                 Login = "joao.jorge"
             };
-            rep.Inserir(usuario);
+            this.fachada.Inserir(usuario);
         }
     }
 }

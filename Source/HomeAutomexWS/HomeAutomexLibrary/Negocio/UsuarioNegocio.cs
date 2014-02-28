@@ -24,6 +24,21 @@ namespace HomeAutomexLibrary.Negocio
         {
             this.repositorio.Inserir(usuario);
         }
-
+        public void Alterar(Usuario usuario)
+        {
+            this.repositorio.Alterar(usuario);
+        }
+        public void Excluir(Usuario usuario)
+        {
+            this.repositorio.Alterar(usuario);
+        }
+        public IEnumerable<Usuario> ConsultarTodos()
+        {
+            return this.repositorio.ConsultarTodos();
+        }
+        public int ContarTodos()
+        {
+            return this.repositorio.ContarTodos();
+        }
     }
 }

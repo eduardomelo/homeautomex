@@ -49,8 +49,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidade\Agendamento.cs" />
+    <Compile Include="Entidade\Ambiente.cs" />
+    <Compile Include="Entidade\Cenario.cs" />
+    <Compile Include="Entidade\Dispositivo.cs" />
     <Compile Include="Entidade\EntidadeBase.cs" />
+    <Compile Include="Entidade\Modulo.cs" />
+    <Compile Include="Entidade\Perfil.cs" />
+    <Compile Include="Entidade\Porta.cs" />
+    <Compile Include="Entidade\Residencia.cs" />
+    <Compile Include="Entidade\Sensor.cs" />
+    <Compile Include="Entidade\TipoPorta.cs" />
     <Compile Include="Entidade\Usuario.cs" />
+    <Compile Include="Fachada\Fachada.cs" />
     <Compile Include="Negocio\NegocioBase.cs" />
     <Compile Include="Negocio\UsuarioNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
