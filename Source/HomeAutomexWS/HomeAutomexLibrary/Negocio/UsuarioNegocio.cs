@@ -22,6 +22,10 @@ namespace HomeAutomexLibrary.Negocio
 
         public string Inserir(Usuario usuario)
         {
+
+            usuario.DataAlteracao = DateTime.Now;
+            usuario.DataCadastro = DateTime.Now;
+            usuario.DataExclusao =  DateTime.Now;
             if (base.Existir(e => e.Login == usuario.Login))
                 return "Erro: Usuário inválido";
             base.Inserir(usuario);

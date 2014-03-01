@@ -22,7 +22,7 @@ namespace HomeAutomexWebApplication
     [System.Web.Script.Services.ScriptService]
     public class HomeAutomexWS : System.Web.Services.WebService
     {        
-        private UsuarioFachada usuarioFachada;
+     
         private Fachada fachada;
         private Usuario usuario;
         public HomeAutomexWS() {

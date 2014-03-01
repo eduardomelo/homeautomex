@@ -16,6 +16,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="InserirResidencia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jResidencia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserirResidenciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InserirResidenciaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="InserirUsuárioSoapIn">
@@ -24,10 +38,20 @@
   <wsdl:message name="InserirUsuárioSoapOut">
     <wsdl:part name="parameters" element="tns:InserirUsuárioResponse" />
   </wsdl:message>
+  <wsdl:message name="InserirResidenciaSoapIn">
+    <wsdl:part name="parameters" element="tns:InserirResidencia" />
+  </wsdl:message>
+  <wsdl:message name="InserirResidenciaSoapOut">
+    <wsdl:part name="parameters" element="tns:InserirResidenciaResponse" />
+  </wsdl:message>
   <wsdl:portType name="HomeAutomexWSSoap">
     <wsdl:operation name="InserirUsuário">
       <wsdl:input message="tns:InserirUsuárioSoapIn" />
       <wsdl:output message="tns:InserirUsuárioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InserirResidencia">
+      <wsdl:input message="tns:InserirResidenciaSoapIn" />
+      <wsdl:output message="tns:InserirResidenciaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="HomeAutomexWSSoap" type="tns:HomeAutomexWSSoap">
@@ -41,11 +65,29 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="InserirResidencia">
+      <soap:operation soapAction="http://tempuri.org/InserirResidencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="HomeAutomexWSSoap12" type="tns:HomeAutomexWSSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="InserirUsuário">
       <soap12:operation soapAction="http://tempuri.org/InserirUsuário" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserirResidencia">
+      <soap12:operation soapAction="http://tempuri.org/InserirResidencia" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

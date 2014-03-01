@@ -87,9 +87,13 @@ namespace HomeAutomex.Controllers
 
                     var usuario = JsonConvert.SerializeObject(new Usuario
                     {
+
                         Login = model.UserName,
                         Nome = model.Nome,
-                        Senha = model.Password
+                        Senha = model.Password,
+                
+                        
+                        
                     });
 
                     var x = webService.InserirUsuário(usuario);
@@ -123,6 +127,9 @@ namespace HomeAutomex.Controllers
             public string Nome { get; set; }
             public string Senha { get; set; }
             public string Login { get; set; }
+            public DateTime cadastro { get; set; }
+            public DateTime alteracao { get; set; }
+            public DateTime exclucao { get; set; }
         }
 
         //
