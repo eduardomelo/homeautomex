@@ -12,6 +12,7 @@ using HomeAutomex.Filters;
 using HomeAutomex.Models;
 using HomeAutomex.HomeAutomexService;
 using Newtonsoft.Json;
+using System.Web.Script.Serialization;
 
 namespace HomeAutomex.Controllers
 {
@@ -28,28 +29,96 @@ namespace HomeAutomex.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
-        //
-        // POST: /Account/Login
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return RedirectToLocal(returnUrl);
-            }
+                {
+                    if (ModelState.IsValid)
+                    {
+                        try
+                        {
+                            var webService = new HomeAutomexWSSoapClient();
+                            var usuario = JsonConvert.SerializeObject(new UsuarioModel
+                            {
+                                Login = model.UserName,
+                            });
+                            var x = webService.ExistirUsuario(usuario);
+                            if (x == null)
+                            {
+                                ModelState.AddModelError("", "Usuário não cadastrado.");
 
-            // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                            }
+                            else
+                            {
+                                ListarUsuario();
+                             //return  RedirectToAction("ListarUsuario", "Account");
+                            }
+                        }
+                        catch (MembershipCreateUserException e)
+                        {
+                            ModelState.AddModelError("", e);
+                        }
+                    }
+                    return View(model);
+                }
+            }
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(UsuarioModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var webService = new HomeAutomexWSSoapClient();
+                    var usuario = JsonConvert.SerializeObject(new UsuarioModel
+                    {
+                        Login = model.Login,
+                        Nome = model.Senha,
+                        Senha = model.Nome,
+                        Celular = model.Nome,
+                        Telefone = model.Telefone,
+                        Email = model.Email,
+                    });
+                    var x = webService.InserirUsuário(usuario);
+                    if (x.StartsWith("Erro:"))
+                    {
+                        ModelState.AddModelError("WSErro", x);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Usuário inválido.");
+                    }
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
+                }
+            }
             return View(model);
         }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult ListarUsuario()
+        {
+            if (ModelState.IsValid)
+            {
+                var webService = new HomeAutomexWSSoapClient();
+                var x = webService.ConsultarTodos();
+                UsuarioModel usuario = JsonConvert.DeserializeObject<UsuarioModel>(x);
+               
+                // carregar o VIEW BAG
 
-        //
-        // POST: /Account/LogOff
 
+            }
+            return View();
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
@@ -58,83 +127,18 @@ namespace HomeAutomex.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
-        //
-        // GET: /Account/Register
-
         [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
         }
-
-        //
-        // POST: /Account/Register
-
         public ActionResult Filipe()
         { return View(); }
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                // Attempt to register the user
-                try
-                {
-                    var webService = new HomeAutomexWSSoapClient();
-
-                    var usuario = JsonConvert.SerializeObject(new Usuario
-                    {
-
-                        Login = model.UserName,
-                        Nome = model.Nome,
-                        Senha = model.Password,
-                
-                        
-                        
-                    });
-
-                    var x = webService.InserirUsuário(usuario);
-                    if (x.StartsWith("Erro:"))
-                    {
-                        ModelState.AddModelError("WSErro", x);
-                    }
-                    else
-                    {
-                        //WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                        //WebSecurity.Login(model.UserName, model.Password);
-                        return RedirectToAction("Index", "Home");
-                    }
-                }
-                catch (MembershipCreateUserException e)
-                {
-                    ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
-                }
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
 
         public ActionResult Erro()
         {
             return View();
         }
-        public class Usuario
-        {
-            public string Nome { get; set; }
-            public string Senha { get; set; }
-            public string Login { get; set; }
-            public DateTime cadastro { get; set; }
-            public DateTime alteracao { get; set; }
-            public DateTime exclucao { get; set; }
-        }
-
-        //
-        // POST: /Account/Disassociate
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Disassociate(string provider, string providerUserId)
@@ -167,7 +171,7 @@ namespace HomeAutomex.Controllers
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : "";

@@ -25,7 +25,7 @@ namespace HomeAutomexLibrary.Negocio
 
             usuario.DataAlteracao = DateTime.Now;
             usuario.DataCadastro = DateTime.Now;
-            usuario.DataExclusao =  DateTime.Now;
+            usuario.DataExclusao = DateTime.Now;
             if (base.Existir(e => e.Login == usuario.Login))
                 return "Erro: Usuário inválido";
             base.Inserir(usuario);
@@ -47,14 +47,23 @@ namespace HomeAutomexLibrary.Negocio
         {
             this.repositorio.Alterar(usuario);
         }
-        public IEnumerable<Usuario> ConsultarTodos()
+        public List<Usuario> ConsultarTodos()
         {
-            return this.repositorio.ConsultarTodos();
+            return base.ConsultarTodos().ToList();
         }
         public int ContarTodos()
         {
             return this.repositorio.ContarTodos();
-        }        
+        }
 
+        public string ExisteUsuario(Usuario usuario)
+        {
+            if (base.Existir(e => e.Login == usuario.Login))
+                return usuario.Login;
+            else 
+                return null;
+            
+         
+        }
     }
 }

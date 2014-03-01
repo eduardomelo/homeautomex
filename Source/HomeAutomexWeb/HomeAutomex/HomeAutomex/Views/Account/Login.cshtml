@@ -1,21 +1,21 @@
 ﻿@model HomeAutomex.Models.LoginModel
 
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = "Acesso";
 }
 
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
+    <h1>Acesso</h1>
 </hgroup>
 
 <section id="loginForm">
-<h2>Use a local account to log in.</h2>
+<h2>Use seu login e senha.</h2>
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Log in Form</legend>
+        <legend>Acesso ao Sistema</legend>
         <ol>
             <li>
                 @Html.LabelFor(m => m.UserName)
@@ -32,10 +32,10 @@
                 @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
             </li>
         </ol>
-        <input type="submit" value="Log in" />
+        <input type="submit" value="Entrar" />
     </fieldset>
     <p>
-        @Html.ActionLink("Register", "Register") if you don't have an account.
+        @Html.ActionLink("Registrar", "Register") caso não tenha acesso, se registre-se aqui.
     </p>
 }
 </section>

@@ -12,7 +12,7 @@ namespace HomeAutomexLibrary.Fachada
     public class Fachada
     {
         private UsuarioNegocio negocioUsuario;
-        private ResidenciaNegocio residenciaNegocio;
+        private ResidenciaNegocio residenciaNegocio;    
         private DatabaseContext contexto;
 
         public Fachada()
@@ -42,13 +42,18 @@ namespace HomeAutomexLibrary.Fachada
         {
             this.negocioUsuario.Excluir(usuario);
         }
-        public IEnumerable<Usuario> ConsultarTodos()
+        public List<Usuario> ConsultarTodos()
         {
             return this.negocioUsuario.ConsultarTodos();
         }
         public int ContarTodos()
         {
             return this.negocioUsuario.ContarTodos();
+        }
+
+        public string ExisteUsuario(Usuario usuario)
+        {
+            return this.negocioUsuario.ExisteUsuario(usuario);
         }
 
         public string Inserir(Residencia residencia)

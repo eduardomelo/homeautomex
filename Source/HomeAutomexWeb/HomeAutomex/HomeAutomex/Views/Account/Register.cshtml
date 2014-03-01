@@ -1,4 +1,4 @@
-﻿@model HomeAutomex.Models.RegisterModel
+﻿@model HomeAutomex.Models.UsuarioModel
 @{
     ViewBag.Title = "Register";
 }
@@ -13,24 +13,39 @@
     @Html.ValidationSummary()
 
     <fieldset>
-        <legend>Registration Form</legend>
+        <legend>Formulário de Registro</legend>
         <ol>
             <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
+                @Html.LabelFor(m => m.Login)
+                @Html.TextBoxFor(m => m.Login)
             </li>
             <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
+                @Html.LabelFor(m => m.Senha)
+                @Html.PasswordFor(m => m.Senha)
             </li>
             <li>
-                @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
+                @Html.LabelFor(m => m.confirmarSenha)
+                @Html.PasswordFor(m => m.confirmarSenha)
             </li>
             <li>
                 @Html.LabelFor(e => e.Nome)
                 @Html.TextBoxFor(e => e.Nome)
             </li>
+                 <li>
+                @Html.LabelFor(e => e.Celular)
+                @Html.TextBoxFor(e => e.Celular)
+            </li>
+               <li>
+                @Html.LabelFor(e => e.Telefone)
+                @Html.TextBoxFor(e => e.Telefone)
+            </li>
+               <li>
+                @Html.LabelFor(e => e.Email)
+                @Html.TextBoxFor(e => e.Email)
+            </li>
+
+
+
         </ol>
         <input type="submit" value="Register" />
     </fieldset>

@@ -34,18 +34,31 @@ namespace HomeAutomexWebApplication
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string InserirUsuário(string jUsuario)
         {
-
             var usuario = JsonConvert.DeserializeObject<Usuario>(jUsuario);
             var retorno = fachada.Inserir(usuario);            
             return retorno;
         }
-
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string InserirResidencia(string jResidencia)
         {
             var residencia = JsonConvert.DeserializeObject<Residencia>(jResidencia);
             var retorno = fachada.Inserir(residencia);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsultarTodos()
+        {
+            var usuarios = fachada.ConsultarTodos();
+            return JsonConvert.SerializeObject(usuarios);
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ExistirUsuario(string jUsuario)
+        {
+            var usuario = JsonConvert.DeserializeObject<Usuario>(jUsuario);
+            var retorno = fachada.ExisteUsuario(usuario);
             return retorno;
         }
     }

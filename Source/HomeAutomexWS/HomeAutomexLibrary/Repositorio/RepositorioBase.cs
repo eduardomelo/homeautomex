@@ -69,6 +69,7 @@ namespace HomeAutomexLibrary.Repositorio
             {
                 return Entidades;
             }
+            
 
             public int ContarTodos()
             {
@@ -82,7 +83,6 @@ namespace HomeAutomexLibrary.Repositorio
 
             public bool Existir(Expression<Func<TEntidade, bool>> criterios)
             {
-
                 return Entidades.Any(criterios);
             }
 

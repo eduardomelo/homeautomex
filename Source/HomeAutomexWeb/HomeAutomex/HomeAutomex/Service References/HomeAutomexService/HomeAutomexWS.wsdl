@@ -30,6 +30,30 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ConsultarTodos">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsultarTodosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultarTodosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistirUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistirUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExistirUsuarioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="InserirUsuárioSoapIn">
@@ -44,6 +68,18 @@
   <wsdl:message name="InserirResidenciaSoapOut">
     <wsdl:part name="parameters" element="tns:InserirResidenciaResponse" />
   </wsdl:message>
+  <wsdl:message name="ConsultarTodosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultarTodos" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarTodosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultarTodosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExistirUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ExistirUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ExistirUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ExistirUsuarioResponse" />
+  </wsdl:message>
   <wsdl:portType name="HomeAutomexWSSoap">
     <wsdl:operation name="InserirUsuário">
       <wsdl:input message="tns:InserirUsuárioSoapIn" />
@@ -52,6 +88,14 @@
     <wsdl:operation name="InserirResidencia">
       <wsdl:input message="tns:InserirResidenciaSoapIn" />
       <wsdl:output message="tns:InserirResidenciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTodos">
+      <wsdl:input message="tns:ConsultarTodosSoapIn" />
+      <wsdl:output message="tns:ConsultarTodosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistirUsuario">
+      <wsdl:input message="tns:ExistirUsuarioSoapIn" />
+      <wsdl:output message="tns:ExistirUsuarioSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="HomeAutomexWSSoap" type="tns:HomeAutomexWSSoap">
@@ -74,6 +118,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ConsultarTodos">
+      <soap:operation soapAction="http://tempuri.org/ConsultarTodos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistirUsuario">
+      <soap:operation soapAction="http://tempuri.org/ExistirUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="HomeAutomexWSSoap12" type="tns:HomeAutomexWSSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -88,6 +150,24 @@
     </wsdl:operation>
     <wsdl:operation name="InserirResidencia">
       <soap12:operation soapAction="http://tempuri.org/InserirResidencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTodos">
+      <soap12:operation soapAction="http://tempuri.org/ConsultarTodos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistirUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ExistirUsuario" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
