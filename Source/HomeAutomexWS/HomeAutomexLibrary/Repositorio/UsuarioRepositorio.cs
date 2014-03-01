@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HomeAutomexLibrary.Repositorio
 {
-    public class UsuarioRepositorio: RepositorioBase<Usuario, int>
+    public class UsuarioRepositorio : RepositorioBase<Usuario, int>
     {
         public UsuarioRepositorio(DatabaseContext contexto) : base(contexto)
         { }

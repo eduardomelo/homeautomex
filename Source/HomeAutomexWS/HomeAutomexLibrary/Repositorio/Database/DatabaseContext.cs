@@ -13,13 +13,14 @@ namespace HomeAutomexLibrary.Repositorio.Database
         //where TEntidade : EntidadeBase<TChave>
     {
         public DatabaseContext()
-            : base(@"data source=CASA-PC;initial catalog=HomeAutomexdb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
+            : base(@"data source=(localdb)\V11.0;initial catalog=HomeAutomexdb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
         {            
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UsuarioMap());
+            modelBuilder.Configurations.Add(new ResidenciaMap());
 
             base.OnModelCreating(modelBuilder);
         }

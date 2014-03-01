@@ -9,5 +9,6 @@ namespace HomeAutomexLibrary.Entidade
     public abstract class EntidadeBase<TChave>
     {
         public TChave Chave { get; set; }
+        //public DateTime DataCadastro { get; set; }
     }
 }

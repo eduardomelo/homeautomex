@@ -7,6 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using HomeAutomexLibrary.Fachada;
+using Newtonsoft.Json;
+using System.Web.Script.Services;
 
 namespace HomeAutomexWebApplication
 {
@@ -17,9 +19,10 @@ namespace HomeAutomexWebApplication
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-    // [System.Web.Script.Services.ScriptService]
+    [System.Web.Script.Services.ScriptService]
     public class HomeAutomexWS : System.Web.Services.WebService
-    {
+    {        
+        private UsuarioFachada usuarioFachada;
         private Fachada fachada;
         private Usuario usuario;
         public HomeAutomexWS() {
@@ -28,19 +31,22 @@ namespace HomeAutomexWebApplication
         }
 
         [WebMethod]
-        public void Inserir()
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string InserirUsuário(string jUsuario)
         {
-          
-             usuario = new Usuario
-            {
-                Nome = "Edson Gouveia",
-                Celular = "(81)9999-9999",
-                Telefone = "(81)9999-9999",
-                Senha = "senha",
-                Email = "email@email.com",
-                Login = "joao.jorge"
-            };
-            this.fachada.Inserir(usuario);
+
+            var usuario = JsonConvert.DeserializeObject<Usuario>(jUsuario);
+            var retorno = fachada.Inserir(usuario);            
+            return retorno;
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string InserirResidencia(string jResidencia)
+        {
+            var residencia = JsonConvert.DeserializeObject<Residencia>(jResidencia);
+            var retorno = fachada.Inserir(residencia);
+            return retorno;
         }
     }
 }

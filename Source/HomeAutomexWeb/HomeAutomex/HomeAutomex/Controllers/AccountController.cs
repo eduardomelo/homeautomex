@@ -10,6 +10,8 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using HomeAutomex.Filters;
 using HomeAutomex.Models;
+using HomeAutomex.HomeAutomexService;
+using Newtonsoft.Json;
 
 namespace HomeAutomex.Controllers
 {
@@ -69,6 +71,8 @@ namespace HomeAutomex.Controllers
         //
         // POST: /Account/Register
 
+        public ActionResult Filipe()
+        { return View(); }
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -79,9 +83,26 @@ namespace HomeAutomex.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    var webService = new HomeAutomexWSSoapClient();
+
+                    var usuario = JsonConvert.SerializeObject(new Usuario
+                    {
+                        Login = model.UserName,
+                        Nome = model.Nome,
+                        Senha = model.Password
+                    });
+
+                    var x = webService.InserirUsuário(usuario);
+                    if (x.StartsWith("Erro:"))
+                    {
+                        ModelState.AddModelError("WSErro", x);
+                    }
+                    else
+                    {
+                        //WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                        //WebSecurity.Login(model.UserName, model.Password);
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 catch (MembershipCreateUserException e)
                 {
@@ -91,6 +112,17 @@ namespace HomeAutomex.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        public ActionResult Erro()
+        {
+            return View();
+        }
+        public class Usuario
+        {
+            public string Nome { get; set; }
+            public string Senha { get; set; }
+            public string Login { get; set; }
         }
 
         //

@@ -14,15 +14,26 @@ namespace HomeAutomexLibrary.Negocio
     {
         private UsuarioRepositorio repositorio;
         private DatabaseContext contexto;
-        public UsuarioNegocio(DatabaseContext contexto)
+        public UsuarioNegocio()
+            : base(new UsuarioRepositorio(new DatabaseContext()))
         {
-            this.repositorio = new UsuarioRepositorio(contexto);
-            this.contexto = contexto;
+            this.contexto = new DatabaseContext();
         }
 
-        public void Inserir(Usuario usuario)
+        public string Inserir(Usuario usuario)
         {
-            this.repositorio.Inserir(usuario);
+            if (base.Existir(e => e.Login == usuario.Login))
+                return "Erro: Usuário inválido";
+            base.Inserir(usuario);
+            try
+            {
+                base.SaveChanges();
+                return "Operação realizada com sucesso!";
+            }
+            catch (Exception ex)
+            {
+                return "Erro: " + new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
+            }
         }
         public void Alterar(Usuario usuario)
         {
@@ -39,6 +50,7 @@ namespace HomeAutomexLibrary.Negocio
         public int ContarTodos()
         {
             return this.repositorio.ContarTodos();
-        }
+        }        
+
     }
 }

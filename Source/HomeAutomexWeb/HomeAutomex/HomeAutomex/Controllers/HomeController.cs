@@ -21,10 +21,9 @@ namespace HomeAutomex.Controllers
         {
 
             //////////////////////EXEMPLO DE UTILIZAÇÃO DO WEB SERVICE
-            //var webService = new HomeAutomexWSSoapClient();
-            //webService.InserirUsuário("");           
-
-
+            var webService = new HomeAutomexWSSoapClient();
+            webService.InserirUsuário("");
+            webService.InserirResidencia("iuigfdjjkjhgfggjklhkjfhgxdfscvb");
             ViewBag.Message = "Your app description page.";
 
             return View();

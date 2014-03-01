@@ -55,6 +55,7 @@ namespace HomeAutomexLibrary.Repositorio
 
             public void Alterar(TEntidade entidade)
             {
+
                 Entidades.Attach(entidade);
                 Context.Entry(entidade).State = EntityState.Modified;
             }
@@ -81,8 +82,13 @@ namespace HomeAutomexLibrary.Repositorio
 
             public bool Existir(Expression<Func<TEntidade, bool>> criterios)
             {
+
                 return Entidades.Any(criterios);
             }
-    
+
+            public void SaveChanges()
+            {
+                Context.SaveChanges();
+            }    
     }
 }

@@ -6,17 +6,16 @@ using System.Text;
 namespace HomeAutomexLibrary.Entidade
 {
     public class Residencia : EntidadeBase<int>
-    {
-        
-        public string logradouro { get; set; }
-        public string cidade { get; set; }
-        public string bairro { get; set; }
-        public string cep { get; set; }
-        public string numero { get; set; }
-        public string complemento { get; set; }
-        public DateTime cadastro { get; set; }
-        public DateTime alterar { get; set; }
-        public DateTime exclusao { get; set; }
-        public bool desativado { get; set; }
+    {        
+        public string Logradouro { get; set; }
+        public string Cidade { get; set; }
+        public string Bairro { get; set; }
+        public string Cep { get; set; }
+        public string Numero { get; set; }
+        public string Complemento { get; set; }
+        public DateTime? DataCadastro { get; set; }
+        public DateTime? DataAlteracao { get; set; }
+        public DateTime? DataExclusao { get; set; }
+        public bool Desativado { get; set; }
    }
 }

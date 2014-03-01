@@ -12,12 +12,14 @@ namespace HomeAutomexLibrary.Fachada
     public class Fachada
     {
         private UsuarioNegocio negocioUsuario;
+        private ResidenciaNegocio residenciaNegocio;
         private DatabaseContext contexto;
 
         public Fachada()
         {
             this.contexto = new DatabaseContext();
-            this.negocioUsuario = new UsuarioNegocio(contexto);
+            this.negocioUsuario = new UsuarioNegocio();
+            this.residenciaNegocio = new ResidenciaNegocio();
         }
         private static Fachada instancia;
         public static Fachada obterInstancia()
@@ -28,9 +30,9 @@ namespace HomeAutomexLibrary.Fachada
             }
             return instancia;
         }
-        public void Inserir(Usuario usuario)
+        public string Inserir(Usuario usuario)
         {
-            this.negocioUsuario.Inserir(usuario);
+            return this.negocioUsuario.Inserir(usuario);
         }
         public void Alterar(Usuario usuario)
         {
@@ -47,6 +49,11 @@ namespace HomeAutomexLibrary.Fachada
         public int ContarTodos()
         {
             return this.negocioUsuario.ContarTodos();
+        }
+
+        public string Inserir(Residencia residencia)
+        {
+            return this.residenciaNegocio.Inserir(residencia);
         }
 
     }

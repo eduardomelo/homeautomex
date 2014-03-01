@@ -252,13 +252,16 @@
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirUsuárioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
-    <Content Include="Service References\HomeAutomexService\configuration91.svcinfo" />
-    <Content Include="Service References\HomeAutomexService\configuration.svcinfo" />
-    <Content Include="Service References\HomeAutomexService\Reference.svcmap">
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirResidenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
+    <None Include="Service References\HomeAutomexService\configuration91.svcinfo" />
+    <None Include="Service References\HomeAutomexService\configuration.svcinfo" />
+    <None Include="Service References\HomeAutomexService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -298,7 +301,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Service References\HomeAutomexService\HomeAutomexWS.wsdl" />
+    <None Include="Service References\HomeAutomexService\HomeAutomexWS.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

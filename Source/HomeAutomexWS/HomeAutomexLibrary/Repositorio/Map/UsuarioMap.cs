@@ -27,6 +27,8 @@ namespace HomeAutomexLibrary.Repositorio.Map
             Property(e => e.Celular).HasColumnName("NM_CELULAR");
             Property(e => e.Email).HasColumnName("DS_EMAIL");
             Property(e => e.Senha).HasColumnName("DS_SENHA");
+
+            //Ignore(e => e.DataCadastro);
         }
 
     }

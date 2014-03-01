@@ -17,8 +17,8 @@ namespace HomeAutomexLibrary.Entidade
 
         public Residencia residencia { get; set; }
 
-        public Perfil() {
-            this.residencia = new Residencia();
-        }
+        //public Perfil() {
+        //    this.residencia = new Residencia();
+        //}
    }
 }
