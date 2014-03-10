@@ -12,7 +12,6 @@ namespace HomeAutomexLibrary.Negocio
 {
     public class UsuarioNegocio : NegocioBase<Usuario, int>
     {
-        private UsuarioRepositorio repositorio;
         private DatabaseContext contexto;
         public UsuarioNegocio()
             : base(new UsuarioRepositorio(new DatabaseContext()))
@@ -28,10 +27,10 @@ namespace HomeAutomexLibrary.Negocio
             usuario.DataExclusao = DateTime.Now;
             if (base.Existir(e => e.Login == usuario.Login))
                 return "Erro: Usuário inválido";
-            base.Inserir(usuario);
+            //base.Inserir(usuario);
             try
             {
-                base.SaveChanges();
+                //base.SaveChanges();
                 return "Operação realizada com sucesso!";
             }
             catch (Exception ex)
@@ -41,11 +40,11 @@ namespace HomeAutomexLibrary.Negocio
         }
         public void Alterar(Usuario usuario)
         {
-            this.repositorio.Alterar(usuario);
+            base.Alterar(usuario);
         }
         public void Excluir(Usuario usuario)
         {
-            this.repositorio.Alterar(usuario);
+            base.Alterar(usuario);
         }
         public List<Usuario> ConsultarTodos()
         {
@@ -53,7 +52,7 @@ namespace HomeAutomexLibrary.Negocio
         }
         public int ContarTodos()
         {
-            return this.repositorio.ContarTodos();
+            return base.ContarTodos();
         }
 
         public string ExisteUsuario(Usuario usuario)

@@ -69,7 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HomeAutomexWS.asmx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HomeAutomexWS.asmx.cs">

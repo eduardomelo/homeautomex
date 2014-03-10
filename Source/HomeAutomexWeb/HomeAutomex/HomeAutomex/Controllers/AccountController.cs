@@ -20,8 +20,13 @@ namespace HomeAutomex.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        private HomeAutomexWSSoapClient webService;
         //
         // GET: /Account/Login
+        public AccountController()
+        {
+            this.webService = new HomeAutomexWSSoapClient();
+        }
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -29,9 +34,10 @@ namespace HomeAutomex.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
+
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
             {
@@ -53,7 +59,7 @@ namespace HomeAutomex.Controllers
                             }
                             else
                             {
-                                ListarUsuario();
+                                return RedirectToAction("ListarUsuario","Account");
                              //return  RedirectToAction("ListarUsuario", "Account");
                             }
                         }
@@ -66,6 +72,7 @@ namespace HomeAutomex.Controllers
                 }
             }
         }
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -102,23 +109,43 @@ namespace HomeAutomex.Controllers
             }
             return View(model);
         }
-        [HttpPost]
+
+        //[HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult ListarUsuario()
         {
             if (ModelState.IsValid)
             {
                 var webService = new HomeAutomexWSSoapClient();
-                var x = webService.ConsultarTodos();
-                UsuarioModel usuario = JsonConvert.DeserializeObject<UsuarioModel>(x);
+                var x = webService.ConsutarTodosUsuarios();
+                var usuario = JsonConvert.DeserializeObject<List<UsuarioModel>>(x);
                
                 // carregar o VIEW BAG
 
-
+                return View(usuario);
             }
             return View();
         }
+
+        [AllowAnonymous]
+        public ActionResult Editar(int chave)
+        {
+            var usuario = JsonConvert.DeserializeObject<UsuarioModel>(webService.BuscarUsuarioPorChave(chave.ToString()));
+            return View(usuario);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Editar(UsuarioModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                   
+            }
+            return View(model);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
