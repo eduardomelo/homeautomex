@@ -19,3 +19,15 @@ C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\obj\De
 C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\obj\Debug\HomeAutomexLibrary.pdb
 C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Debug\Newtonsoft.Json.dll
 C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Debug\Newtonsoft.Json.xml
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Debug\HomeAutomexLibrary.dll.config
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Debug\HomeAutomexLibrary.dll
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Debug\HomeAutomexLibrary.pdb
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Debug\EntityFramework.dll
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Debug\Newtonsoft.Json.dll
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Debug\EntityFramework.xml
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Debug\Newtonsoft.Json.xml
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\obj\Debug\HomeAutomexLibrary.csprojResolveAssemblyReference.cache
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\obj\Debug\HomeAutomexLibrary.dll
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexLibrary\obj\Debug\HomeAutomexLibrary.pdb

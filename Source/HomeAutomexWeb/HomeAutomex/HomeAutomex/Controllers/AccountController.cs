@@ -21,8 +21,7 @@ namespace HomeAutomex.Controllers
     public class AccountController : Controller
     {
         private HomeAutomexWSSoapClient webService;
-        //
-        // GET: /Account/Login
+
         public AccountController()
         {
             this.webService = new HomeAutomexWSSoapClient();
@@ -32,6 +31,24 @@ namespace HomeAutomex.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            WebSecurity.Logout();
+
+            return RedirectToAction("Login", "Account");
+        }
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        public ActionResult Erro()
+        {
             return View();
         }
 
@@ -59,8 +76,8 @@ namespace HomeAutomex.Controllers
                             }
                             else
                             {
-                                return RedirectToAction("ListarUsuario","Account");
-                             //return  RedirectToAction("ListarUsuario", "Account");
+                                return RedirectToAction("ListarUsuario", "Account");
+
                             }
                         }
                         catch (MembershipCreateUserException e)
@@ -72,7 +89,6 @@ namespace HomeAutomex.Controllers
                 }
             }
         }
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -86,9 +102,9 @@ namespace HomeAutomex.Controllers
                     var usuario = JsonConvert.SerializeObject(new UsuarioModel
                     {
                         Login = model.Login,
-                        Nome = model.Senha,
-                        Senha = model.Nome,
-                        Celular = model.Nome,
+                        Nome = model.Nome,
+                        Senha = model.Senha,
+                        Celular = model.Celular,
                         Telefone = model.Telefone,
                         Email = model.Email,
                     });
@@ -99,7 +115,7 @@ namespace HomeAutomex.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Usuário inválido.");
+                        return RedirectToAction("ListarUsuario", "Account");
                     }
                 }
                 catch (MembershipCreateUserException e)
@@ -109,10 +125,44 @@ namespace HomeAutomex.Controllers
             }
             return View(model);
         }
-
-        //[HttpPost]
+        [HttpPost]
         [AllowAnonymous]
-        //[ValidateAntiForgeryToken]
+        public ActionResult Editar(UsuarioModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var webService = new HomeAutomexWSSoapClient();
+                    var usuario = JsonConvert.SerializeObject(new UsuarioModel
+                    {
+                        Login = model.Login,
+                        Nome = model.Nome,
+                        Senha = model.Senha,
+                        Celular = model.Celular,
+                        Telefone = model.Telefone,
+                        Email = model.Email,
+                    });
+                    var x = webService.AlterarUsuario(usuario);
+                    if (x.StartsWith("Erro:"))
+                    {
+                        ModelState.AddModelError("WSErro", x);
+                    }
+                    else
+                    {
+                        return RedirectToAction("ListarUsuario", "Account");
+                    }
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
+                }
+
+            }
+            return View(model);
+        }
+
+        [AllowAnonymous]
         public ActionResult ListarUsuario()
         {
             if (ModelState.IsValid)
@@ -120,9 +170,6 @@ namespace HomeAutomex.Controllers
                 var webService = new HomeAutomexWSSoapClient();
                 var x = webService.ConsutarTodosUsuarios();
                 var usuario = JsonConvert.DeserializeObject<List<UsuarioModel>>(x);
-               
-                // carregar o VIEW BAG
-
                 return View(usuario);
             }
             return View();
@@ -134,38 +181,44 @@ namespace HomeAutomex.Controllers
             var usuario = JsonConvert.DeserializeObject<UsuarioModel>(webService.BuscarUsuarioPorChave(chave.ToString()));
             return View(usuario);
         }
-
-        [HttpPost]
         [AllowAnonymous]
-        public ActionResult Editar(UsuarioModel model)
+        public ActionResult Delete(int chave)
         {
-            if (ModelState.IsValid)
-            {
-                   
-            }
-            return View(model);
+            var usuario = JsonConvert.DeserializeObject<UsuarioModel>(webService.ExcluirUsuario(chave.ToString()));
+            return RedirectToAction("ListarUsuario", "Account");
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
-        {
-            WebSecurity.Logout();
 
-            return RedirectToAction("Index", "Home");
-        }
-        [AllowAnonymous]
-        public ActionResult Register()
-        {
-            return View();
-        }
-        public ActionResult Filipe()
-        { return View(); }
 
-        public ActionResult Erro()
-        {
-            return View();
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Disassociate(string provider, string providerUserId)

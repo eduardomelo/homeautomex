@@ -16,27 +16,55 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="InserirResidencia">
+      <s:element name="AlterarUsuario">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="jResidencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="jUsuario" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="InserirResidenciaResponse">
+      <s:element name="AlterarUsuarioResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="InserirResidenciaResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AlterarUsuarioResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="ConsultarTodos">
+      <s:element name="BuscarUsuarioPorChave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarUsuarioPorChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarUsuarioPorChaveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExcluirUsuarioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsutarTodosUsuarios">
         <s:complexType />
       </s:element>
-      <s:element name="ConsultarTodosResponse">
+      <s:element name="ConsutarTodosUsuariosResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="ConsultarTodosResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosUsuariosResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -54,6 +82,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="InserirResidencia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jResidencia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserirResidenciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InserirResidenciaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="InserirUsuárioSoapIn">
@@ -62,17 +104,29 @@
   <wsdl:message name="InserirUsuárioSoapOut">
     <wsdl:part name="parameters" element="tns:InserirUsuárioResponse" />
   </wsdl:message>
-  <wsdl:message name="InserirResidenciaSoapIn">
-    <wsdl:part name="parameters" element="tns:InserirResidencia" />
+  <wsdl:message name="AlterarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:AlterarUsuario" />
   </wsdl:message>
-  <wsdl:message name="InserirResidenciaSoapOut">
-    <wsdl:part name="parameters" element="tns:InserirResidenciaResponse" />
+  <wsdl:message name="AlterarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:AlterarUsuarioResponse" />
   </wsdl:message>
-  <wsdl:message name="ConsultarTodosSoapIn">
-    <wsdl:part name="parameters" element="tns:ConsultarTodos" />
+  <wsdl:message name="BuscarUsuarioPorChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarUsuarioPorChave" />
   </wsdl:message>
-  <wsdl:message name="ConsultarTodosSoapOut">
-    <wsdl:part name="parameters" element="tns:ConsultarTodosResponse" />
+  <wsdl:message name="BuscarUsuarioPorChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarUsuarioPorChaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ExcluirUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ExcluirUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosUsuariosResponse" />
   </wsdl:message>
   <wsdl:message name="ExistirUsuarioSoapIn">
     <wsdl:part name="parameters" element="tns:ExistirUsuario" />
@@ -80,22 +134,40 @@
   <wsdl:message name="ExistirUsuarioSoapOut">
     <wsdl:part name="parameters" element="tns:ExistirUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="InserirResidenciaSoapIn">
+    <wsdl:part name="parameters" element="tns:InserirResidencia" />
+  </wsdl:message>
+  <wsdl:message name="InserirResidenciaSoapOut">
+    <wsdl:part name="parameters" element="tns:InserirResidenciaResponse" />
+  </wsdl:message>
   <wsdl:portType name="HomeAutomexWSSoap">
     <wsdl:operation name="InserirUsuário">
       <wsdl:input message="tns:InserirUsuárioSoapIn" />
       <wsdl:output message="tns:InserirUsuárioSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="InserirResidencia">
-      <wsdl:input message="tns:InserirResidenciaSoapIn" />
-      <wsdl:output message="tns:InserirResidenciaSoapOut" />
+    <wsdl:operation name="AlterarUsuario">
+      <wsdl:input message="tns:AlterarUsuarioSoapIn" />
+      <wsdl:output message="tns:AlterarUsuarioSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="ConsultarTodos">
-      <wsdl:input message="tns:ConsultarTodosSoapIn" />
-      <wsdl:output message="tns:ConsultarTodosSoapOut" />
+    <wsdl:operation name="BuscarUsuarioPorChave">
+      <wsdl:input message="tns:BuscarUsuarioPorChaveSoapIn" />
+      <wsdl:output message="tns:BuscarUsuarioPorChaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirUsuario">
+      <wsdl:input message="tns:ExcluirUsuarioSoapIn" />
+      <wsdl:output message="tns:ExcluirUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosUsuarios">
+      <wsdl:input message="tns:ConsutarTodosUsuariosSoapIn" />
+      <wsdl:output message="tns:ConsutarTodosUsuariosSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ExistirUsuario">
       <wsdl:input message="tns:ExistirUsuarioSoapIn" />
       <wsdl:output message="tns:ExistirUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InserirResidencia">
+      <wsdl:input message="tns:InserirResidenciaSoapIn" />
+      <wsdl:output message="tns:InserirResidenciaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="HomeAutomexWSSoap" type="tns:HomeAutomexWSSoap">
@@ -109,8 +181,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InserirResidencia">
-      <soap:operation soapAction="http://tempuri.org/InserirResidencia" style="document" />
+    <wsdl:operation name="AlterarUsuario">
+      <soap:operation soapAction="http://tempuri.org/AlterarUsuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -118,8 +190,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ConsultarTodos">
-      <soap:operation soapAction="http://tempuri.org/ConsultarTodos" style="document" />
+    <wsdl:operation name="BuscarUsuarioPorChave">
+      <soap:operation soapAction="http://tempuri.org/BuscarUsuarioPorChave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirUsuario">
+      <soap:operation soapAction="http://tempuri.org/ExcluirUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosUsuarios">
+      <soap:operation soapAction="http://tempuri.org/ConsutarTodosUsuarios" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -129,6 +219,15 @@
     </wsdl:operation>
     <wsdl:operation name="ExistirUsuario">
       <soap:operation soapAction="http://tempuri.org/ExistirUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserirResidencia">
+      <soap:operation soapAction="http://tempuri.org/InserirResidencia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -148,8 +247,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InserirResidencia">
-      <soap12:operation soapAction="http://tempuri.org/InserirResidencia" style="document" />
+    <wsdl:operation name="AlterarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/AlterarUsuario" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -157,8 +256,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ConsultarTodos">
-      <soap12:operation soapAction="http://tempuri.org/ConsultarTodos" style="document" />
+    <wsdl:operation name="BuscarUsuarioPorChave">
+      <soap12:operation soapAction="http://tempuri.org/BuscarUsuarioPorChave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ExcluirUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/ConsutarTodosUsuarios" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -168,6 +285,15 @@
     </wsdl:operation>
     <wsdl:operation name="ExistirUsuario">
       <soap12:operation soapAction="http://tempuri.org/ExistirUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserirResidencia">
+      <soap12:operation soapAction="http://tempuri.org/InserirResidencia" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

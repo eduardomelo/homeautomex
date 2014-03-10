@@ -29,7 +29,7 @@ namespace HomeAutomexWebApplication
             this.usuario = new Usuario();
             this.fachada = new Fachada();
         }
-
+        // Usuario
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string InserirUsuário(string jUsuario)
@@ -40,26 +40,36 @@ namespace HomeAutomexWebApplication
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string InserirResidencia(string jResidencia)
+        public string AlterarUsuario(string jUsuario)
         {
-            var residencia = JsonConvert.DeserializeObject<Residencia>(jResidencia);
-            var retorno = fachada.Inserir(residencia);
+            var usuario = JsonConvert.DeserializeObject<Usuario>(jUsuario);
+            var retorno = fachada.Alterar(usuario);
             return retorno;
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string BuscarUsuarioPorChave(string jChave)
         {
-            int chave = JsonConvert.DeserializeObject<int>(jChave);            
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
             var usuario = fachada.BuscarUsuarioPorChave(chave);
             return JsonConvert.SerializeObject(usuario);
         }
+
         [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)] 
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ExcluirUsuario(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            var usuarioExcluido = fachada.BuscarUsuarioPorChave(chave);
+            var usuario = fachada.RemoverPorChave(chave);
+            return JsonConvert.SerializeObject(usuarioExcluido);
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosUsuarios()
         {
             return JsonConvert.SerializeObject(fachada.ConsultarTodos());
-        }        
+        }
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -69,5 +79,18 @@ namespace HomeAutomexWebApplication
             var retorno = fachada.ExisteUsuario(usuario);
             return retorno;
         }
+
+
+
+        // Residencia
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string InserirResidencia(string jResidencia)
+        {
+            var residencia = JsonConvert.DeserializeObject<Residencia>(jResidencia);
+            var retorno = fachada.Inserir(residencia);
+            return retorno;
+        }
+
     }
 }

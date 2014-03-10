@@ -34,13 +34,13 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.usuarioNegocio.Inserir(usuario);
         }
-        public void Alterar(Usuario usuario)
+        public string Alterar(Usuario usuario)
         {
-            this.usuarioNegocio.Alterar(usuario);
+          return this.usuarioNegocio.Alterar(usuario);
         }
-        public void Excluir(Usuario usuario)
+        public string RemoverPorChave(int  chave)
         {
-            this.usuarioNegocio.Excluir(usuario);
+           return this.usuarioNegocio.RemoverPorChave(chave);
         }
         public List<Usuario> ConsultarTodos()
         {

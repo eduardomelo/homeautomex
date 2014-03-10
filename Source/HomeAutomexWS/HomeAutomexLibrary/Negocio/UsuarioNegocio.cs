@@ -27,10 +27,10 @@ namespace HomeAutomexLibrary.Negocio
             usuario.DataExclusao = DateTime.Now;
             if (base.Existir(e => e.Login == usuario.Login))
                 return "Erro: Usuário inválido";
-            //base.Inserir(usuario);
+            base.Inserir(usuario);
             try
             {
-                //base.SaveChanges();
+                base.SaveChanges();
                 return "Operação realizada com sucesso!";
             }
             catch (Exception ex)
@@ -38,13 +38,33 @@ namespace HomeAutomexLibrary.Negocio
                 return "Erro: " + new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
-        public void Alterar(Usuario usuario)
+        public string Alterar(Usuario usuario)
         {
             base.Alterar(usuario);
+            try
+            {
+                base.SaveChanges();
+                return "Operação realizada com sucesso!";
+            }
+            catch (Exception ex)
+            {
+                return "Erro: " + new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
+            }
         }
-        public void Excluir(Usuario usuario)
+        public string RemoverPorChave(int chave)
         {
-            base.Alterar(usuario);
+            {
+                base.RemoverPorChave(chave);
+                try
+                {
+                    base.SaveChanges();
+                    return "Operação realizada com sucesso!";
+                }
+                catch (Exception ex)
+                {
+                    return "Erro: " + new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
+                }
+            }
         }
         public List<Usuario> ConsultarTodos()
         {
@@ -57,7 +77,7 @@ namespace HomeAutomexLibrary.Negocio
 
         public string ExisteUsuario(Usuario usuario)
         {
-            if (base.Existir(e => e.Login == usuario.Login))
+            if (base.Existir(e => e.Login == usuario.Login) || base.Existir(e => e.Senha == usuario.Senha ))
                 return usuario.Login;
             else 
                 return null;

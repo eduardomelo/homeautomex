@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ListarUsuario</h2>
+<h2>Listar Usuario</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -57,7 +57,7 @@
         <td>
             @Html.ActionLink("Editar", "Editar", new { chave = item.Chave }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Delete", "Delete", new { chave = item.Chave })
         </td>
     </tr>
 }
