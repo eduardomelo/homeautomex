@@ -134,15 +134,7 @@ namespace HomeAutomex.Controllers
                 try
                 {
                     var webService = new HomeAutomexWSSoapClient();
-                    var usuario = JsonConvert.SerializeObject(new UsuarioModel
-                    {
-                        Login = model.Login,
-                        Nome = model.Nome,
-                        Senha = model.Senha,
-                        Celular = model.Celular,
-                        Telefone = model.Telefone,
-                        Email = model.Email,
-                    });
+                    var usuario = JsonConvert.SerializeObject(model);
                     var x = webService.AlterarUsuario(usuario);
                     if (x.StartsWith("Erro:"))
                     {
@@ -184,7 +176,7 @@ namespace HomeAutomex.Controllers
         [AllowAnonymous]
         public ActionResult Delete(int chave)
         {
-            var usuario = JsonConvert.DeserializeObject<UsuarioModel>(webService.ExcluirUsuario(chave.ToString()));
+            var retorno = JsonConvert.DeserializeObject(webService.ExcluirUsuario(chave.ToString()));
             return RedirectToAction("ListarUsuario", "Account");
         }
 

@@ -14,9 +14,9 @@ namespace HomeAutomex.Models
         [Required(ErrorMessage = "Login deve ser preenchido")]
         public string Login { get; set; }
          [Required(ErrorMessage = "Senha deve ser preenchido")]
-        public string Senha { get; set; }
-        [Display(Name = "Confirme sua senha")]
+        public string Senha { get; set; }        
         [Compare("Senha")]
+        [Display(Name = "Confirme sua senha")]
         public string confirmarSenha { get; set; }
         public string Telefone { get; set; }
         public string Celular { get; set; }

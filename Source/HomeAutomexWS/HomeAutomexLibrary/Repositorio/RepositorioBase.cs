@@ -55,7 +55,6 @@ namespace HomeAutomexLibrary.Repositorio
 
             public void Alterar(TEntidade entidade)
             {
-
                 Entidades.Attach(entidade);
                 Context.Entry(entidade).State = EntityState.Modified;
             }

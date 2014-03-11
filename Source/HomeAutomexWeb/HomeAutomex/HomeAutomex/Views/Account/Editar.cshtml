@@ -9,7 +9,7 @@
 
 @using (Html.BeginForm())
 {
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary()
 
     <fieldset>
         <legend>UsuarioModel</legend>
@@ -37,7 +37,13 @@
             @Html.EditorFor(model => model.Senha)
             @Html.ValidationMessageFor(model => model.Senha)
         </div>
-
+        <div class="editor-label">
+            @Html.LabelFor(model => model.confirmarSenha)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.confirmarSenha)
+            @Html.ValidationMessageFor(model => model.confirmarSenha)
+        </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.Celular)
         </div>

@@ -43,6 +43,9 @@ namespace HomeAutomexWebApplication
         public string AlterarUsuario(string jUsuario)
         {
             var usuario = JsonConvert.DeserializeObject<Usuario>(jUsuario);
+            usuario.DataAlteracao = DateTime.Now;
+            usuario.DataCadastro = DateTime.Now;
+            usuario.DataExclusao = DateTime.Now;
             var retorno = fachada.Alterar(usuario);
             return retorno;
         }
@@ -60,9 +63,9 @@ namespace HomeAutomexWebApplication
         public string ExcluirUsuario(string jChave)
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
-            var usuarioExcluido = fachada.BuscarUsuarioPorChave(chave);
+            //var usuarioExcluido = fachada.BuscarUsuarioPorChave(chave);
             var usuario = fachada.RemoverPorChave(chave);
-            return JsonConvert.SerializeObject(usuarioExcluido);
+            return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
