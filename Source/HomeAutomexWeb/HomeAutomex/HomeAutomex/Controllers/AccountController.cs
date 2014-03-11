@@ -13,6 +13,7 @@ using HomeAutomex.Models;
 using HomeAutomex.HomeAutomexService;
 using Newtonsoft.Json;
 using System.Web.Script.Serialization;
+using BootstrapMvcSample.Controllers;
 
 namespace HomeAutomex.Controllers
 {
@@ -21,10 +22,12 @@ namespace HomeAutomex.Controllers
     public class AccountController : Controller
     {
         private HomeAutomexWSSoapClient webService;
+        private BootstrapBaseController BootStrap;
 
         public AccountController()
         {
             this.webService = new HomeAutomexWSSoapClient();
+            this.BootStrap = new BootstrapBaseController();
         }
 
         [AllowAnonymous]
@@ -54,7 +57,6 @@ namespace HomeAutomex.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        //[ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
             {

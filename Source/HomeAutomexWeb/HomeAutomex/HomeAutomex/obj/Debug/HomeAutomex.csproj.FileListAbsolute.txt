@@ -141,6 +141,7 @@ C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAut
 C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\bin\DotNetOpenAuth.OAuth.xml
 C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\bin\DotNetOpenAuth.OpenId.xml
 C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
-C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\obj\Debug\HomeAutomex.csprojResolveAssemblyReference.cache
 C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\obj\Debug\HomeAutomex.dll
 C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\obj\Debug\HomeAutomex.pdb
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\bin\Microsoft.Web.Mvc.dll
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\obj\Debug\HomeAutomex.csprojResolveAssemblyReference.cache
