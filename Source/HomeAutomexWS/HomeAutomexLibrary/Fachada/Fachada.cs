@@ -30,40 +30,39 @@ namespace HomeAutomexLibrary.Fachada
             }
             return instancia;
         }
-        public string Inserir(Usuario usuario)
+        public string InserirUsuario(Usuario usuario)
         {
-            return this.usuarioNegocio.Inserir(usuario);
+            return this.usuarioNegocio.InserirUsuario(usuario);
         }
-        public string Alterar(Usuario usuario)
+        public string AlterarUsuario(Usuario usuario)
         {
-          return this.usuarioNegocio.Alterar(usuario);
+          return this.usuarioNegocio.AlterarUsuario(usuario);
         }
-        public string RemoverPorChave(int  chave)
+        public string RemoverUsuarioPorChave(int chave)
         {
-           return this.usuarioNegocio.RemoverPorChave(chave);
+           return this.usuarioNegocio.RemoverUsuarioPorChave(chave);
         }
-        public List<Usuario> ConsultarTodos()
+        public List<Usuario> ConsultarTodosUsuario()
         {
-            return this.usuarioNegocio.ConsultarTodos();
+            return this.usuarioNegocio.ConsultarTodosUsuario();
         }
-        public int ContarTodos()
+        public int ContarTodosUsuario()
         {
-            return this.usuarioNegocio.ContarTodos();
+            return this.usuarioNegocio.ContarTodosUsuario();
         }
-
+        public Usuario BuscarUsuarioPorChave(int chave)
+        {
+            return this.usuarioNegocio.BuscarPorChave(chave);
+        }
         public string ExisteUsuario(Usuario usuario)
         {
             return this.usuarioNegocio.ExisteUsuario(usuario);
         }
 
-        public string Inserir(Residencia residencia)
+        // Requisições da Residencia
+        public string InserirResidencia(Residencia residencia)
         {
-            return this.residenciaNegocio.Inserir(residencia);
-        }
-
-        public Usuario BuscarUsuarioPorChave(int chave)
-        {
-            return this.usuarioNegocio.BuscarPorChave(chave);
+            return this.residenciaNegocio.InserirResidencia(residencia);
         }
 
     }

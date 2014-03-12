@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HomeAutomexLibrary.Negocio
 {
-    public class ResidenciaNegocio: NegocioBase<Residencia,int>
+    public class ResidenciaNegocio : NegocioBase<Residencia, int>
     {
         private ResidenciaRepositorio repositorio;
         private DatabaseContext contexto;
@@ -19,13 +19,13 @@ namespace HomeAutomexLibrary.Negocio
             this.contexto = new DatabaseContext();
         }
 
-        public string Inserir(Residencia residencia)
+        public string InserirResidencia(Residencia residencia)
         {
             residencia.DataAlteracao = null;
             residencia.DataCadastro = DateTime.Now;
             residencia.DataExclusao = null;
             base.Inserir(residencia);
-            
+
             try
             {
                 base.SaveChanges();
@@ -37,7 +37,42 @@ namespace HomeAutomexLibrary.Negocio
             }
         }
 
+        public string AlterarResidencia(Residencia residencia)
+        {
 
+            residencia.DataAlteracao = DateTime.Now; ;
+            residencia.DataCadastro = null;
+            residencia.DataExclusao = null;
+            base.Alterar(residencia);
+
+            try
+            {
+                base.SaveChanges();
+                return "Operação realizada com sucesso!";
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
+            }
+        }
+
+        public string RemoverResidenciaPorChave(int chave)
+        {
+            base.RemoverPorChave(chave);
+            try
+            {
+                base.SaveChanges();
+                return "Operação realizada com sucesso!";
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
+            }
+        }
+        
 
     }
 }
+

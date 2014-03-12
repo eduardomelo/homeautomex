@@ -18,7 +18,7 @@ namespace HomeAutomexLibrary.Fachada
 
         public string Inserir(Usuario usuario)
         {
-           return usuarioNegocio.Inserir(usuario);
+           return usuarioNegocio.InserirUsuario(usuario);
         }
 
         public void Alterar(Usuario usuario)

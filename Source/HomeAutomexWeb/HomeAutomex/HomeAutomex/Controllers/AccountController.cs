@@ -156,14 +156,19 @@ namespace HomeAutomex.Controllers
             return View(model);
         }
 
+        //[HttpPost]
         [AllowAnonymous]
-        public ActionResult ListarUsuario()
+        public ActionResult ListarUsuario(string pesquisa)
         {
             if (ModelState.IsValid)
             {
                 var webService = new HomeAutomexWSSoapClient();
                 var x = webService.ConsutarTodosUsuarios();
                 var usuario = JsonConvert.DeserializeObject<List<UsuarioModel>>(x);
+                if (!string.IsNullOrEmpty(pesquisa))
+                    return View(usuario.Where(e =>
+                                e.Nome.Contains(pesquisa) ||
+                                e.Login.Contains(pesquisa)));
                 return View(usuario);
             }
             return View();
@@ -182,35 +187,20 @@ namespace HomeAutomex.Controllers
             return RedirectToAction("ListarUsuario", "Account");
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Pesquisar(string pesquisa, IEnumerable<UsuarioModel> model)
+        {
+            var modelPesquisa = model.Where(e =>
+                e.Nome.Contains(pesquisa) ||
+                e.Login.Contains(pesquisa));
+
+            return View("ListarUsuario",modelPesquisa);
+ 
+        }             
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        #region lixo
 
 
         [HttpPost]
@@ -519,6 +509,8 @@ namespace HomeAutomex.Controllers
                     return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
             }
         }
+        #endregion
+
         #endregion
     }
 }

@@ -35,7 +35,7 @@ namespace HomeAutomexWebApplication
         public string InserirUsuário(string jUsuario)
         {
             var usuario = JsonConvert.DeserializeObject<Usuario>(jUsuario);
-            var retorno = fachada.Inserir(usuario);            
+            var retorno = fachada.InserirUsuario(usuario);            
             return retorno;
         }
         [WebMethod]
@@ -46,7 +46,7 @@ namespace HomeAutomexWebApplication
             usuario.DataAlteracao = DateTime.Now;
             usuario.DataCadastro = DateTime.Now;
             usuario.DataExclusao = DateTime.Now;
-            var retorno = fachada.Alterar(usuario);
+            var retorno = fachada.AlterarUsuario(usuario);
             return retorno;
         }
         [WebMethod]
@@ -64,14 +64,14 @@ namespace HomeAutomexWebApplication
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
             //var usuarioExcluido = fachada.BuscarUsuarioPorChave(chave);
-            var usuario = fachada.RemoverPorChave(chave);
+            var usuario = fachada.RemoverUsuarioPorChave(chave);
             return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosUsuarios()
         {
-            return JsonConvert.SerializeObject(fachada.ConsultarTodos());
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosUsuario());
         }
 
         [WebMethod]
@@ -91,7 +91,7 @@ namespace HomeAutomexWebApplication
         public string InserirResidencia(string jResidencia)
         {
             var residencia = JsonConvert.DeserializeObject<Residencia>(jResidencia);
-            var retorno = fachada.Inserir(residencia);
+            var retorno = fachada.InserirResidencia(residencia);
             return retorno;
         }
 

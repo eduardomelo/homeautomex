@@ -10,10 +10,18 @@
 <p>
     @Html.ActionLink("Criar usuário", "Register")
 </p>
-<table class="table table-bordered">
+@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId= "Grid", HttpMethod = "POST" }))
+{
+<div class="editor-label">
+    @Html.Label("Pesquisar")
+</div>
+<div class="editor-field">
+    @Html.Editor("pesquisa")
+    <input type="submit" value="Pesquisar" />
+</div>
+<table id="Grid" class="table table-bordered">
     <tr>
-        <th>
-            #@Html.DisplayNameFor(model => model.Login)
+        <th>#@Html.DisplayNameFor(model => model.Login)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Nome)
@@ -30,39 +38,40 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-          <th>
-          Opções
+        <th>Opções
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.HiddenFor(modelItem => item.Chave)
-            @Html.DisplayFor(modelItem => item.Login)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Senha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Celular)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { chave = item.Chave }) |
-            @Html.ActionLink("Detalhe", "Detalhe", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { chave = item.Chave })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.HiddenFor(modelItem => item.Chave)
+                @Html.DisplayFor(modelItem => item.Login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Senha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Celular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { chave = item.Chave }) |
+        @*    @Html.ActionLink("Detalhe", "Detalhe", new { /* id=item.PrimaryKey */ }) |*@
+                @Html.ActionLink("Delete", "Delete", new { chave = item.Chave })
+            </td>
+        </tr>
+    }
 
 </table>
+}

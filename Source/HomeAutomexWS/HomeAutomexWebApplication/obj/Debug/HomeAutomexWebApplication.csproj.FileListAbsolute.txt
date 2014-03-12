@@ -33,3 +33,5 @@ C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexWebApplic
 C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexWebApplication\obj\Debug\HomeAutomexWebApplication.csprojResolveAssemblyReference.cache
 C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexWebApplication\obj\Debug\HomeAutomexWebApplication.dll
 C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexWebApplication\obj\Debug\HomeAutomexWebApplication.pdb
+C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexWebApplication\bin\Newtonsoft.Json.dll
+C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWS\HomeAutomexWebApplication\bin\Newtonsoft.Json.xml

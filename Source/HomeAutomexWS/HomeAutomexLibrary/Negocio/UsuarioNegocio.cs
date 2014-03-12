@@ -19,7 +19,7 @@ namespace HomeAutomexLibrary.Negocio
             this.contexto = new DatabaseContext();
         }
 
-        public string Inserir(Usuario usuario)
+        public string InserirUsuario(Usuario usuario)
         {
 
             usuario.DataAlteracao = DateTime.Now;
@@ -38,7 +38,7 @@ namespace HomeAutomexLibrary.Negocio
                 return "Erro: " + new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
-        public string Alterar(Usuario usuario)
+        public string AlterarUsuario(Usuario usuario)
         {
             base.Alterar(usuario);
             try
@@ -51,7 +51,7 @@ namespace HomeAutomexLibrary.Negocio
                 return "Erro: " + new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
-        public string RemoverPorChave(int chave)
+        public string RemoverUsuarioPorChave(int chave)
         {
             {
                 base.RemoverPorChave(chave);
@@ -66,11 +66,11 @@ namespace HomeAutomexLibrary.Negocio
                 }
             }
         }
-        public List<Usuario> ConsultarTodos()
+        public List<Usuario> ConsultarTodosUsuario()
         {
             return base.ConsultarTodos().ToList();
         }
-        public int ContarTodos()
+        public int ContarTodosUsuario()
         {
             return base.ContarTodos();
         }
