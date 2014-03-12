@@ -8,12 +8,12 @@ namespace HomeAutomexLibrary.Entidade
    public class Dispositivo : EntidadeBase<int>
     {
        
-        public string descricao { get; set; }
-        public DateTime cadastro { get; set; }
-        public DateTime alterar { get; set; }
-        public DateTime exclusao { get; set; }
-        public bool desativado { get; set; }
-        public bool status { get; set; }
+        public string Descricao { get; set; }
+        public DateTime? DataCadastro { get; set; }
+        public DateTime? DataAlteracao { get; set; }
+        public DateTime? DataExclusao { get; set; }
+        public bool Desativado { get; set; }
+        public bool Status { get; set; }
 
         public Porta porta {get; set;}
 

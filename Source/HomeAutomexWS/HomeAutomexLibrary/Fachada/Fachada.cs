@@ -64,6 +64,9 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.residenciaNegocio.InserirResidencia(residencia);
         }
-
+        public List<Residencia> ConsultarTodosResidencia()
+        {
+            return this.residenciaNegocio.ConsultarTodosResidencia();
+        }
     }
 }

@@ -94,6 +94,11 @@ namespace HomeAutomexWebApplication
             var retorno = fachada.InserirResidencia(residencia);
             return retorno;
         }
-
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsutarTodosResidecia()
+        {
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosResidencia());
+        }
     }
 }

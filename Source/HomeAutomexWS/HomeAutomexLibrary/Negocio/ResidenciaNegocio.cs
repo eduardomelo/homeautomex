@@ -71,6 +71,10 @@ namespace HomeAutomexLibrary.Negocio
                 throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
+        public List<Residencia> ConsultarTodosResidencia()
+        {
+            return base.ConsultarTodos().ToList();
+        }
         
 
     }

@@ -63,6 +63,13 @@ namespace HomeAutomex.HomeAutomexService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InserirResidencia", ReplyAction="*")]
         System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.InserirResidenciaResponse> InserirResidenciaAsync(HomeAutomex.HomeAutomexService.InserirResidenciaRequest request);
+        
+        // CODEGEN: Generating message contract since element name ConsutarTodosResideciaResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ConsutarTodosResidecia", ReplyAction="*")]
+        HomeAutomex.HomeAutomexService.ConsutarTodosResideciaResponse ConsutarTodosResidecia(HomeAutomex.HomeAutomexService.ConsutarTodosResideciaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ConsutarTodosResidecia", ReplyAction="*")]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.ConsutarTodosResideciaResponse> ConsutarTodosResideciaAsync(HomeAutomex.HomeAutomexService.ConsutarTodosResideciaRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -534,6 +541,67 @@ namespace HomeAutomex.HomeAutomexService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ConsutarTodosResideciaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ConsutarTodosResidecia", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.ConsutarTodosResideciaRequestBody Body;
+        
+        public ConsutarTodosResideciaRequest() {
+        }
+        
+        public ConsutarTodosResideciaRequest(HomeAutomex.HomeAutomexService.ConsutarTodosResideciaRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class ConsutarTodosResideciaRequestBody {
+        
+        public ConsutarTodosResideciaRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ConsutarTodosResideciaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ConsutarTodosResideciaResponse", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.ConsutarTodosResideciaResponseBody Body;
+        
+        public ConsutarTodosResideciaResponse() {
+        }
+        
+        public ConsutarTodosResideciaResponse(HomeAutomex.HomeAutomexService.ConsutarTodosResideciaResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ConsutarTodosResideciaResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string ConsutarTodosResideciaResult;
+        
+        public ConsutarTodosResideciaResponseBody() {
+        }
+        
+        public ConsutarTodosResideciaResponseBody(string ConsutarTodosResideciaResult) {
+            this.ConsutarTodosResideciaResult = ConsutarTodosResideciaResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface HomeAutomexWSSoapChannel : HomeAutomex.HomeAutomexService.HomeAutomexWSSoap, System.ServiceModel.IClientChannel {
     }
@@ -732,6 +800,29 @@ namespace HomeAutomex.HomeAutomexService {
             inValue.Body = new HomeAutomex.HomeAutomexService.InserirResidenciaRequestBody();
             inValue.Body.jResidencia = jResidencia;
             return ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).InserirResidenciaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        HomeAutomex.HomeAutomexService.ConsutarTodosResideciaResponse HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.ConsutarTodosResidecia(HomeAutomex.HomeAutomexService.ConsutarTodosResideciaRequest request) {
+            return base.Channel.ConsutarTodosResidecia(request);
+        }
+        
+        public string ConsutarTodosResidecia() {
+            HomeAutomex.HomeAutomexService.ConsutarTodosResideciaRequest inValue = new HomeAutomex.HomeAutomexService.ConsutarTodosResideciaRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.ConsutarTodosResideciaRequestBody();
+            HomeAutomex.HomeAutomexService.ConsutarTodosResideciaResponse retVal = ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).ConsutarTodosResidecia(inValue);
+            return retVal.Body.ConsutarTodosResideciaResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.ConsutarTodosResideciaResponse> HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.ConsutarTodosResideciaAsync(HomeAutomex.HomeAutomexService.ConsutarTodosResideciaRequest request) {
+            return base.Channel.ConsutarTodosResideciaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.ConsutarTodosResideciaResponse> ConsutarTodosResideciaAsync() {
+            HomeAutomex.HomeAutomexService.ConsutarTodosResideciaRequest inValue = new HomeAutomex.HomeAutomexService.ConsutarTodosResideciaRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.ConsutarTodosResideciaRequestBody();
+            return ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).ConsutarTodosResideciaAsync(inValue);
         }
     }
 }

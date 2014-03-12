@@ -200,7 +200,9 @@ namespace HomeAutomex.Controllers
         }             
 
 
-        #region lixo
+
+
+        #region lixo codificado....
 
 
         [HttpPost]
