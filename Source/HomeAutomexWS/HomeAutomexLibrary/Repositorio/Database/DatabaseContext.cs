@@ -13,7 +13,8 @@ namespace HomeAutomexLibrary.Repositorio.Database
         //where TEntidade : EntidadeBase<TChave>
     {
         public DatabaseContext()
-            : base(@"data source=CST-EDSON;initial catalog=HomeAutomexdb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
+            // Nome da maquina
+            : base(@"data source=CASA-PC;initial catalog=HomeAutomexdb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
         {            
         }
 

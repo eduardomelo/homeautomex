@@ -100,5 +100,26 @@ namespace HomeAutomexWebApplication
         {
             return JsonConvert.SerializeObject(fachada.ConsultarTodosResidencia());
         }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string BuscarResidenciaPorChave(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            var residencia = fachada.BuscarResidenciaPorChave(chave);
+            return JsonConvert.SerializeObject(residencia);
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string AlterarResidencia(string jResidencia)
+        {
+            var residencia = JsonConvert.DeserializeObject<Residencia>(jResidencia);
+            residencia.DataAlteracao = DateTime.Now;
+            residencia.DataCadastro = DateTime.Now;
+            residencia.DataExclusao = DateTime.Now;
+            var retorno = fachada.AlterarResidencia(residencia);
+            return retorno;
+        }
+
+
     }
 }

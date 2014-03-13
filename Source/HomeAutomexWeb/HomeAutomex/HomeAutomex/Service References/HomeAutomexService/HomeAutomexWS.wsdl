@@ -106,6 +106,34 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="BuscarResidenciaPorChave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarResidenciaPorChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarResidenciaPorChaveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AlterarResidencia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jResidencia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AlterarResidenciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AlterarResidenciaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="InserirUsuárioSoapIn">
@@ -156,6 +184,18 @@
   <wsdl:message name="ConsutarTodosResideciaSoapOut">
     <wsdl:part name="parameters" element="tns:ConsutarTodosResideciaResponse" />
   </wsdl:message>
+  <wsdl:message name="BuscarResidenciaPorChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarResidenciaPorChave" />
+  </wsdl:message>
+  <wsdl:message name="BuscarResidenciaPorChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarResidenciaPorChaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="AlterarResidenciaSoapIn">
+    <wsdl:part name="parameters" element="tns:AlterarResidencia" />
+  </wsdl:message>
+  <wsdl:message name="AlterarResidenciaSoapOut">
+    <wsdl:part name="parameters" element="tns:AlterarResidenciaResponse" />
+  </wsdl:message>
   <wsdl:portType name="HomeAutomexWSSoap">
     <wsdl:operation name="InserirUsuário">
       <wsdl:input message="tns:InserirUsuárioSoapIn" />
@@ -188,6 +228,14 @@
     <wsdl:operation name="ConsutarTodosResidecia">
       <wsdl:input message="tns:ConsutarTodosResideciaSoapIn" />
       <wsdl:output message="tns:ConsutarTodosResideciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarResidenciaPorChave">
+      <wsdl:input message="tns:BuscarResidenciaPorChaveSoapIn" />
+      <wsdl:output message="tns:BuscarResidenciaPorChaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AlterarResidencia">
+      <wsdl:input message="tns:AlterarResidenciaSoapIn" />
+      <wsdl:output message="tns:AlterarResidenciaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="HomeAutomexWSSoap" type="tns:HomeAutomexWSSoap">
@@ -264,6 +312,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="BuscarResidenciaPorChave">
+      <soap:operation soapAction="http://tempuri.org/BuscarResidenciaPorChave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlterarResidencia">
+      <soap:operation soapAction="http://tempuri.org/AlterarResidencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="HomeAutomexWSSoap12" type="tns:HomeAutomexWSSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -332,6 +398,24 @@
     </wsdl:operation>
     <wsdl:operation name="ConsutarTodosResidecia">
       <soap12:operation soapAction="http://tempuri.org/ConsutarTodosResidecia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarResidenciaPorChave">
+      <soap12:operation soapAction="http://tempuri.org/BuscarResidenciaPorChave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlterarResidencia">
+      <soap12:operation soapAction="http://tempuri.org/AlterarResidencia" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

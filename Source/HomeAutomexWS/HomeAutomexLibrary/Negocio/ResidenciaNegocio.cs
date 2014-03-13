@@ -11,7 +11,7 @@ namespace HomeAutomexLibrary.Negocio
 {
     public class ResidenciaNegocio : NegocioBase<Residencia, int>
     {
-        private ResidenciaRepositorio repositorio;
+
         private DatabaseContext contexto;
         public ResidenciaNegocio()
             : base(new ResidenciaRepositorio(new DatabaseContext()))
@@ -56,7 +56,6 @@ namespace HomeAutomexLibrary.Negocio
                 throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
-
         public string RemoverResidenciaPorChave(int chave)
         {
             base.RemoverPorChave(chave);
@@ -75,7 +74,7 @@ namespace HomeAutomexLibrary.Negocio
         {
             return base.ConsultarTodos().ToList();
         }
-        
+
 
     }
 }

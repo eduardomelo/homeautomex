@@ -12,14 +12,16 @@ namespace HomeAutomex.Controllers
 {
     public class ResidenciaController : Controller
     {
-        //
-        // GET: /Residencia/
+        private HomeAutomexWSSoapClient webService;
+
+        public ResidenciaController() {
+            this.webService = new HomeAutomexWSSoapClient();
+        }
 
         public ActionResult RegistrarResidencia()
         {
             return View();
         }
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -37,7 +39,7 @@ namespace HomeAutomex.Controllers
                         Bairro = model.Bairro,
                         Cep = model.Numero,
                         Complemento = model.Complemento,
-                      
+
                     });
                     var x = webService.InserirResidencia(residencia);
                     if (x.StartsWith("Erro:"))
@@ -46,7 +48,7 @@ namespace HomeAutomex.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("ListarUsuario", "Account");
+                        return RedirectToAction("ListarResidencias", "Residencia");
                     }
                 }
                 catch (MembershipCreateUserException e)
@@ -56,20 +58,52 @@ namespace HomeAutomex.Controllers
             }
             return View(model);
         }
-
+        public ActionResult Editar(int chave)
+        {
+            var residencia = JsonConvert.DeserializeObject<ResidenciaModel>(webService.BuscarUsuarioPorChave(chave.ToString()));
+            return View(residencia);
+        }
+        [HttpPost]
         [AllowAnonymous]
-        public ActionResult ListarResidencia(string pesquisa)
+        public ActionResult Editar(ResidenciaModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var webService = new HomeAutomexWSSoapClient();
+                    var residencia = JsonConvert.SerializeObject(model);
+                    var x = webService.AlterarResidencia(residencia);
+                    if (x.StartsWith("Erro:"))
+                    {
+                        ModelState.AddModelError("WSErro", x);
+                    }
+                    else
+                    {
+                        return RedirectToAction("ListarResidencias", "Residencia");
+                    }
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", e);
+                }
+
+            }
+            return View(model);
+        }
+        [AllowAnonymous]
+        public ActionResult ListarResidencias(string pesquisa)
         {
             if (ModelState.IsValid)
             {
                 var webService = new HomeAutomexWSSoapClient();
                 var x = webService.ConsutarTodosResidecia();
-                var usuario = JsonConvert.DeserializeObject<List<UsuarioModel>>(x);
+                var residencia = JsonConvert.DeserializeObject<List<ResidenciaModel>>(x);
                 if (!string.IsNullOrEmpty(pesquisa))
-                    return View(usuario.Where(e =>
-                                e.Nome.Contains(pesquisa) ||
-                                e.Login.Contains(pesquisa)));
-                return View(usuario);
+                    return View(residencia.Where(e =>
+                                e.Cep.Contains(pesquisa) ||
+                                e.Logradouro.Contains(pesquisa)));
+                return View(residencia);
             }
             return View();
         }

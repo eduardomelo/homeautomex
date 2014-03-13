@@ -30,6 +30,7 @@ namespace HomeAutomexLibrary.Fachada
             }
             return instancia;
         }
+        // Requisições do objeto usuário
         public string InserirUsuario(Usuario usuario)
         {
             return this.usuarioNegocio.InserirUsuario(usuario);
@@ -67,6 +68,14 @@ namespace HomeAutomexLibrary.Fachada
         public List<Residencia> ConsultarTodosResidencia()
         {
             return this.residenciaNegocio.ConsultarTodosResidencia();
+        }
+        public string AlterarResidencia(Residencia residencia)
+        {
+            return this.residenciaNegocio.AlterarResidencia(residencia);
+        }
+        public Residencia BuscarResidenciaPorChave(int chave)
+        {
+            return this.residenciaNegocio.BuscarPorChave(chave);
         }
     }
 }

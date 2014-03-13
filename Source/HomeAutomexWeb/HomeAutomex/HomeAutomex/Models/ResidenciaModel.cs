@@ -5,7 +5,7 @@ using System.Web;
 
 namespace HomeAutomex.Models
 {
-    public class ResidenciaModel
+    public class ResidenciaModel : BaseModel
     {
         public string Logradouro { get; set; }
         public string Cidade { get; set; }
