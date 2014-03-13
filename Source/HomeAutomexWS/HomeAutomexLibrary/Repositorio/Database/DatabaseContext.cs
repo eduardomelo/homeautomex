@@ -14,7 +14,7 @@ namespace HomeAutomexLibrary.Repositorio.Database
     {
         public DatabaseContext()
             // Nome da maquina
-            : base(@"data source=CASA-PC;initial catalog=HomeAutomexdb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
+            : base(@"data source=CST-EDSON;initial catalog=HomeAutomexdb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
         {            
         }
 

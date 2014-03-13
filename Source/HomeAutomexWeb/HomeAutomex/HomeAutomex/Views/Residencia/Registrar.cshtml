@@ -1,14 +1,17 @@
 ﻿@model HomeAutomex.Models.ResidenciaModel
 
 @{
-    ViewBag.Title = "Editar";
+    ViewBag.Title = "Registrar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
 @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Editar Residencia</legend>
+        <legend>Nova Residência</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Logradouro)
@@ -58,22 +61,14 @@
             @Html.ValidationMessageFor(model => model.Complemento)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Chave)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Chave)
-            @Html.ValidationMessageFor(model => model.Chave)
-        </div>
-
         <p>
-            <input type="submit" value="Save" class="btn-glow primary login" />
+            <input type="submit" value="Entrar" class="btn-glow primary login" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Listar")
 </div>
 
 @section Scripts {

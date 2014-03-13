@@ -119,7 +119,60 @@ namespace HomeAutomexWebApplication
             var retorno = fachada.AlterarResidencia(residencia);
             return retorno;
         }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ExcluirResidencia(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            //var usuarioExcluido = fachada.BuscarUsuarioPorChave(chave);
+            var usuario = fachada.RemoverResidenciaPorChave(chave);
+            return JsonConvert.SerializeObject("Usuário removido com sucesso");
+        }
 
+
+        // Modulo
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string InserirModulo(string jModdulo)
+        {
+            var modulo = JsonConvert.DeserializeObject<Modulo>(jModdulo);
+            var retorno = fachada.InserirModulo(modulo);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsutarTodosModulo()
+        {
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosModulo());
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string BuscarModuloPorChave(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            var modulo = fachada.BuscarModuloPorChave(chave);
+            return JsonConvert.SerializeObject(modulo);
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string AlterarModulo(string jModulo)
+        {
+            var modulo = JsonConvert.DeserializeObject<Modulo>(jModulo);
+            modulo.DataAlteracao = DateTime.Now;
+            modulo.DataCadastro = DateTime.Now;
+            modulo.DataExclusao = DateTime.Now;
+            var retorno = fachada.AlterarModulo(modulo);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ExcluirModulo(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            //var usuarioExcluido = fachada.BuscarUsuarioPorChave(chave);
+            var modulo = fachada.RemoverResidenciaPorChave(chave);
+            return JsonConvert.SerializeObject("Usuário removido com sucesso");
+        }
 
     }
 }

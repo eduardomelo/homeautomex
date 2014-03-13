@@ -66,10 +66,13 @@
     <Compile Include="Entidade\Usuario.cs" />
     <Compile Include="Fachada\Fachada.cs" />
     <Compile Include="Fachada\UsuarioFachada.cs" />
+    <Compile Include="Negocio\ModuloNegocio.cs" />
     <Compile Include="Negocio\NegocioBase.cs" />
     <Compile Include="Negocio\ResidenciaNegocio.cs" />
     <Compile Include="Negocio\UsuarioNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\Map\ModuloMap.cs" />
+    <Compile Include="Repositorio\ModuloRepositorio.cs" />
     <Compile Include="Repositorio\Map\DispositivoMap.cs" />
     <Compile Include="Repositorio\Map\ResidenciaMap.cs" />
     <Compile Include="Repositorio\Map\UsuarioMap.cs" />

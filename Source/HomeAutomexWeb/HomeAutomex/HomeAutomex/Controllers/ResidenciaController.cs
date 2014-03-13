@@ -18,14 +18,14 @@ namespace HomeAutomex.Controllers
             this.webService = new HomeAutomexWSSoapClient();
         }
 
-        public ActionResult RegistrarResidencia()
+        public ActionResult Registrar()
         {
             return View();
         }
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult RegistrarResidencia(ResidenciaModel model)
+        public ActionResult Registrar(ResidenciaModel model)
         {
             if (ModelState.IsValid)
             {
@@ -37,7 +37,8 @@ namespace HomeAutomex.Controllers
                         Logradouro = model.Logradouro,
                         Cidade = model.Cidade,
                         Bairro = model.Bairro,
-                        Cep = model.Numero,
+                        Cep    = model.Cep,
+                        Numero = model.Numero,
                         Complemento = model.Complemento,
 
                     });
@@ -48,7 +49,7 @@ namespace HomeAutomex.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("ListarResidencias", "Residencia");
+                        return RedirectToAction("Listar", "Residencia");
                     }
                 }
                 catch (MembershipCreateUserException e)
@@ -60,7 +61,7 @@ namespace HomeAutomex.Controllers
         }
         public ActionResult Editar(int chave)
         {
-            var residencia = JsonConvert.DeserializeObject<ResidenciaModel>(webService.BuscarUsuarioPorChave(chave.ToString()));
+            var residencia = JsonConvert.DeserializeObject<ResidenciaModel>(webService.BuscarResidenciaPorChave(chave.ToString()));
             return View(residencia);
         }
         [HttpPost]
@@ -80,7 +81,7 @@ namespace HomeAutomex.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("ListarResidencias", "Residencia");
+                        return RedirectToAction("Listar", "Residencia");
                     }
                 }
                 catch (MembershipCreateUserException e)
@@ -92,7 +93,13 @@ namespace HomeAutomex.Controllers
             return View(model);
         }
         [AllowAnonymous]
-        public ActionResult ListarResidencias(string pesquisa)
+        public ActionResult Delete(int chave)
+        {
+            var retorno = JsonConvert.DeserializeObject(webService.ExcluirResidencia(chave.ToString()));
+            return RedirectToAction("Listar", "Residencia");
+        }
+        [AllowAnonymous]
+        public ActionResult Listar(string pesquisa)
         {
             if (ModelState.IsValid)
             {

@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BootstrapBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ModuloController.cs" />
     <Compile Include="Controllers\ResidenciaController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -179,6 +180,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\ModuloModel.cs" />
     <Compile Include="Models\ResidenciaModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
@@ -353,6 +355,24 @@
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosResideciaResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirResidenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarModuloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarModuloPorChaveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosModuloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirModuloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirModuloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
     <None Include="Service References\HomeAutomexService\configuration91.svcinfo" />
     <None Include="Service References\HomeAutomexService\configuration.svcinfo" />
@@ -406,9 +426,10 @@
     <Content Include="Views\Shared\_BootstrapLayout.basic.cshtml" />
     <Content Include="Views\Shared\_alerts.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
-    <Content Include="Views\Residencia\RegistrarResidencia.cshtml" />
-    <Content Include="Views\Residencia\ListarResidencias.cshtml" />
+    <Content Include="Views\Residencia\Registrar.cshtml" />
+    <Content Include="Views\Residencia\Listar.cshtml" />
     <Content Include="Views\Residencia\Editar.cshtml" />
+    <Content Include="Views\Modulo\Registrar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -134,6 +134,86 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ExcluirResidencia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirResidenciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExcluirResidenciaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserirModulo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jModdulo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserirModuloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InserirModuloResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsutarTodosModulo">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsutarTodosModuloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosModuloResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarModuloPorChave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarModuloPorChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarModuloPorChaveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AlterarModulo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jModulo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AlterarModuloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AlterarModuloResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirModulo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirModuloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExcluirModuloResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="InserirUsuárioSoapIn">
@@ -196,6 +276,42 @@
   <wsdl:message name="AlterarResidenciaSoapOut">
     <wsdl:part name="parameters" element="tns:AlterarResidenciaResponse" />
   </wsdl:message>
+  <wsdl:message name="ExcluirResidenciaSoapIn">
+    <wsdl:part name="parameters" element="tns:ExcluirResidencia" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirResidenciaSoapOut">
+    <wsdl:part name="parameters" element="tns:ExcluirResidenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="InserirModuloSoapIn">
+    <wsdl:part name="parameters" element="tns:InserirModulo" />
+  </wsdl:message>
+  <wsdl:message name="InserirModuloSoapOut">
+    <wsdl:part name="parameters" element="tns:InserirModuloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosModuloSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosModulo" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosModuloSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosModuloResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarModuloPorChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarModuloPorChave" />
+  </wsdl:message>
+  <wsdl:message name="BuscarModuloPorChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarModuloPorChaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="AlterarModuloSoapIn">
+    <wsdl:part name="parameters" element="tns:AlterarModulo" />
+  </wsdl:message>
+  <wsdl:message name="AlterarModuloSoapOut">
+    <wsdl:part name="parameters" element="tns:AlterarModuloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirModuloSoapIn">
+    <wsdl:part name="parameters" element="tns:ExcluirModulo" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirModuloSoapOut">
+    <wsdl:part name="parameters" element="tns:ExcluirModuloResponse" />
+  </wsdl:message>
   <wsdl:portType name="HomeAutomexWSSoap">
     <wsdl:operation name="InserirUsuário">
       <wsdl:input message="tns:InserirUsuárioSoapIn" />
@@ -236,6 +352,30 @@
     <wsdl:operation name="AlterarResidencia">
       <wsdl:input message="tns:AlterarResidenciaSoapIn" />
       <wsdl:output message="tns:AlterarResidenciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirResidencia">
+      <wsdl:input message="tns:ExcluirResidenciaSoapIn" />
+      <wsdl:output message="tns:ExcluirResidenciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InserirModulo">
+      <wsdl:input message="tns:InserirModuloSoapIn" />
+      <wsdl:output message="tns:InserirModuloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosModulo">
+      <wsdl:input message="tns:ConsutarTodosModuloSoapIn" />
+      <wsdl:output message="tns:ConsutarTodosModuloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarModuloPorChave">
+      <wsdl:input message="tns:BuscarModuloPorChaveSoapIn" />
+      <wsdl:output message="tns:BuscarModuloPorChaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AlterarModulo">
+      <wsdl:input message="tns:AlterarModuloSoapIn" />
+      <wsdl:output message="tns:AlterarModuloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirModulo">
+      <wsdl:input message="tns:ExcluirModuloSoapIn" />
+      <wsdl:output message="tns:ExcluirModuloSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="HomeAutomexWSSoap" type="tns:HomeAutomexWSSoap">
@@ -330,6 +470,60 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ExcluirResidencia">
+      <soap:operation soapAction="http://tempuri.org/ExcluirResidencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserirModulo">
+      <soap:operation soapAction="http://tempuri.org/InserirModulo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosModulo">
+      <soap:operation soapAction="http://tempuri.org/ConsutarTodosModulo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarModuloPorChave">
+      <soap:operation soapAction="http://tempuri.org/BuscarModuloPorChave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlterarModulo">
+      <soap:operation soapAction="http://tempuri.org/AlterarModulo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirModulo">
+      <soap:operation soapAction="http://tempuri.org/ExcluirModulo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="HomeAutomexWSSoap12" type="tns:HomeAutomexWSSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -416,6 +610,60 @@
     </wsdl:operation>
     <wsdl:operation name="AlterarResidencia">
       <soap12:operation soapAction="http://tempuri.org/AlterarResidencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirResidencia">
+      <soap12:operation soapAction="http://tempuri.org/ExcluirResidencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserirModulo">
+      <soap12:operation soapAction="http://tempuri.org/InserirModulo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosModulo">
+      <soap12:operation soapAction="http://tempuri.org/ConsutarTodosModulo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarModuloPorChave">
+      <soap12:operation soapAction="http://tempuri.org/BuscarModuloPorChave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlterarModulo">
+      <soap12:operation soapAction="http://tempuri.org/AlterarModulo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirModulo">
+      <soap12:operation soapAction="http://tempuri.org/ExcluirModulo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

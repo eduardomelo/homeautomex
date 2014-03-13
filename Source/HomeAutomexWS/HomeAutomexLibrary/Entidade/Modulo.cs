@@ -9,15 +9,17 @@ namespace HomeAutomexLibrary.Entidade
     public class Modulo : EntidadeBase<int>
     {
        
-        public string numeroIP { get; set; }
-        public string numeroPorta { get; set; }
-        public string nome { get; set; }
-        public string numeroMac { get; set; }
-
-        public Residencia residencia {get; set;}
+        public string NumeroIP { get; set; }
+        public string NumeroPorta { get; set; }
+        public string Nome { get; set; }
+        public string NumeroMac { get; set; }
+        public DateTime? DataCadastro { get; set; }
+        public DateTime? DataAlteracao { get; set; }
+        public DateTime? DataExclusao { get; set; }
+        public Residencia Residencia {get; set;}
 
         public Modulo() {
-            this.residencia = new Residencia();
+            this.Residencia = new Residencia();
         }
 
     }

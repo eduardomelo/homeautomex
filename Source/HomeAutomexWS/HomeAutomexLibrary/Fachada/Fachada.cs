@@ -12,7 +12,8 @@ namespace HomeAutomexLibrary.Fachada
     public class Fachada
     {
         private UsuarioNegocio usuarioNegocio;
-        private ResidenciaNegocio residenciaNegocio;    
+        private ResidenciaNegocio residenciaNegocio;
+        private ModuloNegocio moduloNegocio;
         private DatabaseContext contexto;
 
         public Fachada()
@@ -20,6 +21,7 @@ namespace HomeAutomexLibrary.Fachada
             this.contexto = new DatabaseContext();
             this.usuarioNegocio = new UsuarioNegocio();
             this.residenciaNegocio = new ResidenciaNegocio();
+            this.moduloNegocio = new ModuloNegocio();
         }
         private static Fachada instancia;
         public static Fachada obterInstancia()
@@ -76,6 +78,32 @@ namespace HomeAutomexLibrary.Fachada
         public Residencia BuscarResidenciaPorChave(int chave)
         {
             return this.residenciaNegocio.BuscarPorChave(chave);
+        }
+        public string RemoverResidenciaPorChave(int chave)
+        {
+            return this.residenciaNegocio.RemoverResidenciaPorChave(chave);
+        }
+
+        // Modulo
+        public string InserirModulo(Modulo modulo)
+        {
+            return this.moduloNegocio.InserirModulo(modulo);
+        }
+        public List<Modulo> ConsultarTodosModulo()
+        {
+            return this.moduloNegocio.ConsultarTodosModulo();
+        }
+        public string AlterarModulo(Modulo modulo)
+        {
+            return this.moduloNegocio.AlterarModulo(modulo);
+        }
+        public Modulo BuscarModuloPorChave(int chave)
+        {
+            return this.moduloNegocio.BuscarPorChave(chave);
+        }
+        public string RemoverModuloPorChave(int chave)
+        {
+            return this.moduloNegocio.RemoverModuloPorChave(chave);
         }
     }
 }
