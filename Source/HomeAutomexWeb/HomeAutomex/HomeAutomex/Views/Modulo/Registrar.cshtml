@@ -8,14 +8,14 @@
 <h2>Registrar</h2>
 
 @using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
     <fieldset>
         <legend>ModuloModel</legend>
          
       <div class="editor-label">
        
-      @* @Html.DropDownList("yearDropDown",(<SelectList>)ViewBag.yearDropDown)*@
+       @Html.DropDownList("residencia",ViewBag.Residencias as List<SelectListItem>)
         </div>
             
         <div class="editor-label">

@@ -24,29 +24,21 @@ namespace HomeAutomex.Controllers
 
         public ActionResult Registrar()
         {
-            ViewBag.BOData = GetDropDown();
+            ViewBag.Residencias = GetDropDown();
             return View();
         }
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Registrar(ModuloModel model)
+        public ActionResult Registrar(ModuloModel model, string residencia)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
                     var webService = new HomeAutomexWSSoapClient();
-                    var modulo = JsonConvert.SerializeObject(new ModuloModel
-                    {
-
-
-                        NumeroIP = model.NumeroIP,
-                        NumeroPorta = model.NumeroPorta,
-                        Nome = model.Nome,
-                        NumeroMac = model.NumeroMac,
-                        Residencia = model.Residencia
-                    });
+                    model.Residencia = JsonConvert.DeserializeObject<ResidenciaModel>(webService.BuscarResidenciaPorChave(residencia));
+                    var modulo = JsonConvert.SerializeObject(model);
                     var x = webService.InserirModulo(modulo);
                     if (x.StartsWith("Erro:"))
                     {
@@ -62,19 +54,20 @@ namespace HomeAutomex.Controllers
                     ModelState.AddModelError("", e);
                 }
             }
+            ViewBag.Residencias = GetDropDown();
             return View(model);
         }
 
-        public List<ResidenciaModel> GetDropDown()
+        public List<SelectListItem> GetDropDown()
         {
-            List<ResidenciaModel> residencias = new List<ResidenciaModel>();
+            var lista = new List<SelectListItem>();
             var x = webService.ConsutarTodosResidecia();
-            var modulo = JsonConvert.DeserializeObject<List<ResidenciaModel>>(x);
-            foreach (var temp in modulo)
+            var residencias = JsonConvert.DeserializeObject<List<ResidenciaModel>>(x);
+            foreach (var item in residencias)
             {
-                residencias.Add(new ResidenciaModel() { Numero = temp.Numero, Chave = temp.Chave });
+                lista.Add(new SelectListItem() { Text = item.Logradouro, Value = item.Chave.ToString() });
             }
-            return residencias;
+            return lista;
         }
        
     }
