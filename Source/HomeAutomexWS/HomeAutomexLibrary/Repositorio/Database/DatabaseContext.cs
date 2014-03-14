@@ -22,7 +22,9 @@ namespace HomeAutomexLibrary.Repositorio.Database
         {
             modelBuilder.Configurations.Add(new UsuarioMap());
             modelBuilder.Configurations.Add(new ResidenciaMap());
-
+            modelBuilder.Configurations.Add(new ModuloMap());
+            modelBuilder.Configurations.Add(new AmbienteMap());
+                
             base.OnModelCreating(modelBuilder);
         }
     }

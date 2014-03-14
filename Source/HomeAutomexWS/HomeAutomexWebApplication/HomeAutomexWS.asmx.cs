@@ -158,9 +158,6 @@ namespace HomeAutomexWebApplication
         public string AlterarModulo(string jModulo)
         {
             var modulo = JsonConvert.DeserializeObject<Modulo>(jModulo);
-            modulo.DataAlteracao = DateTime.Now;
-            modulo.DataCadastro = DateTime.Now;
-            modulo.DataExclusao = DateTime.Now;
             var retorno = fachada.AlterarModulo(modulo);
             return retorno;
         }
@@ -170,9 +167,50 @@ namespace HomeAutomexWebApplication
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
             //var usuarioExcluido = fachada.BuscarUsuarioPorChave(chave);
-            var modulo = fachada.RemoverResidenciaPorChave(chave);
+            var modulo = fachada.RemoverModuloPorChave(chave);
             return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
 
+        // Ambiente
+        // Modulo
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string InserirAmbiente(string jAmbiente)
+        {
+            var ambiente = JsonConvert.DeserializeObject<Ambiente>(jAmbiente);
+            var retorno = fachada.InserirAmbiente(ambiente);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsutarTodosAmbiente()
+        {
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosAmbiente());
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string BuscarAmbientePorChave(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            var ambiente = fachada.BuscarAmbientePorChave(chave);
+            return JsonConvert.SerializeObject(ambiente);
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string AlterarAmbiente(string jAmbiente)
+        {
+            var ambiente = JsonConvert.DeserializeObject<Ambiente>(jAmbiente);
+            var retorno = fachada.AlterarAmbiente(ambiente);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ExcluirAmbiente(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            //var usuarioExcluido = fachada.BuscarUsuarioPorChave(chave);
+            var ambiente = fachada.RemoverAmbientePorChave(chave);
+            return JsonConvert.SerializeObject("Usuário removido com sucesso");
+        }
     }
 }

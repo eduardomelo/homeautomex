@@ -18,12 +18,9 @@ namespace HomeAutomexLibrary.Negocio
         {
             this.contexto = new DatabaseContext();
         }
-
         public string InserirModulo(Modulo modulo)
         {
-
             base.Inserir(modulo);
-
             try
             {
                 base.SaveChanges();
@@ -34,13 +31,9 @@ namespace HomeAutomexLibrary.Negocio
                 throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
-
         public string AlterarModulo(Modulo modulo)
         {
-
-
             base.Alterar(modulo);
-
             try
             {
                 base.SaveChanges();
@@ -48,7 +41,6 @@ namespace HomeAutomexLibrary.Negocio
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
@@ -62,7 +54,6 @@ namespace HomeAutomexLibrary.Negocio
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
@@ -70,8 +61,6 @@ namespace HomeAutomexLibrary.Negocio
         {
             return base.ConsultarTodos().ToList();
         }
-
-
     }
 }
 

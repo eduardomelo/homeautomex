@@ -126,6 +126,41 @@ namespace HomeAutomex.HomeAutomexService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ExcluirModulo", ReplyAction="*")]
         System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.ExcluirModuloResponse> ExcluirModuloAsync(HomeAutomex.HomeAutomexService.ExcluirModuloRequest request);
+        
+        // CODEGEN: Generating message contract since element name jAmbiente from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InserirAmbiente", ReplyAction="*")]
+        HomeAutomex.HomeAutomexService.InserirAmbienteResponse InserirAmbiente(HomeAutomex.HomeAutomexService.InserirAmbienteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InserirAmbiente", ReplyAction="*")]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.InserirAmbienteResponse> InserirAmbienteAsync(HomeAutomex.HomeAutomexService.InserirAmbienteRequest request);
+        
+        // CODEGEN: Generating message contract since element name ConsutarTodosAmbienteResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ConsutarTodosAmbiente", ReplyAction="*")]
+        HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteResponse ConsutarTodosAmbiente(HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ConsutarTodosAmbiente", ReplyAction="*")]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteResponse> ConsutarTodosAmbienteAsync(HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteRequest request);
+        
+        // CODEGEN: Generating message contract since element name jChave from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/BuscarAmbientePorChave", ReplyAction="*")]
+        HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveResponse BuscarAmbientePorChave(HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/BuscarAmbientePorChave", ReplyAction="*")]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveResponse> BuscarAmbientePorChaveAsync(HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveRequest request);
+        
+        // CODEGEN: Generating message contract since element name jAmbiente from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AlterarAmbiente", ReplyAction="*")]
+        HomeAutomex.HomeAutomexService.AlterarAmbienteResponse AlterarAmbiente(HomeAutomex.HomeAutomexService.AlterarAmbienteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AlterarAmbiente", ReplyAction="*")]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.AlterarAmbienteResponse> AlterarAmbienteAsync(HomeAutomex.HomeAutomexService.AlterarAmbienteRequest request);
+        
+        // CODEGEN: Generating message contract since element name jChave from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ExcluirAmbiente", ReplyAction="*")]
+        HomeAutomex.HomeAutomexService.ExcluirAmbienteResponse ExcluirAmbiente(HomeAutomex.HomeAutomexService.ExcluirAmbienteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ExcluirAmbiente", ReplyAction="*")]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.ExcluirAmbienteResponse> ExcluirAmbienteAsync(HomeAutomex.HomeAutomexService.ExcluirAmbienteRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1195,6 +1230,339 @@ namespace HomeAutomex.HomeAutomexService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InserirAmbienteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InserirAmbiente", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.InserirAmbienteRequestBody Body;
+        
+        public InserirAmbienteRequest() {
+        }
+        
+        public InserirAmbienteRequest(HomeAutomex.HomeAutomexService.InserirAmbienteRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class InserirAmbienteRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string jAmbiente;
+        
+        public InserirAmbienteRequestBody() {
+        }
+        
+        public InserirAmbienteRequestBody(string jAmbiente) {
+            this.jAmbiente = jAmbiente;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InserirAmbienteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InserirAmbienteResponse", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.InserirAmbienteResponseBody Body;
+        
+        public InserirAmbienteResponse() {
+        }
+        
+        public InserirAmbienteResponse(HomeAutomex.HomeAutomexService.InserirAmbienteResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class InserirAmbienteResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string InserirAmbienteResult;
+        
+        public InserirAmbienteResponseBody() {
+        }
+        
+        public InserirAmbienteResponseBody(string InserirAmbienteResult) {
+            this.InserirAmbienteResult = InserirAmbienteResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ConsutarTodosAmbienteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ConsutarTodosAmbiente", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteRequestBody Body;
+        
+        public ConsutarTodosAmbienteRequest() {
+        }
+        
+        public ConsutarTodosAmbienteRequest(HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class ConsutarTodosAmbienteRequestBody {
+        
+        public ConsutarTodosAmbienteRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ConsutarTodosAmbienteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ConsutarTodosAmbienteResponse", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteResponseBody Body;
+        
+        public ConsutarTodosAmbienteResponse() {
+        }
+        
+        public ConsutarTodosAmbienteResponse(HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ConsutarTodosAmbienteResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string ConsutarTodosAmbienteResult;
+        
+        public ConsutarTodosAmbienteResponseBody() {
+        }
+        
+        public ConsutarTodosAmbienteResponseBody(string ConsutarTodosAmbienteResult) {
+            this.ConsutarTodosAmbienteResult = ConsutarTodosAmbienteResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class BuscarAmbientePorChaveRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="BuscarAmbientePorChave", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveRequestBody Body;
+        
+        public BuscarAmbientePorChaveRequest() {
+        }
+        
+        public BuscarAmbientePorChaveRequest(HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class BuscarAmbientePorChaveRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string jChave;
+        
+        public BuscarAmbientePorChaveRequestBody() {
+        }
+        
+        public BuscarAmbientePorChaveRequestBody(string jChave) {
+            this.jChave = jChave;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class BuscarAmbientePorChaveResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="BuscarAmbientePorChaveResponse", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveResponseBody Body;
+        
+        public BuscarAmbientePorChaveResponse() {
+        }
+        
+        public BuscarAmbientePorChaveResponse(HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class BuscarAmbientePorChaveResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string BuscarAmbientePorChaveResult;
+        
+        public BuscarAmbientePorChaveResponseBody() {
+        }
+        
+        public BuscarAmbientePorChaveResponseBody(string BuscarAmbientePorChaveResult) {
+            this.BuscarAmbientePorChaveResult = BuscarAmbientePorChaveResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AlterarAmbienteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AlterarAmbiente", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.AlterarAmbienteRequestBody Body;
+        
+        public AlterarAmbienteRequest() {
+        }
+        
+        public AlterarAmbienteRequest(HomeAutomex.HomeAutomexService.AlterarAmbienteRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AlterarAmbienteRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string jAmbiente;
+        
+        public AlterarAmbienteRequestBody() {
+        }
+        
+        public AlterarAmbienteRequestBody(string jAmbiente) {
+            this.jAmbiente = jAmbiente;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AlterarAmbienteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AlterarAmbienteResponse", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.AlterarAmbienteResponseBody Body;
+        
+        public AlterarAmbienteResponse() {
+        }
+        
+        public AlterarAmbienteResponse(HomeAutomex.HomeAutomexService.AlterarAmbienteResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AlterarAmbienteResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string AlterarAmbienteResult;
+        
+        public AlterarAmbienteResponseBody() {
+        }
+        
+        public AlterarAmbienteResponseBody(string AlterarAmbienteResult) {
+            this.AlterarAmbienteResult = AlterarAmbienteResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ExcluirAmbienteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ExcluirAmbiente", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.ExcluirAmbienteRequestBody Body;
+        
+        public ExcluirAmbienteRequest() {
+        }
+        
+        public ExcluirAmbienteRequest(HomeAutomex.HomeAutomexService.ExcluirAmbienteRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ExcluirAmbienteRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string jChave;
+        
+        public ExcluirAmbienteRequestBody() {
+        }
+        
+        public ExcluirAmbienteRequestBody(string jChave) {
+            this.jChave = jChave;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ExcluirAmbienteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ExcluirAmbienteResponse", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.ExcluirAmbienteResponseBody Body;
+        
+        public ExcluirAmbienteResponse() {
+        }
+        
+        public ExcluirAmbienteResponse(HomeAutomex.HomeAutomexService.ExcluirAmbienteResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ExcluirAmbienteResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string ExcluirAmbienteResult;
+        
+        public ExcluirAmbienteResponseBody() {
+        }
+        
+        public ExcluirAmbienteResponseBody(string ExcluirAmbienteResult) {
+            this.ExcluirAmbienteResult = ExcluirAmbienteResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface HomeAutomexWSSoapChannel : HomeAutomex.HomeAutomexService.HomeAutomexWSSoap, System.ServiceModel.IClientChannel {
     }
@@ -1614,6 +1982,129 @@ namespace HomeAutomex.HomeAutomexService {
             inValue.Body = new HomeAutomex.HomeAutomexService.ExcluirModuloRequestBody();
             inValue.Body.jChave = jChave;
             return ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).ExcluirModuloAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        HomeAutomex.HomeAutomexService.InserirAmbienteResponse HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.InserirAmbiente(HomeAutomex.HomeAutomexService.InserirAmbienteRequest request) {
+            return base.Channel.InserirAmbiente(request);
+        }
+        
+        public string InserirAmbiente(string jAmbiente) {
+            HomeAutomex.HomeAutomexService.InserirAmbienteRequest inValue = new HomeAutomex.HomeAutomexService.InserirAmbienteRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.InserirAmbienteRequestBody();
+            inValue.Body.jAmbiente = jAmbiente;
+            HomeAutomex.HomeAutomexService.InserirAmbienteResponse retVal = ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).InserirAmbiente(inValue);
+            return retVal.Body.InserirAmbienteResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.InserirAmbienteResponse> HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.InserirAmbienteAsync(HomeAutomex.HomeAutomexService.InserirAmbienteRequest request) {
+            return base.Channel.InserirAmbienteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.InserirAmbienteResponse> InserirAmbienteAsync(string jAmbiente) {
+            HomeAutomex.HomeAutomexService.InserirAmbienteRequest inValue = new HomeAutomex.HomeAutomexService.InserirAmbienteRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.InserirAmbienteRequestBody();
+            inValue.Body.jAmbiente = jAmbiente;
+            return ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).InserirAmbienteAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteResponse HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.ConsutarTodosAmbiente(HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteRequest request) {
+            return base.Channel.ConsutarTodosAmbiente(request);
+        }
+        
+        public string ConsutarTodosAmbiente() {
+            HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteRequest inValue = new HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteRequestBody();
+            HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteResponse retVal = ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).ConsutarTodosAmbiente(inValue);
+            return retVal.Body.ConsutarTodosAmbienteResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteResponse> HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.ConsutarTodosAmbienteAsync(HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteRequest request) {
+            return base.Channel.ConsutarTodosAmbienteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteResponse> ConsutarTodosAmbienteAsync() {
+            HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteRequest inValue = new HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteRequestBody();
+            return ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).ConsutarTodosAmbienteAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveResponse HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.BuscarAmbientePorChave(HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveRequest request) {
+            return base.Channel.BuscarAmbientePorChave(request);
+        }
+        
+        public string BuscarAmbientePorChave(string jChave) {
+            HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveRequest inValue = new HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveRequestBody();
+            inValue.Body.jChave = jChave;
+            HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveResponse retVal = ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).BuscarAmbientePorChave(inValue);
+            return retVal.Body.BuscarAmbientePorChaveResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveResponse> HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.BuscarAmbientePorChaveAsync(HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveRequest request) {
+            return base.Channel.BuscarAmbientePorChaveAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveResponse> BuscarAmbientePorChaveAsync(string jChave) {
+            HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveRequest inValue = new HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveRequestBody();
+            inValue.Body.jChave = jChave;
+            return ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).BuscarAmbientePorChaveAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        HomeAutomex.HomeAutomexService.AlterarAmbienteResponse HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.AlterarAmbiente(HomeAutomex.HomeAutomexService.AlterarAmbienteRequest request) {
+            return base.Channel.AlterarAmbiente(request);
+        }
+        
+        public string AlterarAmbiente(string jAmbiente) {
+            HomeAutomex.HomeAutomexService.AlterarAmbienteRequest inValue = new HomeAutomex.HomeAutomexService.AlterarAmbienteRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.AlterarAmbienteRequestBody();
+            inValue.Body.jAmbiente = jAmbiente;
+            HomeAutomex.HomeAutomexService.AlterarAmbienteResponse retVal = ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).AlterarAmbiente(inValue);
+            return retVal.Body.AlterarAmbienteResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.AlterarAmbienteResponse> HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.AlterarAmbienteAsync(HomeAutomex.HomeAutomexService.AlterarAmbienteRequest request) {
+            return base.Channel.AlterarAmbienteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.AlterarAmbienteResponse> AlterarAmbienteAsync(string jAmbiente) {
+            HomeAutomex.HomeAutomexService.AlterarAmbienteRequest inValue = new HomeAutomex.HomeAutomexService.AlterarAmbienteRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.AlterarAmbienteRequestBody();
+            inValue.Body.jAmbiente = jAmbiente;
+            return ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).AlterarAmbienteAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        HomeAutomex.HomeAutomexService.ExcluirAmbienteResponse HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.ExcluirAmbiente(HomeAutomex.HomeAutomexService.ExcluirAmbienteRequest request) {
+            return base.Channel.ExcluirAmbiente(request);
+        }
+        
+        public string ExcluirAmbiente(string jChave) {
+            HomeAutomex.HomeAutomexService.ExcluirAmbienteRequest inValue = new HomeAutomex.HomeAutomexService.ExcluirAmbienteRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.ExcluirAmbienteRequestBody();
+            inValue.Body.jChave = jChave;
+            HomeAutomex.HomeAutomexService.ExcluirAmbienteResponse retVal = ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).ExcluirAmbiente(inValue);
+            return retVal.Body.ExcluirAmbienteResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.ExcluirAmbienteResponse> HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.ExcluirAmbienteAsync(HomeAutomex.HomeAutomexService.ExcluirAmbienteRequest request) {
+            return base.Channel.ExcluirAmbienteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.ExcluirAmbienteResponse> ExcluirAmbienteAsync(string jChave) {
+            HomeAutomex.HomeAutomexService.ExcluirAmbienteRequest inValue = new HomeAutomex.HomeAutomexService.ExcluirAmbienteRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.ExcluirAmbienteRequestBody();
+            inValue.Body.jChave = jChave;
+            return ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).ExcluirAmbienteAsync(inValue);
         }
     }
 }

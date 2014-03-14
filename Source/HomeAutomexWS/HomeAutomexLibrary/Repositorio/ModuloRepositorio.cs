@@ -20,7 +20,7 @@ namespace HomeAutomexLibrary.Repositorio
         /// </summary>
      
         /// <returns></returns>
-        public IEnumerable<Modulo> BuscarPorNomeDaRua(string Nome)
+        public IEnumerable<Modulo> BuscarPorNome(string Nome)
         {
             return base.Consultar(e => e.Nome.Contains(Nome));
         }

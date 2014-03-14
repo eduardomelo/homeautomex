@@ -8,20 +8,15 @@ namespace HomeAutomexLibrary.Entidade
 {
     public class Ambiente : EntidadeBase<int>
     {
-        
-        public string descricao { get; set; }
-        public DateTime cadastro { get; set; }
-        public DateTime alteracao { get; set; }
-        public DateTime exclusao { get; set; }
-        public bool desativado { get; set; }
+        public int Residencia { get; set; }
+        public string Descricao { get; set; }
+        public DateTime? DataCadastro { get; set; }
+        public DateTime? DataAlteracao { get; set; }
+        public DateTime? DataExclusao { get; set; }
+        public bool Desativado { get; set; }
+       
 
-        public Dispositivo dispositivo {get; set;}
-        public Residencia residencia {get; set;}
-
-        public Ambiente() {
-            this.dispositivo = new Dispositivo();
-            this.residencia = new Residencia();
-        }
+       
 
     }
 }

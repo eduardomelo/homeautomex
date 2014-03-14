@@ -11,11 +11,8 @@ namespace HomeAutomex.Models
         public string NumeroPorta { get; set; }
         public string Nome { get; set; }
         public string NumeroMac { get; set; }
-        public ResidenciaModel Residencia {get; set;}
+        public int Residencia {get; set;}
 
-        public ModuloModel()
-        {
-            this.Residencia = new ResidenciaModel();
-        }
+      
     }
 }

@@ -27,7 +27,7 @@ namespace HomeAutomex.Models
         public string Celular { get; set; }
         [Display(Name = "E-mail")]
         [Required(ErrorMessage = "E-mail inválido")]
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        [EmailAddress(ErrorMessage = "E-mail Inválido")]
         public string Email { get; set; }
     }
 }

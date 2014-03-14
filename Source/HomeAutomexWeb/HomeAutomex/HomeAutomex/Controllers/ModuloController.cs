@@ -15,13 +15,10 @@ namespace HomeAutomex.Controllers
         //
         // GET: /Modulo/
         private HomeAutomexWSSoapClient webService;
-
-
         public ModuloController()
         {
             this.webService = new HomeAutomexWSSoapClient();
         }
-
         public ActionResult Registrar()
         {
             ViewBag.Residencias = GetDropDown();
@@ -30,14 +27,14 @@ namespace HomeAutomex.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Registrar(ModuloModel model, string residencia)
+        public ActionResult Registrar(ModuloModel model, int residencia)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
                     var webService = new HomeAutomexWSSoapClient();
-                    model.Residencia = JsonConvert.DeserializeObject<ResidenciaModel>(webService.BuscarResidenciaPorChave(residencia));
+                    model.Residencia = residencia;
                     var modulo = JsonConvert.SerializeObject(model);
                     var x = webService.InserirModulo(modulo);
                     if (x.StartsWith("Erro:"))
@@ -46,7 +43,7 @@ namespace HomeAutomex.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Listar", "Residencia");
+                        return RedirectToAction("Listar", "Modulo");
                     }
                 }
                 catch (MembershipCreateUserException e)
@@ -57,7 +54,48 @@ namespace HomeAutomex.Controllers
             ViewBag.Residencias = GetDropDown();
             return View(model);
         }
+        [AllowAnonymous]
+        public ActionResult Delete(int chave)
+        {
+            var retorno = JsonConvert.DeserializeObject(webService.ExcluirModulo(chave.ToString()));
+            return RedirectToAction("Listar", "Modulo");
+        }
+        public ActionResult Editar(int chave)
+        {
+            ViewBag.Residencias = GetDropDown();
+            var modulo = JsonConvert.DeserializeObject<ModuloModel>(webService.BuscarModuloPorChave(chave.ToString()));
+            return View(modulo);
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Editar(ModuloModel model)
+        {
 
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var webService = new HomeAutomexWSSoapClient();
+                    var modulo = JsonConvert.SerializeObject(model);
+                    var x = webService.AlterarModulo(modulo);
+                    if (x.StartsWith("Erro:"))
+                    {
+                        ModelState.AddModelError("WSErro", x);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Listar", "Modulo");
+                    }
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", e);
+                }
+
+            }
+            
+            return View(model);
+        }
         public List<SelectListItem> GetDropDown()
         {
             var lista = new List<SelectListItem>();
@@ -68,6 +106,22 @@ namespace HomeAutomex.Controllers
                 lista.Add(new SelectListItem() { Text = item.Logradouro, Value = item.Chave.ToString() });
             }
             return lista;
+        }
+
+        public ActionResult Listar(string pesquisa)
+        {
+            if (ModelState.IsValid)
+            {
+                var webService = new HomeAutomexWSSoapClient();
+                var x = webService.ConsutarTodosModulo();
+                var modulo = JsonConvert.DeserializeObject<List<ModuloModel>>(x);
+                if (!string.IsNullOrEmpty(pesquisa))
+                    return View(modulo.Where(e =>
+                                e.Nome.Contains(pesquisa) ||
+                                e.NumeroIP.Contains(pesquisa)));
+                return View(modulo);
+            }
+            return View();
         }
        
     }

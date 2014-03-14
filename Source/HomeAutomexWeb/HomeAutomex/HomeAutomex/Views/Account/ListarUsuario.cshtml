@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Listar Usuário</h2>
+<legend>Listar Usuário</legend>
 
 <p>
     @Html.ActionLink("Criar usuário", "Register")
@@ -17,7 +17,7 @@
 </div>
 <div class="editor-field">
     @Html.Editor("pesquisa")
-    <input type="submit" value="Pesquisar" />
+    <input type="submit" value="Pesquisar" class="btn-glow primary login" />
 </div>
 <table id="Grid" class="table table-bordered">
     <tr>

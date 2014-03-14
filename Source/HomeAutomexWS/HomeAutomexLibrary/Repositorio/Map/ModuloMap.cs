@@ -25,7 +25,7 @@ namespace HomeAutomexLibrary.Repositorio.Map
             Property(e => e.NumeroPorta).HasColumnName("NM_PORTA");
             Property(e => e.Nome).HasColumnName("DS_NOME");
             Property(e => e.NumeroMac).HasColumnName("NM_MAC");
-            Property(e => e.Residencia.Chave).HasColumnName("CD_RESIDENCIA");
+            Property(e => e.Residencia).HasColumnName("CD_RESIDENCIA");
 
         
         }

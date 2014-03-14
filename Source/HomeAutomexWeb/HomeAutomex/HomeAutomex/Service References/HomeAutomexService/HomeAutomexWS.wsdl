@@ -214,6 +214,72 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="InserirAmbiente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jAmbiente" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserirAmbienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InserirAmbienteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsutarTodosAmbiente">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsutarTodosAmbienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosAmbienteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarAmbientePorChave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarAmbientePorChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarAmbientePorChaveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AlterarAmbiente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jAmbiente" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AlterarAmbienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AlterarAmbienteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirAmbiente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirAmbienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExcluirAmbienteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="InserirUsuárioSoapIn">
@@ -312,6 +378,36 @@
   <wsdl:message name="ExcluirModuloSoapOut">
     <wsdl:part name="parameters" element="tns:ExcluirModuloResponse" />
   </wsdl:message>
+  <wsdl:message name="InserirAmbienteSoapIn">
+    <wsdl:part name="parameters" element="tns:InserirAmbiente" />
+  </wsdl:message>
+  <wsdl:message name="InserirAmbienteSoapOut">
+    <wsdl:part name="parameters" element="tns:InserirAmbienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosAmbienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosAmbiente" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosAmbienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosAmbienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarAmbientePorChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarAmbientePorChave" />
+  </wsdl:message>
+  <wsdl:message name="BuscarAmbientePorChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarAmbientePorChaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="AlterarAmbienteSoapIn">
+    <wsdl:part name="parameters" element="tns:AlterarAmbiente" />
+  </wsdl:message>
+  <wsdl:message name="AlterarAmbienteSoapOut">
+    <wsdl:part name="parameters" element="tns:AlterarAmbienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirAmbienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ExcluirAmbiente" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirAmbienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ExcluirAmbienteResponse" />
+  </wsdl:message>
   <wsdl:portType name="HomeAutomexWSSoap">
     <wsdl:operation name="InserirUsuário">
       <wsdl:input message="tns:InserirUsuárioSoapIn" />
@@ -376,6 +472,26 @@
     <wsdl:operation name="ExcluirModulo">
       <wsdl:input message="tns:ExcluirModuloSoapIn" />
       <wsdl:output message="tns:ExcluirModuloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InserirAmbiente">
+      <wsdl:input message="tns:InserirAmbienteSoapIn" />
+      <wsdl:output message="tns:InserirAmbienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosAmbiente">
+      <wsdl:input message="tns:ConsutarTodosAmbienteSoapIn" />
+      <wsdl:output message="tns:ConsutarTodosAmbienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarAmbientePorChave">
+      <wsdl:input message="tns:BuscarAmbientePorChaveSoapIn" />
+      <wsdl:output message="tns:BuscarAmbientePorChaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AlterarAmbiente">
+      <wsdl:input message="tns:AlterarAmbienteSoapIn" />
+      <wsdl:output message="tns:AlterarAmbienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirAmbiente">
+      <wsdl:input message="tns:ExcluirAmbienteSoapIn" />
+      <wsdl:output message="tns:ExcluirAmbienteSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="HomeAutomexWSSoap" type="tns:HomeAutomexWSSoap">
@@ -524,6 +640,51 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="InserirAmbiente">
+      <soap:operation soapAction="http://tempuri.org/InserirAmbiente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosAmbiente">
+      <soap:operation soapAction="http://tempuri.org/ConsutarTodosAmbiente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarAmbientePorChave">
+      <soap:operation soapAction="http://tempuri.org/BuscarAmbientePorChave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlterarAmbiente">
+      <soap:operation soapAction="http://tempuri.org/AlterarAmbiente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirAmbiente">
+      <soap:operation soapAction="http://tempuri.org/ExcluirAmbiente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="HomeAutomexWSSoap12" type="tns:HomeAutomexWSSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -664,6 +825,51 @@
     </wsdl:operation>
     <wsdl:operation name="ExcluirModulo">
       <soap12:operation soapAction="http://tempuri.org/ExcluirModulo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserirAmbiente">
+      <soap12:operation soapAction="http://tempuri.org/InserirAmbiente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosAmbiente">
+      <soap12:operation soapAction="http://tempuri.org/ConsutarTodosAmbiente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarAmbientePorChave">
+      <soap12:operation soapAction="http://tempuri.org/BuscarAmbientePorChave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlterarAmbiente">
+      <soap12:operation soapAction="http://tempuri.org/AlterarAmbiente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirAmbiente">
+      <soap12:operation soapAction="http://tempuri.org/ExcluirAmbiente" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

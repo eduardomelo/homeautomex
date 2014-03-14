@@ -1,24 +1,24 @@
 ﻿@model HomeAutomex.Models.ModuloModel
 
 @{
-    ViewBag.Title = "Registrar";
+    ViewBag.Title = "Editar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 
 @using (Html.BeginForm()) {
-    @Html.ValidationSummary()
-    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+      @Html.AntiForgeryToken()
+
+
     <fieldset>
-        <legend>Registrar</legend>
-         
-      <div class="editor-label">
+        <legend>ModuloModel</legend>
+           <div class="editor-label">
        
        @Html.DropDownList("residencia",ViewBag.Residencias as List<SelectListItem>)
         </div>
         <br /> 
-            
         <div class="editor-label">
             @Html.LabelFor(model => model.NumeroIP)
         </div>
@@ -51,8 +51,16 @@
             @Html.ValidationMessageFor(model => model.NumeroMac)
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Chave)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Chave)
+            @Html.ValidationMessageFor(model => model.Chave)
+        </div>
+
         <p>
-            <input type="submit" value="Registrar" class="btn-glow primary login"/>
+            <input type="submit" value="Editar" class="btn-glow primary login"/>
         </p>
     </fieldset>
 }

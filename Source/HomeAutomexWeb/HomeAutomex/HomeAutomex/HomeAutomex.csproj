@@ -171,6 +171,7 @@
     <Compile Include="BootstrapSupport\ControlGroupExtensions.cs" />
     <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AmbienteController.cs" />
     <Compile Include="Controllers\BootstrapBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModuloController.cs" />
@@ -180,6 +181,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AmbienteModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\ModuloModel.cs" />
     <Compile Include="Models\ResidenciaModel.cs" />
@@ -374,6 +376,21 @@
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirModuloResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarAmbienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirAmbienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirAmbienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
     <None Include="Service References\HomeAutomexService\configuration91.svcinfo" />
     <None Include="Service References\HomeAutomexService\configuration.svcinfo" />
@@ -431,6 +448,10 @@
     <Content Include="Views\Residencia\Listar.cshtml" />
     <Content Include="Views\Residencia\Editar.cshtml" />
     <Content Include="Views\Modulo\Registrar.cshtml" />
+    <Content Include="Views\Modulo\Listar.cshtml" />
+    <Content Include="Views\Modulo\Editar.cshtml" />
+    <Content Include="Views\Ambiente\Registrar.cshtml" />
+    <Content Include="Views\Ambiente\Listar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
