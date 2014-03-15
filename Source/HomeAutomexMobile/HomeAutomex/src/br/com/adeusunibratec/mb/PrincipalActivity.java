@@ -1,24 +1,28 @@
 package br.com.adeusunibratec.mb;
 
+import br.com.adeusunibratec.acesso.ConsultarTodosUsuarios;
 import br.com.adeusunibratec.ha.R;
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
+import android.app.ProgressDialog;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
-public class PrincipalActivity extends Activity {
-
+public class PrincipalActivity extends Activity{
+	Button btn;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.principal, menu);
-        return true;
+       try {
+    	   new ConsultarTodosUsuarios().execute();
+	} catch (Exception e) {
+		System.out.println(e);
+	}
+        
+        
     }
     
 }

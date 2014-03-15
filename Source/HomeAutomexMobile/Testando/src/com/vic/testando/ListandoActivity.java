@@ -28,11 +28,11 @@ public class ListandoActivity extends Activity {
 	
 	private static String NAME_SPACE = "http://tempuri.org/";
 	//private static String URL = "http://10.0.2.2/meuWebservice/WebService1.asmx";
-	private static String URL = "http://172.16.2.221/testeAutomex/HomeAutomexWS.asmx";
+	private static String URL = "http://10.1.2.34:9090/WS/HomeAutomexWS.asmx";
 		
-	private static String METHOD_NAME = "HelloWorld";
+	private static String METHOD_NAME = "ConsutarTodosUsuarios";
 	//private static String SOAP_ACTION = "http://testandoservico/HelloWorld";
-	private static String SOAP_ACTION = "http://tempuri.org/HelloWorld";
+	private static String SOAP_ACTION = "http://tempuri.org/ConsutarTodosUsuarios";
 	
 	/*private static String NAME_SPACE = "http://testandoservico/";
 	private static String URL = "http://10.0.2.2/meuWebservice/WebService1.asmx";
