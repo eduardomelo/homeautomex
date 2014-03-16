@@ -18,14 +18,14 @@ namespace HomeAutomex.Controllers
             this.webService = new HomeAutomexWSSoapClient();
         }
 
-        public ActionResult Registrar()
+        public ActionResult RegistrarResidencia()
         {
             return View();
         }
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Registrar(ResidenciaModel model)
+        public ActionResult RegistrarResidencia(ResidenciaModel model)
         {
             if (ModelState.IsValid)
             {
@@ -49,7 +49,7 @@ namespace HomeAutomex.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Listar", "Residencia");
+                        return RedirectToAction("ListarResidencia", "Residencia");
                     }
                 }
                 catch (MembershipCreateUserException e)
@@ -59,14 +59,14 @@ namespace HomeAutomex.Controllers
             }
             return View(model);
         }
-        public ActionResult Editar(int chave)
+        public ActionResult EditarResidencia(int chave)
         {
             var residencia = JsonConvert.DeserializeObject<ResidenciaModel>(webService.BuscarResidenciaPorChave(chave.ToString()));
             return View(residencia);
         }
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Editar(ResidenciaModel model)
+        public ActionResult EditarResidencia(ResidenciaModel model)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace HomeAutomex.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Listar", "Residencia");
+                        return RedirectToAction("ListarResidencia", "Residencia");
                     }
                 }
                 catch (MembershipCreateUserException e)
@@ -93,13 +93,13 @@ namespace HomeAutomex.Controllers
             return View(model);
         }
         [AllowAnonymous]
-        public ActionResult Delete(int chave)
+        public ActionResult DeleteResidencia(int chave)
         {
             var retorno = JsonConvert.DeserializeObject(webService.ExcluirResidencia(chave.ToString()));
-            return RedirectToAction("Listar", "Residencia");
+            return RedirectToAction("ListarResidencia", "Residencia");
         }
         [AllowAnonymous]
-        public ActionResult Listar(string pesquisa)
+        public ActionResult ListarResidencia(string pesquisa)
         {
             if (ModelState.IsValid)
             {

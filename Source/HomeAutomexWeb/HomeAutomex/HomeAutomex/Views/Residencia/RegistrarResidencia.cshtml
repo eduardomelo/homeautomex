@@ -1,7 +1,7 @@
 ﻿@model HomeAutomex.Models.ResidenciaModel
 
 @{
-    ViewBag.Title = "RegistrarResidencia";
+    ViewBag.Title = "Registrar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,7 +11,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Nova Residência</legend>
+   <legend>Registrar</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Logradouro)
@@ -62,13 +62,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Entrar" class="btn-glow primary login" />
+            <input type="submit" value="Registrar" class="btn-glow primary login" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Listar")
 </div>
 
 @section Scripts {

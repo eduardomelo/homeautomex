@@ -94,7 +94,6 @@ C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\
 C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\obj\Debug\HomeAutomex.dll
 C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\obj\Debug\HomeAutomex.pdb
-C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\obj\Debug\HomeAutomex.csprojResolveAssemblyReference.cache
 C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\bin\HomeAutomex.dll
 C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\bin\HomeAutomex.pdb
 C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\bin\Antlr3.Runtime.dll

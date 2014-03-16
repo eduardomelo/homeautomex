@@ -8,6 +8,7 @@ namespace HomeAutomexLibrary.Entidade
 {
     public class Ambiente : EntidadeBase<int>
     {
+        public int Dispositivo { get; set; }
         public int Residencia { get; set; }
         public string Descricao { get; set; }
         public DateTime? DataCadastro { get; set; }

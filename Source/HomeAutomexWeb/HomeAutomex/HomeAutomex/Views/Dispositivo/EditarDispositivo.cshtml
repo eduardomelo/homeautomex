@@ -1,0 +1,55 @@
+﻿@model HomeAutomex.Models.DispositivoModel
+
+@{
+    ViewBag.Title = "EditarDispositivo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Editar Dispositivo</legend>
+          
+        <div>
+         @Html.DropDownList("portaModulo",ViewBag.PortaModulo as List<SelectListItem>)
+        </div>
+        <br />
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Descricao)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Descricao)
+            @Html.ValidationMessageFor(model => model.Descricao)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Desativado)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Desativado)
+            @Html.ValidationMessageFor(model => model.Desativado)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Status)
+            @Html.ValidationMessageFor(model => model.Status)
+        </div><br />
+        <p> 
+            <input type="submit" value="Editar"  class="btn-glow primary login"/>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

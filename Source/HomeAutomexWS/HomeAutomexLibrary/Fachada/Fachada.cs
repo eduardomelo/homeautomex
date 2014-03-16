@@ -15,6 +15,9 @@ namespace HomeAutomexLibrary.Fachada
         private ResidenciaNegocio residenciaNegocio;
         private ModuloNegocio moduloNegocio;
         private AmbienteNegocio ambienteNegocio;
+        private TipoPortaNeogocio tipoPortaNegocio;
+        private PortaModuloNegocio portaModuloNegocio;
+        private DispositivoNegocio dispositivoNegocio;
         private DatabaseContext contexto;
 
         public Fachada()
@@ -24,6 +27,11 @@ namespace HomeAutomexLibrary.Fachada
             this.residenciaNegocio = new ResidenciaNegocio();
             this.moduloNegocio = new ModuloNegocio();
             this.ambienteNegocio = new AmbienteNegocio();
+            this.tipoPortaNegocio = new TipoPortaNeogocio();
+            this.portaModuloNegocio = new PortaModuloNegocio();
+            this.dispositivoNegocio = new DispositivoNegocio();
+
+            
         }
         private static Fachada instancia;
         public static Fachada obterInstancia()
@@ -108,15 +116,80 @@ namespace HomeAutomexLibrary.Fachada
             return this.moduloNegocio.RemoverModuloPorChave(chave);
         }
 
+        // Tipo Porta
+        public string InserirTipoPorta(TipoPorta tipoPorta)
+        {
+            return this.tipoPortaNegocio.InserirTipoPorta(tipoPorta);
+        }
+        public List<TipoPorta> ConsultarTodosTipoPorta()
+        {
+            return this.tipoPortaNegocio.ConsultarTodosTipoPorta();
+        }
+        public string AlterarTipoPorta(TipoPorta tipoPorta)
+        {
+            return this.tipoPortaNegocio.AlterarTipoPorta(tipoPorta);
+        }
+        public TipoPorta BuscarTipoPortaPorChave(int chave)
+        {
+            return this.tipoPortaNegocio.BuscarPorChave(chave);
+        }
+        public string RemoverTipoPortaPorChave(int chave)
+        {
+            return this.tipoPortaNegocio.RemoverTipoPortaPorChave(chave);
+        }
+
+        //  Porta modulo
+        public string InserirPortaModulo(PortaModulo tipoPorta)
+        {
+            return this.portaModuloNegocio.InserirPortaModulo(tipoPorta);
+        }
+        public List<PortaModulo> ConsultarTodosPortaModulo()
+        {
+            return this.portaModuloNegocio.ConsultarTodosPortaModulo();
+        }
+        public string AlterarPortaModulo(PortaModulo tipoPorta)
+        {
+            return this.portaModuloNegocio.AlterarPortaModulo(tipoPorta);
+        }
+        public PortaModulo BuscarPortaModuloPorChave(int chave)
+        {
+            return this.portaModuloNegocio.BuscarPorChave(chave);
+        }
+        public string RemoverPortaModuloPorChave(int chave)
+        {
+            return this.portaModuloNegocio.RemoverPortaModuloPorChave(chave);
+        }
+
+        // Dispositivo
+        public string InserirDispositivo(Dispositivo dispositivo)
+        {
+            return this.dispositivoNegocio.InserirDispositivo(dispositivo);
+        }
+        public List<Dispositivo> ConsultarTodosDispositivo()
+        {
+            return this.dispositivoNegocio.ConsultarTodosDispositivo();
+        }
+        public string AlterarDispositivo(Dispositivo dispositivo)
+        {
+            return this.dispositivoNegocio.AlterarDispositivo(dispositivo);
+        }
+        public Dispositivo BuscarDispositivoPorChave(int chave)
+        {
+            return this.dispositivoNegocio.BuscarPorChave(chave);
+        }
+        public string RemoverDispositivoPorChave(int chave)
+        {
+            return this.dispositivoNegocio.RemoverDispositivoPorChave(chave);
+        }
+
         // Ambiente
-        // Modulo
         public string InserirAmbiente(Ambiente ambiente)
         {
             return this.ambienteNegocio.InserirAmbiente(ambiente);
         }
-        public List<Modulo> ConsultarTodosAmbiente()
+        public List<Ambiente> ConsultarTodosAmbiente()
         {
-            return this.moduloNegocio.ConsultarTodosModulo();
+            return this.ambienteNegocio.ConsultarTodosAmbiente();
         }
         public string AlterarAmbiente(Ambiente ambiente)
         {

@@ -125,7 +125,7 @@ namespace HomeAutomexWebApplication
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
             //var usuarioExcluido = fachada.BuscarUsuarioPorChave(chave);
-            var usuario = fachada.RemoverResidenciaPorChave(chave);
+            var residencia = fachada.RemoverResidenciaPorChave(chave);
             return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
 
@@ -142,8 +142,8 @@ namespace HomeAutomexWebApplication
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosModulo()
-        {
-            return JsonConvert.SerializeObject(fachada.ConsultarTodosModulo());
+        { 
+                    return JsonConvert.SerializeObject(fachada.ConsultarTodosModulo());
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -171,8 +171,128 @@ namespace HomeAutomexWebApplication
             return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
 
+
+        // Porta modulo
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string InserirPortaModulo(string jPortaModulo)
+        {
+            var portaModulo = JsonConvert.DeserializeObject<PortaModulo>(jPortaModulo);
+            var retorno = fachada.InserirPortaModulo(portaModulo);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsutarTodosPortaModulo()
+        {
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosPortaModulo());
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string BuscarPortaModuloPorChave(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            var portaModulo = fachada.BuscarPortaModuloPorChave(chave);
+            return JsonConvert.SerializeObject(portaModulo);
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string AlterarPortaModulo(string jPortaModulo)
+        {
+            var portaModulo = JsonConvert.DeserializeObject<PortaModulo>(jPortaModulo);
+            var retorno = fachada.AlterarPortaModulo(portaModulo);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ExcluirPortaModulo(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            var portaModulo = fachada.RemoverTipoPortaPorChave(chave);
+            return JsonConvert.SerializeObject("Usuário removido com sucesso");
+        }
+
+
+        // Tipo de Porta
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string InserirTipoPorta(string jTipoPorta)
+        {
+            var tipoPorta = JsonConvert.DeserializeObject<TipoPorta>(jTipoPorta);
+            var retorno = fachada.InserirTipoPorta(tipoPorta);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsutarTodosTipoPorta()
+        {
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosTipoPorta());
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string BuscarTipoPortaPorChave(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            var tipoPorta = fachada.BuscarTipoPortaPorChave(chave);
+            return JsonConvert.SerializeObject(tipoPorta);
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string AlterarTipoPorta(string jTipoPorta)
+        {
+            var tipoPorta = JsonConvert.DeserializeObject<TipoPorta>(jTipoPorta);
+            var retorno = fachada.AlterarTipoPorta(tipoPorta);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ExcluirTipoPorta(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            var tipoPorta = fachada.RemoverTipoPortaPorChave(chave);
+            return JsonConvert.SerializeObject("Usuário removido com sucesso");
+        }
+        // Dispositivo
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string InserirDispositivo(string jDispositivo)
+        {
+            var dispositivo = JsonConvert.DeserializeObject<Dispositivo>(jDispositivo);
+            var retorno = fachada.InserirDispositivo(dispositivo);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsutarTodosDispositivo()
+        {
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosDispositivo());
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string BuscarDispositivoPorChave(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            var dispositivo = fachada.BuscarDispositivoPorChave(chave);
+            return JsonConvert.SerializeObject(dispositivo);
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string AlterarDispositivo(string jDispositivo)
+        {
+            var dispositivo = JsonConvert.DeserializeObject<Dispositivo>(jDispositivo);
+            var retorno = fachada.AlterarDispositivo(dispositivo);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ExcluirDispositivo(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            var dispositivo = fachada.RemoverDispositivoPorChave(chave);
+            return JsonConvert.SerializeObject("Dispositivo removido com sucesso");
+        }
+
         // Ambiente
-        // Modulo
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string InserirAmbiente(string jAmbiente)
@@ -208,9 +328,8 @@ namespace HomeAutomexWebApplication
         public string ExcluirAmbiente(string jChave)
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
-            //var usuarioExcluido = fachada.BuscarUsuarioPorChave(chave);
             var ambiente = fachada.RemoverAmbientePorChave(chave);
-            return JsonConvert.SerializeObject("Usuário removido com sucesso");
+            return JsonConvert.SerializeObject("Ambiente removido com sucesso");
         }
     }
 }

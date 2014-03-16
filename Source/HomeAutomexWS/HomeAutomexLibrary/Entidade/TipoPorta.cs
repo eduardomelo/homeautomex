@@ -7,7 +7,7 @@ namespace HomeAutomexLibrary.Entidade
 {
     public class TipoPorta : EntidadeBase<int>
     {
-        public string tipo { get; set; }
-        public string indentificador { get; set; }
+        public string Tipo { get; set; }
+        public string Identificador { get; set; }
     }
 }

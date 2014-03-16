@@ -173,9 +173,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AmbienteController.cs" />
     <Compile Include="Controllers\BootstrapBaseController.cs" />
+    <Compile Include="Controllers\DispositivoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModuloController.cs" />
+    <Compile Include="Controllers\PortaModuloController.cs" />
     <Compile Include="Controllers\ResidenciaController.cs" />
+    <Compile Include="Controllers\TipoPortaController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -183,8 +186,11 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AmbienteModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\DispositivoModel.cs" />
     <Compile Include="Models\ModuloModel.cs" />
+    <Compile Include="Models\PortaModuloModel.cs" />
     <Compile Include="Models\ResidenciaModel.cs" />
+    <Compile Include="Models\TipoPortaModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
     <Compile Include="NavigationRoutes\NamedRoute.cs" />
@@ -391,6 +397,51 @@
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirAmbienteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarTipoPortaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarTipoPortaPorChaveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosTipoPortaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirTipoPortaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirTipoPortaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarPortaModuloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarPortaModuloPorChaveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosPortaModuloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirPortaModuloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirPortaModuloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarDispositivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarDispositivoPorChaveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosDispositivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirDispositivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirDispositivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
     <None Include="Service References\HomeAutomexService\configuration91.svcinfo" />
     <None Include="Service References\HomeAutomexService\configuration.svcinfo" />
@@ -444,14 +495,24 @@
     <Content Include="Views\Shared\_BootstrapLayout.basic.cshtml" />
     <Content Include="Views\Shared\_alerts.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
-    <Content Include="Views\Residencia\Registrar.cshtml" />
-    <Content Include="Views\Residencia\Listar.cshtml" />
-    <Content Include="Views\Residencia\Editar.cshtml" />
-    <Content Include="Views\Modulo\Registrar.cshtml" />
-    <Content Include="Views\Modulo\Listar.cshtml" />
-    <Content Include="Views\Modulo\Editar.cshtml" />
-    <Content Include="Views\Ambiente\Registrar.cshtml" />
-    <Content Include="Views\Ambiente\Listar.cshtml" />
+    <Content Include="Views\Residencia\RegistrarResidencia.cshtml" />
+    <Content Include="Views\Residencia\ListarResidencia.cshtml" />
+    <Content Include="Views\Residencia\EditarResidencia.cshtml" />
+    <Content Include="Views\Modulo\RegistrarModulo.cshtml" />
+    <Content Include="Views\Modulo\ListarModulo.cshtml" />
+    <Content Include="Views\Modulo\EditarModulo.cshtml" />
+    <Content Include="Views\TipoPorta\RegistrarTipoPorta.cshtml" />
+    <Content Include="Views\TipoPorta\ListarTipoPorta.cshtml" />
+    <Content Include="Views\TipoPorta\EditarTipoPorta.cshtml" />
+    <Content Include="Views\PortaModulo\RegistrarPortaModulo.cshtml" />
+    <Content Include="Views\PortaModulo\ListarPortaModulo.cshtml" />
+    <Content Include="Views\PortaModulo\EditarPortaModulo.cshtml" />
+    <Content Include="Views\Dispositivo\RegistrarDispositivo.cshtml" />
+    <Content Include="Views\Dispositivo\ListarDispositivo.cshtml" />
+    <Content Include="Views\Dispositivo\EditarDispositivo.cshtml" />
+    <Content Include="Views\Ambiente\RegistrarAmbiente.cshtml" />
+    <Content Include="Views\Ambiente\ListarAmbiente.cshtml" />
+    <Content Include="Views\Ambiente\EditarAmbiente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

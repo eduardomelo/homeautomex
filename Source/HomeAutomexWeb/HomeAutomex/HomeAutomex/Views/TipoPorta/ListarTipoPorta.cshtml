@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HomeAutomex.Models.TipoPortaModel>
+
+@{
+    ViewBag.Title = "ListarTipoPorta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ <legend>Listar Tipo de Porta</legend>
+
+<p>
+    @Html.ActionLink("Criar nova", "RegistrarTipoPorta")
+</p>
+@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId= "Grid", HttpMethod = "POST" }))
+{
+<div class="editor-label">
+    @Html.Label("Pesquisar")
+</div>
+<div class="editor-field">
+    @Html.Editor("pesquisa")
+    <input type="submit" value="Pesquisar" class="btn-glow primary login"/>
+</div>
+   <br />
+ 
+<table id="Grid" class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Identificador)
+        </th>
+        <th>
+            Opções
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Identificador)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "EditarTipoPorta", new { chave = item.Chave }) |
+            @Html.ActionLink("Delete", "DeleteTipoPorta", new { chave = item.Chave })
+        </td>
+    </tr>
+}
+
+</table>
+}

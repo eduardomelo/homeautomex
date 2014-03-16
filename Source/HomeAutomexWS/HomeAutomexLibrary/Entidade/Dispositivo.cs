@@ -14,11 +14,8 @@ namespace HomeAutomexLibrary.Entidade
         public DateTime? DataExclusao { get; set; }
         public bool Desativado { get; set; }
         public bool Status { get; set; }
+        public int PortaModulo { get; set; }
 
-        public Porta porta {get; set;}
-
-        public Dispositivo() {
-            this.porta = new Porta();
-        }
+       
     }
 }

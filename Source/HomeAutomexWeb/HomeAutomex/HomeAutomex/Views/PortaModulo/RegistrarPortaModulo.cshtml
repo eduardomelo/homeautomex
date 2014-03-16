@@ -1,0 +1,54 @@
+﻿@model HomeAutomex.Models.PortaModuloModel
+
+@{
+    ViewBag.Title = "RegistrarPortaModulo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Registrar Porta do modulo</legend>
+
+        <div class="editor-label">
+       @Html.DropDownList("tipoPorta",ViewBag.TipoPorta as List<SelectListItem>)
+        </div>
+        <br /> 
+        <div class="editor-label">
+       @Html.DropDownList("modulo",ViewBag.Modulo as List<SelectListItem>)
+        </div>
+        <br /> 
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Identificador)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Identificador)
+            @Html.ValidationMessageFor(model => model.Identificador)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NumeroPorta)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NumeroPorta)
+            @Html.ValidationMessageFor(model => model.NumeroPorta)
+        </div>
+
+        
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

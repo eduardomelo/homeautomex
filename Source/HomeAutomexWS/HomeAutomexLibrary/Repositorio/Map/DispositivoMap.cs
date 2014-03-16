@@ -21,11 +21,12 @@ namespace HomeAutomexLibrary.Repositorio.Map
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             Property(e => e.Descricao).HasColumnName("DS_DESCRICAO").IsRequired();
-        
+            Property(e => e.PortaModulo).HasColumnName("CD_PORTA");
             Property(e => e.DataCadastro).HasColumnName("DT_CADASTRO");
             Property(e => e.DataAlteracao).HasColumnName("DT_ALTERACAO");
             Property(e => e.DataExclusao).HasColumnName("DT_EXCLUSAO");
             Property(e => e.Desativado).HasColumnName("IS_DESATIVADO");
+            Property(e => e.Status).HasColumnName("STATUS");
 
         
         }

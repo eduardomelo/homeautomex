@@ -14,7 +14,7 @@ namespace HomeAutomexLibrary.Repositorio.Database
     {
         public DatabaseContext()
             // Nome da maquina
-            : base(@"data source=CST-EDSON;initial catalog=HomeAutomexdb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
+            : base(@"data source=CASA-PC;initial catalog=HomeAutomexdb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
         {            
         }
 
@@ -23,6 +23,9 @@ namespace HomeAutomexLibrary.Repositorio.Database
             modelBuilder.Configurations.Add(new UsuarioMap());
             modelBuilder.Configurations.Add(new ResidenciaMap());
             modelBuilder.Configurations.Add(new ModuloMap());
+            modelBuilder.Configurations.Add(new TipoPortaMap());
+            modelBuilder.Configurations.Add(new PortaModuloMap());
+            modelBuilder.Configurations.Add(new DispositivoMap());
             modelBuilder.Configurations.Add(new AmbienteMap());
                 
             base.OnModelCreating(modelBuilder);

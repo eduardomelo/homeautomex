@@ -1,0 +1,53 @@
+﻿@model HomeAutomex.Models.AmbienteModel
+
+@{
+    ViewBag.Title = "RegistrarAmbiente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>AmbienteModel</legend>
+
+         <div class="editor-label"> 
+       @Html.DropDownList("dispositivo",ViewBag.Dispositivo as List<SelectListItem>)
+        </div>
+        <br /> 
+         <div class="editor-label"> 
+       @Html.DropDownList("residencia",ViewBag.Residencias as List<SelectListItem>)
+        </div>
+        <br /> 
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Descricao)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Descricao)
+            @Html.ValidationMessageFor(model => model.Descricao)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Desativado)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Desativado)
+            @Html.ValidationMessageFor(model => model.Desativado)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

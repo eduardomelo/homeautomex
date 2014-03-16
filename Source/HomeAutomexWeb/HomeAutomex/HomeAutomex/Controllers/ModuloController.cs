@@ -19,15 +19,15 @@ namespace HomeAutomex.Controllers
         {
             this.webService = new HomeAutomexWSSoapClient();
         }
-        public ActionResult Registrar()
+        public ActionResult RegistrarModulo()
         {
-            ViewBag.Residencias = GetDropDown();
+            ViewBag.Residencias = GetDropDownResidencia();
             return View();
         }
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Registrar(ModuloModel model, int residencia)
+        public ActionResult RegistrarModulo(ModuloModel model, int residencia)
         {
             if (ModelState.IsValid)
             {
@@ -43,7 +43,7 @@ namespace HomeAutomex.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Listar", "Modulo");
+                        return RedirectToAction("ListarModulo", "Modulo");
                     }
                 }
                 catch (MembershipCreateUserException e)
@@ -51,24 +51,24 @@ namespace HomeAutomex.Controllers
                     ModelState.AddModelError("", e);
                 }
             }
-            ViewBag.Residencias = GetDropDown();
+            ViewBag.Residencias = GetDropDownResidencia();
             return View(model);
         }
         [AllowAnonymous]
-        public ActionResult Delete(int chave)
+        public ActionResult DeleteModulo(int chave)
         {
             var retorno = JsonConvert.DeserializeObject(webService.ExcluirModulo(chave.ToString()));
-            return RedirectToAction("Listar", "Modulo");
+            return RedirectToAction("ListarModulo", "Modulo");
         }
-        public ActionResult Editar(int chave)
+        public ActionResult EditarModulo(int chave)
         {
-            ViewBag.Residencias = GetDropDown();
+            ViewBag.Residencias = GetDropDownResidencia();
             var modulo = JsonConvert.DeserializeObject<ModuloModel>(webService.BuscarModuloPorChave(chave.ToString()));
             return View(modulo);
         }
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Editar(ModuloModel model)
+        public ActionResult EditarModulo(ModuloModel model)
         {
 
             if (ModelState.IsValid)
@@ -84,7 +84,7 @@ namespace HomeAutomex.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Listar", "Modulo");
+                        return RedirectToAction("ListarModulo", "Modulo");
                     }
                 }
                 catch (MembershipCreateUserException e)
@@ -96,7 +96,7 @@ namespace HomeAutomex.Controllers
             
             return View(model);
         }
-        public List<SelectListItem> GetDropDown()
+        public List<SelectListItem> GetDropDownResidencia()
         {
             var lista = new List<SelectListItem>();
             var x = webService.ConsutarTodosResidecia();
@@ -108,7 +108,7 @@ namespace HomeAutomex.Controllers
             return lista;
         }
 
-        public ActionResult Listar(string pesquisa)
+        public ActionResult ListarModulo(string pesquisa)
         {
             if (ModelState.IsValid)
             {

@@ -1,0 +1,68 @@
+﻿@model HomeAutomex.Models.ModuloModel
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+      @Html.AntiForgeryToken()
+
+
+    <fieldset>
+        <legend>Editar Modulo</legend>
+           <div class="editor-label">
+       
+       @Html.DropDownList("residencia",ViewBag.Residencias as List<SelectListItem>)
+        </div>
+        <br /> 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NumeroIP)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NumeroIP)
+            @Html.ValidationMessageFor(model => model.NumeroIP)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NumeroPorta)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NumeroPorta)
+            @Html.ValidationMessageFor(model => model.NumeroPorta)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nome)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nome)
+            @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NumeroMac)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NumeroMac)
+            @Html.ValidationMessageFor(model => model.NumeroMac)
+        </div><br />
+
+      
+
+        <p>
+            <input type="submit" value="Editar"  class="btn-glow primary login"   />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

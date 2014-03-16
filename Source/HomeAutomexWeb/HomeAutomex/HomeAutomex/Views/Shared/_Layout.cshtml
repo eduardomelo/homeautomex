@@ -219,10 +219,12 @@
                     <i class="icon-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                   <li>   @Html.ActionLink("Ligados", "")</li>
-                   <li>   @Html.ActionLink("Desligados", "")</li>
-                   <li>  @Html.ActionLink("Residencia", "Listar") </li>
-                   <li>@Html.ActionLink("Modulo", "Listar", "Modulo")</li>
+                    <li>@Html.ActionLink("Residência", "ListarResidencia", "Residencia")</li>
+                    <li>@Html.ActionLink("Porta do Modulo", "ListarPortaModulo", "PortaModulo")</li>
+                    <li>@Html.ActionLink("Dispositivo", "ListarDispositivo", "Dispositivo")</li>
+                    <li>@Html.ActionLink("Tipo de Porta", "ListarTipoPorta", "TipoPorta")</li>
+                   <li>@Html.ActionLink("Ambiente", "ListarAmbiente", "Ambiente")</li>
+                   <li>@Html.ActionLink("Modulo", "ListarModulo", "Modulo")</li>
                 </ul>
             </li>
             <li>
