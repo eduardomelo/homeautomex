@@ -21,6 +21,7 @@ public class AcessoWSDL {
 	public AcessoWSDL() {
 	}
 
+	//sadsd
 	/**
 	 * Metodo generico para chamar WS.
 	 * Obs:o atributo SOAP_ACTION concatenará com o METHOD_NAME.
