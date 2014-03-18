@@ -7,7 +7,6 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
@@ -18,6 +17,11 @@ import android.util.Log;
 
 public class AcessoWSDL {
 
+	private static String name_space = "http://tempuri.org/";
+	private static String url = "http://172.16.4.92:9090/WS/HomeAutomexWS.asmx";
+	private static String method_name = "ConsutarTodosUsuarios";
+	private static String soap_action = "http://tempuri.org/ConsutarTodosUsuarios";
+	
 	public AcessoWSDL() {
 	}
 
@@ -54,16 +58,16 @@ public class AcessoWSDL {
 			Log.e("valor de response", resultado_xml.toString());
 			JSONObject jsonObject = null;
 			
-			try {
-				jsonObject = new JSONObject(resultado_xml.toString());
-				
-				String nome = (String)jsonObject.getString("Nome");
-				String login = (String) jsonObject.getString("Login");
-				String senha = (String) jsonObject.getString("Senha");
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			try {
+//				jsonObject = new JSONObject(resultado_xml.toString());
+//				
+////				String nome = (String)jsonObject.getString("Nome");
+////				String login = (String) jsonObject.getString("Login");
+////				String senha = (String) jsonObject.getString("Senha");
+//			} catch (JSONException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			
 			resultado.add(resultado_xml.toString());
 //			String res = resultado_xml.toString();
@@ -80,8 +84,14 @@ public class AcessoWSDL {
 		return resultado;
 	}
 
-	public String consultarTodosUsuarios() {
-
-		return null;
+	public List<Object> consultarTodosUsuarios() {
+		List<Object> resultado = null;
+		
+		resultado = new ArrayList<Object>();
+		
+		resultado = this.chamandoWS(url, name_space, method_name, soap_action);
+		
+		
+		return resultado;
 	}
 }
