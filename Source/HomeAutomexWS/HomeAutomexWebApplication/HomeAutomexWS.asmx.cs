@@ -29,7 +29,8 @@ namespace HomeAutomexWebApplication
             this.usuario = new Usuario();
             this.fachada = new Fachada();
         }
-        // Usuario
+
+        #region Usuario
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string InserirUsuário(string jUsuario)
@@ -83,8 +84,20 @@ namespace HomeAutomexWebApplication
             return retorno;
         }
 
+        [WebMethod]
+        [ScriptMethod(ResponseFormat= ResponseFormat.Json)]
+        public string Logar(string jUsuario) 
+        {
+            var usuario = JsonConvert.DeserializeObject<Usuario>(jUsuario);
+            var retorno = fachada.Logar(usuario);
+            return JsonConvert.SerializeObject(retorno);
+        }
 
+        #endregion
 
+        #region Residencia
+        
+        
         // Residencia
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -128,8 +141,11 @@ namespace HomeAutomexWebApplication
             var residencia = fachada.RemoverResidenciaPorChave(chave);
             return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
+        #endregion
 
-
+        #region Modulo
+        
+        
         // Modulo
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -171,7 +187,11 @@ namespace HomeAutomexWebApplication
             return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
 
+        #endregion
 
+        #region Porta modulo
+        
+        
         // Porta modulo
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -211,8 +231,10 @@ namespace HomeAutomexWebApplication
             var portaModulo = fachada.RemoverTipoPortaPorChave(chave);
             return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
+        #endregion
 
-
+        #region Tipo porta
+        
         // Tipo de Porta
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -252,6 +274,11 @@ namespace HomeAutomexWebApplication
             var tipoPorta = fachada.RemoverTipoPortaPorChave(chave);
             return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
+        #endregion
+
+        #region Dispositivo
+        
+        
         // Dispositivo
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -291,7 +318,11 @@ namespace HomeAutomexWebApplication
             var dispositivo = fachada.RemoverDispositivoPorChave(chave);
             return JsonConvert.SerializeObject("Dispositivo removido com sucesso");
         }
+        #endregion
 
+        #region Ambiente
+        
+        
         // Ambiente
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -331,5 +362,7 @@ namespace HomeAutomexWebApplication
             var ambiente = fachada.RemoverAmbientePorChave(chave);
             return JsonConvert.SerializeObject("Ambiente removido com sucesso");
         }
+
+        #endregion
     }
 }

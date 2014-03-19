@@ -203,5 +203,10 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.ambienteNegocio.RemoverAmbientePorChave(chave);
         }
+
+        public Usuario Logar(Usuario usuario)
+        {
+            return this.usuarioNegocio.Logar(usuario);
+        }
     }
 }

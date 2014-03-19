@@ -18,7 +18,7 @@ using BootstrapMvcSample.Controllers;
 namespace HomeAutomex.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
+    //[InitializeSimpleMembership]
     public class AccountController : Controller
     {
         private HomeAutomexWSSoapClient webService;
@@ -59,38 +59,34 @@ namespace HomeAutomex.Controllers
         [AllowAnonymous]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
+
+            if (ModelState.IsValid && Membership.ValidateUser(model.UserName, model.Password))
             {
-                {
-                    if (ModelState.IsValid)
-                    {
-                        try
-                        {
-                            var webService = new HomeAutomexWSSoapClient();
-                            var usuario = JsonConvert.SerializeObject(new UsuarioModel
-                            {
-                                Login = model.UserName,
-                            });
-                            var x = webService.ExistirUsuario(usuario);
-                            if (x == null)
-                            {
-                                ModelState.AddModelError("", "Usuário não cadastrado.");
-
-                            }
-                            else
-                            {
-                                return RedirectToAction("ListarUsuario", "Account");
-
-                            }
-                        }
-                        catch (MembershipCreateUserException e)
-                        {
-                            ModelState.AddModelError("", e);
-                        }
-                    }
-                    return View(model);
-                }
+                FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                return Redirect(returnUrl ?? Url.Action("ListarUsuario", "Account"));
             }
+            //var mp = new WSMembershipProvider();
+            //mp.ValidateUser(model.UserName, model.Password);
+            //var webService = new HomeAutomexWSSoapClient();
+            //var usuario = JsonConvert.SerializeObject(new UsuarioModel
+            //{
+            //    Login = model.UserName,
+            //});
+            //var x = webService.ExistirUsuario(usuario);
+            //if (x == null)
+            //{
+            //    ModelState.AddModelError("", "Usuário não cadastrado.");
+
+            //}
+            //else
+            //{
+
+
+            //}
+
+            return View(model);
         }
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -157,7 +153,7 @@ namespace HomeAutomex.Controllers
         }
 
         //[HttpPost]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult ListarUsuario(string pesquisa)
         {
             if (ModelState.IsValid)
@@ -195,9 +191,9 @@ namespace HomeAutomex.Controllers
                 e.Nome.Contains(pesquisa) ||
                 e.Login.Contains(pesquisa));
 
-            return View("ListarUsuario",modelPesquisa);
- 
-        }             
+            return View("ListarUsuario", modelPesquisa);
+
+        }
 
 
 

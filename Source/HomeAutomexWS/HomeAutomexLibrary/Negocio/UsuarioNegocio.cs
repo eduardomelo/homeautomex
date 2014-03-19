@@ -81,8 +81,11 @@ namespace HomeAutomexLibrary.Negocio
                 return usuario.Login;
             else 
                 return null;
-            
-         
+        }
+
+        public Usuario Logar(Usuario usuario)
+        {
+            return base.Buscar(e => e.Login == usuario.Login && e.Senha == usuario.Senha && !e.Desativado);
         }
     }
 }

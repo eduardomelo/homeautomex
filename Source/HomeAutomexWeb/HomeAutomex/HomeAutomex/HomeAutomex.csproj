@@ -180,6 +180,7 @@
     <Compile Include="Controllers\ResidenciaController.cs" />
     <Compile Include="Controllers\TipoPortaController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="App_Start\WSMembershipProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -440,6 +441,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirDispositivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.LogarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
