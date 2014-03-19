@@ -3,34 +3,33 @@ package br.com.adeusunibratec.mb;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Toast;
 import br.com.adeusunibratec.acesso.AcessoWSDL;
-import br.com.adeusunibratec.ha.R;
+import br.com.adeusunibratec.adapter.UsuarioAdapter;
+import br.com.adeusunibratec.bean.Usuario;
 
-public class PrincipalActivity extends Activity {
+public class PrincipalActivity extends ListActivity {
 	Button btn;
 	ProgressDialog progressDialog;
-	List<Object> resultado = new ArrayList<Object>();
+	List<Usuario> resultado = new ArrayList<Usuario>();
 	
 	String s;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_principal);
+//		setContentView(R.layout.activity_principal);
 		
 		
 			new Consultar().execute();
 		
 	}
 
-	class Consultar extends AsyncTask<String, String, String> {
+	class Consultar extends AsyncTask<Void, Void, List<Usuario>> {
 
 		@Override
 		protected void onPreExecute() {
@@ -43,26 +42,27 @@ public class PrincipalActivity extends Activity {
 		}
 
 		@Override
-		protected String doInBackground(String... params) {
+		protected List<Usuario> doInBackground(Void... params) {
 			AcessoWSDL wsdl = new AcessoWSDL();
+//			List<Usuario> resultado = null;
 			
-			resultado = wsdl.consultarTodosUsuarios();
-			for (Object r : resultado) {
-				s = r.toString();
-			}
-			return s;
+			resultado = wsdl.consultarTodosUsuarios("");
+
+			return resultado;
 		}
 
 		@Override
-		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
-			// super.onPostExecute(result);
+		protected void onPostExecute(List<Usuario> result) {
 			progressDialog.dismiss();
-			 if(resultado != null || !resultado.isEmpty()){
-			 // carregando a menssagem
-			  Toast.makeText(PrincipalActivity.this, s,Toast.LENGTH_LONG).show();
-			// System.out.println("ok tem retorno");
-			 }
+			
+			
+			
+			UsuarioAdapter usuAdapter = new UsuarioAdapter(PrincipalActivity.this, resultado);
+			setListAdapter(usuAdapter);
+			
+//			 if(resultado != null || !resultado.isEmpty()){
+//			  Toast.makeText(PrincipalActivity.this, s,Toast.LENGTH_LONG).show();
+//			 }
 
 		}
 

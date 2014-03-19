@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.ksoap2.SoapEnvelope;
@@ -13,38 +14,47 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
 
+import br.com.adeusunibratec.bean.Usuario;
+
 import android.util.Log;
 
 public class AcessoWSDL {
 
 	private static String name_space = "http://tempuri.org/";
-	private static String url = "http://172.16.4.92:9090/WS/HomeAutomexWS.asmx";
-	private static String method_name = "ConsutarTodosUsuarios";
-	private static String soap_action = "http://tempuri.org/ConsutarTodosUsuarios";
+	private static String url = "http://172.16.3.39:9090/WS/HomeAutomexWS.asmx";
 	
+	private static String soap_action_consutar_todos_usuarios = "http://tempuri.org/ConsutarTodosUsuarios";
+	private static String method_consutar_todos_usuarios = "ConsutarTodosUsuarios";
+
 	public AcessoWSDL() {
 	}
 
-	//sadsd
+	// sadsd
 	/**
-	 * Metodo generico para chamar WS.
-	 * Obs:o atributo SOAP_ACTION concatenará com o METHOD_NAME.
+	 * Metodo generico para chamar WS. Obs:o atributo SOAP_ACTION concatenará
+	 * com o METHOD_NAME.
+	 * 
 	 * @param url
 	 * @param name_space
 	 * @param method_name
 	 * @param soap_action
 	 * @return
 	 */
-	public List<Object> chamandoWS(String url, String name_space,
-			String method_name, String soap_action) {
-//		Boolean valido = true;
-		
-		List<Object> resultado = new ArrayList<Object>();
+	public String chamandoWS(String url, String name_space, String method_name,
+			String soap_action, String inValor, String inParametro) {
+		// Boolean valido = true;
+
+		String resultado = null;
 		try {
 			SoapObject resposta = new SoapObject(name_space, method_name);
+
+//			if ((inValor != null && inParametro != null) || (!inValor.isEmpty() && !inParametro.isEmpty())) {
+//				resposta.addProperty(inParametro, inValor);
+//			}
+
 			SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
 					SoapEnvelope.VER11);
-			
+
 			envelope.dotNet = true;
 			envelope.setOutputSoapObject(resposta);
 
@@ -56,41 +66,47 @@ public class AcessoWSDL {
 					.getResponse();
 
 			Log.e("valor de response", resultado_xml.toString());
-			JSONObject jsonObject = null;
-			
-//			try {
-//				jsonObject = new JSONObject(resultado_xml.toString());
-//				
-////				String nome = (String)jsonObject.getString("Nome");
-////				String login = (String) jsonObject.getString("Login");
-////				String senha = (String) jsonObject.getString("Senha");
-//			} catch (JSONException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-			
-			resultado.add(resultado_xml.toString());
-//			String res = resultado_xml.toString();
+
+			resultado = resultado_xml.toString();
 
 		} catch (IOException e) {
-
 			e.printStackTrace();
-//			valido = false;
 		} catch (XmlPullParserException e) {
-
 			e.printStackTrace();
-//			valido = false;
 		}
 		return resultado;
 	}
 
-	public List<Object> consultarTodosUsuarios() {
-		List<Object> resultado = null;
+	public List<Usuario> consultarTodosUsuarios(String in) {
+		List<Usuario> resultado = null;
+		String inValor = null;
+		String inParametro = null;
 		
-		resultado = new ArrayList<Object>();
-		
-		resultado = this.chamandoWS(url, name_space, method_name, soap_action);
-		
+		resultado = new ArrayList<Usuario>();
+
+		String cWS = this.chamandoWS(url, name_space, method_consutar_todos_usuarios,
+										soap_action_consutar_todos_usuarios, inValor, inParametro);
+
+		try {
+			JSONArray jsonArray = new JSONArray(cWS.toString());
+			
+			for (int i = 0; i < jsonArray.length(); i++) {
+				JSONObject jsonObject = jsonArray.getJSONObject(i);
+				Usuario usuario = new Usuario();
+				usuario.setNome((String) jsonObject.getString("Nome"));
+				usuario.setTelefone((String) jsonObject.getString("Telefone"));
+				usuario.setCelular((String) jsonObject.getString("Celular"));
+				usuario.setEmail((String) jsonObject.getString("Email"));
+				usuario.setLogin((String) jsonObject.getString("Login"));
+				usuario.setSenha((String) jsonObject.getString("Senha"));
+				
+				resultado.add(usuario);
+			}
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return resultado;
 	}
