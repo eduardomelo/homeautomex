@@ -8,9 +8,11 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 import br.com.adeusunibratec.acesso.AcessoWSDL;
 import br.com.adeusunibratec.adapter.UsuarioAdapter;
 import br.com.adeusunibratec.bean.Usuario;
+import br.com.adeusunibratec.util.Util;
 
 public class PrincipalActivity extends ListActivity {
 	Button btn;
@@ -24,8 +26,13 @@ public class PrincipalActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 //		setContentView(R.layout.activity_principal);
 		
+//		Util.verificaConexao(this);
 		
-			new Consultar().execute();
+		if(Util.verificaConexao(this)){
+//			new Consultar().execute();
+		}else{
+			Toast.makeText(PrincipalActivity.this, "Não há Conexão com a Internet",Toast.LENGTH_LONG).show();
+		}
 		
 	}
 
