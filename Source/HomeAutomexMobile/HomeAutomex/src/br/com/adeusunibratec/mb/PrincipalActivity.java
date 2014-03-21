@@ -29,7 +29,7 @@ public class PrincipalActivity extends ListActivity {
 //		Util.verificaConexao(this);
 		
 		if(Util.verificaConexao(this)){
-//			new Consultar().execute();
+			new Consultar().execute();
 		}else{
 			Toast.makeText(PrincipalActivity.this, "Não há Conexão com a Internet",Toast.LENGTH_LONG).show();
 		}
