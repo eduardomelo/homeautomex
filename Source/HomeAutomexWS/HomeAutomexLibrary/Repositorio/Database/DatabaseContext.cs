@@ -13,7 +13,8 @@ namespace HomeAutomexLibrary.Repositorio.Database
         //where TEntidade : EntidadeBase<TChave>
     {
         public DatabaseContext()
-            : base(@"data source=(localdb)\V11.0;initial catalog=HomeAutomexdb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
+            : base("Name=HomeAutomexConnection")
+            //: base(@"data source=(localdb)\V11.0;initial catalog=HomeAutomexdb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
         {            
         }
 
