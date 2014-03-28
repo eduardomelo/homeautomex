@@ -1,8 +1,10 @@
 package br.com.adeusunibratec.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.provider.ContactsContract.Contacts.Data;
 
-public class Usuario {
+public class Usuario implements Parcelable{
 
 	private String nome;
 	private String login;
@@ -10,12 +12,21 @@ public class Usuario {
 	private String telefone;
 	private String celular;
 	private String email;
-	private Data dataCadastro;
-	private Data dataAlteracao;
-	private Data dataExclusao;
+	private String dataCadastro;
+	private String dataAlteracao;
+	private String dataExclusao;
 	private Boolean desativado;
-	private char chave;
 	
+	private int idusuario;
+	
+	public int getIdusuario() {
+		return idusuario;
+	}
+	public void setIdusuario(int idusuario) {
+		this.idusuario = idusuario;
+	}
+	//private char chave;
+	private String chave;
 	public String getNome() {
 		return nome;
 	}
@@ -52,22 +63,22 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Data getDataCadastro() {
+	public String getDataCadastro() {
 		return dataCadastro;
 	}
-	public void setDataCadastro(Data dataCadastro) {
+	public void setDataCadastro(String dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	public Data getDataAlteracao() {
+	public String getDataAlteracao() {
 		return dataAlteracao;
 	}
-	public void setDataAlteracao(Data dataAlteracao) {
+	public void setDataAlteracao(String dataAlteracao) {
 		this.dataAlteracao = dataAlteracao;
 	}
-	public Data getDataExclusao() {
+	public String getDataExclusao() {
 		return dataExclusao;
 	}
-	public void setDataExclusao(Data dataExclusao) {
+	public void setDataExclusao(String dataExclusao) {
 		this.dataExclusao = dataExclusao;
 	}
 	public Boolean getDesativado() {
@@ -76,11 +87,27 @@ public class Usuario {
 	public void setDesativado(Boolean desativado) {
 		this.desativado = desativado;
 	}
-	public char getChave() {
+	public String getChave() {
+		return chave;
+	}
+	public void setChave(String string) {
+		this.chave = string;
+	}
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	/*public char getChave() {
 		return chave;
 	}
 	public void setChave(char chave) {
 		this.chave = chave;
+	}*/
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

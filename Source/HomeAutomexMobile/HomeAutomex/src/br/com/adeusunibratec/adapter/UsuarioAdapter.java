@@ -1,4 +1,8 @@
-package br.com.adeusunibratec.adapter;
+/*package br.com.adeusunibratec.adapter;
+
+
+Alberico essa classe não vamos precisar dela não ate por que não
+precisamos listar usuario mas fiz seguindo o meu exemplo só pra tu dar uma sacada 
 
 import java.util.List;
 
@@ -90,3 +94,4 @@ public class UsuarioAdapter extends BaseAdapter{
 
 
 }
+*/

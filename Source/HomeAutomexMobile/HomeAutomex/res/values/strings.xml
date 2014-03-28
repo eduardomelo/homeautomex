@@ -6,5 +6,8 @@
     <string name="title_activity_splash">Home Automex</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_residencias">ResidenciasActivity</string>
+    <string name="boasvindas">Seja Bem vindo %1$s %2$s.</string>
+    <string name="title_activity_opcoes_usuarios">OpcoesUsuariosActivity</string>
 
 </resources>

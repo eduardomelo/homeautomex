@@ -33,6 +33,14 @@
             android:name="br.com.adeusunibratec.mb.LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>
+        <activity
+            android:name="br.com.adeusunibratec.mb.ResidenciasActivity"
+            android:label="@string/title_activity_residencias" >
+        </activity>
+        <activity
+            android:name="br.com.adeusunibratec.mb.OpcoesUsuariosActivity"
+            android:label="@string/title_activity_opcoes_usuarios" >
+        </activity>
     </application>
 
 </manifest>

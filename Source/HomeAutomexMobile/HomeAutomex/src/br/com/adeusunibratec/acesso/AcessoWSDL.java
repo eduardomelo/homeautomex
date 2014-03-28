@@ -40,6 +40,10 @@ public class AcessoWSDL {
 	public final static String OPERATION_LOGIN = "Logar";
 	public final static String J_LOGIN = "jUsuario";
 	
+	public final static String SOAP_BUSCAR_RESIDENCIA = "http://tempuri.org/BuscarResidenciaPorChave";
+	public final static String OPERATION_BUSCARRESIDENCIA = "BuscarResidenciaPorChave";
+	public final static String J_CHAVE = "jChave";
+	
 	
 	public static String loginWS(String login, String senha) throws JSONException, ClientProtocolException,
 			UnsupportedEncodingException, IOException, XmlPullParserException,
@@ -55,6 +59,22 @@ public class AcessoWSDL {
 		return jResult;
 	}
 
+	
+	public static String buscarResidencia(String chave) throws JSONException,
+	ClientProtocolException, UnsupportedEncodingException,
+	UnknownHostException, IOException, XmlPullParserException {
+String result = null;
+
+Log.e("metodo buscar residencia", chave );
+
+//JSONObject jsonResidencia = JSONParserManager.createJSONBuscarResidencias(chave,senha);
+
+result = sendWebServiceContent(chave,
+		OPERATION_BUSCARRESIDENCIA,J_CHAVE,
+		SOAP_BUSCAR_RESIDENCIA);
+
+return result;
+}
 	
 
 	

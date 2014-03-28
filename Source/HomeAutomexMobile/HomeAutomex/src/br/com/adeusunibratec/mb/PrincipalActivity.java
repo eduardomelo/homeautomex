@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.mb;
+/*package br.com.adeusunibratec.mb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,3 +78,4 @@ public class PrincipalActivity extends ListActivity {
 
 	}
 }
+*/
