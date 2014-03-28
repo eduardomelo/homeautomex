@@ -9,29 +9,35 @@ namespace HomeAutomex.Models
 {
     public class ResidenciaModel : BaseModel
     {
-        [Required(ErrorMessage = "Digite o Lougradouro de sua residência."), Column(Order = 1)]
-        [MinLength(5, ErrorMessage = "Residência: O tamanho mínimo do lougradouro são 10 caracteres.")]
-        [StringLength(200, ErrorMessage = "Residência: O tamanho máximo são 200 caracteres.")]
+        [Required(ErrorMessage = "Digite o Lougradouro!"), Column(Order = 1)]
+        [MinLength(3, ErrorMessage = "O tamanho mínimo do lougradouro é de 3 caracteres!")]
+        [StringLength(50, ErrorMessage = "O tamanho máximo do lougradouro é de 50 caracteres!")]
         public string Logradouro { get; set; }
-        [Required(ErrorMessage = "Digite a cidade da sua resindência."), Column(Order = 1)]
-        [MinLength(5, ErrorMessage = "Cidade: O tamanho mínimo do cidade são 10 caracteres.")]
-        [StringLength(200, ErrorMessage = "Cidade: O tamanho máximo são 200 caracteres.")]
+
+        [Required(ErrorMessage = "Digite o nome da cidade!"), Column(Order = 1)]
+        [MinLength(3, ErrorMessage = "O tamanho mínimo do nome da cidade é de 3 caracteres!")]
+        [StringLength(50, ErrorMessage = "O tamanho máximo do nome da cidade é de 50 caracteres!")]
         public string Cidade { get; set; }
-        [Required(ErrorMessage = "Digite a bairro da sua resindência."), Column(Order = 1)]
-        [MinLength(5, ErrorMessage = "Bairro: O tamanho mínimo do bairro são 10 caracteres.")]
-        [StringLength(200, ErrorMessage = "Bairro: O tamanho máximo são 200 caracteres.")]
+
+        [Required(ErrorMessage = "Digite o nome do bairro da sua resindência!"), Column(Order = 1)]
+        [MinLength(3, ErrorMessage = "O tamanho mínimo do bairro são 3 caracteres!")]
+        [StringLength(30, ErrorMessage = "O tamanho máximo são 30 caracteres!")]
         public string Bairro { get; set; }
-        [Required(ErrorMessage = "Digite a cep da sua resindência."), Column(Order = 1)]
-        [MinLength(5, ErrorMessage = "CEP: O tamanho mínimo do CEP são 10 caracteres.")]
-        [StringLength(200, ErrorMessage = "CEP: O tamanho máximo são 200 caracteres.")]
+
+        [Required(ErrorMessage = "Digite o número do cep!"), Column(Order = 1)]
+        [MinLength(8, ErrorMessage = "O tamanho mínimo do CEP é de 8 caracteres!")]
+        [StringLength(10, ErrorMessage = "O tamanho máximo do CEP é de 10 caracteres!")]
         public string Cep { get; set; }
-        [Required(ErrorMessage = "Digite a número da sua resindência."), Column(Order = 1)]
-        [MinLength(5, ErrorMessage = "Número: O tamanho mínimo do número da residência são 10 caracteres.")]
-        [StringLength(200, ErrorMessage = "Número: O tamanho máximo são 200 caracteres.")]
+
+        [Required(ErrorMessage = "Digite a número da sua resindência!"), Column(Order = 1)]
+        //[MinLength(1, ErrorMessage = "Número: O tamanho mínimo do número da residência é de um caractere!")] NÃO É NECESSÁRIO ESSE CAMPO, VISTO QUE 
+        [StringLength(5, ErrorMessage = "O tamanho máximo do número da residência é de 5 caracteres.")]
         public string Numero { get; set; }
-        [Required(ErrorMessage = "Digite a complemento da sua resindência."), Column(Order = 1)]
-        [MinLength(5, ErrorMessage = "Complemento: O tamanho mínimo do complemento da residência são 10 caracteres.")]
-        [StringLength(200, ErrorMessage = "Complemento: O tamanho máximo são 200 caracteres.")]
+
+        //LINHAS COMENTADAS PORQUE UMA RESIDÊNCIA PODE NÃO TER COMPLEMENTO, OU SEJA, COMPLEMENTO NÃO É UM CAMPO OBRIGATÓRIO.
+        //[Required(ErrorMessage = "Digite a complemento da sua resindência."), Column(Order = 1)]
+        //[MinLength(0, ErrorMessage = "Complemento: O tamanho mínimo do complemento da residência são 10 caracteres.")]
+        [StringLength(100, ErrorMessage = "O tamanho máximo da descrição do complemento é de 100 caracteres.")]
         public string Complemento { get; set; }
     }
 }
