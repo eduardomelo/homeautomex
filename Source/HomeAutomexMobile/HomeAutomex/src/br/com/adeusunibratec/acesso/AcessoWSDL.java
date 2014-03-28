@@ -27,7 +27,7 @@ import android.util.Log;
 
 public class AcessoWSDL {
 	private static String name_space = "http://tempuri.org/";
-	private static String url = "http://192.168.0.100/meuWebservice/HomeAutomexWS.asmx";
+	private static String url = "http://172.16.2.220/meuWebservice/HomeAutomexWS.asmx";
 
 	private static String soap_action_consutar_todos_usuarios = "http://tempuri.org/ConsutarTodosUsuarios";
 	private static String method_consutar_todos_usuarios = "ConsutarTodosUsuarios";
@@ -154,6 +154,9 @@ public class AcessoWSDL {
 	}
 
 	public List<Usuario> consultarTodosUsuarios(String in) {
+		
+		
+		
 		List<Usuario> resultado = null;
 		String inValor = null;
 		String inParametro = null;
