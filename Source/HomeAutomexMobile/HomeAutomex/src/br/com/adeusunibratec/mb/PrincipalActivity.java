@@ -7,6 +7,7 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 import br.com.adeusunibratec.acesso.AcessoWSDL;
@@ -53,8 +54,10 @@ public class PrincipalActivity extends ListActivity {
 			AcessoWSDL wsdl = new AcessoWSDL();
 //			List<Usuario> resultado = null;
 			
+			
 			resultado = wsdl.consultarTodosUsuarios("");
 
+			
 			return resultado;
 		}
 
