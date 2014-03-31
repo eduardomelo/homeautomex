@@ -35,7 +35,7 @@ public class AcessoWSDL {
 	
 	//minhas variaveis depois mudo 
 	public final static String WSDL_TARGET_NAMESPACE = "http://tempuri.org/";
-    public final static String SOAP_ADDRESS = "http://172.16.2.190/meuWebservice/HomeAutomexWS.asmx";
+    public final static String SOAP_ADDRESS = "http://192.168.0.100/meuWebservice/HomeAutomexWS.asmx";
 	public final static String SOAP_LOGIN_ACTION = "http://tempuri.org/Logar";
 	public final static String OPERATION_LOGIN = "Logar";
 	public final static String J_LOGIN = "jUsuario";
