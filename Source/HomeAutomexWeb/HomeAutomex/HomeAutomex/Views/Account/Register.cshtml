@@ -1,55 +1,74 @@
 ﻿@model HomeAutomex.Models.UsuarioModel
+
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Registrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-   
-</hgroup>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
+    @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Registrar</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.Login)
-                @Html.TextBoxFor(m => m.Login)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Senha)
-                @Html.PasswordFor(m => m.Senha)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.confirmarSenha)
-                @Html.PasswordFor(m => m.confirmarSenha)
-            </li>
-            <li>
-                @Html.LabelFor(e => e.Nome)
-                @Html.TextBoxFor(e => e.Nome)
-            </li>
-                 <li>
-                @Html.LabelFor(e => e.Celular)
-                @Html.TextBoxFor(e => e.Celular)
-            </li>
-               <li>
-                @Html.LabelFor(e => e.Telefone)
-                @Html.TextBoxFor(e => e.Telefone)
-            </li>
-               <li>
-                @Html.LabelFor(e => e.Email)
-                @Html.TextBoxFor(e => e.Email)
-            @*</li>*@
+        <legend>Registrar Usuário</legend>
 
+        <div>
+            @Html.LabelFor(m => m.Login)
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Login)
+            @Html.ValidationMessageFor(model => model.Login)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Senha)
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.Senha)
+            @Html.ValidationMessageFor(model => model.Senha)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.confirmarSenha)
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.confirmarSenha)
+            @Html.ValidationMessageFor(model => model.confirmarSenha)
+        </div>
+        <div>
+            @Html.LabelFor(e => e.Nome)
+        </div>
+        <div>
+            @Html.TextBoxFor(e => e.Nome)
+            @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+        <div>
+            @Html.LabelFor(e => e.Celular)
+        </div>
+        <div>
+            @Html.TextBoxFor(e => e.Celular)
+        </div>
+        <div>
+            @Html.LabelFor(e => e.Telefone)
+        </div>
+        <div>
+            @Html.TextBoxFor(e => e.Telefone)
+        </div>
+        <div>
+            @Html.LabelFor(e => e.Email)
+        </div>
+        <div>
+            @Html.TextBoxFor(e => e.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
 
-
-        </ol>
-        <input type="submit" value="Register" />
+        <input type="submit" value="Registrar" class="btn-glow primary login" />
     </fieldset>
 }
+
+<div>
+    @Html.ActionLink("Voltar", "Listar")
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

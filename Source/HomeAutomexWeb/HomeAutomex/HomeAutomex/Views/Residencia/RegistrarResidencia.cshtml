@@ -6,12 +6,13 @@
 }
 
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-   <legend>Registrar</legend>
+        <legend>Registrar Residência</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Logradouro)
@@ -68,7 +69,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Listar")
+    @Html.ActionLink("Voltar", "Listar")
 </div>
 
 @section Scripts {
