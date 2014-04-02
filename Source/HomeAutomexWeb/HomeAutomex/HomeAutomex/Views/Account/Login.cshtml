@@ -8,10 +8,10 @@
 <!DOCTYPE html>
 <html class="login-bg">
 <head>
-	<title>Sign in</title>
+    <title>Sign in</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
@@ -23,7 +23,7 @@
 
     <!-- libraries -->
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
-    
+
     <!-- this page specific styles -->
     <link rel="stylesheet" href="css/signin.css" type="text/css" media="screen" />
 
@@ -37,67 +37,50 @@
 <body>
     @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
     {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-    <!-- background switcher -->
-    <div class="bg-switch visible-desktop">
-        <div class="bgs">
-            <a href="#" data-img="landscape.jpg" class="bg active">
-                <img src="../Images/landscape.jpg" alt="background" />
-            </a>
-            <a href="#" data-img="blueish.jpg" class="bg">
-                <img src="../Images/blueish.jpg" alt="background" />
-            </a>  
-            <a href="#" data-img="7.jpg" class="bg">
-                <img src="../Images/7.jpg" alt="background" />
-            </a>
-            <a href="#" data-img="8.jpg" class="bg">
-                <img src="../Images/8.jpg" alt="background" />
-            </a>
-            <a href="#" data-img="9.jpg" class="bg">
-                <img src="../Images/9.jpg" alt="background" />
-            </a>
-            <a href="#" data-img="10.jpg" class="bg">
-                <img src="../Images/10.jpg" alt="background" />
-            </a>
-            <a href="#" data-img="11.jpg" class="bg">
-                <img src="../Images/11.jpg" alt="background" />
-            </a>
-        </div>
-    </div>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
 
 
-    <div class="login-wrapper">
-        <a href="index.html">
-       
-        </a>
+        <div class="login-wrapper">
+            <a href="index.html">
 
-        <div class="box">
-            <div class="content-wrap">
-                <h6>Log in</h6>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-                <br />
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
-                <a href="#" class="forgot">Forgot password?</a>
-               <div class="remember">
-                    <input id="remember-me" type="checkbox">
-                    <label for="remember-me">lembrar-me?</label>
+            </a>
+
+            <div class="box">
+                <div class="content-wrap">
+                    <h6>Login</h6>
+                    <div>
+                        @Html.LabelFor(m => m.UserName)
+                    </div>
+                    <div>
+                    @Html.TextBoxFor(m => m.UserName)
+                    </div>
+                        <div>
+                        <u> @Html.ValidationMessageFor(m => m.UserName)</u>
+                    </div>                   
+                    <div>
+                        @Html.LabelFor(m => m.Password)
+                    </div>
+                    @Html.PasswordFor(m => m.Password)
+                    <div>
+                        <u> @Html.ValidationMessageFor(m => m.Password)</u>
+                    </div>
+                    <a href="#" class="forgot">Esqueceu a senha?</a>
+                    <div class="remember">
+                        <input id="remember-me" type="checkbox">
+                        <label for="remember-me">Lembrar-me?</label>
+                    </div>
+                    <input type="submit" value="Entrar" class="btn-glow primary login" />
                 </div>
-               <input type="submit" value="Entrar" class="btn-glow primary login" />
+            </div>
+
+            <div class="no-account">
+                <font face="Arial" size="3" style="text-shadow: 5px  5px 7px white" color="black"><b>Ainda não possui conta?</b></font>
+                @Html.ActionLink("Registrar", "Register")
             </div>
         </div>
-
-        <div class="no-account">
-            <p>ainda não possui conta?</p>
-           @Html.ActionLink("Registrar", "Register")
-        </div>
-    </div>
     }
-	<!-- scripts -->
+    <!-- scripts -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/theme.js"></script>
@@ -118,12 +101,11 @@
 
         });
     </script>
-    <section class="social" id="socialLoginForm">
-    </section>
+    <section class="social" id="socialLoginForm"></section>
 
     @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 </body>
-        
+
 </html>
