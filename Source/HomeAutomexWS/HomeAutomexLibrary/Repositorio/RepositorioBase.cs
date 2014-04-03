@@ -7,19 +7,20 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using HomeAutomexLibrary.Repositorio.Database;
+using System.Data;
 
 namespace HomeAutomexLibrary.Repositorio
 {
-    public abstract class RepositorioBase<TEntidade, TChave> 
+    public class RepositorioBase<TEntidade, TChave> 
         where TEntidade : EntidadeBase<TChave>
     {   
             protected DatabaseContext Context { get; private set; }
             protected DbSet<TEntidade> Entidades { get; private set; }
 
-            protected RepositorioBase(DatabaseContext contexto)
+            public RepositorioBase(DatabaseContext context)
             {
-                Context = contexto;
-                Entidades = contexto.Set<TEntidade>();
+                Context = context;
+                Entidades = Context.Set<TEntidade>();
             }
 
             public TEntidade BuscarPorChave(TChave chave)
@@ -39,22 +40,26 @@ namespace HomeAutomexLibrary.Repositorio
 
             public void Remover(TEntidade entidade)
             {
+                entidade.DataExclusao = DateTime.Now;
                 Entidades.Remove(entidade);
             }
 
             public void RemoverPorChave(TChave chave)
             {
                 TEntidade entidade = BuscarPorChave(chave);
+                entidade.DataExclusao = DateTime.Now;
                 Entidades.Remove(entidade);
             }
 
             public void Inserir(TEntidade entidade)
             {
+                entidade.DataCadastro = DateTime.Now;
                 Entidades.Add(entidade);
             }
 
             public void Alterar(TEntidade entidade)
             {
+                entidade.DataAlteracao = DateTime.Now;
                 Entidades.Attach(entidade);
                 Context.Entry(entidade).State = EntityState.Modified;
             }

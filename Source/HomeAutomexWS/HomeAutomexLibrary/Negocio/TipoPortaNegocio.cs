@@ -14,7 +14,7 @@ namespace HomeAutomexLibrary.Negocio
 
         private DatabaseContext contexto;
         public TipoPortaNeogocio()
-            : base(new TipoPortaRepositorio(new DatabaseContext()))
+            //: base(new TipoPortaRepositorio(new DatabaseContext()))
         {
             this.contexto = new DatabaseContext();
         }

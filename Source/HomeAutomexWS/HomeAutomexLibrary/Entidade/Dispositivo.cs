@@ -18,4 +18,11 @@ namespace HomeAutomexLibrary.Entidade
 
        
     }
+
+   //public class DispositivoTeste : EntidadeBase<int>
+   //{
+   //    public virtual string Identificador { get; set; }
+   //    public virtual bool Status { get; set; }
+   //}
+
 }

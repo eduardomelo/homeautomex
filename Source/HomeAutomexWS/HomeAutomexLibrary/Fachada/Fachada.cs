@@ -24,13 +24,12 @@ namespace HomeAutomexLibrary.Fachada
         {
             this.contexto = new DatabaseContext();
             this.usuarioNegocio = new UsuarioNegocio();
-            this.residenciaNegocio = new ResidenciaNegocio();
+            this.residenciaNegocio = new ResidenciaNegocio(contexto);
             this.moduloNegocio = new ModuloNegocio();
             this.ambienteNegocio = new AmbienteNegocio();
             this.tipoPortaNegocio = new TipoPortaNeogocio();
             this.portaModuloNegocio = new PortaModuloNegocio();
             this.dispositivoNegocio = new DispositivoNegocio();
-
             
         }
         private static Fachada instancia;
@@ -43,13 +42,14 @@ namespace HomeAutomexLibrary.Fachada
             return instancia;
         }
         // Requisições do objeto usuário
+        #region Usuário
         public string InserirUsuario(Usuario usuario)
         {
-            return this.usuarioNegocio.InserirUsuario(usuario);
+            return this.usuarioNegocio.Inserir(usuario);
         }
         public string AlterarUsuario(Usuario usuario)
         {
-          return this.usuarioNegocio.AlterarUsuario(usuario);
+          return this.usuarioNegocio.Alterar(usuario);
         }
         public string RemoverUsuarioPorChave(int chave)
         {
@@ -71,7 +71,8 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.usuarioNegocio.ExisteUsuario(usuario);
         }
-
+        #endregion
+        #region Residência
         // Requisições da Residencia
         public string InserirResidencia(Residencia residencia)
         {
@@ -93,7 +94,11 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.residenciaNegocio.RemoverResidenciaPorChave(chave);
         }
-
+        public List<Residencia> ConsultarResidenciaPorUsuarioChave(int chave)
+        {
+            return this.residenciaNegocio.BuscarPorUsuarioChave(chave);
+        }
+        #endregion
         // Modulo
         public string InserirModulo(Modulo modulo)
         {
@@ -208,5 +213,15 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.usuarioNegocio.Logar(usuario);
         }
+
+        //public string StatusArduino()
+        //{
+        //    return this.residenciaNegocio.StatusArduino();
+        //}
+
+        //public string MudarStatusArduino(List<DispositivoTeste> dispositivos)
+        //{
+        //    return this.residenciaNegocio.MudarStatusArduino(dispositivos);
+        //}
     }
 }

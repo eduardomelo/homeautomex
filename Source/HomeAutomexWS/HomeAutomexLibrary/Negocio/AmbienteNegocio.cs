@@ -13,7 +13,7 @@ namespace HomeAutomexLibrary.Negocio
     {
         private DatabaseContext contexto;
         public AmbienteNegocio()
-            : base(new AmbienteRepositorio(new DatabaseContext()))
+            //: base(new AmbienteRepositorio(new DatabaseContext()))
         {
             this.contexto = new DatabaseContext();
         }

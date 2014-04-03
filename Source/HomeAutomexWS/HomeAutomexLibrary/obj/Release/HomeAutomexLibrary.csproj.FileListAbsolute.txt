@@ -1,0 +1,9 @@
+C:\Users\Filipe\Desktop\HomeAutomex\trunk\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Release\HomeAutomexLibrary.dll
+C:\Users\Filipe\Desktop\HomeAutomex\trunk\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Release\HomeAutomexLibrary.pdb
+C:\Users\Filipe\Desktop\HomeAutomex\trunk\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Release\EntityFramework.dll
+C:\Users\Filipe\Desktop\HomeAutomex\trunk\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Release\Newtonsoft.Json.dll
+C:\Users\Filipe\Desktop\HomeAutomex\trunk\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Release\EntityFramework.xml
+C:\Users\Filipe\Desktop\HomeAutomex\trunk\Source\HomeAutomexWS\HomeAutomexLibrary\bin\Release\Newtonsoft.Json.xml
+C:\Users\Filipe\Desktop\HomeAutomex\trunk\Source\HomeAutomexWS\HomeAutomexLibrary\obj\Release\HomeAutomexLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Filipe\Desktop\HomeAutomex\trunk\Source\HomeAutomexWS\HomeAutomexLibrary\obj\Release\HomeAutomexLibrary.dll
+C:\Users\Filipe\Desktop\HomeAutomex\trunk\Source\HomeAutomexWS\HomeAutomexLibrary\obj\Release\HomeAutomexLibrary.pdb

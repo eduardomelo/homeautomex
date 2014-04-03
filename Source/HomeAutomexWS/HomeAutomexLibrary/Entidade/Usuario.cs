@@ -8,15 +8,18 @@ namespace HomeAutomexLibrary.Entidade
 {
     public class Usuario : EntidadeBase<int>
     {
-        public string Nome { get; set; }
-        public string Login { get; set; }
-        public string Senha { get; set; }
-        public string Telefone { get; set; }
-        public string Celular { get; set; }
-        public string Email { get; set; }
-        public DateTime? DataCadastro { get; set; }
-        public DateTime? DataAlteracao { get; set; }
-        public DateTime? DataExclusao { get; set; }
-        public bool Desativado { get; set; }
+        public virtual string Nome { get; set; }
+        public virtual string Login { get; set; }
+        public virtual string Senha { get; set; }
+        public virtual string Telefone { get; set; }
+        public virtual string Celular { get; set; }
+        public virtual string Email { get; set; }
+        public virtual bool Desativado { get; set; }
+        public virtual List<Residencia> Residencias { get; set; }
+
+        public Usuario()
+        {
+            Residencias = new List<Residencia>();
+        }
     }
 }

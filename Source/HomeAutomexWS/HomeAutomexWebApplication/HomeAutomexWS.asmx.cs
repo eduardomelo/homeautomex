@@ -21,13 +21,17 @@ namespace HomeAutomexWebApplication
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     [System.Web.Script.Services.ScriptService]
     public class HomeAutomexWS : System.Web.Services.WebService
-    {        
-     
+    {
         private Fachada fachada;
-        private Usuario usuario;
-        public HomeAutomexWS() {
-            this.usuario = new Usuario();
+        public HomeAutomexWS()
+        {
             this.fachada = new Fachada();
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            };
         }
 
         #region Usuario
@@ -36,7 +40,7 @@ namespace HomeAutomexWebApplication
         public string InserirUsuário(string jUsuario)
         {
             var usuario = JsonConvert.DeserializeObject<Usuario>(jUsuario);
-            var retorno = fachada.InserirUsuario(usuario);            
+            var retorno = fachada.InserirUsuario(usuario);
             return retorno;
         }
         [WebMethod]
@@ -72,7 +76,8 @@ namespace HomeAutomexWebApplication
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosUsuarios()
         {
-            return JsonConvert.SerializeObject(fachada.ConsultarTodosUsuario());
+            var usuarios = fachada.ConsultarTodosUsuario();
+            return JsonConvert.SerializeObject(usuarios);
         }
 
         [WebMethod]
@@ -85,8 +90,8 @@ namespace HomeAutomexWebApplication
         }
 
         [WebMethod]
-        [ScriptMethod(ResponseFormat= ResponseFormat.Json)]
-        public string Logar(string jUsuario) 
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string Logar(string jUsuario)
         {
             var usuario = JsonConvert.DeserializeObject<Usuario>(jUsuario);
             var retorno = fachada.Logar(usuario);
@@ -96,8 +101,6 @@ namespace HomeAutomexWebApplication
         #endregion
 
         #region Residencia
-        
-        
         // Residencia
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -111,7 +114,9 @@ namespace HomeAutomexWebApplication
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosResidecia()
         {
-            return JsonConvert.SerializeObject(fachada.ConsultarTodosResidencia());
+            var residencias = fachada.ConsultarTodosResidencia();
+            var x = JsonConvert.SerializeObject(residencias);
+            return x;
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -141,11 +146,20 @@ namespace HomeAutomexWebApplication
             var residencia = fachada.RemoverResidenciaPorChave(chave);
             return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsultarResidenciaPorUsuarioChave(string jUsuario)
+        {
+            var usuario = JsonConvert.DeserializeObject<Usuario>(jUsuario);
+            var residencias = fachada.ConsultarResidenciaPorUsuarioChave(usuario.Chave);
+            return JsonConvert.SerializeObject(residencias);
+        }
         #endregion
 
         #region Modulo
-        
-        
+
+
         // Modulo
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -158,8 +172,8 @@ namespace HomeAutomexWebApplication
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosModulo()
-        { 
-                    return JsonConvert.SerializeObject(fachada.ConsultarTodosModulo());
+        {
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosModulo());
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -190,8 +204,8 @@ namespace HomeAutomexWebApplication
         #endregion
 
         #region Porta modulo
-        
-        
+
+
         // Porta modulo
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -234,7 +248,7 @@ namespace HomeAutomexWebApplication
         #endregion
 
         #region Tipo porta
-        
+
         // Tipo de Porta
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -277,8 +291,8 @@ namespace HomeAutomexWebApplication
         #endregion
 
         #region Dispositivo
-        
-        
+
+
         // Dispositivo
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -321,8 +335,8 @@ namespace HomeAutomexWebApplication
         #endregion
 
         #region Ambiente
-        
-        
+
+
         // Ambiente
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -364,5 +378,32 @@ namespace HomeAutomexWebApplication
         }
 
         #endregion
+
+        //[WebMethod]
+        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        //public string StatusArduino()
+        //{
+        //    //var port = portas.Split('|');
+        //    //var dispositivos = new List<DispositivoTeste>();
+
+        //    //foreach (var item in port)
+        //    //{
+        //    //    dispositivos.Add(new DispositivoTeste
+        //    //    { 
+        //    //        Identificador = item.Split(':')[0],
+        //    //        Status = item.Split(':')[1] == "1" ? true : false
+        //    //    });
+        //    //}
+
+        //    return fachada.StatusArduino();
+        //}
+
+        //[WebMethod]
+        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        //public string MudarStatusArduino(string jDispositivos)
+        //{
+        //    var dispositivos = JsonConvert.DeserializeObject<List<DispositivoTeste>>(jDispositivos);
+        //    return this.fachada.MudarStatusArduino(dispositivos);
+        //}
     }
 }

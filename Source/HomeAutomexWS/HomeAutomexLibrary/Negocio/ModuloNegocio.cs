@@ -14,7 +14,7 @@ namespace HomeAutomexLibrary.Negocio
 
         private DatabaseContext contexto;
         public ModuloNegocio()
-            : base(new ModuloRepositorio(new DatabaseContext()))
+            //: base(new ModuloRepositorio(new DatabaseContext()))
         {
             this.contexto = new DatabaseContext();
         }

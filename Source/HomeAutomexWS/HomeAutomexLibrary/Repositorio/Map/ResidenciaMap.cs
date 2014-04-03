@@ -17,6 +17,7 @@ namespace HomeAutomexLibrary.Repositorio.Map
 
             HasKey(e => e.Chave)
                 .Property(e => e.Chave)
+                .IsRequired()
                 .HasColumnName("CD_RESIDENCIA")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
@@ -30,6 +31,24 @@ namespace HomeAutomexLibrary.Repositorio.Map
             Property(e => e.DataAlteracao).HasColumnName("DT_ALTERACAO");
             Property(e => e.DataExclusao).HasColumnName("DT_EXCLUSAO");
             Property(e => e.Desativado).HasColumnName("IS_DESATIVADO");
+
+            HasMany(e => e.Usuarios)                
+                .WithMany(e => e.Residencias)                
+                .Map(m =>
+                {
+                    m.ToTable("USUARIO_RESIDENCIA");
+                    m.MapLeftKey("CD_USUARIO");
+                    m.MapRightKey("CD_RESIDENCIA");
+                });
+
+            //HasMany(e => e.Usuarios)
+            //    .WithMany(e => e.Residencias)
+            //    .Map(m =>
+            //    {
+            //        m.ToTable("USUARIO_RESIDENCIA");
+            //        m.MapLeftKey("CD_RESIDENCIA");
+            //        m.MapRightKey("CD_USUARIO");
+            //    });
         }
     }
 }

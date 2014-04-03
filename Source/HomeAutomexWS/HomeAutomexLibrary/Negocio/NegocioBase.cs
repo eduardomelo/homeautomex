@@ -1,5 +1,6 @@
 ﻿using HomeAutomexLibrary.Entidade;
 using HomeAutomexLibrary.Repositorio;
+using HomeAutomexLibrary.Repositorio.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,12 @@ namespace HomeAutomexLibrary.Negocio
     public class NegocioBase<TEntidade, TChave>
         where TEntidade : EntidadeBase<TChave>
     {
-        RepositorioBase<TEntidade, TChave> repositorio;
+        protected RepositorioBase<TEntidade, TChave> repositorio;
 
-        public NegocioBase(RepositorioBase<TEntidade, TChave> repositorio)
+        public NegocioBase()
         {
-            this.repositorio = repositorio;
+            if (repositorio == null)
+                repositorio = new RepositorioBase<TEntidade, TChave>(new DatabaseContext());            
         }
 
         public TEntidade BuscarPorChave(TChave chave)

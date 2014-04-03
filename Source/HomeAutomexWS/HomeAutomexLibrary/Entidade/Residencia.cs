@@ -7,15 +7,18 @@ namespace HomeAutomexLibrary.Entidade
 {
     public class Residencia : EntidadeBase<int>
     {        
-        public string Logradouro { get; set; }
-        public string Cidade { get; set; }
-        public string Bairro { get; set; }
-        public string Cep { get; set; }
-        public string Numero { get; set; }
-        public string Complemento { get; set; }
-        public DateTime? DataCadastro { get; set; }
-        public DateTime? DataAlteracao { get; set; }
-        public DateTime? DataExclusao { get; set; }
-        public bool Desativado { get; set; }
+        public virtual string Logradouro { get; set; }
+        public virtual string Cidade { get; set; }
+        public virtual string Bairro { get; set; }
+        public virtual string Cep { get; set; }
+        public virtual string Numero { get; set; }
+        public virtual string Complemento { get; set; }
+        public virtual bool Desativado { get; set; }
+        public virtual List<Usuario> Usuarios { get; set; }
+
+        public Residencia()
+        {
+            Usuarios = new List<Usuario>();
+        }
    }
 }

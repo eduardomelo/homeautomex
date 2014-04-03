@@ -32,4 +32,26 @@ namespace HomeAutomexLibrary.Repositorio.Map
         }
 
     }
+
+    //public class DispositivoTesteMap : EntityTypeConfiguration<DispositivoTeste>
+    //{
+    //    public DispositivoTesteMap()
+    //    {
+    //        ToTable("DISPOSITIVO_TESTE");
+
+    //        HasKey(e => e.Chave);
+
+    //        Property(e => e.Chave)
+    //            .HasColumnName("CD_DISPOSITIVO")
+    //            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+    //        Property(e => e.Identificador).HasColumnName("NM_DISPOSITIVO");
+    //        Property(e => e.Status).HasColumnName("STATUS");
+
+    //        Ignore(e => e.DataAlteracao);
+    //        Ignore(e => e.DataCadastro);
+    //        Ignore(e => e.DataExclusao);
+
+    //    }
+    //}
 }

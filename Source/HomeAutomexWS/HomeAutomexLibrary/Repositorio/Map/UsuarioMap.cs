@@ -15,9 +15,10 @@ namespace HomeAutomexLibrary.Repositorio.Map
         {
             ToTable("USUARIO");
 
-      
-            HasKey(e => e.Chave)
-                .Property(e => e.Chave)
+
+            HasKey(e => e.Chave);
+
+            Property(e => e.Chave)
                 .HasColumnName("CD_USUARIO")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
@@ -26,14 +27,20 @@ namespace HomeAutomexLibrary.Repositorio.Map
             Property(e => e.Telefone).HasColumnName("NM_TELEFONE");
             Property(e => e.Celular).HasColumnName("NM_CELULAR");
             Property(e => e.Email).HasColumnName("DS_EMAIL");
+            Property(e => e.Senha).HasColumnName("DS_SENHA");
             Property(e => e.DataCadastro).HasColumnName("DT_CADASTRO");
             Property(e => e.DataAlteracao).HasColumnName("DT_ALTERACAO");
             Property(e => e.DataExclusao).HasColumnName("DT_EXCLUSAO");
             Property(e => e.Desativado).HasColumnName("IS_DESATIVADO");
-            Property(e => e.Senha).HasColumnName("DS_SENHA");
-            //Ignore(e => e.DataCadastro);
-            //Ignore(e => e.DataAlteracao);
-            //Ignore(e => e.DataExclusao);
+                        
+            HasMany(e => e.Residencias)
+                .WithMany(e => e.Usuarios)
+                .Map(e =>
+                    {
+                        e.ToTable("USUARIO_RESIDENCIA");
+                        e.MapLeftKey("CD_RESIDENCIA");
+                        e.MapRightKey("CD_USUARIO");
+                    });
         }
 
     }
