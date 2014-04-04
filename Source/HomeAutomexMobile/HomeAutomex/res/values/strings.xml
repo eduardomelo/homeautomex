@@ -9,5 +9,6 @@
     <string name="title_activity_residencias">ResidenciasActivity</string>
     <string name="boasvindas">Seja Bem vindo %1$s %2$s.</string>
     <string name="title_activity_opcoes_usuarios">OpcoesUsuariosActivity</string>
+    <string name="title_activity_favoritos">FavoritosActivity</string>
 
 </resources>

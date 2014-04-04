@@ -6,47 +6,73 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".OpcoesUsuariosActivity" >
+    android:background="@drawable/back"
+    tools:context=".DispositivosActivity" >
 
-    <ImageButton
-        android:id="@+id/imageButton1"
+    <Button
+        android:id="@+id/btnCenario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="90dp"
+        android:background="@layout/layout_botoes"
+        android:text="Cenário"
+        android:textColor="#fff"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/btnFavoritos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/ambiente" />
+        android:background="@layout/layout_botoes"
+        android:text="Favoritos"
+        android:textColor="#fff"
+        android:textSize="15sp" />
 
-    <ImageButton
-        android:id="@+id/imageButton3"
+    <Button
+        android:id="@+id/btnProgramacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageButton1"
-        android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/imageButton1"
-        android:src="@drawable/favoritos" />
+        android:layout_alignBaseline="@+id/btnCenario"
+        android:layout_alignBottom="@+id/btnCenario"
+        android:layout_alignParentRight="true"
+        android:background="@layout/layout_botoes"
+        android:text="Programação"
+        android:textColor="#fff"
+        android:textSize="15sp" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
+    <Button
+        android:id="@+id/btnConfiguracoes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageButton1"
-        android:layout_toLeftOf="@+id/imageButton5"
-        android:src="@drawable/cenario" />
+        android:layout_alignLeft="@+id/btnFavoritos"
+        android:layout_below="@+id/btnFavoritos"
+        android:background="@layout/layout_botoes"
+        android:text="Configurações"
+        android:textColor="#fff"
+        android:textSize="15sp" />
 
-    <ImageButton
-        android:id="@+id/imageButton4"
+    <Button
+        android:id="@+id/Button03"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageButton5"
-        android:layout_toLeftOf="@+id/imageButton3"
-        android:src="@drawable/programacao" />
+        android:layout_alignLeft="@+id/btnCenario"
+        android:layout_below="@+id/btnCenario"
+        android:background="@layout/layout_botoes" />
 
-    <ImageButton
-        android:id="@+id/imageButton5"
+    <Button
+        android:id="@+id/btnAmbiente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageButton1"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/configuracoes" />
+        android:layout_alignBaseline="@+id/Button03"
+        android:layout_alignBottom="@+id/Button03"
+        android:layout_alignLeft="@+id/btnProgramacao"
+        android:background="@layout/layout_botoes"
+        android:text="Ambientes"
+        android:textColor="#fff"
+        android:textSize="15sp" />
 
 </RelativeLayout>
