@@ -45,6 +45,22 @@
             android:name="br.com.adeusunibratec.mb.FavoritosActivity"
             android:label="@string/title_activity_favoritos" >
         </activity>
+        <activity
+            android:name="br.com.adeusunibratec.ha.AmbienteActivity"
+            android:label="@string/title_activity_ambiente" >
+        </activity>
+        <activity
+            android:name="br.com.adeusunibratec.ha.ConfiguracoesActivity"
+            android:label="@string/title_activity_configuracoes" >
+        </activity>
+        <activity
+            android:name="br.com.adeusunibratec.ha.CenarioActivity"
+            android:label="@string/title_activity_cenario" >
+        </activity>
+        <activity
+            android:name="br.com.adeusunibratec.ha.ProgramacaoActivity"
+            android:label="@string/title_activity_programacao" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.mb;
+package br.com.adeusunibratec.ha;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -13,12 +13,13 @@ import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
 
 import br.com.adeusunibratec.acesso.AcessoWSDL;
+import br.com.adeusunibratec.adapter.AmbientesAdapter;
 import br.com.adeusunibratec.adapter.FavoritosViewAdapter;
 import br.com.adeusunibratec.bean.Residencia;
-import br.com.adeusunibratec.ha.R;
+import br.com.adeusunibratec.mb.FavoritosActivity;
+import br.com.adeusunibratec.mb.FavoritosActivity.ResidenciaTask;
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
 import br.com.adeusunibratec.parse.JSONParserManager;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -34,9 +35,10 @@ import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 
-public class FavoritosActivity extends Activity {
+public class AmbienteActivity extends Activity {
 
-	FavoritosViewAdapter listAdapter;
+
+	AmbientesAdapter listAdapter;
 	ExpandableListView expListView;
 
 	List<String> listDataHeader;
@@ -53,7 +55,7 @@ public class FavoritosActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_favoritos);
+		setContentView(R.layout.activity_ambiente);
 
 		createProgressDialog();
 
@@ -172,7 +174,7 @@ public class FavoritosActivity extends Activity {
 		public ResidenciaTask(ProgressDialog params) {
 
 			this.progressDialog = params;
-			this.progressDialog.setMessage("Carregando Favoritos...");
+			this.progressDialog.setMessage("Carregando Ambientes...");
 
 		}
 
@@ -282,7 +284,7 @@ public class FavoritosActivity extends Activity {
 					e.printStackTrace();
 				}
 
-				listAdapter = new FavoritosViewAdapter(FavoritosActivity.this,
+				listAdapter = new AmbientesAdapter(AmbienteActivity.this,
 						listDataHeader, listDataChild);
 
 				Log.e("listAdapter", listAdapter.toString());
@@ -316,5 +318,6 @@ public class FavoritosActivity extends Activity {
 
 		return residencias;
 	}
+
 
 }

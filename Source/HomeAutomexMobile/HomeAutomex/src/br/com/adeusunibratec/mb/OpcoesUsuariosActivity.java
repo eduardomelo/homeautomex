@@ -1,5 +1,6 @@
 package br.com.adeusunibratec.mb;
 
+import br.com.adeusunibratec.ha.AmbienteActivity;
 import br.com.adeusunibratec.ha.R;
 import br.com.adeusunibratec.ha.R.layout;
 import br.com.adeusunibratec.ha.R.menu;
@@ -57,6 +58,9 @@ public class OpcoesUsuariosActivity extends Activity implements OnClickListener 
 
 		switch (v.getId()) {
 		case R.id.btnAmbiente:
+			Intent itAmbiente = new Intent(this,AmbienteActivity.class);
+			itAmbiente.putExtra("idAmbiente", teste);
+			startActivity(itAmbiente);
 			Toast.makeText(getApplication(), "Ambiente", Toast.LENGTH_LONG).show();
 			break;
 		case R.id.btnCenario:
@@ -70,8 +74,9 @@ public class OpcoesUsuariosActivity extends Activity implements OnClickListener 
 			break;
 		case R.id.btnFavoritos:
 			Toast.makeText(getApplication(), "Favoritos", Toast.LENGTH_LONG).show();
-			Intent it = new Intent(this,FavoritosActivity.class);
-			startActivity(it);
+			Intent itFavoritos = new Intent(this,FavoritosActivity.class);
+			itFavoritos.putExtra("idAmbiente", teste);
+			startActivity(itFavoritos);
 			break;
 
 		default:

@@ -10,5 +10,9 @@
     <string name="boasvindas">Seja Bem vindo %1$s %2$s.</string>
     <string name="title_activity_opcoes_usuarios">OpcoesUsuariosActivity</string>
     <string name="title_activity_favoritos">FavoritosActivity</string>
+    <string name="title_activity_ambiente">AmbienteActivity</string>
+    <string name="title_activity_configuracoes">ConfiguracoesActivity</string>
+    <string name="title_activity_cenario">CenarioActivity</string>
+    <string name="title_activity_programacao">ProgramacaoActivity</string>
 
 </resources>

@@ -1,7 +1,5 @@
-
 package br.com.adeusunibratec.adapter;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,7 +9,6 @@ import br.com.adeusunibratec.ha.R;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,25 +17,19 @@ import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.TextView;
 
-public class FavoritosViewAdapter extends BaseExpandableListAdapter {
-	
-	
-	
-	
+public class AmbientesAdapter extends BaseExpandableListAdapter {
+
 	private Context _context;
 	private List<String> _listDataHeader; // header titles
 	// child data in format of header title, child title
 	private HashMap<String, List<String>> _listDataChild;
-	
-	
-	
-	public FavoritosViewAdapter(Context context, List<String> listDataHeader,
+
+	public AmbientesAdapter(Context context, List<String> listDataHeader,
 			HashMap<String, List<String>> listChildData) {
 		this._context = context;
 		this._listDataHeader = listDataHeader;
 		this._listDataChild = listChildData;
-		
-		
+
 	}
 
 	@Override
@@ -55,22 +46,21 @@ public class FavoritosViewAdapter extends BaseExpandableListAdapter {
 	@Override
 	public View getChildView(int groupPosition, final int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
-		
+
 		final String childText = (String) getChild(groupPosition, childPosition);
 
 		if (convertView == null) {
 			LayoutInflater infalInflater = (LayoutInflater) this._context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView = infalInflater.inflate(R.layout.list_item, null);
+			convertView = infalInflater.inflate(R.layout.list_item_ambiente, null);
 		}
 
 		TextView txtListChild = (TextView) convertView
 				.findViewById(R.id.lblListItem);
 
 		/*CheckBox mCheckBox = (CheckBox) convertView
-                .findViewById(R.id.checkBox1);*/
-		
-		
+				.findViewById(R.id.checkBox1);*/
+
 		txtListChild.setText(childText);
 		return convertView;
 	}
@@ -108,15 +98,14 @@ public class FavoritosViewAdapter extends BaseExpandableListAdapter {
 
 		CheckedTextView lblListHeader = (CheckedTextView) convertView
 				.findViewById(R.id.textView1);
-		
+
 		((CheckedTextView) convertView).setChecked(isExpanded);
-		
-		
-		
-		/*CheckBox mCheckBox = (CheckBox) convertView
-                .findViewById(R.id.checkBox1);
-*/
-		
+
+		/*
+		 * CheckBox mCheckBox = (CheckBox) convertView
+		 * .findViewById(R.id.checkBox1);
+		 */
+
 		lblListHeader.setTypeface(null, Typeface.BOLD);
 		lblListHeader.setText(headerTitle);
 
@@ -133,17 +122,4 @@ public class FavoritosViewAdapter extends BaseExpandableListAdapter {
 		return true;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	}
+}
