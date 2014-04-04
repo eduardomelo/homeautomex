@@ -113,15 +113,10 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.btnLogin:
+		
 			this.loginHomeAutomex(loginEdit.getText().toString(), senhaEdit
 					.getText().toString());
-			break;
-
-		default:
-			break;
-		}
+			
 	}
 
 	

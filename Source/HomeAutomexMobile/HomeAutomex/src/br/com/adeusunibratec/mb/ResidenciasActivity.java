@@ -142,10 +142,11 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 		sBoasVindas = String.format(sBoasVindasFormat, "",
 				HomeAutomexJSONObject.getInstance().getUsuario().getNome());
 
-		// chave = HomeAutomexJSONObject.getInstance().getUsuario().getChave();
+		 chave = HomeAutomexJSONObject.getInstance().getUsuario().getChave();
 
 		this.boasVindas.setText(sBoasVindas);
 
+		//lembrando que é para colocar a string chave dentro do parametro o "2" é só para testar o metodo
 		new ResidenciaTask(this.progressDialog).execute("2");
 
 	}
