@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HomeAutomexLibrary.Entidade
 {
-    public class Cenario : EntidadeBase<int>
+    public class Logs : EntidadeBase<int>
     {
       
         public string descricao { get; set; }

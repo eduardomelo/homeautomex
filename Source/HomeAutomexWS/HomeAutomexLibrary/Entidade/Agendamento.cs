@@ -18,12 +18,12 @@ namespace HomeAutomexLibrary.Entidade
         public bool desativado { get; set; }
 
         public Usuario usuario { get; set; }
-        public Cenario cenario { get; set; }
+        public Logs cenario { get; set; }
 
         public Agendamento()
         {
             this.usuario = new Usuario();
-            this.cenario = new Cenario();
+            this.cenario = new Logs();
         }
 
     }
