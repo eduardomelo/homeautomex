@@ -196,3 +196,4 @@ D:\Flávio\Google Drive\Unibratec\6º-Período\Projeto_HomeAutomex\homeautomex\S
 D:\Flávio\Google Drive\Unibratec\6º-Período\Projeto_HomeAutomex\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\obj\Debug\HomeAutomex.csprojResolveAssemblyReference.cache
 D:\Flávio\Google Drive\Unibratec\6º-Período\Projeto_HomeAutomex\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\obj\Debug\HomeAutomex.dll
 D:\Flávio\Google Drive\Unibratec\6º-Período\Projeto_HomeAutomex\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\obj\Debug\HomeAutomex.pdb
+C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\obj\Debug\HomeAutomex.csprojResolveAssemblyReference.cache

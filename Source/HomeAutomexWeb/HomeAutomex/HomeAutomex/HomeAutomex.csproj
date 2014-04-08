@@ -174,6 +174,7 @@
     <Compile Include="Controllers\AmbienteController.cs" />
     <Compile Include="Controllers\BootstrapBaseController.cs" />
     <Compile Include="Controllers\DispositivoController.cs" />
+    <Compile Include="Controllers\DispositivosFavoritosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModuloController.cs" />
     <Compile Include="Controllers\PortaModuloController.cs" />
@@ -279,6 +280,22 @@
     <Content Include="css\screen_preview.css" />
     <Content Include="css\signin.css" />
     <Content Include="css\tables.css" />
+    <Content Include="dist\css\bootstrap2\bootstrap-switch.css" />
+    <Content Include="dist\css\bootstrap2\bootstrap-switch.min.css" />
+    <Content Include="dist\css\bootstrap3\bootstrap-switch.css" />
+    <Content Include="dist\css\bootstrap3\bootstrap-switch.min.css" />
+    <Content Include="dist\js\bootstrap-switch.js" />
+    <Content Include="dist\js\bootstrap-switch.min.js" />
+    <Content Include="docs\bootstrap-switch.css" />
+    <Content Include="docs\bootstrap-switch.js" />
+    <Content Include="docs\index.css" />
+    <Content Include="docs\index.js" />
+    <Content Include="docs\lib\css\bootstrap.min.css" />
+    <Content Include="docs\lib\css\highlight.css" />
+    <Content Include="docs\lib\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="docs\lib\js\bootstrap.min.js" />
+    <Content Include="docs\lib\js\highlight.js" />
+    <Content Include="docs\lib\js\jquery.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\contact-img.png" />
@@ -311,6 +328,10 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\html5shiv.js" />
+    <Content Include="docs\index.jade" />
+    <Content Include="docs\lib\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="docs\lib\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="docs\lib\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -517,6 +538,17 @@
     <Content Include="Views\Ambiente\RegistrarAmbiente.cshtml" />
     <Content Include="Views\Ambiente\ListarAmbiente.cshtml" />
     <Content Include="Views\Ambiente\EditarAmbiente.cshtml" />
+    <Content Include="Views\DispositivosFavoritos\ListarDispositivo.cshtml" />
+    <Content Include="src\coffee\bootstrap-switch.coffee" />
+    <Content Include="src\less\bootstrap2\bootstrap-switch.less" />
+    <Content Include="src\less\bootstrap2\build.less" />
+    <Content Include="src\less\bootstrap2\mixins.less" />
+    <Content Include="src\less\bootstrap2\variables.less" />
+    <Content Include="src\less\bootstrap3\bootstrap-switch.less" />
+    <Content Include="src\less\bootstrap3\build.less" />
+    <Content Include="src\less\bootstrap3\mixins.less" />
+    <Content Include="src\less\bootstrap3\variables.less" />
+    <Content Include="src\test\bootstrap-switch.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
