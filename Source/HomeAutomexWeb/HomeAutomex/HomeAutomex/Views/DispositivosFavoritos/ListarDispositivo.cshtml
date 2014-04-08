@@ -1,0 +1,58 @@
+﻿@model IEnumerable<HomeAutomex.Models.DispositivoModel>
+
+@{
+    ViewBag.Title = "ListarDispositivo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListarDispositivo</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table id="Grid" class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+       
+        
+ 
+        
+       
+        <th>
+            Ligar e Desligar
+        </th>
+       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        
+  
+       
+       <td>
+          
+    <li><label><input type="checkbox" class="clink" id="@item.Chave" value="@(item.Desativado)"/>@item.Desativado</label></li>
+
+
+       </td>
+        
+    </tr>
+}
+</table>
+<script>
+  $('.clink').change(function() {
+    $.ajax({
+      url:'@Url.Action("EditarStatus")',
+        data: { chave: 1, status: $(this).val() },
+        type: 'POST',
+        success: function () {
+            alert("foi");
+        }
+    });
+  });
+</script>
