@@ -23,10 +23,15 @@ namespace HomeAutomexWebApplication
     public class HomeAutomexWS : System.Web.Services.WebService
     {
         private Fachada fachada;
-        public HomeAutomexWS()
-        {
+        private UTDispositivo utDispositivo;
+        private Log log;
+   
+        public HomeAutomexWS() {
+            this.log = new Log();
+            this.utDispositivo = new UTDispositivo();
             this.fachada = new Fachada();
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate,
@@ -40,7 +45,9 @@ namespace HomeAutomexWebApplication
         public string InserirUsuário(string jUsuario)
         {
             var usuario = JsonConvert.DeserializeObject<Usuario>(jUsuario);
-            var retorno = fachada.InserirUsuario(usuario);
+            log.Descricao = "Usuario inseriu o usuário:" + usuario.Nome;
+            var retornoLog = fachada.InserirLog(log);
+            var retorno = fachada.InserirUsuario(usuario);            
             return retorno;
         }
         [WebMethod]
@@ -51,6 +58,8 @@ namespace HomeAutomexWebApplication
             usuario.DataAlteracao = DateTime.Now;
             usuario.DataCadastro = DateTime.Now;
             usuario.DataExclusao = DateTime.Now;
+            log.Descricao = "Usuario alterou o usuário:" + usuario.Nome;
+            var retornoLog = fachada.InserirLog(log);
             var retorno = fachada.AlterarUsuario(usuario);
             return retorno;
         }
@@ -68,16 +77,18 @@ namespace HomeAutomexWebApplication
         public string ExcluirUsuario(string jChave)
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
-            //var usuarioExcluido = fachada.BuscarUsuarioPorChave(chave);
             var usuario = fachada.RemoverUsuarioPorChave(chave);
+            log.Descricao = "Usuario excluiu um usuário:!" + chave;
+            var retornoLog = fachada.InserirLog(log);
             return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosUsuarios()
         {
-            var usuarios = fachada.ConsultarTodosUsuario();
-            return JsonConvert.SerializeObject(usuarios);
+            log.Descricao = "Usuario consultou todos os usuários!";
+            var retornoLog = fachada.InserirLog(log);
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosUsuario());
         }
 
         [WebMethod]
@@ -94,7 +105,10 @@ namespace HomeAutomexWebApplication
         public string Logar(string jUsuario)
         {
             var usuario = JsonConvert.DeserializeObject<Usuario>(jUsuario);
+           
             var retorno = fachada.Logar(usuario);
+            log.Descricao = "Usuario logou no sistema: " + retorno.Nome;
+            var retornoLog = fachada.InserirLog(log);
             return JsonConvert.SerializeObject(retorno);
         }
 
@@ -107,6 +121,8 @@ namespace HomeAutomexWebApplication
         public string InserirResidencia(string jResidencia)
         {
             var residencia = JsonConvert.DeserializeObject<Residencia>(jResidencia);
+            log.Descricao = "Usuario inseriu uma nova Residência na rua " + residencia.Logradouro;
+            var retornoLog = fachada.InserirLog(log);
             var retorno = fachada.InserirResidencia(residencia);
             return retorno;
         }
@@ -114,9 +130,9 @@ namespace HomeAutomexWebApplication
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosResidecia()
         {
-            var residencias = fachada.ConsultarTodosResidencia();
-            var x = JsonConvert.SerializeObject(residencias);
-            return x;
+            log.Descricao = "Usuario consultou todas as residências!";
+            var retornoLog = fachada.InserirLog(log);
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosResidencia());
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -134,6 +150,8 @@ namespace HomeAutomexWebApplication
             residencia.DataAlteracao = DateTime.Now;
             residencia.DataCadastro = DateTime.Now;
             residencia.DataExclusao = DateTime.Now;
+            log.Descricao = "Usuario alterou uma Residência da rua " + residencia.Logradouro;
+            var retornoLog = fachada.InserirLog(log);
             var retorno = fachada.AlterarResidencia(residencia);
             return retorno;
         }
@@ -142,7 +160,8 @@ namespace HomeAutomexWebApplication
         public string ExcluirResidencia(string jChave)
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
-            //var usuarioExcluido = fachada.BuscarUsuarioPorChave(chave);
+            log.Descricao = "Usuario excluiu uma Residência na rua " + chave;
+            var retornoLog = fachada.InserirLog(log);
             var residencia = fachada.RemoverResidenciaPorChave(chave);
             return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
@@ -166,6 +185,8 @@ namespace HomeAutomexWebApplication
         public string InserirModulo(string jModdulo)
         {
             var modulo = JsonConvert.DeserializeObject<Modulo>(jModdulo);
+            log.Descricao = "Usuario inseriu um modulo " + modulo.Nome;
+            var retornoLog = fachada.InserirLog(log);
             var retorno = fachada.InserirModulo(modulo);
             return retorno;
         }
@@ -173,7 +194,9 @@ namespace HomeAutomexWebApplication
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosModulo()
         {
-            return JsonConvert.SerializeObject(fachada.ConsultarTodosModulo());
+             log.Descricao = "Usuario consultou todos os modulos!";
+             var retornoLog = fachada.InserirLog(log);
+             return JsonConvert.SerializeObject(fachada.ConsultarTodosModulo());
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -188,6 +211,8 @@ namespace HomeAutomexWebApplication
         public string AlterarModulo(string jModulo)
         {
             var modulo = JsonConvert.DeserializeObject<Modulo>(jModulo);
+            log.Descricao = "Usuario alterou um modulo " + modulo.Nome;
+            var retornoLog = fachada.InserirLog(log);
             var retorno = fachada.AlterarModulo(modulo);
             return retorno;
         }
@@ -196,7 +221,8 @@ namespace HomeAutomexWebApplication
         public string ExcluirModulo(string jChave)
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
-            //var usuarioExcluido = fachada.BuscarUsuarioPorChave(chave);
+            log.Descricao = "Usuario excluiu um modulo " + chave;
+            var retornoLog = fachada.InserirLog(log);
             var modulo = fachada.RemoverModuloPorChave(chave);
             return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
@@ -212,6 +238,8 @@ namespace HomeAutomexWebApplication
         public string InserirPortaModulo(string jPortaModulo)
         {
             var portaModulo = JsonConvert.DeserializeObject<PortaModulo>(jPortaModulo);
+            log.Descricao = "Usuario inseriu uma porta de modulo " + portaModulo.Identificador;
+            var retornoLog = fachada.InserirLog(log);
             var retorno = fachada.InserirPortaModulo(portaModulo);
             return retorno;
         }
@@ -219,6 +247,8 @@ namespace HomeAutomexWebApplication
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosPortaModulo()
         {
+            log.Descricao = "Usuario consultou todas as portas do modulo";
+            var retornoLog = fachada.InserirLog(log);
             return JsonConvert.SerializeObject(fachada.ConsultarTodosPortaModulo());
         }
         [WebMethod]
@@ -234,6 +264,8 @@ namespace HomeAutomexWebApplication
         public string AlterarPortaModulo(string jPortaModulo)
         {
             var portaModulo = JsonConvert.DeserializeObject<PortaModulo>(jPortaModulo);
+            log.Descricao = "Usuario alterou a porta do modulo " + portaModulo.Identificador;
+            var retornoLog = fachada.InserirLog(log);
             var retorno = fachada.AlterarPortaModulo(portaModulo);
             return retorno;
         }
@@ -242,6 +274,8 @@ namespace HomeAutomexWebApplication
         public string ExcluirPortaModulo(string jChave)
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
+            log.Descricao = "Usuario excluiu uma portas do modulo " + chave;
+            var retornoLog = fachada.InserirLog(log);
             var portaModulo = fachada.RemoverTipoPortaPorChave(chave);
             return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
@@ -255,6 +289,8 @@ namespace HomeAutomexWebApplication
         public string InserirTipoPorta(string jTipoPorta)
         {
             var tipoPorta = JsonConvert.DeserializeObject<TipoPorta>(jTipoPorta);
+            log.Descricao = "Usuario inseriu um tipo de porta " + tipoPorta.Identificador;
+            var retornoLog = fachada.InserirLog(log);
             var retorno = fachada.InserirTipoPorta(tipoPorta);
             return retorno;
         }
@@ -262,6 +298,8 @@ namespace HomeAutomexWebApplication
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosTipoPorta()
         {
+            log.Descricao = "Usuario consultou todos os tipos de porta";
+            var retornoLog = fachada.InserirLog(log);
             return JsonConvert.SerializeObject(fachada.ConsultarTodosTipoPorta());
         }
         [WebMethod]
@@ -277,6 +315,8 @@ namespace HomeAutomexWebApplication
         public string AlterarTipoPorta(string jTipoPorta)
         {
             var tipoPorta = JsonConvert.DeserializeObject<TipoPorta>(jTipoPorta);
+            log.Descricao = "Usuario alterou um tipo de porta " + tipoPorta.Identificador;
+            var retornoLog = fachada.InserirLog(log);
             var retorno = fachada.AlterarTipoPorta(tipoPorta);
             return retorno;
         }
@@ -285,8 +325,10 @@ namespace HomeAutomexWebApplication
         public string ExcluirTipoPorta(string jChave)
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
+            log.Descricao = "Usuario excluiu um tipo de porta " + chave;
+            var retornoLog = fachada.InserirLog(log);
             var tipoPorta = fachada.RemoverTipoPortaPorChave(chave);
-            return JsonConvert.SerializeObject("Usuário removido com sucesso");
+            return JsonConvert.SerializeObject("Tipo de Porta removido com sucesso");
         }
         #endregion
 
@@ -299,6 +341,11 @@ namespace HomeAutomexWebApplication
         public string InserirDispositivo(string jDispositivo)
         {
             var dispositivo = JsonConvert.DeserializeObject<Dispositivo>(jDispositivo);
+            log.Descricao = "Usuario cadastrou um dispositivo " + dispositivo.Descricao;
+            var retornoLog = fachada.InserirLog(log);
+            utDispositivo.Cd_dispositivo = dispositivo.Chave;
+            utDispositivo.status = dispositivo.Status;
+            fachada.InserirUTDispositivo(utDispositivo);
             var retorno = fachada.InserirDispositivo(dispositivo);
             return retorno;
         }
@@ -306,6 +353,8 @@ namespace HomeAutomexWebApplication
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosDispositivo()
         {
+            log.Descricao = "Usuario consultou um todos os dispositivos ";
+            var retornoLog = fachada.InserirLog(log);
             return JsonConvert.SerializeObject(fachada.ConsultarTodosDispositivo());
         }
         [WebMethod]
@@ -321,6 +370,11 @@ namespace HomeAutomexWebApplication
         public string AlterarDispositivo(string jDispositivo)
         {
             var dispositivo = JsonConvert.DeserializeObject<Dispositivo>(jDispositivo);
+            log.Descricao = "Usuario alterou um dispositivo " + dispositivo.Descricao;
+            var retornoLog = fachada.InserirLog(log);
+            utDispositivo.Cd_dispositivo = dispositivo.Chave;
+            utDispositivo.status = dispositivo.Status;
+            fachada.InserirUTDispositivo(utDispositivo);
             var retorno = fachada.AlterarDispositivo(dispositivo);
             return retorno;
         }
@@ -329,6 +383,8 @@ namespace HomeAutomexWebApplication
         public string ExcluirDispositivo(string jChave)
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
+            log.Descricao = "Usuario excluiu um dispositivo " + jChave;
+            var retornoLog = fachada.InserirLog(log);
             var dispositivo = fachada.RemoverDispositivoPorChave(chave);
             return JsonConvert.SerializeObject("Dispositivo removido com sucesso");
         }
@@ -343,6 +399,8 @@ namespace HomeAutomexWebApplication
         public string InserirAmbiente(string jAmbiente)
         {
             var ambiente = JsonConvert.DeserializeObject<Ambiente>(jAmbiente);
+            log.Descricao = "Usuario inseriu um ambiente " + ambiente.Descricao;
+            var retornoLog = fachada.InserirLog(log);
             var retorno = fachada.InserirAmbiente(ambiente);
             return retorno;
         }
@@ -350,6 +408,8 @@ namespace HomeAutomexWebApplication
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosAmbiente()
         {
+            log.Descricao = "Usuario consultou todos os Ambientes";
+            var retornoLog = fachada.InserirLog(log);
             return JsonConvert.SerializeObject(fachada.ConsultarTodosAmbiente());
         }
         [WebMethod]
@@ -365,6 +425,8 @@ namespace HomeAutomexWebApplication
         public string AlterarAmbiente(string jAmbiente)
         {
             var ambiente = JsonConvert.DeserializeObject<Ambiente>(jAmbiente);
+            log.Descricao = "Usuario alterou o ambiente, " + ambiente.Descricao;
+            var retornoLog = fachada.InserirLog(log);
             var retorno = fachada.AlterarAmbiente(ambiente);
             return retorno;
         }
@@ -373,6 +435,8 @@ namespace HomeAutomexWebApplication
         public string ExcluirAmbiente(string jChave)
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
+            log.Descricao = "Usuario excluiu um ambiente, " +jChave;
+            var retornoLog = fachada.InserirLog(log);
             var ambiente = fachada.RemoverAmbientePorChave(chave);
             return JsonConvert.SerializeObject("Ambiente removido com sucesso");
         }
