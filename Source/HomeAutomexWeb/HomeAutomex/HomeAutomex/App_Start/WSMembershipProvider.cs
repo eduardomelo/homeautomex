@@ -157,12 +157,14 @@ namespace HomeAutomex
 
         public override bool ValidateUser(string username, string password)
         {
+
             var usuario = new UsuarioModel{ Login = username, Senha = password };
             var isValido = _WebService.Logar(JsonConvert.SerializeObject(usuario));
 
             if (isValido != null)
             {
                 _Usuario = JsonConvert.DeserializeObject<UsuarioModel>(isValido);
+                System.Web.HttpContext.Current.Session["UsuarioLogado"] = _Usuario;
                 return true;
             }
             else
