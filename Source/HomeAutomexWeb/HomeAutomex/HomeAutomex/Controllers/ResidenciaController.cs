@@ -32,16 +32,8 @@ namespace HomeAutomex.Controllers
                 try
                 {
                     var webService = new HomeAutomexWSSoapClient();
-                    var residencia = JsonConvert.SerializeObject(new ResidenciaModel
-                    {
-                        Logradouro = model.Logradouro,
-                        Cidade = model.Cidade,
-                        Bairro = model.Bairro,
-                        Cep    = model.Cep,
-                        Numero = model.Numero,
-                        Complemento = model.Complemento,
-
-                    });
+                    model.Usuarios = new List<Usuario> { new Usuario { Chave = (Session["UsuarioLogado"] as UsuarioModel).Chave } };
+                    var residencia = JsonConvert.SerializeObject(model);
                     var x = webService.InserirResidencia(residencia);
                     if (x.StartsWith("Erro:"))
                     {

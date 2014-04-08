@@ -59,34 +59,21 @@ namespace HomeAutomex.Controllers
         [AllowAnonymous]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-
-            if (ModelState.IsValid && Membership.ValidateUser(model.UserName, model.Password))
+            try
             {
-                FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                return Redirect(returnUrl ?? Url.Action("ListarUsuario", "Account"));
+                if (ModelState.IsValid && Membership.ValidateUser(model.UserName, model.Password))
+                {
+                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                    return Redirect(returnUrl ?? Url.Action("ListarUsuario", "Account"));
+                }
+                return View(model);
             }
-            //var mp = new WSMembershipProvider();
-            //mp.ValidateUser(model.UserName, model.Password);
-            //var webService = new HomeAutomexWSSoapClient();
-            //var usuario = JsonConvert.SerializeObject(new UsuarioModel
-            //{
-            //    Login = model.UserName,
-            //});
-            //var x = webService.ExistirUsuario(usuario);
-            //if (x == null)
-            //{
-            //    ModelState.AddModelError("", "Usuário não cadastrado.");
+            catch (Exception)
+            {
 
-            //}
-            //else
-            //{
-
-
-            //}
-
-            return View(model);
+                return View(model);
+            }
         }
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -113,7 +100,7 @@ namespace HomeAutomex.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("ListarUsuario", "Account");
+                        return RedirectToAction("Login", "Account");
                     }
                 }
                 catch (MembershipCreateUserException e)
