@@ -9,25 +9,22 @@ using System.Threading.Tasks;
 
 namespace HomeAutomexLibrary.Negocio
 {
-    public class AmbienteNegocio : NegocioBase<Ambiente, int>
+    public class PerfilNegocio : NegocioBase<Perfil, int>
     {
+
         private DatabaseContext contexto;
-
-        public AmbienteNegocio()
-            //: base(new AmbienteRepositorio(new DatabaseContext()))
-
+        public PerfilNegocio()
+            : base(new PerfilRepositorio(new DatabaseContext()))
         {
             this.contexto = new DatabaseContext();
-
-
         }
 
-        public string InserirAmbiente(Ambiente ambiente)
-        {
-            ambiente.DataAlteracao = null;
-            ambiente.DataCadastro = DateTime.Now;
-            ambiente.DataExclusao = null;
-            base.Inserir(ambiente);
+        public string InserirPerfil(Perfil perfil){
+
+            perfil.DataAlteracao = null;
+            perfil.DataCadastro = DateTime.Now;
+            perfil.DataExclusao = null;
+            base.Inserir(perfil);
 
             try
             {
@@ -40,13 +37,14 @@ namespace HomeAutomexLibrary.Negocio
             }
         }
 
-        public string AlterarAmbiente(Ambiente ambiente)
+        public string AlterarPerfil(Perfil perfil)
         {
 
-            ambiente.DataAlteracao = DateTime.Now; ;
-            ambiente.DataCadastro = null;
-            ambiente.DataExclusao = null;
-            base.Alterar(ambiente);
+            perfil.DataAlteracao = DateTime.Now; ;
+            perfil.DataCadastro = null;
+            perfil.DataExclusao = null;
+            base.Alterar(perfil);
+
             try
             {
                 base.SaveChanges();
@@ -58,7 +56,7 @@ namespace HomeAutomexLibrary.Negocio
                 throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
-        public string RemoverAmbientePorChave(int chave)
+        public string RemoverPerfilPorChave(int chave)
         {
             base.RemoverPorChave(chave);
             try
@@ -72,7 +70,7 @@ namespace HomeAutomexLibrary.Negocio
                 throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
-        public List<Ambiente> ConsultarTodosAmbiente()
+        public List<Perfil> ConsultarTodosPerfil()
         {
             return base.ConsultarTodos().ToList();
         }

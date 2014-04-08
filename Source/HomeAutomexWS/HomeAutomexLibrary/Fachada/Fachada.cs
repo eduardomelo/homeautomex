@@ -11,14 +11,16 @@ namespace HomeAutomexLibrary.Fachada
 {
     public class Fachada
     {
-        private UsuarioNegocio usuarioNegocio;
-        private ResidenciaNegocio residenciaNegocio;
-        private ModuloNegocio moduloNegocio;
-        private AmbienteNegocio ambienteNegocio;
-        private TipoPortaNeogocio tipoPortaNegocio;
-        private PortaModuloNegocio portaModuloNegocio;
-        private DispositivoNegocio dispositivoNegocio;
-        private DatabaseContext contexto;
+        private UsuarioNegocio      usuarioNegocio;
+        private ResidenciaNegocio   residenciaNegocio;
+        private ModuloNegocio       moduloNegocio;
+        private AmbienteNegocio     ambienteNegocio;
+        private TipoPortaNeogocio   tipoPortaNegocio;
+        private PortaModuloNegocio  portaModuloNegocio;
+        private DispositivoNegocio  dispositivoNegocio;
+        private UTUtilizacaoNegocio utDispositivoNegocio;
+        private LogNegocio          logNegocio;
+        private DatabaseContext     contexto;
 
         public Fachada()
         {
@@ -30,16 +32,41 @@ namespace HomeAutomexLibrary.Fachada
             this.tipoPortaNegocio = new TipoPortaNeogocio();
             this.portaModuloNegocio = new PortaModuloNegocio();
             this.dispositivoNegocio = new DispositivoNegocio();
+            this.utDispositivoNegocio   = new UTUtilizacaoNegocio();
+            this.logNegocio             = new LogNegocio();
             
         }
         private static Fachada instancia;
         public static Fachada obterInstancia()
         {
+        
             if (instancia == null)
             {
                 instancia = new Fachada();
             }
             return instancia;
+        }
+
+        public string InserirLog(Log log) 
+        {
+            return this.logNegocio.InserirLog(log);   
+        }
+        public List<Log> ConsultarTodosLog()
+        {
+            return this.logNegocio.ConsultarTodosLog();
+        }
+
+        public string InserirUTDispositivo(UTDispositivo utDispositivo)
+        {
+            return this.utDispositivoNegocio.InserirUTDispositivo(utDispositivo);
+        }
+        public string AlterarUTDispositivo(UTDispositivo utDispositivo)
+        {
+            return this.utDispositivoNegocio.InserirUTDispositivo(utDispositivo);
+        }
+        public List<UTDispositivo> ConsultarTodosUTDispositivo()
+        {
+            return this.utDispositivoNegocio.ConsultarTodosUTDispositivo();
         }
         // Requisições do objeto usuário
         #region Usuário
