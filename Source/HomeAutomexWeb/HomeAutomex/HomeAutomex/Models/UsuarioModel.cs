@@ -29,5 +29,7 @@ namespace HomeAutomex.Models
         [Required(ErrorMessage = "E-mail inválido")]
         [EmailAddress(ErrorMessage = "E-mail Inválido")]
         public string Email { get; set; }
+
+        
     }
 }

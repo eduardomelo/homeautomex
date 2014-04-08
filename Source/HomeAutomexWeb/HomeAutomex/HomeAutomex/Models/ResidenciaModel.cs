@@ -39,5 +39,12 @@ namespace HomeAutomex.Models
         //[MinLength(0, ErrorMessage = "Complemento: O tamanho mínimo do complemento da residência são 10 caracteres.")]
         [StringLength(100, ErrorMessage = "O tamanho máximo da descrição do complemento é de 100 caracteres.")]
         public string Complemento { get; set; }
+
+        public List<Usuario> Usuarios { get; set; }
+    }
+
+    public class Usuario
+    {
+        public int Chave { get; set; }
     }
 }
