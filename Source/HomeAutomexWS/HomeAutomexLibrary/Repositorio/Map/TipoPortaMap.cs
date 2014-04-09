@@ -17,11 +17,15 @@ namespace HomeAutomexLibrary.Repositorio.Map
 
             HasKey(e => e.Chave)
                 .Property(e => e.Chave)
-                .HasColumnName("CD_TIPO_PORTA_MODULO")
+                .HasColumnName("CD_TIPO_POTA_MODULO")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             Property(e => e.Tipo).HasColumnName("DS_TIPO").IsRequired();
             Property(e => e.Identificador).HasColumnName("DS_IDENTIFICADOR").IsRequired();
+
+            Ignore(e => e.DataCadastro);
+            Ignore(e => e.DataAlteracao);
+            Ignore(e => e.DataExclusao);
         
         }
     }

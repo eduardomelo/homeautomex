@@ -25,6 +25,11 @@ namespace HomeAutomexLibrary.Repositorio.Map
             Property(e => e.NumeroPorta).HasColumnName("NM_PORTA");
             Property(e => e.TipoPorta).HasColumnName("CD_TIPO");
             Property(e => e.Modulo).HasColumnName("CD_MODULO");
+
+
+            Ignore(e => e.DataCadastro);
+            Ignore(e => e.DataAlteracao);
+            Ignore(e => e.DataExclusao);
        
 
         

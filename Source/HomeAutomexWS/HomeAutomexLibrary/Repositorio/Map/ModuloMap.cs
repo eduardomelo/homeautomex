@@ -27,6 +27,10 @@ namespace HomeAutomexLibrary.Repositorio.Map
             Property(e => e.NumeroMac).HasColumnName("NM_MAC");
             Property(e => e.Residencia).HasColumnName("CD_RESIDENCIA");
 
+            Ignore(e => e.DataCadastro);
+            Ignore(e => e.DataAlteracao);
+            Ignore(e => e.DataExclusao);
+
         
         }
 

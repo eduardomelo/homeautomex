@@ -25,6 +25,11 @@ namespace HomeAutomexLibrary.Repositorio.Map
             Property(e => e.Cd_dispositivo).HasColumnName("CD_DIPOSITIVO");
             Property(e => e.UT_utilizacao).HasColumnName("DT_ULTILIZACAO");
             Property(e => e.status).HasColumnName("STATUS");
+
+
+            Ignore(e => e.DataCadastro);
+            Ignore(e => e.DataAlteracao);
+            Ignore(e => e.DataExclusao);
         }
 
     }
