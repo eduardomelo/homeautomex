@@ -18,8 +18,8 @@
     <!-- bootstrap -->
     <link href="~/css/bootstrap.css" rel="stylesheet" />
     <link href="~/css/bootstrap-overrides.css" rel="stylesheet" />
-    <link href="docs/lib/css/bootstrap.min.css" rel="stylesheet">
-    <link href="dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+
+    
 
     <!-- global styles -->
     <link href="~/css/elements.css" rel="stylesheet" />
@@ -178,7 +178,18 @@
                     <i class="icon-home"></i>
                     <span>Home</span>
                 </a>
-            </li>            
+            </li>   
+              <li>
+                <a class="dropdown-toggle" href="#">
+                    <i class="icon-star"></i>
+                    <span>Favorito</span>
+                    <i class="icon-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li>   @Html.ActionLink("Meus Favoritos", "ListarDispositivo", "DispositivosFavoritos")</li>
+         
+                </ul>
+            </li>         
              <li>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-signal"></i>
@@ -203,6 +214,7 @@
          
                 </ul>
             </li>
+                 
            <li>
                 <a class="dropdown-toggle" href="#">
                  
@@ -222,9 +234,6 @@
                 </a>
                 <ul class="submenu">
                     <li>@Html.ActionLink("Residência", "ListarResidencia", "Residencia")</li>
-                     <li>@Html.ActionLink("Tipo de Porta", "ListarTipoPorta", "TipoPorta")</li>
-                    <li>@Html.ActionLink("Modulo", "ListarModulo", "Modulo")</li>
-                    <li>@Html.ActionLink("Porta do Modulo", "ListarPortaModulo", "PortaModulo")</li>
                     <li>@Html.ActionLink("Dispositivo", "ListarDispositivo", "Dispositivo")</li>
                    <li>@Html.ActionLink("Ambiente", "ListarAmbiente", "Ambiente")</li>
                    
@@ -237,13 +246,13 @@
                     <i class="icon-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                    <li>  #</li>
+                     <li>@Html.ActionLink("Tipo de Porta", "ListarTipoPorta", "TipoPorta")</li>
+                    <li>@Html.ActionLink("Modulo", "ListarModulo", "Modulo")</li>
+                    <li>@Html.ActionLink("Porta do Modulo", "ListarPortaModulo", "PortaModulo")</li>
          
                 </ul>
             </li>
             <li>
-           
-
             <li>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-off"></i>
@@ -251,7 +260,7 @@
                     <i class="icon-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                    <li>   @Html.ActionLink("Deseja sair?", "Login")</li>
+                    <li>@Html.ActionLink("Deseja sair?", "Login")</li>
           
                 </ul>
             </li>
@@ -264,18 +273,20 @@
     <div class="content">
         
         <!-- settings changer -->
-        <div class="skins-nav">
+      @*  <div class="skins-nav">
             <a href="#" class="skin first_nav selected">
                 <span class="icon"></span><span class="text">Default</span>
             </a>
-            <a href="#" class="skin second_nav" data-file="css/compiled/skins/dark.css">
+            <a href="#" class="skin second_nav" data-file="~/css/dark.css">
                 <span class="icon"></span><span class="text">Dark skin</span>
             </a>
-        </div>
-        
+        </div>*@
+       
         <div id="pad-wrapper">
             
            @RenderBody()
+            
+           
         </div>
     </div>
     <!-- end main container -->
@@ -284,10 +295,12 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/theme.js"></script>
-    <script src="../docs/lib/js/jquery.min.js"></script>
-    <script src="../docs/lib/js/highlight.js"></script>
-    <script src="../dist/js/bootstrap-switch.js"></script>
-    <script src="../docs/index.js"></script>
+
+    <script src="../Scripts/bootstrap-switch.js"></script> 
+    <script src="../Scripts/index.js"></script>
+    <script src="../Scripts/highlight.js"></script>
+    <script src="../Scripts/jquery.min.js"></script>
+
 
          @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)

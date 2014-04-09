@@ -4,33 +4,35 @@
     ViewBag.Title = "ListarDispositivo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+ <legend>FAVORITOS</legend>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Criar novo", "Create")
 </p>
 <table id="Grid" class="table table-bordered">
     <tr>
+        <td>
+            FAVORITO  
+
+        </td>
         <th>
-            @Html.DisplayNameFor(model => model.Descricao)
+            DESCRIÇÃO
         </th>
         <th>
-            Ligar e Desligar
+            STATUS
         </th>
        
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+          <td> <div id="divImagem"> <img src="~/Images/estrela.png" /></div></td>
         <td>
             @Html.DisplayFor(modelItem => item.Descricao)
         </td>
-        
-  
-       
        <td>
           
-    <li><label><input type="checkbox"  onclick="mundarStatusDispositivo(@item.Chave);" id="@item.Chave" value="@(item.Desativado)"/>@item.Desativado</label></li>
-
+        <li><label><input type="checkbox"  onclick="mundarStatusDispositivo(@item.Chave);" 
+            id="@item.Chave" value="@(item.Desativado)"/>@item.Desativado</label></li>
 
        </td>
         
@@ -41,12 +43,15 @@
     function mundarStatusDispositivo(value) {
         alert(value);
         $.ajax({
-            url: '@Url.Action("DispositivosFavoritosController", "EditarStatus")',
-             contentType: "application/json; charset=utf-8",
-             data: { value: "dealerID" },
-             success: successFunc,
-             error: errorFunc
-         });
+            url: '@Url.Action("EditarStatus", "DispositivosFavoritosController")',
+            dataType: 'html',
+            data: { chave : value, status: $("#" + value).val()  },
+            success: function(){
+
+            },
+            error: function(){
+            }
+        });
 
     }
 

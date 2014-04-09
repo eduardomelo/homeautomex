@@ -32,6 +32,7 @@ namespace HomeAutomex.Models
       //  [Required(ErrorMessage = "Digite a número da sua resindência!"), Column(Order = 1)]
         //[MinLength(1, ErrorMessage = "Número: O tamanho mínimo do número da residência é de um caractere!")] NÃO É NECESSÁRIO ESSE CAMPO, VISTO QUE 
       //  [StringLength(5, ErrorMessage = "O tamanho máximo do número da residência é de 5 caracteres.")]
+        [Display(Name = "Número")]
         public string Numero { get; set; }
 
        

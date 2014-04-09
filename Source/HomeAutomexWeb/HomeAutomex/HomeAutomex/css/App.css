@@ -3,20 +3,7 @@
 height:30px;
 width:210px;
 }
-.myCheckbox input {
-    display: none;
-}
 
-.myCheckbox span {
-    width: 20px;
-    height: 20px;
-    display: block;
-    background: url("link_to_image");
-}
-
-.myCheckbox input:checked + span {
-    background: url("link_to_another_image");
-}
 
 h1,
 h2,

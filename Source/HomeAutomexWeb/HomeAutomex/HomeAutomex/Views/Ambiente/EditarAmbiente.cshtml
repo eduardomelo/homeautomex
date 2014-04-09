@@ -25,8 +25,6 @@
        @Html.DropDownList("residencia", ViewBag.Residencias as List<SelectListItem>, new { @class = "input" })
         </div>
         <br /> 
-      
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Descricao)
         </div>
@@ -34,9 +32,6 @@
             @Html.EditorFor(model => model.Descricao)
             @Html.ValidationMessageFor(model => model.Descricao)
         </div>
-
-       
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Desativado)
         </div>
@@ -45,7 +40,6 @@
             @Html.ValidationMessageFor(model => model.Desativado)
         </div>
         <br />
-
         <p>
             <input type="submit" value="Editar" class="btn-glow primary login" />
         </p>

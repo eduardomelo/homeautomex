@@ -35,9 +35,9 @@ namespace HomeAutomex.Controllers
 
         }
         [HttpPost]
-        public ActionResult EditarStatus(int chave, bool status) {
-
-            return View();
+        public void EditarStatus(int chave, bool status)
+        {
+            //Fazer a lógica aqui
         }
     
       
