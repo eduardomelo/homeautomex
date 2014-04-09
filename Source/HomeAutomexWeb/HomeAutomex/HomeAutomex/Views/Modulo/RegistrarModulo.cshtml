@@ -9,10 +9,12 @@
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
     <fieldset>
-        <legend>Registrar</legend>
-         
+        <legend>Registrar modulo</legend>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.Residencia)
+        </div> 
       <div class="editor-label"> 
-       @Html.DropDownList("residencia",ViewBag.Residencias as List<SelectListItem>)
+       @Html.DropDownList("residencia",ViewBag.Residencias as List<SelectListItem>, new { @class = "input" })
         </div>
         <br /> 
             
@@ -55,7 +57,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "ListarModulo")
 </div>
 
 @section Scripts {

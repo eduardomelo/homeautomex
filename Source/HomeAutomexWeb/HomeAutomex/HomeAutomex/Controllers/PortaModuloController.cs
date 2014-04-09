@@ -107,7 +107,7 @@ namespace HomeAutomex.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("ListarPortaModulo", "Modulo");
+                        return RedirectToAction("ListarPortaModulo", "PortaModulo");
                     }
                 }
                 catch (MembershipCreateUserException e)

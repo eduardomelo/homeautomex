@@ -11,14 +11,19 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>AmbienteModel</legend>
-
+        <legend>Registar Ambiente</legend>
+          <div class="editor-label">
+            @Html.LabelFor(model => model.Dispositivo)
+        </div>
          <div class="editor-label"> 
-       @Html.DropDownList("dispositivo",ViewBag.Dispositivo as List<SelectListItem>)
+       @Html.DropDownList("dispositivo",ViewBag.Dispositivo as List<SelectListItem>, new { @class="input"})
         </div>
         <br /> 
+          <div class="editor-label">
+            @Html.LabelFor(model => model.Residencia)
+        </div>
          <div class="editor-label"> 
-       @Html.DropDownList("residencia",ViewBag.Residencias as List<SelectListItem>)
+       @Html.DropDownList("residencia", ViewBag.Residencias as List<SelectListItem>, new { @class = "input" })
         </div>
         <br /> 
 
@@ -37,15 +42,16 @@
             @Html.EditorFor(model => model.Desativado)
             @Html.ValidationMessageFor(model => model.Desativado)
         </div>
+        <br />
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Registar" class="btn-glow primary login" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "ListarAmbiente")
 </div>
 
 @section Scripts {

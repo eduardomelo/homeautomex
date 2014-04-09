@@ -13,12 +13,18 @@
 
     <fieldset>
         <legend>Editar Porta do Modulo</legend>
-       <div class="editor-label">
-       @Html.DropDownList("tipoPorta",ViewBag.TipoPorta as List<SelectListItem>)
+                <div class="editor-label">
+            @Html.LabelFor(model => model.TipoPorta)
+        </div>
+        <div class="editor-label">
+       @Html.DropDownList("tipoPorta",ViewBag.TipoPorta as List<SelectListItem>, new { @class = "input"})
         </div>
         <br /> 
+         <div class="editor-label">
+            @Html.LabelFor(model => model.Modulo)
+        </div>
         <div class="editor-label">
-       @Html.DropDownList("modulo",ViewBag.Modulo as List<SelectListItem>)
+       @Html.DropDownList("modulo",ViewBag.Modulo as List<SelectListItem>, new { @class = "input"})
         </div>
         <br /> 
         <div class="editor-label">
@@ -48,13 +54,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Editar" class="btn-glow primary login" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "ListarPortaModulo" )
 </div>
 
 @section Scripts {

@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Editar</h2>
+
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary()
 
     <fieldset>
-        <legend>UsuarioModel</legend>
+        <legend>Editar Usuário</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Login)
@@ -69,13 +69,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Editar" class="btn-glow primary login"/>
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "ListarUsuario")
 </div>
 
 @section Scripts {

@@ -12,10 +12,13 @@
     <fieldset>
         <legend>Editar Dispositivo</legend>
           
-        <div>
-         @Html.DropDownList("portaModulo",ViewBag.PortaModulo as List<SelectListItem>)
+         <div class="editor-label">
+            @Html.LabelFor(model => model.PortaModulo)
         </div>
-        <br />
+        <div>
+         @Html.DropDownList("portaModulo",ViewBag.PortaModulo as List<SelectListItem>, new { @class="input" })
+        </div>
+        <br /> 
         
         <div class="editor-label">
             @Html.LabelFor(model => model.Descricao)

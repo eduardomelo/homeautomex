@@ -15,8 +15,10 @@
     <fieldset>
         <legend>Editar Modulo</legend>
            <div class="editor-label">
-       
-       @Html.DropDownList("residencia",ViewBag.Residencias as List<SelectListItem>)
+       <div class="editor-label">
+            @Html.LabelFor(model => model.Residencia)
+        </div>
+       @Html.DropDownList("residencia",ViewBag.Residencias as List<SelectListItem>, new { @class = "input"})
         </div>
         <br /> 
         <div class="editor-label">

@@ -11,13 +11,18 @@
 
     <fieldset>
         <legend>Registrar Porta do modulo</legend>
-
+         <div class="editor-label">
+            @Html.LabelFor(model => model.TipoPorta)
+        </div>
         <div class="editor-label">
-       @Html.DropDownList("tipoPorta",ViewBag.TipoPorta as List<SelectListItem>)
+       @Html.DropDownList("tipoPorta",ViewBag.TipoPorta as List<SelectListItem>, new { @class = "input"})
         </div>
         <br /> 
+         <div class="editor-label">
+            @Html.LabelFor(model => model.Modulo)
+        </div>
         <div class="editor-label">
-       @Html.DropDownList("modulo",ViewBag.Modulo as List<SelectListItem>)
+       @Html.DropDownList("modulo",ViewBag.Modulo as List<SelectListItem>, new { @class = "input"})
         </div>
         <br /> 
 
@@ -40,13 +45,13 @@
         
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Registrar"  class="btn-glow primary login"/>
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "ListarPortaModulo")
 </div>
 
 @section Scripts {
