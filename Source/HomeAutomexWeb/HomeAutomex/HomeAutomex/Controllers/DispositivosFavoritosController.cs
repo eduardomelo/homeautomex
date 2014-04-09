@@ -34,11 +34,13 @@ namespace HomeAutomex.Controllers
             return View();
 
         }
+        [HttpPost]
         public ActionResult EditarStatus(int chave, bool status) {
 
             return View();
         }
-
+    
+      
 
     }
 }

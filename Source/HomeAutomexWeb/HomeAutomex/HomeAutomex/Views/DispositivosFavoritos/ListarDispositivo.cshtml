@@ -5,8 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ListarDispositivo</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -15,11 +13,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Descricao)
         </th>
-       
-        
- 
-        
-       
         <th>
             Ligar e Desligar
         </th>
@@ -36,7 +29,7 @@
        
        <td>
           
-    <li><label><input type="checkbox" class="clink" id="@item.Chave" value="@(item.Desativado)"/>@item.Desativado</label></li>
+    <li><label><input type="checkbox"  onclick="mundarStatusDispositivo(@item.Chave);" id="@item.Chave" value="@(item.Desativado)"/>@item.Desativado</label></li>
 
 
        </td>
@@ -45,14 +38,17 @@
 }
 </table>
 <script>
-  $('.clink').change(function() {
-    $.ajax({
-      url:'@Url.Action("EditarStatus")',
-        data: { chave: 1, status: $(this).val() },
-        type: 'POST',
-        success: function () {
-            alert("foi");
-        }
-    });
-  });
+    function mundarStatusDispositivo(value) {
+        alert(value);
+        $.ajax({
+            url: '@Url.Action("DispositivosFavoritosController", "EditarStatus")',
+             contentType: "application/json; charset=utf-8",
+             data: { value: "dealerID" },
+             success: successFunc,
+             error: errorFunc
+         });
+
+    }
+
+
 </script>
