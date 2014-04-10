@@ -25,8 +25,8 @@ namespace HomeAutomexWebApplication
         private Fachada fachada;
         private UTDispositivo utDispositivo;
         private Log log;
-   
         public HomeAutomexWS() {
+            
             this.log = new Log();
             this.utDispositivo = new UTDispositivo();
             this.fachada = new Fachada();
@@ -353,10 +353,19 @@ namespace HomeAutomexWebApplication
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosDispositivo()
         {
-            log.Descricao = "Usuario consultou um todos os dispositivos ";
+            log.Descricao = "Usuario consultou um todos os dispositivos";
             var retornoLog = fachada.InserirLog(log);
             return JsonConvert.SerializeObject(fachada.ConsultarTodosDispositivo());
         }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsutarTodosDispositivoFavorito()
+        {
+            log.Descricao = "Usuario consultou um todos os dispositivos";
+            var retornoLog = fachada.InserirLog(log);
+            return JsonConvert.SerializeObject(fachada.ConsutarTodosDispositivoFavorito());
+        }
+
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string BuscarDispositivoPorChave(string jChave)
@@ -365,16 +374,23 @@ namespace HomeAutomexWebApplication
             var dispositivo = fachada.BuscarDispositivoPorChave(chave);
             return JsonConvert.SerializeObject(dispositivo);
         }
+      
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string AlterarDispositivo(string jDispositivo)
         {
             var dispositivo = JsonConvert.DeserializeObject<Dispositivo>(jDispositivo);
+  
+            // Registrar log.
             log.Descricao = "Usuario alterou um dispositivo " + dispositivo.Descricao;
             var retornoLog = fachada.InserirLog(log);
+
+            // Registrar log de uso.
             utDispositivo.Cd_dispositivo = dispositivo.Chave;
             utDispositivo.status = dispositivo.Status;
             fachada.InserirUTDispositivo(utDispositivo);
+
+            // Alterar registro.
             var retorno = fachada.AlterarDispositivo(dispositivo);
             return retorno;
         }
@@ -385,9 +401,14 @@ namespace HomeAutomexWebApplication
             int chave = JsonConvert.DeserializeObject<int>(jChave);
             log.Descricao = "Usuario excluiu um dispositivo " + jChave;
             var retornoLog = fachada.InserirLog(log);
-            var dispositivo = fachada.RemoverDispositivoPorChave(chave);
+
+            var dispositivo = fachada.BuscarDispositivoPorChave(chave);
+            this.fachada.RemoverAmbientePorChaveEstrageira(dispositivo.Chave);
+
+            fachada.RemoverDispositivoPorChave(chave);
             return JsonConvert.SerializeObject("Dispositivo removido com sucesso");
         }
+      
         #endregion
 
         #region Ambiente
@@ -443,6 +464,10 @@ namespace HomeAutomexWebApplication
 
         #endregion
 
+
+
+
+
         //[WebMethod]
         //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         //public string StatusArduino()
@@ -468,6 +493,19 @@ namespace HomeAutomexWebApplication
         //{
         //    var dispositivos = JsonConvert.DeserializeObject<List<DispositivoTeste>>(jDispositivos);
         //    return this.fachada.MudarStatusArduino(dispositivos);
+        //}
+
+
+
+        //[WebMethod]
+        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        //public string AlterarStatusDispositivo(string jDispositivo)
+        //{
+        //    DispositivoRepositorio repositorioDispositivo = new DispositivoRepositorio(context);
+        //    var dispositivo = JsonConvert.DeserializeObject<Dispositivo>(jDispositivo);
+        //    repositorioDispositivo.AlterarStatus(dispositivo);
+        //    return "Status Alterado com sucesso!";
+
         //}
     }
 }
