@@ -24,5 +24,12 @@ namespace HomeAutomexLibrary.Repositorio
         {
             return base.Consultar(e => e.Descricao.Contains(Descricao));
         }
+
+
+        //public void AlterarStatus(Dispositivo dispositivo)
+        //{
+        //    Context.Database.ExecuteSqlCommand("UPDATE DISPOSITIVO SET DS_DESCRICAO = '"+dispositivo.Desativado+"' WHERE CD_DISPOSITIVO ="+ dispositivo.Chave+"");
+
+        //}
     }
 }

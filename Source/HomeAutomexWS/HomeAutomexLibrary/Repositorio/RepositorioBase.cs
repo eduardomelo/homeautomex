@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HomeAutomexLibrary.Repositorio.Database;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 
 namespace HomeAutomexLibrary.Repositorio
 {
@@ -43,14 +44,14 @@ namespace HomeAutomexLibrary.Repositorio
                 entidade.DataExclusao = DateTime.Now;
                 Entidades.Remove(entidade);
             }
-
+     
             public void RemoverPorChave(TChave chave)
             {
                 TEntidade entidade = BuscarPorChave(chave);
                 entidade.DataExclusao = DateTime.Now;
                 Entidades.Remove(entidade);
             }
-
+           
             public void Inserir(TEntidade entidade)
             {
                 entidade.DataCadastro = DateTime.Now;
@@ -64,6 +65,7 @@ namespace HomeAutomexLibrary.Repositorio
                 Context.Entry(entidade).State = EntityState.Modified;
             }
 
+          
             public IEnumerable<TEntidade> Consultar(Expression<Func<TEntidade, bool>> criterios)
             {
                 return Entidades.Where(criterios);

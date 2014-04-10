@@ -16,6 +16,8 @@ namespace HomeAutomexLibrary.Entidade
         public bool Status { get; set; }
         public int PortaModulo { get; set; }
 
+        public bool Favorito { get; set; }
+
        
     }
 

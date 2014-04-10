@@ -11,15 +11,16 @@ namespace HomeAutomexLibrary.Negocio
 {
     public class AmbienteNegocio : NegocioBase<Ambiente, int>
     {
+        
+
+        private AmbienteRepositorio ambienteRepositorio;
         private DatabaseContext contexto;
 
-        public AmbienteNegocio()
-            //: base(new AmbienteRepositorio(new DatabaseContext()))
-
+        public AmbienteNegocio(DatabaseContext contexto)
         {
-            this.contexto = new DatabaseContext();
-
-
+            this.contexto = contexto;
+            ambienteRepositorio = new AmbienteRepositorio(contexto);
+           
         }
 
         public string InserirAmbiente(Ambiente ambiente)
@@ -77,6 +78,12 @@ namespace HomeAutomexLibrary.Negocio
             return base.ConsultarTodos().ToList();
         }
 
+
+        
+        public void RemoverAmbientePorChaveEstrageira(int chave) {
+
+          this.ambienteRepositorio.RemoverDispositivoPorChave(chave);
+        }
 
     }
 }

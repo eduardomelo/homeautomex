@@ -35,7 +35,6 @@ namespace HomeAutomexLibrary.Negocio
             }
 
             residencia.Usuarios = usuarios;
-
             residenciaRepositorio.Inserir(residencia);
 
             try

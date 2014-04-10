@@ -28,7 +28,7 @@ namespace HomeAutomexLibrary.Fachada
             this.usuarioNegocio = new UsuarioNegocio();
             this.residenciaNegocio = new ResidenciaNegocio(contexto);
             this.moduloNegocio = new ModuloNegocio();
-            this.ambienteNegocio = new AmbienteNegocio();
+            this.ambienteNegocio = new AmbienteNegocio(contexto);
             this.tipoPortaNegocio = new TipoPortaNeogocio();
             this.portaModuloNegocio = new PortaModuloNegocio();
             this.dispositivoNegocio = new DispositivoNegocio();
@@ -47,6 +47,8 @@ namespace HomeAutomexLibrary.Fachada
             return instancia;
         }
 
+
+        #region Log
         public string InserirLog(Log log) 
         {
             return this.logNegocio.InserirLog(log);   
@@ -55,7 +57,11 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.logNegocio.ConsultarTodosLog();
         }
+        #endregion
 
+
+
+        #region UTDispositivo
         public string InserirUTDispositivo(UTDispositivo utDispositivo)
         {
             return this.utDispositivoNegocio.InserirUTDispositivo(utDispositivo);
@@ -68,8 +74,15 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.utDispositivoNegocio.ConsultarTodosUTDispositivo();
         }
-        // Requisições do objeto usuário
+        #endregion
+
+        
+
         #region Usuário
+        public Usuario Logar(Usuario usuario)
+        {
+            return this.usuarioNegocio.Logar(usuario);
+        }
         public string InserirUsuario(Usuario usuario)
         {
             return this.usuarioNegocio.Inserir(usuario);
@@ -99,6 +112,9 @@ namespace HomeAutomexLibrary.Fachada
             return this.usuarioNegocio.ExisteUsuario(usuario);
         }
         #endregion
+
+
+
         #region Residência
         // Requisições da Residencia
         public string InserirResidencia(Residencia residencia)
@@ -126,6 +142,10 @@ namespace HomeAutomexLibrary.Fachada
             return this.residenciaNegocio.BuscarPorUsuarioChave(chave);
         }
         #endregion
+
+
+
+        #region Modulo
         // Modulo
         public string InserirModulo(Modulo modulo)
         {
@@ -147,7 +167,11 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.moduloNegocio.RemoverModuloPorChave(chave);
         }
+        #endregion
 
+
+
+        #region Tipo de Porta
         // Tipo Porta
         public string InserirTipoPorta(TipoPorta tipoPorta)
         {
@@ -170,6 +194,11 @@ namespace HomeAutomexLibrary.Fachada
             return this.tipoPortaNegocio.RemoverTipoPortaPorChave(chave);
         }
 
+            #endregion
+
+
+
+        #region Porta do Modulo
         //  Porta modulo
         public string InserirPortaModulo(PortaModulo tipoPorta)
         {
@@ -191,8 +220,12 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.portaModuloNegocio.RemoverPortaModuloPorChave(chave);
         }
+        #endregion
 
-        // Dispositivo
+
+
+
+        #region Dispositivo
         public string InserirDispositivo(Dispositivo dispositivo)
         {
             return this.dispositivoNegocio.InserirDispositivo(dispositivo);
@@ -200,6 +233,10 @@ namespace HomeAutomexLibrary.Fachada
         public List<Dispositivo> ConsultarTodosDispositivo()
         {
             return this.dispositivoNegocio.ConsultarTodosDispositivo();
+        }
+        public List<Dispositivo> ConsutarTodosDispositivoFavorito()
+        {
+            return this.dispositivoNegocio.ConsutarTodosDispositivoFavorito();
         }
         public string AlterarDispositivo(Dispositivo dispositivo)
         {
@@ -209,11 +246,22 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.dispositivoNegocio.BuscarPorChave(chave);
         }
+
         public string RemoverDispositivoPorChave(int chave)
         {
             return this.dispositivoNegocio.RemoverDispositivoPorChave(chave);
         }
 
+        //public string AlterarStatus(Dispositivo dispositivo)
+        //{
+        //    return this.dispositivoNegocio.AlterarStatus(dispositivo);
+        //}
+        #endregion
+
+
+
+
+        #region Ambiente
         // Ambiente
         public string InserirAmbiente(Ambiente ambiente)
         {
@@ -235,20 +283,32 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.ambienteNegocio.RemoverAmbientePorChave(chave);
         }
-
-        public Usuario Logar(Usuario usuario)
+        public void RemoverAmbientePorChaveEstrageira(int chave)
         {
-            return this.usuarioNegocio.Logar(usuario);
+            this.ambienteNegocio.RemoverAmbientePorChaveEstrageira(chave);
         }
+        #endregion
+
+
+
+
+
+
+
+
 
         //public string StatusArduino()
         //{
         //    return this.residenciaNegocio.StatusArduino();
         //}
 
-        //public string MudarStatusArduino(List<DispositivoTeste> dispositivos)
+        //public string MudarStatusDispositivo(List<Dispositivo> dispositivos)
         //{
-        //    return this.residenciaNegocio.MudarStatusArduino(dispositivos);
+        //    return this.dispositivoNegocio.MudarStatusDispositivo(dispositivos);
         //}
+
+      
+
+
     }
 }

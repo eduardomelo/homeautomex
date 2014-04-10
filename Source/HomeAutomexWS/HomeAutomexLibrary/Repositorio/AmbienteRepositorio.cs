@@ -14,7 +14,6 @@ namespace HomeAutomexLibrary.Repositorio
             : base(contexto)
         { }
 
-
         /// <summary>
         /// Exemplo
         /// </summary>
@@ -23,6 +22,11 @@ namespace HomeAutomexLibrary.Repositorio
         public IEnumerable<Ambiente> BuscarPorDescricao(string Descricao)
         {
             return base.Consultar(e => e.Descricao.Contains(Descricao));
+        }
+        public void RemoverDispositivoPorChave(int chave)
+        {
+            Context.Database.ExecuteSqlCommand("DELETE FROM AMBIENTE WHERE CD_DISPOSITIVO = {0}", chave);
+
         }
     }
 }

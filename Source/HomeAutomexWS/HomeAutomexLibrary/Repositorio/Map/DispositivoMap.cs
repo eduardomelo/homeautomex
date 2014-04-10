@@ -27,7 +27,8 @@ namespace HomeAutomexLibrary.Repositorio.Map
             Property(e => e.DataExclusao).HasColumnName("DT_EXCLUSAO");
             Property(e => e.Desativado).HasColumnName("IS_DESATIVADO");
             Property(e => e.Status).HasColumnName("STATUS");
-
+            Property(e => e.Favorito).HasColumnName("FAVORITO");
+ 
         
         }
 
