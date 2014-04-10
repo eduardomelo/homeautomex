@@ -43,6 +43,9 @@
         <th>
             @Html.DisplayNameFor(model => model.PortaModulo)
         </th>
+         <th>
+            @Html.DisplayNameFor(model => model.Favorito)
+        </th>
         <th>
             Opções
         </th>
@@ -70,6 +73,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PortaModulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Favorito)
         </td>
         <td>
              @Html.ActionLink("Editar", "EditarDispositivo", new { chave = item.Chave }) |

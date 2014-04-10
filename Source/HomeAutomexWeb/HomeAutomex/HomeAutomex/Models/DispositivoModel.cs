@@ -10,9 +10,6 @@ namespace HomeAutomex.Models
     public class DispositivoModel : BaseModel
     {
         [Display(Name = "Descrição")]
-        [Required(ErrorMessage = "Digite uma descrição do seu Dispositivo."), Column(Order = 1)]
-        [MinLength(3, ErrorMessage = "Descrição: O tamanho mínimo do nome são 3 caracteres.")]
-        [StringLength(200, ErrorMessage = "Descrição: O tamanho máximo são 200 caracteres.")]
         public string Descricao { get; set; }
 
 
@@ -34,5 +31,8 @@ namespace HomeAutomex.Models
 
          [Display(Name = "Porta do Modulo")]
         public int PortaModulo { get; set; }
+
+         [Display(Name = "Favorito")]
+         public bool Favorito { get; set; }
     }
 }

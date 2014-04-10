@@ -24,6 +24,7 @@ namespace HomeAutomex.Controllers
             ViewBag.Residencias = GetDropDownResidencia();
             return View();
         }
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -54,18 +55,24 @@ namespace HomeAutomex.Controllers
             ViewBag.Residencias = GetDropDownResidencia();
             return View(model);
         }
+
+
         [AllowAnonymous]
         public ActionResult DeleteModulo(int chave)
         {
             var retorno = JsonConvert.DeserializeObject(webService.ExcluirModulo(chave.ToString()));
             return RedirectToAction("ListarModulo", "Modulo");
         }
+
+
         public ActionResult EditarModulo(int chave)
         {
             ViewBag.Residencias = GetDropDownResidencia();
             var modulo = JsonConvert.DeserializeObject<ModuloModel>(webService.BuscarModuloPorChave(chave.ToString()));
             return View(modulo);
         }
+
+
         [HttpPost]
         [AllowAnonymous]
         public ActionResult EditarModulo(ModuloModel model)
@@ -96,6 +103,8 @@ namespace HomeAutomex.Controllers
             
             return View(model);
         }
+
+
         public List<SelectListItem> GetDropDownResidencia()
         {
             var lista = new List<SelectListItem>();
@@ -107,6 +116,8 @@ namespace HomeAutomex.Controllers
             }
             return lista;
         }
+
+
 
         public ActionResult ListarModulo(string pesquisa)
         {

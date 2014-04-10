@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HomeAutomex.Models.DispositivoModel>
+﻿@model List<HomeAutomex.Models.DispositivoModel>
 
 @{
     ViewBag.Title = "ListarDispositivo";
@@ -23,37 +23,44 @@
        
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr>
           <td> <div id="divImagem"> <img src="~/Images/estrela.png" /></div></td>
         <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
+            @Html.DisplayFor(e => e[i].Descricao)
         </td>
        <td>
           
-        <li><label><input type="checkbox"  onclick="mundarStatusDispositivo(@item.Chave);" 
-            id="@item.Chave" value="@(item.Desativado)"/>@item.Desativado</label></li>
+        <li>
+          @Html.CheckBoxFor(e => e[i].Status, new { id = Model[i].Chave ,   @class="input" })
+        </li>
 
        </td>
         
     </tr>
-}
-</table>
-<script>
-    function mundarStatusDispositivo(value) {
-        alert(value);
-        $.ajax({
-            url: '@Url.Action("EditarStatus", "DispositivosFavoritosController")',
-            dataType: 'html',
-            data: { chave : value, status: $("#" + value).val()  },
-            success: function(){
-
-            },
-            error: function(){
-            }
-        });
-
     }
-
-
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {       
+        $('input[type=checkbox]').change(function () {
+            var status;
+            if ($(this).is(':checked'))
+                status = true;
+            else
+                status = false
+            $.ajax({
+                url: '@Url.Action("EditarStatus", "DispositivosFavoritos")',
+                type: 'GET',
+                contentType: 'application/json',
+                data: { chave: $(this).attr('id'), status: status },
+                success: function () {
+                    console.log("sucesso!");
+                },
+                error: function (data) {
+                    console.log(data.e);
+                }
+            });
+        });
+    });    
 </script>

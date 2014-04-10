@@ -16,6 +16,7 @@ namespace HomeAutomex.Controllers
         // GET: /Dispositivo/
 
         private HomeAutomexWSSoapClient webService;
+
         public DispositivoController()
         {
             this.webService = new HomeAutomexWSSoapClient();
@@ -68,11 +69,11 @@ namespace HomeAutomex.Controllers
             ViewBag.PortaModulo = GetDropDownPortaModulo();
             return View(model);
         }
+
         [HttpPost]
         [AllowAnonymous]
         public ActionResult EditarDispositivo(DispositivoModel model, int portaModulo)
         {
-
             if (ModelState.IsValid)
             {
                 try
@@ -94,24 +95,27 @@ namespace HomeAutomex.Controllers
                 {
                     ModelState.AddModelError("", e);
                 }
-
             }
-
             return View(model);
         }
+
         [AllowAnonymous]
         public ActionResult DeleteDispositivo(int chave)
         {
             var retorno = JsonConvert.DeserializeObject(webService.ExcluirDispositivo(chave.ToString()));
             return RedirectToAction("ListarDispositivo", "Dispositivo");
         }
+
+
         public ActionResult EditarDispositivo(int chave)
         {
             ViewBag.PortaModulo = GetDropDownPortaModulo();
             var dispositivo = JsonConvert.DeserializeObject<DispositivoModel>(webService.BuscarDispositivoPorChave(chave.ToString()));
             return View(dispositivo);
         }
-          public ActionResult ListarDispositivo(string pesquisa)
+
+
+        public ActionResult ListarDispositivo(string pesquisa)
           {
               if (ModelState.IsValid)
               {

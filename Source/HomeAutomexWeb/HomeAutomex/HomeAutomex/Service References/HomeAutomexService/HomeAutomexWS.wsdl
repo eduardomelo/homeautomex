@@ -82,6 +82,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="Logar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="InserirResidencia">
         <s:complexType>
           <s:sequence>
@@ -145,6 +159,20 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="ExcluirResidenciaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultarResidenciaPorUsuarioChave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultarResidenciaPorUsuarioChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultarResidenciaPorUsuarioChaveResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -370,6 +398,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ConsutarTodosDispositivoFavorito">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsutarTodosDispositivoFavoritoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosDispositivoFavoritoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="BuscarDispositivoPorChave">
         <s:complexType>
           <s:sequence>
@@ -516,6 +554,12 @@
   <wsdl:message name="ExistirUsuarioSoapOut">
     <wsdl:part name="parameters" element="tns:ExistirUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="LogarSoapIn">
+    <wsdl:part name="parameters" element="tns:Logar" />
+  </wsdl:message>
+  <wsdl:message name="LogarSoapOut">
+    <wsdl:part name="parameters" element="tns:LogarResponse" />
+  </wsdl:message>
   <wsdl:message name="InserirResidenciaSoapIn">
     <wsdl:part name="parameters" element="tns:InserirResidencia" />
   </wsdl:message>
@@ -545,6 +589,12 @@
   </wsdl:message>
   <wsdl:message name="ExcluirResidenciaSoapOut">
     <wsdl:part name="parameters" element="tns:ExcluirResidenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarResidenciaPorUsuarioChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultarResidenciaPorUsuarioChave" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarResidenciaPorUsuarioChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultarResidenciaPorUsuarioChaveResponse" />
   </wsdl:message>
   <wsdl:message name="InserirModuloSoapIn">
     <wsdl:part name="parameters" element="tns:InserirModulo" />
@@ -648,6 +698,12 @@
   <wsdl:message name="ConsutarTodosDispositivoSoapOut">
     <wsdl:part name="parameters" element="tns:ConsutarTodosDispositivoResponse" />
   </wsdl:message>
+  <wsdl:message name="ConsutarTodosDispositivoFavoritoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosDispositivoFavorito" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosDispositivoFavoritoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosDispositivoFavoritoResponse" />
+  </wsdl:message>
   <wsdl:message name="BuscarDispositivoPorChaveSoapIn">
     <wsdl:part name="parameters" element="tns:BuscarDispositivoPorChave" />
   </wsdl:message>
@@ -721,6 +777,10 @@
       <wsdl:input message="tns:ExistirUsuarioSoapIn" />
       <wsdl:output message="tns:ExistirUsuarioSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="Logar">
+      <wsdl:input message="tns:LogarSoapIn" />
+      <wsdl:output message="tns:LogarSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="InserirResidencia">
       <wsdl:input message="tns:InserirResidenciaSoapIn" />
       <wsdl:output message="tns:InserirResidenciaSoapOut" />
@@ -740,6 +800,10 @@
     <wsdl:operation name="ExcluirResidencia">
       <wsdl:input message="tns:ExcluirResidenciaSoapIn" />
       <wsdl:output message="tns:ExcluirResidenciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarResidenciaPorUsuarioChave">
+      <wsdl:input message="tns:ConsultarResidenciaPorUsuarioChaveSoapIn" />
+      <wsdl:output message="tns:ConsultarResidenciaPorUsuarioChaveSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="InserirModulo">
       <wsdl:input message="tns:InserirModuloSoapIn" />
@@ -808,6 +872,10 @@
     <wsdl:operation name="ConsutarTodosDispositivo">
       <wsdl:input message="tns:ConsutarTodosDispositivoSoapIn" />
       <wsdl:output message="tns:ConsutarTodosDispositivoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosDispositivoFavorito">
+      <wsdl:input message="tns:ConsutarTodosDispositivoFavoritoSoapIn" />
+      <wsdl:output message="tns:ConsutarTodosDispositivoFavoritoSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="BuscarDispositivoPorChave">
       <wsdl:input message="tns:BuscarDispositivoPorChaveSoapIn" />
@@ -898,6 +966,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Logar">
+      <soap:operation soapAction="http://tempuri.org/Logar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="InserirResidencia">
       <soap:operation soapAction="http://tempuri.org/InserirResidencia" style="document" />
       <wsdl:input>
@@ -936,6 +1013,15 @@
     </wsdl:operation>
     <wsdl:operation name="ExcluirResidencia">
       <soap:operation soapAction="http://tempuri.org/ExcluirResidencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarResidenciaPorUsuarioChave">
+      <soap:operation soapAction="http://tempuri.org/ConsultarResidenciaPorUsuarioChave" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1096,6 +1182,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosDispositivoFavorito">
+      <soap:operation soapAction="http://tempuri.org/ConsutarTodosDispositivoFavorito" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="BuscarDispositivoPorChave">
       <soap:operation soapAction="http://tempuri.org/BuscarDispositivoPorChave" style="document" />
       <wsdl:input>
@@ -1225,6 +1320,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Logar">
+      <soap12:operation soapAction="http://tempuri.org/Logar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="InserirResidencia">
       <soap12:operation soapAction="http://tempuri.org/InserirResidencia" style="document" />
       <wsdl:input>
@@ -1263,6 +1367,15 @@
     </wsdl:operation>
     <wsdl:operation name="ExcluirResidencia">
       <soap12:operation soapAction="http://tempuri.org/ExcluirResidencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarResidenciaPorUsuarioChave">
+      <soap12:operation soapAction="http://tempuri.org/ConsultarResidenciaPorUsuarioChave" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1416,6 +1529,15 @@
     </wsdl:operation>
     <wsdl:operation name="ConsutarTodosDispositivo">
       <soap12:operation soapAction="http://tempuri.org/ConsutarTodosDispositivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosDispositivoFavorito">
+      <soap12:operation soapAction="http://tempuri.org/ConsutarTodosDispositivoFavorito" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

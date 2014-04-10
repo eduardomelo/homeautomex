@@ -24,6 +24,8 @@ namespace HomeAutomex.Controllers
          {
              return View();
          }
+
+
          [HttpPost]
          [AllowAnonymous]
          [ValidateAntiForgeryToken]
@@ -56,11 +58,15 @@ namespace HomeAutomex.Controllers
              }
              return View(model);
          }
+
+
          public ActionResult EditarTipoPorta(int chave)
          {
              var tipoPorta = JsonConvert.DeserializeObject<TipoPortaModel>(webService.BuscarTipoPortaPorChave(chave.ToString()));
              return View(tipoPorta);
          }
+
+
          [HttpPost]
          [AllowAnonymous]
          public ActionResult EditarTipoPorta(TipoPortaModel model)
@@ -89,12 +95,16 @@ namespace HomeAutomex.Controllers
              }
              return View(model);
          }
+
+
          [AllowAnonymous]
          public ActionResult DeleteTipoPorta(int chave)
          {
              var retorno = JsonConvert.DeserializeObject(webService.ExcluirTipoPorta(chave.ToString()));
              return RedirectToAction("ListarTipoPorta", "TipoPorta");
          }
+
+
          [AllowAnonymous]
          public ActionResult ListarTipoPorta(string pesquisa)
          {

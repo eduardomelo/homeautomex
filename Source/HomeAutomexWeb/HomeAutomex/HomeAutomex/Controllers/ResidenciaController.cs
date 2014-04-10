@@ -22,6 +22,9 @@ namespace HomeAutomex.Controllers
         {
             return View();
         }
+
+
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -56,6 +59,8 @@ namespace HomeAutomex.Controllers
             var residencia = JsonConvert.DeserializeObject<ResidenciaModel>(webService.BuscarResidenciaPorChave(chave.ToString()));
             return View(residencia);
         }
+
+
         [HttpPost]
         [AllowAnonymous]
         public ActionResult EditarResidencia(ResidenciaModel model)
@@ -84,12 +89,16 @@ namespace HomeAutomex.Controllers
             }
             return View(model);
         }
+
+
         [AllowAnonymous]
         public ActionResult DeleteResidencia(int chave)
         {
             var retorno = JsonConvert.DeserializeObject(webService.ExcluirResidencia(chave.ToString()));
             return RedirectToAction("ListarResidencia", "Residencia");
         }
+
+
         [AllowAnonymous]
         public ActionResult ListarResidencia(string pesquisa)
         {

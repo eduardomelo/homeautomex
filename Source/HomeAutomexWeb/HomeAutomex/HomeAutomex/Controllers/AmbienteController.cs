@@ -49,6 +49,8 @@ namespace HomeAutomex.Controllers
             }
             return lista;
         }
+
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -82,6 +84,8 @@ namespace HomeAutomex.Controllers
             ViewBag.Residencia = GetDropDownResidencia();
             return View(model);
         }
+
+
         [HttpPost]
         [AllowAnonymous]
         public ActionResult EditarAmbiente(AmbienteModel model, int dispositivo, int residencia)
@@ -112,6 +116,9 @@ namespace HomeAutomex.Controllers
             }
             return View(model);
         }
+
+
+
         public ActionResult EditarAmbiente(int chave)
         {
             ViewBag.Dispositivo = GetDropDownDispositivo();
@@ -119,12 +126,17 @@ namespace HomeAutomex.Controllers
             var ambiente = JsonConvert.DeserializeObject<AmbienteModel>(webService.BuscarAmbientePorChave(chave.ToString()));
             return View(ambiente);
         }
+
+
         [AllowAnonymous]
         public ActionResult DeleteAmbiente(int chave)
         {
             var retorno = JsonConvert.DeserializeObject(webService.ExcluirAmbiente(chave.ToString()));
             return RedirectToAction("ListarAmbiente", "Ambiente");
         }
+
+
+
         public ActionResult ListarAmbiente(string pesquisa)
         {
             if (ModelState.IsValid)
