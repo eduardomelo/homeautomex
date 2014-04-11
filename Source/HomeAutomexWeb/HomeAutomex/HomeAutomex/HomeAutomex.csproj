@@ -243,6 +243,7 @@
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\layout.css" />
     <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -271,8 +272,10 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="css\App.css" />
     <Content Include="css\bootstrap-overrides.css" />
+    <Content Include="css\bootstrap-switch.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\css.css" />
+    <Content Include="css\dark.css" />
     <Content Include="css\elements.css" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\icons.css" />
@@ -280,24 +283,9 @@
     <Content Include="css\screen_preview.css" />
     <Content Include="css\signin.css" />
     <Content Include="css\tables.css" />
-    <Content Include="dist\css\bootstrap2\bootstrap-switch.css" />
-    <Content Include="dist\css\bootstrap2\bootstrap-switch.min.css" />
-    <Content Include="dist\css\bootstrap3\bootstrap-switch.css" />
-    <Content Include="dist\css\bootstrap3\bootstrap-switch.min.css" />
-    <Content Include="dist\js\bootstrap-switch.js" />
-    <Content Include="dist\js\bootstrap-switch.min.js" />
-    <Content Include="docs\bootstrap-switch.css" />
-    <Content Include="docs\bootstrap-switch.js" />
-    <Content Include="docs\index.css" />
-    <Content Include="docs\index.js" />
-    <Content Include="docs\lib\css\bootstrap.min.css" />
-    <Content Include="docs\lib\css\highlight.css" />
-    <Content Include="docs\lib\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="docs\lib\js\bootstrap.min.js" />
-    <Content Include="docs\lib\js\highlight.js" />
-    <Content Include="docs\lib\js\jquery.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\9866_128x128.png" />
     <Content Include="Images\contact-img.png" />
     <Content Include="Images\contact-img2.png" />
     <Content Include="Images\content_inner_bg.png" />
@@ -325,26 +313,25 @@
     <Content Include="Images\landscape.jpg" />
     <Content Include="Images\logo-white.png" />
     <Content Include="Images\__utm.gif" />
+    <Content Include="Scripts\bootstrap-switch.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\highlight.js" />
     <Content Include="Scripts\html5shiv.js" />
-    <Content Include="docs\index.jade" />
-    <Content Include="docs\lib\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="docs\lib\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="docs\lib\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-latest.js" />
     <Content Include="Scripts\jquery-migrate-1.2.1.js" />
     <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive-custom-for-bootstrap.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\theme.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
@@ -467,6 +454,12 @@
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.LogarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsultarResidenciaPorUsuarioChaveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosDispositivoFavoritoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
     <None Include="Service References\HomeAutomexService\configuration91.svcinfo" />
     <None Include="Service References\HomeAutomexService\configuration.svcinfo" />
@@ -539,16 +532,6 @@
     <Content Include="Views\Ambiente\ListarAmbiente.cshtml" />
     <Content Include="Views\Ambiente\EditarAmbiente.cshtml" />
     <Content Include="Views\DispositivosFavoritos\ListarDispositivo.cshtml" />
-    <Content Include="src\coffee\bootstrap-switch.coffee" />
-    <Content Include="src\less\bootstrap2\bootstrap-switch.less" />
-    <Content Include="src\less\bootstrap2\build.less" />
-    <Content Include="src\less\bootstrap2\mixins.less" />
-    <Content Include="src\less\bootstrap2\variables.less" />
-    <Content Include="src\less\bootstrap3\bootstrap-switch.less" />
-    <Content Include="src\less\bootstrap3\build.less" />
-    <Content Include="src\less\bootstrap3\mixins.less" />
-    <Content Include="src\less\bootstrap3\variables.less" />
-    <Content Include="src\test\bootstrap-switch.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

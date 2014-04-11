@@ -62,6 +62,36 @@ namespace HomeAutomex.Controllers
 
             }
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult EditarDispositivo(DispositivoModel model, int portaModulo)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var webService = new HomeAutomexWSSoapClient();
+                    model.PortaModulo = portaModulo;
+                    var dispositivo = JsonConvert.SerializeObject(model);
+                    var x = webService.AlterarDispositivo(dispositivo);
+                    if (x.StartsWith("Erro:"))
+                    {
+                        ModelState.AddModelError("WSErro", x);
+                    }
+                    else
+                    {
+                        return RedirectToAction("ListarDispositivo", "Dispositivo");
+                    }
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", e);
+                }
+            }
+            return View(model);
+        }
+
     }
     
 }

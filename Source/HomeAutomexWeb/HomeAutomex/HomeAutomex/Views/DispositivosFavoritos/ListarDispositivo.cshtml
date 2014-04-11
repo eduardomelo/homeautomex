@@ -4,25 +4,23 @@
     ViewBag.Title = "ListarDispositivo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- <legend>FAVORITOS</legend>
+
+ <legend>Favoritos</legend>
 <p>
     @Html.ActionLink("Criar novo", "Create")
 </p>
 <table id="Grid" class="table table-bordered">
     <tr>
         <td>
-            FAVORITO  
-
+            Favorito
         </td>
         <th>
-            DESCRIÇÃO
+            Descrição
         </th>
         <th>
-            STATUS
+            Status
         </th>
-       
     </tr>
-
     @for (int i = 0; i < Model.Count; i++)
     {
         <tr>
@@ -33,15 +31,23 @@
        <td>
           
         <li>
-          @Html.CheckBoxFor(e => e[i].Status, new { id = Model[i].Chave ,   @class="input" })
-        </li>
-
+       <label class="checkbox-switch"> 
+       @Html.CheckBoxFor(e => e[i].Status, new { id = Model[i].Chave })
+      <span class="checkbox-switch-inner">
+      <span class="checkbox-switch-on">ON</span>
+      <span class="checkbox-switch-off">OFF</span>
+      <span class="checkbox-switch-handle"></span>
+    </span>
+     </label>
+     </li>
        </td>
-        
     </tr>
     }
 </table>
+
+
 <script type="text/javascript">
+
     $(document).ready(function () {       
         $('input[type=checkbox]').change(function () {
             var status;
@@ -62,5 +68,5 @@
                 }
             });
         });
-    });    
+    });
 </script>

@@ -1,6 +1,4 @@
-﻿
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -19,6 +17,8 @@
     <link href="~/css/bootstrap.css" rel="stylesheet" />
     <link href="~/css/bootstrap-overrides.css" rel="stylesheet" />
 
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/bootstrap-switch.css" rel="stylesheet">
     
 
     <!-- global styles -->
@@ -155,7 +155,7 @@
                 </ul>
             </li>
             <li class="settings hidden-xs hidden-sm">
-                <a href="personal-info.html" role="button">
+                <a href="#" role="button">
                     <i class="icon-cog"></i>
                 </a>
             </li>
@@ -174,7 +174,7 @@
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
                 </div>
-                <a href="../View/Home.aspx">
+                <a href="#">
                     <i class="icon-home"></i>
                     <span>Home</span>
                 </a>
@@ -184,7 +184,7 @@
                     <i class="icon-star"></i>
                     <span>Favorito</span>
                     <i class="icon-chevron-down"></i>
-                </a>
+                </a>    
                 <ul class="submenu">
                     <li>   @Html.ActionLink("Meus Favoritos", "ListarDispositivo", "DispositivosFavoritos")</li>
          
@@ -285,24 +285,18 @@
         <div id="pad-wrapper">
             
            @RenderBody()
-            
+   
            
         </div>
     </div>
     <!-- end main container -->
 
 	<!-- scripts -->
+    @RenderSection("scripts", required: false)
+
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/theme.js"></script>
 
-    <script src="../Scripts/bootstrap-switch.js"></script> 
-    <script src="../Scripts/index.js"></script>
-    <script src="../Scripts/highlight.js"></script>
-    <script src="../Scripts/jquery.min.js"></script>
 
-
-         @*@Scripts.Render("~/bundles/jquery")*@
-        @RenderSection("scripts", required: false)
-</body>
+   </body>
 </html>

@@ -1,10 +1,8 @@
-
+﻿
 .input {
-height:30px;
+height:35px;
 width:210px;
 }
-
-
 h1,
 h2,
 h3,
@@ -3435,4 +3433,70 @@ ul.support-list li {
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
   
+}
+
+
+
+/* Edson Gouveia, criação do estilo do */
+.checkbox-switch {
+  border: 0.1em solid #444;
+  display: inline-block;
+  font-size: 10px;
+  width: 5em;
+  height: 2em;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.checkbox-switch > input {
+  display: none;
+}
+
+.checkbox-switch > input ~ .checkbox-switch-inner {
+  margin-left: -3em;
+  -webkit-transition: margin-left 0.2s ease;
+  -moz-transition: margin-left 0.2s ease;
+  -o-transition: margin-left 0.2s ease;
+  transition: margin-left 0.2s ease;
+}
+
+.checkbox-switch > input:checked ~ .checkbox-switch-inner {
+  margin-left: 0;
+}
+
+.checkbox-switch > .checkbox-switch-inner {
+  display: block;
+  width: 8em;
+  height: 2em;
+  color: #fff;
+  overflow: hidden;
+}
+
+.checkbox-switch-inner > * {
+  display: block;
+  float: left;
+  height: 2em;
+  line-height: 2em;
+}
+
+.checkbox-switch-inner > .checkbox-switch-on {
+  background: #ccc;
+  width: 3em;
+  padding-left: 1em;
+}
+
+.checkbox-switch-inner > .checkbox-switch-off {
+  background: #222;
+  padding-right: 3em;
+  text-align: right;
+}
+
+.checkbox-switch-inner > .checkbox-switch-handle {
+  margin-left: -10em;
+  border: 0.1em solid #999;
 }
