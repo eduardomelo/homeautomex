@@ -12,27 +12,20 @@ namespace HomeAutomex.Models
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
-
-         [Display(Name = "Data de Cadastro")]
-        public DateTime? DataCadastro { get; set; }
-
-
-         [Display(Name = "Data de Alteração")]
-        public DateTime? DataAlteracao { get; set; }
-
-         [Display(Name = "Data de Exclusão")]
-        public DateTime? DataExclusao { get; set; }
-
-         [Display(Name = "Desativado")]
-        public bool Desativado { get; set; }
-
-         [Display(Name = "Status")]
+        [Display(Name = "Status")]
         public bool Status { get; set; }
 
-         [Display(Name = "Porta do Modulo")]
-        public int PortaModulo { get; set; }
+        [Required]
+        [Display(Name = "Porta do Modulo")]
+        public int ChavePorta { get; set; }
+        public PortaModel Porta { get; set; }
 
-         [Display(Name = "Favorito")]
-         public bool Favorito { get; set; }
+        [Required]
+        [Display(Name="Ambiente")]
+        public int ChaveAmbiente { get; set; }
+        public AmbienteModel Ambiente { get; set; }
+
+        [Display(Name = "Favorito")]
+        public bool Favorito { get; set; }
     }
 }

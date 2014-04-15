@@ -6,25 +6,11 @@
 }
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary()
 
     <fieldset>
         <legend>Editar Ambiente</legend>
         
-          <div class="editor-label">
-            @Html.LabelFor(model => model.Dispositivo)
-        </div>
-         <div class="editor-label"> 
-       @Html.DropDownList("dispositivo",ViewBag.Dispositivo as List<SelectListItem>, new { @class="input"})
-        </div>
-        <br /> 
-          <div class="editor-label">
-            @Html.LabelFor(model => model.Residencia)
-        </div>
-         <div class="editor-label"> 
-       @Html.DropDownList("residencia", ViewBag.Residencias as List<SelectListItem>, new { @class = "input" })
-        </div>
-        <br /> 
         <div class="editor-label">
             @Html.LabelFor(model => model.Descricao)
         </div>
@@ -32,12 +18,12 @@
             @Html.EditorFor(model => model.Descricao)
             @Html.ValidationMessageFor(model => model.Descricao)
         </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Desativado)
+        <br />
+          <div class="editor-label">
+            @Html.LabelFor(model => model.Residencia)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Desativado)
-            @Html.ValidationMessageFor(model => model.Desativado)
+         <div class="editor-label"> 
+             @Html.DropDownListFor(model => model.ChaveResidencia, ViewBag.Residencias as List<SelectListItem>,"Selecione...", new { @class = "input"})
         </div>
         <br />
         <p>
@@ -45,7 +31,6 @@
         </p>
     </fieldset>
 }
-
 <div>
       @Html.ActionLink("Voltar", "ListarAmbiente")
 </div>

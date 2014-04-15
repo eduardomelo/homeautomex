@@ -9,6 +9,9 @@ namespace HomeAutomex.Models
 {
     public class ResidenciaModel : BaseModel
     {
+        [Required]
+        [Display(Name="Nome")]
+        public string Nome { get; set; }
         //[Required(ErrorMessage = "Digite o Lougradouro!"), Column(Order = 1)]
         //[MinLength(3, ErrorMessage = "O tamanho mínimo do lougradouro é de 3 caracteres!")]
         //[StringLength(50, ErrorMessage = "O tamanho máximo do lougradouro é de 50 caracteres!")]
@@ -39,11 +42,6 @@ namespace HomeAutomex.Models
       //  [StringLength(100, ErrorMessage = "O tamanho máximo da descrição do complemento é de 100 caracteres.")]
         public string Complemento { get; set; }
 
-        public List<Usuario> Usuarios { get; set; }
-    }
-
-    public class Usuario
-    {
-        public int Chave { get; set; }
+        public List<UsuarioModel> Usuarios { get; set; }
     }
 }

@@ -23,23 +23,19 @@
 <table id="Grid" class="table table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NumeroIP)
+            @Html.DisplayNameFor(model => model.IP)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NumeroPorta)
+            @Html.DisplayNameFor(model => model.Porta)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NumeroMac)
+            @Html.DisplayNameFor(model => model.MAC)
         </th>
        <th>
-            @Html.DisplayNameFor(model => model.Residencia)
-        </th>
-   
-        <th>
-            @Html.DisplayNameFor(model => model.Chave)
+            @Html.DisplayNameFor(model => model.ChaveResidencia)
         </th>
         <th>Opções</th>
     </tr>
@@ -47,23 +43,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.NumeroIP)
+            @Html.DisplayFor(modelItem => item.IP)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NumeroPorta)
+            @Html.DisplayFor(modelItem => item.Porta)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NumeroMac)
+            @Html.DisplayFor(modelItem => item.MAC)
         </td>
           <td>
-            @Html.DisplayFor(modelItem => item.Residencia)
-        </td>
- 
-        <td>
-            @Html.DisplayFor(modelItem => item.Chave)
+            @Html.DisplayFor(modelItem => item.Residencia.Nome)
         </td>
         <td>
              @Html.ActionLink("Editar", "EditarModulo", new { chave = item.Chave }) |

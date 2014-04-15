@@ -11,15 +11,7 @@
 
     <fieldset>
         <legend>Registrar novo Dispositivo</legend>
-            <div class="editor-label">
-            @Html.LabelFor(model => model.PortaModulo)
-        </div>
-        <div>
-         @Html.DropDownList("portaModulo",ViewBag.PortaModulo as List<SelectListItem>, new { @class="input" })
-        </div>
-        <br /> 
-            
-    
+       
         <div class="editor-label">
             @Html.LabelFor(model => model.Descricao)
         </div>
@@ -27,32 +19,29 @@
             @Html.EditorFor(model => model.Descricao)
             @Html.ValidationMessageFor(model => model.Descricao)
         </div>
-
+        <br />
         <div class="editor-label">
-            @Html.LabelFor(model => model.Desativado)
+            @Html.LabelFor(model => model.ChavePorta)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Desativado)
-            @Html.ValidationMessageFor(model => model.Desativado)
+        <div>
+            @Html.DropDownListFor(model => model.ChavePorta, ViewBag.PortaModulo as List<SelectListItem>, "Selecione...", new { @class = "input" })
         </div>
-
+        <br />
         <div class="editor-label">
-            @Html.LabelFor(model => model.Status)
+            @Html.LabelFor(model => model.ChaveAmbiente)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Status)
-            @Html.ValidationMessageFor(model => model.Status)
+        <div>
+            @Html.DropDownListFor(model => model.ChaveAmbiente, ViewBag.Ambientes as List<SelectListItem>, "Selecione...", new { @class = "input" })
         </div>
-        
+        <br />
         <div class="editor-label">
             @Html.LabelFor(model => model.Favorito)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Favorito)
             @Html.ValidationMessageFor(model => model.Favorito)
-        </div><br />
-
-       
+        </div>
+        <br />
 
         <p>
             <input type="submit" value="Registrar" class="btn-glow primary login" />
@@ -61,7 +50,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "ListarDispositivo")
 </div>
 
 @section Scripts {

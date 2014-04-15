@@ -26,22 +26,13 @@
             @Html.DisplayNameFor(model => model.Descricao)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataCadastro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataAlteracao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataExclusao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Desativado)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Status)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PortaModulo)
+            @Html.DisplayNameFor(model => model.ChavePorta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChaveAmbiente)
         </th>
          <th>
             @Html.DisplayNameFor(model => model.Favorito)
@@ -57,22 +48,13 @@
             @Html.DisplayFor(modelItem => item.Descricao)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DataCadastro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataAlteracao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataExclusao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Desativado)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PortaModulo)
+            @Html.DisplayFor(modelItem => item.Porta.Identificador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ambiente.Descricao)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Favorito)

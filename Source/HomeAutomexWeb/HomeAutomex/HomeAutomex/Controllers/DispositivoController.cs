@@ -7,6 +7,8 @@ using System.Web.Security;
 using HomeAutomex.HomeAutomexService;
 using HomeAutomex.Models;
 using Newtonsoft.Json;
+using AutoMapper;
+using HomeAutomexLibrary.Entidade;
 
 namespace HomeAutomex.Controllers
 {
@@ -24,17 +26,30 @@ namespace HomeAutomex.Controllers
         public ActionResult RegistrarDispositivo()
         {
             ViewBag.PortaModulo = GetDropDownPortaModulo();
+            ViewBag.Ambientes = GetDropDownAmbientes();
             return View();
         }
         //  Carregar DropList
         public List<SelectListItem> GetDropDownPortaModulo()
         {
             var lista = new List<SelectListItem>();
-            var x = webService.ConsutarTodosPortaModulo();
-            var residencias = JsonConvert.DeserializeObject<List<PortaModuloModel>>(x);
-            foreach (var item in residencias)
+            var x = webService.ConsutarTodosPorta();
+            var portas = JsonConvert.DeserializeObject<List<PortaModel>>(x);
+            foreach (var item in portas)
             {
                 lista.Add(new SelectListItem() { Text = item.Identificador, Value = item.Chave.ToString() });
+            }
+            return lista;
+        }
+
+        public List<SelectListItem> GetDropDownAmbientes()
+        {
+            var lista = new List<SelectListItem>();
+            var x = webService.ConsutarTodosAmbiente();
+            var ambientes = JsonConvert.DeserializeObject<List<AmbienteModel>>(x);
+            foreach (var item in ambientes)
+            {
+                lista.Add(new SelectListItem() { Text = item.Descricao, Value = item.Chave.ToString() });
             }
             return lista;
         }
@@ -42,19 +57,19 @@ namespace HomeAutomex.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult RegistrarDispositivo(DispositivoModel model, int portaModulo)
+        public ActionResult RegistrarDispositivo(DispositivoModel model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var webService = new HomeAutomexWSSoapClient();
-                    model.PortaModulo = portaModulo;
-                    var dispositivo = JsonConvert.SerializeObject(model);
-                    var x = webService.InserirDispositivo(dispositivo);
-                    if (x.StartsWith("Erro:"))
+                    model.Porta = JsonConvert.DeserializeObject<PortaModel>(webService.BuscarPortaPorChave(model.ChavePorta.ToString()));
+                    model.Ambiente = JsonConvert.DeserializeObject<AmbienteModel>(webService.BuscarAmbientePorChave(model.ChaveAmbiente.ToString()));
+                    var dispositivo = Mapper.DynamicMap<Dispositivo>(model);
+                    var retorno = webService.InserirDispositivo(JsonConvert.SerializeObject(dispositivo));
+                    if (retorno.StartsWith("Erro:"))
                     {
-                        ModelState.AddModelError("WSErro", x);
+                        ModelState.AddModelError("WSErro", retorno);
                     }
                     else
                     {
@@ -72,19 +87,19 @@ namespace HomeAutomex.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult EditarDispositivo(DispositivoModel model, int portaModulo)
+        public ActionResult EditarDispositivo(DispositivoModel model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var webService = new HomeAutomexWSSoapClient();
-                    model.PortaModulo = portaModulo;
-                    var dispositivo = JsonConvert.SerializeObject(model);
-                    var x = webService.AlterarDispositivo(dispositivo);
-                    if (x.StartsWith("Erro:"))
+                    model.Porta = JsonConvert.DeserializeObject<PortaModel>(webService.BuscarPortaPorChave(model.ChavePorta.ToString()));
+                    model.Ambiente = JsonConvert.DeserializeObject<AmbienteModel>(webService.BuscarAmbientePorChave(model.ChaveAmbiente.ToString()));
+                    var dispositivo = Mapper.DynamicMap<Dispositivo>(model);
+                    var retorno = webService.AlterarDispositivo(JsonConvert.SerializeObject(dispositivo));
+                    if (retorno.StartsWith("Erro:"))
                     {
-                        ModelState.AddModelError("WSErro", x);
+                        ModelState.AddModelError("WSErro", retorno);
                     }
                     else
                     {
@@ -110,26 +125,46 @@ namespace HomeAutomex.Controllers
         public ActionResult EditarDispositivo(int chave)
         {
             ViewBag.PortaModulo = GetDropDownPortaModulo();
-            var dispositivo = JsonConvert.DeserializeObject<DispositivoModel>(webService.BuscarDispositivoPorChave(chave.ToString()));
+            ViewBag.Ambientes = GetDropDownAmbientes();
+            var dispositivo = Mapper.DynamicMap<DispositivoModel>(JsonConvert.DeserializeObject<Dispositivo>(webService.BuscarDispositivoPorChave(chave.ToString())));
             return View(dispositivo);
         }
 
 
         public ActionResult ListarDispositivo(string pesquisa)
-          {
-              if (ModelState.IsValid)
-              {
-                  var webService = new HomeAutomexWSSoapClient();
-                  var x = webService.ConsutarTodosDispositivo();
-                  var dispositivo = JsonConvert.DeserializeObject<List<DispositivoModel>>(x);
-                  if (!string.IsNullOrEmpty(pesquisa))
-                      return View(dispositivo.Where(e =>
-                                  e.Descricao.Contains(pesquisa) ||
-                                  e.Descricao.Contains(pesquisa)));
-                  return View(dispositivo);
-              }
-              return View();
-          }
-        
+        {
+            if (ModelState.IsValid)
+            {
+                var webService = new HomeAutomexWSSoapClient();
+                var x = webService.ConsutarTodosDispositivo();
+                var dispositivo = JsonConvert.DeserializeObject<List<DispositivoModel>>(x);
+                if (!string.IsNullOrEmpty(pesquisa))
+                    return View(dispositivo.Where(e =>
+                                e.Descricao.Contains(pesquisa) ||
+                                e.Descricao.Contains(pesquisa)));
+                return View(dispositivo);
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public void AlterarStatus(int chave, bool status)
+        {
+            try
+            {
+                var dispositivo = JsonConvert.DeserializeObject<Dispositivo>(webService.BuscarDispositivoPorChave(chave.ToString()));
+                dispositivo.Status = status;
+                var retorno = webService.AlterarDispositivo(JsonConvert.SerializeObject(dispositivo));
+                if (retorno.StartsWith("Erro:"))
+                {
+                    ModelState.AddModelError("WSErro", retorno);
+                }
+            }
+            catch (MembershipCreateUserException e)
+            {
+                ModelState.AddModelError("", e);
+            }
+        }
+
     }
 }

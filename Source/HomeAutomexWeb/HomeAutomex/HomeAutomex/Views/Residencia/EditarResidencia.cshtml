@@ -11,6 +11,13 @@
         <legend>Editar Residencia</legend>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.Nome)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nome)
+            @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+        <div class="editor-label">
             @Html.LabelFor(model => model.Logradouro)
         </div>
         <div class="editor-field">

@@ -8,75 +8,46 @@
 <legend>Ambiente</legend>
 
 <p>
-    @Html.ActionLink("Create New", "RegistrarAmbiente")
+    @Html.ActionLink("Criar novo", "RegistrarAmbiente")
 </p>
 
-@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId= "Grid", HttpMethod = "POST" }))
+@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "Grid", HttpMethod = "POST" }))
 {
-<div class="editor-label">
-    @Html.Label("Pesquisar")
-</div>
-<div class="editor-field">
-    @Html.Editor("pesquisa")
-    <input type="submit" value="Pesquisar" class="btn-glow primary login"/>
-</div>
-   <br />
-<table id="Grid" class="table table-bordered">    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Dispositivo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Residencia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataCadastro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataAlteracao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataExclusao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Desativado)
-        </th>
-        <th>
-            Opções
-        </th>
-    </tr>
+    <div class="editor-label">
+        @Html.Label("Pesquisar")
+    </div>
+    <div class="editor-field">
+        @Html.Editor("pesquisa")
+        <input type="submit" value="Pesquisar" class="btn-glow primary login" />
+    </div>
+    <br />
+    <table id="Grid" class="table table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>            
+            <th>
+                @Html.DisplayNameFor(model => model.Residencia)
+            </th>
+            <th>Opções
+            </th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Dispositivo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Residencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataCadastro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataAlteracao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataExclusao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Desativado)
-        </td>
-          <td>
-             @Html.ActionLink("Editar", "EditarAmbiente", new { chave = item.Chave }) |
+        @foreach (var item in Model)
+        {
+            <tr>                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Residencia.Nome)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "EditarAmbiente", new { chave = item.Chave }) |
             @Html.ActionLink("Delete", "DeleteAmbiente", new { chave = item.Chave })
-        </td>
-    </tr>
-}
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
 }

@@ -6,27 +6,13 @@
 }
 
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary()
 
     <fieldset>
         <legend>Registar Ambiente</legend>
-          <div class="editor-label">
-            @Html.LabelFor(model => model.Dispositivo)
-        </div>
-         <div class="editor-label"> 
-       @Html.DropDownList("dispositivo",ViewBag.Dispositivo as List<SelectListItem>, new { @class="input"})
-        </div>
-        <br /> 
-          <div class="editor-label">
-            @Html.LabelFor(model => model.Residencia)
-        </div>
-         <div class="editor-label"> 
-       @Html.DropDownList("residencia", ViewBag.Residencias as List<SelectListItem>, new { @class = "input" })
-        </div>
-        <br /> 
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Descricao)
         </div>
@@ -34,16 +20,13 @@
             @Html.EditorFor(model => model.Descricao)
             @Html.ValidationMessageFor(model => model.Descricao)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Desativado)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Desativado)
-            @Html.ValidationMessageFor(model => model.Desativado)
-        </div>
         <br />
-
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ChaveResidencia)
+        </div>
+        <div class="editor-label">
+            @Html.DropDownListFor(model => model.ChaveResidencia, ViewBag.Residencias as List<SelectListItem>, "Selecione...", new { @class = "input" })
+        </div>
         <p>
             <input type="submit" value="Registar" class="btn-glow primary login" />
         </p>

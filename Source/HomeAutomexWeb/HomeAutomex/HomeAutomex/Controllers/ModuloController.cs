@@ -7,6 +7,8 @@ using System.Web.Security;
 using HomeAutomex.HomeAutomexService;
 using HomeAutomex.Models;
 using Newtonsoft.Json;
+using AutoMapper;
+using HomeAutomexLibrary.Entidade;
 
 namespace HomeAutomex.Controllers
 {
@@ -28,16 +30,16 @@ namespace HomeAutomex.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult RegistrarModulo(ModuloModel model, int residencia)
+        public ActionResult RegistrarModulo(ModuloModel model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
                     var webService = new HomeAutomexWSSoapClient();
-                    model.Residencia = residencia;
-                    var modulo = JsonConvert.SerializeObject(model);
-                    var x = webService.InserirModulo(modulo);
+                    model.Residencia = JsonConvert.DeserializeObject<ResidenciaModel>( webService.BuscarResidenciaPorChave(model.ChaveResidencia.ToString()));
+                    var modulo = Mapper.DynamicMap<Modulo>(model);
+                    var x = webService.InserirModulo(JsonConvert.SerializeObject(modulo));
                     if (x.StartsWith("Erro:"))
                     {
                         ModelState.AddModelError("WSErro", x);
@@ -68,7 +70,7 @@ namespace HomeAutomex.Controllers
         public ActionResult EditarModulo(int chave)
         {
             ViewBag.Residencias = GetDropDownResidencia();
-            var modulo = JsonConvert.DeserializeObject<ModuloModel>(webService.BuscarModuloPorChave(chave.ToString()));
+            var modulo = Mapper.DynamicMap<ModuloModel>(JsonConvert.DeserializeObject<Modulo>(webService.BuscarModuloPorChave(chave.ToString())));
             return View(modulo);
         }
 
@@ -83,11 +85,12 @@ namespace HomeAutomex.Controllers
                 try
                 {
                     var webService = new HomeAutomexWSSoapClient();
-                    var modulo = JsonConvert.SerializeObject(model);
-                    var x = webService.AlterarModulo(modulo);
-                    if (x.StartsWith("Erro:"))
+                    model.Residencia = JsonConvert.DeserializeObject<ResidenciaModel>(webService.BuscarResidenciaPorChave(model.ChaveResidencia.ToString()));
+                    var modulo = Mapper.DynamicMap<Modulo>(model);
+                    var retorno = webService.AlterarModulo(JsonConvert.SerializeObject(modulo));
+                    if (retorno.StartsWith("Erro:"))
                     {
-                        ModelState.AddModelError("WSErro", x);
+                        ModelState.AddModelError("WSErro", retorno);
                     }
                     else
                     {
@@ -108,11 +111,11 @@ namespace HomeAutomex.Controllers
         public List<SelectListItem> GetDropDownResidencia()
         {
             var lista = new List<SelectListItem>();
-            var x = webService.ConsutarTodosResidecia();
+            var x = webService.ConsultarResidenciaPorUsuarioChave(JsonConvert.SerializeObject((Session["Usuario"] as UsuarioModel)));
             var residencias = JsonConvert.DeserializeObject<List<ResidenciaModel>>(x);
             foreach (var item in residencias)
             {
-                lista.Add(new SelectListItem() { Text = item.Logradouro, Value = item.Chave.ToString() });
+                lista.Add(new SelectListItem() { Text = item.Nome, Value = item.Chave.ToString() });
             }
             return lista;
         }
@@ -129,7 +132,7 @@ namespace HomeAutomex.Controllers
                 if (!string.IsNullOrEmpty(pesquisa))
                     return View(modulo.Where(e =>
                                 e.Nome.Contains(pesquisa) ||
-                                e.NumeroIP.Contains(pesquisa)));
+                                e.IP.Contains(pesquisa)));
                 return View(modulo);
             }
             return View();

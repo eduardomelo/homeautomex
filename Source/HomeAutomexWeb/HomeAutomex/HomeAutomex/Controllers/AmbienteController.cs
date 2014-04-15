@@ -7,6 +7,8 @@ using System.Web.Security;
 using HomeAutomex.HomeAutomexService;
 using HomeAutomex.Models;
 using Newtonsoft.Json;
+using HomeAutomexLibrary.Entidade;
+using AutoMapper;
 
 namespace HomeAutomex.Controllers
 {
@@ -22,57 +24,49 @@ namespace HomeAutomex.Controllers
         }
         public ActionResult RegistrarAmbiente()
         {
-            ViewBag.Dispositivo = GetDropDownDispositivo();
-            ViewBag.Residencia = GetDropDownResidencia();
+            ViewBag.Residencias = GetDropDownResidencia();
             return View();
         }
         //  Carregar DropList
-        public List<SelectListItem> GetDropDownDispositivo()
-        {
-            var lista = new List<SelectListItem>();
-            var x = webService.ConsutarTodosDispositivo();
-            var dispositivos = JsonConvert.DeserializeObject<List<DispositivoModel>>(x);
-            foreach (var item in dispositivos)
-            {
-                lista.Add(new SelectListItem() { Text = item.Descricao, Value = item.Chave.ToString() });
-            }
-            return lista;
-        }
         public List<SelectListItem> GetDropDownResidencia()
         {
             var lista = new List<SelectListItem>();
-            var x = webService.ConsutarTodosResidecia();
+            var x = webService.ConsultarResidenciaPorUsuarioChave(JsonConvert.SerializeObject((Session["Usuario"] as UsuarioModel)));
             var residencias = JsonConvert.DeserializeObject<List<ResidenciaModel>>(x);
             foreach (var item in residencias)
             {
-                lista.Add(new SelectListItem() { Text = "CASA: " +item.Logradouro, Value = item.Chave.ToString() });
+                lista.Add(new SelectListItem() { Text = item.Nome, Value = item.Chave.ToString() });
             }
             return lista;
         }
-
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult RegistrarAmbiente(AmbienteModel model, int dispositivo, int residencia)
+        public ActionResult RegistrarAmbiente(AmbienteModel model)
         {
+            IEnumerable<ModelError> erros;
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var webService = new HomeAutomexWSSoapClient();
-                    model.Dispositivo = dispositivo;
-                    model.Residencia = residencia;
-
-                    var ambiente = JsonConvert.SerializeObject(model);
-                    var x = webService.InserirAmbiente(ambiente);
-                    if (x.StartsWith("Erro:"))
-                    {
-                        ModelState.AddModelError("WSErro", x);
-                    }
+                    if (model.ChaveResidencia == 0)
+                        ModelState.AddModelError("Residencia", "Selecione uma residência.");
                     else
                     {
-                        return RedirectToAction("ListarAmbiente", "Ambiente");
+                        var webService = new HomeAutomexWSSoapClient();
+                        model.Residencia = JsonConvert.DeserializeObject<ResidenciaModel>(webService.BuscarResidenciaPorChave(model.ChaveResidencia.ToString()));
+                        var ambiente = Mapper.DynamicMap<Ambiente>(model);
+                        var retorno = webService.InserirAmbiente(JsonConvert.SerializeObject(ambiente));
+                        if (retorno.StartsWith("Erro:"))
+                        {
+                            ModelState.AddModelError("WSErro", retorno);
+                        }
+                        else
+                        {
+                            return RedirectToAction("ListarAmbiente", "Ambiente");
+                        }
                     }
                 }
                 catch (MembershipCreateUserException e)
@@ -80,7 +74,8 @@ namespace HomeAutomex.Controllers
                     ModelState.AddModelError("", e);
                 }
             }
-            ViewBag.Dispositivo = GetDropDownDispositivo();
+            else 
+                erros = ModelState.Values.SelectMany(e => e.Errors);
             ViewBag.Residencia = GetDropDownResidencia();
             return View(model);
         }
@@ -88,15 +83,13 @@ namespace HomeAutomex.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult EditarAmbiente(AmbienteModel model, int dispositivo, int residencia)
+        public ActionResult EditarAmbiente(AmbienteModel model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
                     var webService = new HomeAutomexWSSoapClient();
-                    model.Dispositivo = dispositivo;
-                    model.Residencia = residencia;
                     var ambiente = JsonConvert.SerializeObject(model);
                     var x = webService.AlterarAmbiente(ambiente);
                     if (x.StartsWith("Erro:"))
@@ -121,9 +114,8 @@ namespace HomeAutomex.Controllers
 
         public ActionResult EditarAmbiente(int chave)
         {
-            ViewBag.Dispositivo = GetDropDownDispositivo();
-            ViewBag.Residencia = GetDropDownResidencia();
-            var ambiente = JsonConvert.DeserializeObject<AmbienteModel>(webService.BuscarAmbientePorChave(chave.ToString()));
+            ViewBag.Residencias = GetDropDownResidencia();
+            var ambiente = Mapper.DynamicMap<AmbienteModel>(JsonConvert.DeserializeObject<Ambiente>(webService.BuscarAmbientePorChave(chave.ToString())));
             return View(ambiente);
         }
 

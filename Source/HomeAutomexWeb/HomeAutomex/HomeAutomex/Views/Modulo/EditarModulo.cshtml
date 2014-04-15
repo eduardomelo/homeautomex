@@ -8,7 +8,7 @@
 
 
 @using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary()
       @Html.AntiForgeryToken()
 
 
@@ -18,23 +18,23 @@
        <div class="editor-label">
             @Html.LabelFor(model => model.Residencia)
         </div>
-       @Html.DropDownList("residencia",ViewBag.Residencias as List<SelectListItem>, new { @class = "input"})
+       @Html.DropDownListFor(model => model.ChaveResidencia, ViewBag.Residencias as List<SelectListItem>,"Selecione...", new { @class = "input"})
         </div>
         <br /> 
         <div class="editor-label">
-            @Html.LabelFor(model => model.NumeroIP)
+            @Html.LabelFor(model => model.IP)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.NumeroIP)
-            @Html.ValidationMessageFor(model => model.NumeroIP)
+            @Html.EditorFor(model => model.IP)
+            @Html.ValidationMessageFor(model => model.IP)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.NumeroPorta)
+            @Html.LabelFor(model => model.Porta)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.NumeroPorta)
-            @Html.ValidationMessageFor(model => model.NumeroPorta)
+            @Html.EditorFor(model => model.Porta)
+            @Html.ValidationMessageFor(model => model.Porta)
         </div>
 
         <div class="editor-label">
@@ -46,11 +46,11 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.NumeroMac)
+            @Html.LabelFor(model => model.MAC)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.NumeroMac)
-            @Html.ValidationMessageFor(model => model.NumeroMac)
+            @Html.EditorFor(model => model.MAC)
+            @Html.ValidationMessageFor(model => model.MAC)
         </div><br />
 
       

@@ -1,4 +1,7 @@
-﻿using HomeAutomex.HomeAutomexService;
+﻿using AutoMapper;
+using HomeAutomex.HomeAutomexService;
+using HomeAutomex.Models;
+using HomeAutomexLibrary.Entidade;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,22 +13,25 @@ namespace HomeAutomex.Controllers
 {
     public class HomeController : Controller
     {
+        private HomeAutomexWSSoapClient webService;
+
         public ActionResult Index()
         {
-            
+            webService = new HomeAutomexWSSoapClient();
 
-            return View();
+            var model = JsonConvert.DeserializeObject<List<Residencia>>(webService
+                .ConsultarResidenciaPorUsuarioChave(JsonConvert.SerializeObject((Session["Usuario"] as UsuarioModel))))
+                .Select(e => Mapper.DynamicMap<ResidenciaModel>(e));
+            ViewBag.Ambientes = JsonConvert.DeserializeObject<List<AmbienteModel>>(webService.ConsutarTodosAmbiente());
+
+            var dispositivos = JsonConvert.DeserializeObject<List<DispositivoModel>>(webService.ConsutarTodosDispositivo());
+            ViewBag.Dispositivos = dispositivos;
+
+            return View(model);
         }
 
         public ActionResult About()
         {
-
-            //////////////////////EXEMPLO DE UTILIZAÇÃO DO WEB SERVICE
-            var webService = new HomeAutomexWSSoapClient();
-            webService.InserirUsuário("");
-            webService.InserirResidencia("iuigfdjjkjhgfggjklhkjfhgxdfscvb");
-            ViewBag.Message = "Your app description page.";
-
             return View();
         }
 

@@ -7,6 +7,8 @@ using System.Web.Security;
 using HomeAutomex.HomeAutomexService;
 using HomeAutomex.Models;
 using Newtonsoft.Json;
+using HomeAutomexLibrary.Entidade;
+using AutoMapper;
 
 namespace HomeAutomex.Controllers
 {
@@ -35,12 +37,12 @@ namespace HomeAutomex.Controllers
                 try
                 {
                     var webService = new HomeAutomexWSSoapClient();
-                    model.Usuarios = new List<Usuario> { new Usuario { Chave = (Session["UsuarioLogado"] as UsuarioModel).Chave } };
-                    var residencia = JsonConvert.SerializeObject(model);
-                    var x = webService.InserirResidencia(residencia);
-                    if (x.StartsWith("Erro:"))
+                    var residencia = Mapper.DynamicMap<Residencia>(model);
+                    residencia.Usuarios = new List<Usuario> { new Usuario { Chave = (Session["Usuario"] as UsuarioModel).Chave } };
+                    var retorno = webService.InserirResidencia(JsonConvert.SerializeObject(residencia));
+                    if (retorno.StartsWith("Erro:"))
                     {
-                        ModelState.AddModelError("WSErro", x);
+                        ModelState.AddModelError("WSErro", retorno);
                     }
                     else
                     {
@@ -105,8 +107,8 @@ namespace HomeAutomex.Controllers
             if (ModelState.IsValid)
             {
                 var webService = new HomeAutomexWSSoapClient();
-                var x = webService.ConsutarTodosResidecia();
-                var residencia = JsonConvert.DeserializeObject<List<ResidenciaModel>>(x);
+                var retorno = webService.ConsultarResidenciaPorUsuarioChave(JsonConvert.SerializeObject((Session["Usuario"] as UsuarioModel)));
+                var residencia = JsonConvert.DeserializeObject<List<ResidenciaModel>>(retorno);
                 if (!string.IsNullOrEmpty(pesquisa))
                     return View(residencia.Where(e =>
                                 e.Cep.Contains(pesquisa) ||

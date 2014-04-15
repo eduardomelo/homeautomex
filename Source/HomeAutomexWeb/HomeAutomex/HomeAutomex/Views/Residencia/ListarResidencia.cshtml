@@ -24,6 +24,9 @@
 <table id="Grid" class="table table-bordered">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Logradouro)
         </th>
         <th>
@@ -48,6 +51,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Logradouro)
         </td>

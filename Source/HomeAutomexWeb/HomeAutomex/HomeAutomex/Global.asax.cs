@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomeAutomex.AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,6 +25,7 @@ namespace HomeAutomex
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
             BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
+            AutoMapperConfig.RegisterMappings();
            
         }
     }

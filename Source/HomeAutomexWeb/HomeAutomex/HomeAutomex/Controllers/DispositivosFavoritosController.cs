@@ -48,12 +48,12 @@ namespace HomeAutomex.Controllers
             {
                 try
                 {
-                    var webService = new HomeAutomexWSSoapClient();
-                    var dispositivo = JsonConvert.DeserializeObject<DispositivoModel>(webService.BuscarDispositivoPorChave(chave.ToString()));
-                    dispositivo.Desativado  = status;
-                    dispositivo.Status      = status;
-                    var objeto = JsonConvert.SerializeObject(dispositivo);
-                    var x = webService.AlterarDispositivo(objeto);
+                    //var webService = new HomeAutomexWSSoapClient();
+                    //var dispositivo = JsonConvert.DeserializeObject<DispositivoModel>(webService.BuscarDispositivoPorChave(chave.ToString()));
+                    //dispositivo.Desativado  = status;
+                    //dispositivo.Status      = status;
+                    //var objeto = JsonConvert.SerializeObject(dispositivo);
+                    //var x = webService.AlterarDispositivo(objeto);
                 }
                 catch (MembershipCreateUserException e)
                 {
@@ -71,18 +71,18 @@ namespace HomeAutomex.Controllers
             {
                 try
                 {
-                    var webService = new HomeAutomexWSSoapClient();
-                    model.PortaModulo = portaModulo;
-                    var dispositivo = JsonConvert.SerializeObject(model);
-                    var x = webService.AlterarDispositivo(dispositivo);
-                    if (x.StartsWith("Erro:"))
-                    {
-                        ModelState.AddModelError("WSErro", x);
-                    }
-                    else
-                    {
-                        return RedirectToAction("ListarDispositivo", "Dispositivo");
-                    }
+                    //var webService = new HomeAutomexWSSoapClient();
+                    //model.PortaModulo = portaModulo;
+                    //var dispositivo = JsonConvert.SerializeObject(model);
+                    //var x = webService.AlterarDispositivo(dispositivo);
+                    //if (x.StartsWith("Erro:"))
+                    //{
+                    //    ModelState.AddModelError("WSErro", x);
+                    //}
+                    //else
+                    //{
+                    //    return RedirectToAction("ListarDispositivo", "Dispositivo");
+                    //}
                 }
                 catch (MembershipCreateUserException e)
                 {

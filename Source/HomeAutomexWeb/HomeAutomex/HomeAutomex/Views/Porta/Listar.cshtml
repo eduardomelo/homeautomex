@@ -1,0 +1,62 @@
+﻿@model IEnumerable<HomeAutomex.Models.PortaModel>
+
+@{
+    ViewBag.Title = "Listar Portas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<legend>Portas</legend>
+<p>
+    @Html.ActionLink("Criar novo", "Registrar")
+</p>
+
+@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId= "Grid", HttpMethod = "POST" }))
+{
+<div class="editor-label">
+    @Html.Label("Pesquisar")
+</div>
+<div class="editor-field">
+    @Html.Editor("pesquisa")
+    <input type="submit" value="Pesquisar" class="btn-glow primary login"/>
+</div>
+   <br />
+<table id="Grid" class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Identificador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroPorta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChaveTipoPorta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChaveModulo)
+        </th>
+        <th>Opções</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Identificador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroPorta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo.Identificador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modulo.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { chave = item.Chave }) |
+            @Html.ActionLink("Delete", "Excluir", new { chave = item.Chave })
+        </td>
+    </tr>
+}
+
+</table>
+}

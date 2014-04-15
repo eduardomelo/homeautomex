@@ -1,32 +1,16 @@
 ﻿@model HomeAutomex.Models.PortaModel
 
 @{
-    ViewBag.Title = "Editar porta do módulo";
+    ViewBag.Title = "Editar porta";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary()
 
     <fieldset>
-        <legend>Editar Porta do Módulo</legend>
-                <div class="editor-label">
-            @Html.LabelFor(model => model.TipoPorta)
-        </div>
-        <div class="editor-label">
-       @Html.DropDownList("tipoPorta",ViewBag.TipoPorta as List<SelectListItem>, new { @class = "input"})
-        </div>
-        <br /> 
-         <div class="editor-label">
-            @Html.LabelFor(model => model.Modulo)
-        </div>
-        <div class="editor-label">
-       @Html.DropDownList("modulo",ViewBag.Modulo as List<SelectListItem>, new { @class = "input"})
-        </div>
-        <br /> 
+        <legend>Editar Porta</legend>
         <div class="editor-label">
             @Html.LabelFor(model => model.Identificador)
         </div>
@@ -34,7 +18,7 @@
             @Html.EditorFor(model => model.Identificador)
             @Html.ValidationMessageFor(model => model.Identificador)
         </div>
-
+        <br />
         <div class="editor-label">
             @Html.LabelFor(model => model.NumeroPorta)
         </div>
@@ -42,6 +26,20 @@
             @Html.EditorFor(model => model.NumeroPorta)
             @Html.ValidationMessageFor(model => model.NumeroPorta)
         </div>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.ChaveTipoPorta)
+        </div>
+        <div class="editor-label">
+       @Html.DropDownListFor(model => model.ChaveTipoPorta,ViewBag.TipoPorta as List<SelectListItem>,"Selecione...", new { @class = "input"})
+        </div>
+        <br /> 
+         <div class="editor-label">
+            @Html.LabelFor(model => model.ChaveModulo)
+        </div>
+        <div class="editor-label">
+       @Html.DropDownListFor(model => model.ChaveModulo,ViewBag.Modulo as List<SelectListItem>,"Selecione...", new { @class = "input"})
+        </div>
+        <br /> 
         <p>
             <input type="submit" value="Editar" class="btn-glow primary login" />
         </p>

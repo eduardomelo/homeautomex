@@ -10,16 +10,17 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <!-- bootstrap -->
     <link href="~/css/bootstrap.css" rel="stylesheet" />
     <link href="~/css/bootstrap-overrides.css" rel="stylesheet" />
 
-    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+
+    @*<link href="~/css/bootstrap.min.css" rel="stylesheet">*@
     <link href="~/css/bootstrap-switch.css" rel="stylesheet">
-    
+
 
     <!-- global styles -->
     <link href="~/css/elements.css" rel="stylesheet" />
@@ -30,7 +31,7 @@
     <!-- libraries -->
     <link href="~/css/font-awesome.css" rel="stylesheet" />
 
-    
+
     <!-- this page specific styles -->
     <link href="~/css/tables.css" rel="stylesheet" />
 
@@ -73,24 +74,24 @@
                         <div class="notifications">
                             <h3>You have 6 new notifications</h3>
                             <a href="#" class="item">
-                                <i class="icon-signin"></i> New user registration
-                                <span class="time"><i class="icon-time"></i> 13 min.</span>
+                                <i class="icon-signin"></i>New user registration
+                                <span class="time"><i class="icon-time"></i>13 min.</span>
                             </a>
                             <a href="#" class="item">
-                                <i class="icon-signin"></i> New user registration
-                                <span class="time"><i class="icon-time"></i> 18 min.</span>
+                                <i class="icon-signin"></i>New user registration
+                                <span class="time"><i class="icon-time"></i>18 min.</span>
                             </a>
                             <a href="#" class="item">
-                                <i class="icon-envelope-alt"></i> New message from Alejandra
-                                <span class="time"><i class="icon-time"></i> 28 min.</span>
+                                <i class="icon-envelope-alt"></i>New message from Alejandra
+                                <span class="time"><i class="icon-time"></i>28 min.</span>
                             </a>
                             <a href="#" class="item">
-                                <i class="icon-signin"></i> New user registration
-                                <span class="time"><i class="icon-time"></i> 49 min.</span>
+                                <i class="icon-signin"></i>New user registration
+                                <span class="time"><i class="icon-time"></i>49 min.</span>
                             </a>
                             <a href="#" class="item">
-                                <i class="icon-download-alt"></i> New order placed
-                                <span class="time"><i class="icon-time"></i> 1 day.</span>
+                                <i class="icon-download-alt"></i>New order placed
+                                <span class="time"><i class="icon-time"></i>1 day.</span>
                             </a>
                             <div class="footer">
                                 <a href="#" class="logout">View all notifications</a>
@@ -117,7 +118,7 @@
                                 <div class="msg">
                                     There are many variations of available, but the majority have suffered alterations.
                                 </div>
-                                <span class="time"><i class="icon-time"></i> 13 min.</span>
+                                <span class="time"><i class="icon-time"></i>13 min.</span>
                             </a>
                             <a href="#" class="item">
                                 <img src="../Images/contact-img2.png" class="display" alt="user" />
@@ -125,7 +126,7 @@
                                 <div class="msg">
                                     There are many variations of available, have suffered alterations.
                                 </div>
-                                <span class="time"><i class="icon-time"></i> 26 min.</span>
+                                <span class="time"><i class="icon-time"></i>26 min.</span>
                             </a>
                             <a href="#" class="item last">
                                 <img src="../Images/contact-img.png" class="display" alt="user" />
@@ -133,7 +134,7 @@
                                 <div class="msg">
                                     There are many variations of available, but the majority have suffered alterations.
                                 </div>
-                                <span class="time"><i class="icon-time"></i> 48 min.</span>
+                                <span class="time"><i class="icon-time"></i>48 min.</span>
                             </a>
                             <div class="footer">
                                 <a href="#" class="logout">View all messages</a>
@@ -143,15 +144,14 @@
                 </div>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle hidden-xs hidden-sm" data-toggle="dropdown">
-                    Residências
+                <a href="#" class="dropdown-toggle hidden-xs hidden-sm" data-toggle="dropdown">Residências
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Apartamento</a></li>
                     <li><a href="#">Casa de Praia</a></li>
                     <li><a href="#">Residência</a></li>
-              
+
                 </ul>
             </li>
             <li class="settings hidden-xs hidden-sm">
@@ -160,47 +160,47 @@
                 </a>
             </li>
             <li class="settings hidden-xs hidden-sm">
-                 <li>@Html.ActionLink("Sair", "Login", "Account")</li>
+                <li>@Html.ActionLink("Sair", "Login", "Account")</li>
             </li>
         </ul>
     </header>
     <!-- end navbar -->
 
     <!-- sidebar -->
-   <div id="sidebar-nav">
+    <div id="sidebar-nav">
         <ul id="dashboard-menu">
             <li class="active">
                 <div class="pointer">
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
                 </div>
-                <a href="#">
+                <a href="@Url.Action("Index", "Home")">
                     <i class="icon-home"></i>
                     <span>Home</span>
                 </a>
-            </li>   
-              <li>
+            </li>
+            <li>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-star"></i>
                     <span>Favorito</span>
                     <i class="icon-chevron-down"></i>
-                </a>    
+                </a>
                 <ul class="submenu">
-                    <li>   @Html.ActionLink("Meus Favoritos", "ListarDispositivo", "DispositivosFavoritos")</li>
-         
+                    <li>@Html.ActionLink("Meus Favoritos", "ListarDispositivo", "DispositivosFavoritos")</li>
+
                 </ul>
-            </li>         
-             <li>
+            </li>
+            <li>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-signal"></i>
                     <span>Relatórios</span>
                     <i class="icon-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                <li>   @Html.ActionLink("Uso", "")</li>
-                <li>   @Html.ActionLink("Logs", "")</li>
-                <li>   @Html.ActionLink("Consumo", "")</li>
-         
+                    <li>@Html.ActionLink("Uso", "")</li>
+                    <li>@Html.ActionLink("Logs", "")</li>
+                    <li>@Html.ActionLink("Consumo", "")</li>
+
                 </ul>
             </li>
             <li>
@@ -210,23 +210,23 @@
                     <i class="icon-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                    <li>   @Html.ActionLink("Listar Usuários", "ListarUsuario", "Account")</li>
-         
+                    <li>@Html.ActionLink("Listar Usuários", "ListarUsuario", "Account")</li>
+
                 </ul>
             </li>
-                 
-           <li>
+
+            <li>
                 <a class="dropdown-toggle" href="#">
-                 
+
                     <span>Agendamento</span>
                     <i class="icon-edit"></i>
                 </a>
                 <ul class="submenu">
                     <i class="icon-chevron-down"></i>
-         
+
                 </ul>
             </li>
-             <li>
+            <li>
                 <a class="dropdown-toggle" href="tables.html">
                     <i class="icon-th-large"></i>
                     <span>Dispositivo</span>
@@ -235,8 +235,8 @@
                 <ul class="submenu">
                     <li>@Html.ActionLink("Residência", "ListarResidencia", "Residencia")</li>
                     <li>@Html.ActionLink("Dispositivo", "ListarDispositivo", "Dispositivo")</li>
-                   <li>@Html.ActionLink("Ambiente", "ListarAmbiente", "Ambiente")</li>
-                   
+                    <li>@Html.ActionLink("Ambiente", "ListarAmbiente", "Ambiente")</li>
+
                 </ul>
             </li>
             <li>
@@ -246,10 +246,10 @@
                     <i class="icon-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                     <li>@Html.ActionLink("Tipo de Porta", "ListarTipoPorta", "TipoPorta")</li>
+                    <li>@Html.ActionLink("Tipo de Porta", "ListarTipoPorta", "TipoPorta")</li>
                     <li>@Html.ActionLink("Modulo", "ListarModulo", "Modulo")</li>
-                    <li>@Html.ActionLink("Porta do Modulo", "ListarPortaModulo", "PortaModulo")</li>
-         
+                    <li>@Html.ActionLink("Porta do Modulo", "Listar", "Porta")</li>
+
                 </ul>
             </li>
             <li>
@@ -261,19 +261,19 @@
                 </a>
                 <ul class="submenu">
                     <li>@Html.ActionLink("Deseja sair?", "Login")</li>
-          
+
                 </ul>
             </li>
         </ul>
     </div>
     <!-- end sidebar -->
-     <!-- upper main stats -->
+    <!-- upper main stats -->
 
-	<!-- main container -->
+    <!-- main container -->
     <div class="content">
-        
+
         <!-- settings changer -->
-      @*  <div class="skins-nav">
+        @*  <div class="skins-nav">
             <a href="#" class="skin first_nav selected">
                 <span class="icon"></span><span class="text">Default</span>
             </a>
@@ -281,22 +281,20 @@
                 <span class="icon"></span><span class="text">Dark skin</span>
             </a>
         </div>*@
-       
+
         <div id="pad-wrapper">
-            
-           @RenderBody()
-   
-           
+
+            @RenderBody()
+
+
         </div>
     </div>
     <!-- end main container -->
 
-	<!-- scripts -->
+    <!-- scripts -->
     @RenderSection("scripts", required: false)
 
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    @*<script src="http://code.jquery.com/jquery-latest.js"></script>*@
     <script src="../Scripts/theme.js"></script>
-
-
-   </body>
+</body>
 </html>

@@ -40,6 +40,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Mvc">
       <HintPath>..\packages\Mvc4Futures.4.0.20710.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
@@ -168,6 +174,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="AutoMapper\AutoMapperConfig.cs" />
+    <Compile Include="AutoMapper\Mappers\AmbienteAutoMapper.cs" />
+    <Compile Include="AutoMapper\Mappers\DispositivoAutoMapper.cs" />
+    <Compile Include="AutoMapper\Mappers\ModuloAutoMapper.cs" />
+    <Compile Include="AutoMapper\Mappers\PortaAutoMapper.cs" />
+    <Compile Include="AutoMapper\Mappers\ResidenciaAutoMapper.cs" />
+    <Compile Include="AutoMapper\Mappers\UsuarioAutoMapper.cs" />
     <Compile Include="BootstrapSupport\ControlGroupExtensions.cs" />
     <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -177,9 +190,25 @@
     <Compile Include="Controllers\DispositivosFavoritosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModuloController.cs" />
+    <Compile Include="Controllers\PortaController.cs" />
     <Compile Include="Controllers\PortaModuloController.cs" />
     <Compile Include="Controllers\ResidenciaController.cs" />
     <Compile Include="Controllers\TipoPortaController.cs" />
+    <Compile Include="Entidade\Agendamento.cs" />
+    <Compile Include="Entidade\Ambiente.cs" />
+    <Compile Include="Entidade\Cenario.cs" />
+    <Compile Include="Entidade\Dispositivo.cs" />
+    <Compile Include="Entidade\EntidadeBase.cs" />
+    <Compile Include="Entidade\Log.cs" />
+    <Compile Include="Entidade\Modulo.cs" />
+    <Compile Include="Entidade\Perfil.cs" />
+    <Compile Include="Entidade\Porta.cs" />
+    <Compile Include="Entidade\PortaModulo.cs" />
+    <Compile Include="Entidade\Residencia.cs" />
+    <Compile Include="Entidade\Sensor.cs" />
+    <Compile Include="Entidade\TipoPorta.cs" />
+    <Compile Include="Entidade\Usuario.cs" />
+    <Compile Include="Entidade\UTDispositivo.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="App_Start\WSMembershipProvider.cs" />
     <Compile Include="Global.asax.cs">
@@ -190,6 +219,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\DispositivoModel.cs" />
     <Compile Include="Models\ModuloModel.cs" />
+    <Compile Include="Models\PortaModel.cs" />
     <Compile Include="Models\PortaModuloModel.cs" />
     <Compile Include="Models\ResidenciaModel.cs" />
     <Compile Include="Models\TipoPortaModel.cs" />
@@ -207,6 +237,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll">
+      <Link>AutoMapper.Net4.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\body.css" />
     <Content Include="Content\bootstrap-mvc-validation.css" />
     <Content Include="Content\bootstrap-responsive.css" />
@@ -421,21 +455,6 @@
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirTipoPortaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarPortaModuloResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarPortaModuloPorChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosPortaModuloResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirPortaModuloResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirPortaModuloResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarDispositivoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -458,6 +477,24 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosDispositivoFavoritoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarPortaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarPortaPorChaveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsultarModuloPorUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosPortaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirPortaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirPortaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
@@ -532,6 +569,12 @@
     <Content Include="Views\Ambiente\ListarAmbiente.cshtml" />
     <Content Include="Views\Ambiente\EditarAmbiente.cshtml" />
     <Content Include="Views\DispositivosFavoritos\ListarDispositivo.cshtml" />
+    <Content Include="Views\Porta\Registrar.cshtml" />
+    <Content Include="Views\Porta\Editar.cshtml" />
+    <Content Include="Views\Porta\Listar.cshtml" />
+    <Content Include="Views\Home\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

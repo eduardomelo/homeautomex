@@ -1,45 +1,180 @@
-﻿@{
+﻿@model IEnumerable<HomeAutomex.Models.ResidenciaModel>
+@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>@ViewBag.Title.</h1>
-                <h2>@ViewBag.Message</h2>
-            </hgroup>
-            <p>
-                To learn more about ASP.NET MVC visit
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
-                If you have any questions about ASP.NET MVC visit
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
-            </p>
+
+<div class="container">
+    @foreach (var residencia in Model)
+    {  
+    
+        <div class="row">
+            <div class="span8">
+                <div class="menu">
+                    <div class="accordion">
+                        <!-- Áreas -->
+                        <div class="accordion-group">
+                            <!-- Área -->
+                            <div class="accordion-heading area">
+                                <a class="accordion-toggle" data-toggle="collapse" href="#residencia-@residencia.Chave">@residencia.Nome</a>
+
+                                <div class="dropdown edit">
+                                    <a class="dropdown-toggle icon-pencil" data-toggle="dropdown"
+                                        href="#" style="font-style: italic"></a>
+
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="#"><i class="icon-pencil"></i>Editar residência</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /Área -->
+                            <div class="accordion-body collapse" id="residencia-@residencia.Chave">
+                                <div class="accordion-inner">
+                                    <div class="accordion" id="equipamento1">
+                                        <!-- Equipamentos -->
+                                        @foreach (var ambiente in (ViewBag.Ambientes as IEnumerable<HomeAutomex.Models.AmbienteModel>)
+                                            .Where(e => e.Residencia.Chave == residencia.Chave))
+                                        {                                            
+                                        
+                                            <div class="accordion-group">
+                                                <div class="accordion-heading equipamento">
+                                                    <a class="accordion-toggle" data-parent="#equipamento1-1"
+                                                        data-toggle="collapse" href="#ambiente-@ambiente.Chave">@ambiente.Descricao</a>
+
+                                                    <div class="dropdown edit">
+                                                        <a class="dropdown-toggle icon-pencil"
+                                                            data-toggle="dropdown" href="#" style="font-style: italic"></a>
+
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a href="../equipamento/edit.php"><i class="icon-pencil"></i>Editar
+                                                        equipamento</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <!-- Pontos -->
+                                                <div class="accordion-body collapse" id="ambiente-@ambiente.Chave">
+                                                @foreach (var dispositivo in (ViewBag.Dispositivos as IEnumerable<HomeAutomex.Models.DispositivoModel>)
+                                            .Where(e => e.Ambiente.Chave == ambiente.Chave))
+                                                {
+                                                    <div  id="ponto1-1">
+                                                        <div class="accordion-inner">
+                                                            <div class="accordion" id="servico1">
+                                                                <div class="accordion-group">
+                                                                    <div class="accordion-heading ponto">
+                                                                        <a class="accordion-toggle"
+                                                                            data-parent="#servico1-1-1"
+                                                                            data-toggle="collapse" href="#dispositivo-@dispositivo.Chave">@dispositivo.Descricao</a>
+
+                                                                        <div class="dropdown edit">
+                                                                            <a class="dropdown-toggle icon-pencil"
+                                                                                data-toggle="dropdown"
+                                                                                href="#" style="font-style: italic"></a>
+
+                                                                            <ul class="dropdown-menu">
+                                                                                <!-- Adicionar servico -->
+                                                                                <li class="divider"></li>
+                                                                                <!-- Editar ponto -->
+
+                                                                                <li>
+                                                                                    <a href="../ponto/edit.php">
+                                                                                        <i class="icon-pencil"></i>
+                                                                                        Editar ponto</a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Serviços -->
+
+                                                                    <div class="accordion-body collapse"
+                                                                        id="dispositivo-@dispositivo.Chave">
+                                                                        <div class="accordion-inner">
+                                                                            <ul class="nav nav-list">
+                                                                                <li>
+                                                                                    @Html.CheckBox("dispositivo", dispositivo.Status, new { @class = "ckbSwitch", id = dispositivo.Chave })
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- /Serviços -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                                    </div>
+                                                <!-- /Pontos -->
+                                            </div>
+                                        }
+                                        <!-- /Equipamentos -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /accordion -->
+                </div>
+            </div>
         </div>
-    </section>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }
-<h3>We suggest the following:</h3>
-<ol class="round">
-    <li class="one">
-        <h5>Getting Started</h5>
-        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-        enables a clean separation of concerns and that gives you full control over markup
-        for enjoyable, agile development. ASP.NET MVC includes many features that enable
-        fast, TDD-friendly development for creating sophisticated applications that use
-        the latest web standards.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a>
-    </li>
 
-    <li class="two">
-        <h5>Add NuGet packages and jump-start your coding</h5>
-        NuGet makes it easy to install and update free libraries and tools.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a>
-    </li>
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<link href="~/css/bootstrap-switch.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-switch.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".ckbSwitch").bootstrapSwitch();
+        
+    });
+    $('input[type="checkbox"]').on('switchChange.bootstrapSwitch', function (event, state) {
+        $.ajax({
+            url: '@Url.Action("AlterarStatus", "Dispositivo")',
+            type: 'GET',
+            contentType: 'application/json',
+            data: { chave: $(this).attr('id'), status: state },
+            success: function () {
+                console.log("sucesso!");
+            },
+            error: function (data) {
+                console.log(data.e);
+            }
+        });
+    });
+</script>
 
-    <li class="three">
-        <h5>Find Web Hosting</h5>
-        You can easily find a web hosting company that offers the right mix of features
-        and price for your applications.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
-    </li>
-</ol>
+<style type="text/css">
+    .menu .accordion-heading {
+        position: relative;
+    }
+
+        .menu .accordion-heading .edit {
+            position: absolute;
+            top: 8px;
+            right: 30px;
+        }
+
+    .menu .area {
+        border-left: 4px solid #f38787;
+    }
+
+    .menu .equipamento {
+        border-left: 4px solid #65c465;
+    }
+
+    .menu .ponto {
+        border-left: 4px solid #98b3fa;
+    }
+
+    .menu .collapse.in {
+        overflow: visible;
+    }
+</style>

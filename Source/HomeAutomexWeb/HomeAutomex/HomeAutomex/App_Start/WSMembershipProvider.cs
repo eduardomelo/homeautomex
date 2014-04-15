@@ -164,9 +164,9 @@ namespace HomeAutomex
             if (isValido != null)
             {
                 _Usuario = JsonConvert.DeserializeObject<UsuarioModel>(isValido);
-                System.Web.HttpContext.Current.Session["UsuarioLogado"] = _Usuario;
+                System.Web.HttpContext.Current.Session.Add("Usuario", _Usuario);
                 return true;
-            }
+            }   
             else
                 return false;
         }

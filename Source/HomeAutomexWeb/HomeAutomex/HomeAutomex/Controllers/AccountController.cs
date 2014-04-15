@@ -14,6 +14,8 @@ using HomeAutomex.HomeAutomexService;
 using Newtonsoft.Json;
 using System.Web.Script.Serialization;
 using BootstrapMvcSample.Controllers;
+using AutoMapper;
+using HomeAutomexLibrary.Entidade;
 
 namespace HomeAutomex.Controllers
 {
@@ -84,19 +86,11 @@ namespace HomeAutomex.Controllers
                 try
                 {
                     var webService = new HomeAutomexWSSoapClient();
-                    var usuario = JsonConvert.SerializeObject(new UsuarioModel
+                    var usuario = JsonConvert.SerializeObject(Mapper.DynamicMap<UsuarioModel,Usuario>(model));
+                    var retorno = webService.InserirUsuário(usuario);
+                    if (retorno.StartsWith("Erro:"))
                     {
-                        Login = model.Login,
-                        Nome = model.Nome,
-                        Senha = model.Senha,
-                        Celular = model.Celular,
-                        Telefone = model.Telefone,
-                        Email = model.Email,
-                    });
-                    var x = webService.InserirUsuário(usuario);
-                    if (x.StartsWith("Erro:"))
-                    {
-                        ModelState.AddModelError("WSErro", x);
+                        ModelState.AddModelError("WSErro", retorno);
                     }
                     else
                     {
