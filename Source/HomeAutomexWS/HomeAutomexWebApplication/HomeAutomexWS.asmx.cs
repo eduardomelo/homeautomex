@@ -226,61 +226,16 @@ namespace HomeAutomexWebApplication
             var modulo = fachada.RemoverModuloPorChave(chave);
             return JsonConvert.SerializeObject("Usuário removido com sucesso");
         }
-
-        #endregion
-
-        #region Porta modulo
-
-
-        // Porta modulo
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string InserirPortaModulo(string jPortaModulo)
-        {
-            var portaModulo = JsonConvert.DeserializeObject<PortaModulo>(jPortaModulo);
-            log.Descricao = "Usuario inseriu uma porta de modulo " + portaModulo.Identificador;
-            var retornoLog = fachada.InserirLog(log);
-            var retorno = fachada.InserirPortaModulo(portaModulo);
-            return retorno;
-        }
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string ConsutarTodosPortaModulo()
-        {
-            log.Descricao = "Usuario consultou todas as portas do modulo";
-            var retornoLog = fachada.InserirLog(log);
-            return JsonConvert.SerializeObject(fachada.ConsultarTodosPortaModulo());
-        }
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string BuscarPortaModuloPorChave(string jChave)
+        public string ConsultarModuloPorUsuario(string jChave)
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
-            var portaModulo = fachada.BuscarPortaModuloPorChave(chave);
-            return JsonConvert.SerializeObject(portaModulo);
-        }
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string AlterarPortaModulo(string jPortaModulo)
-        {
-            var portaModulo = JsonConvert.DeserializeObject<PortaModulo>(jPortaModulo);
-            log.Descricao = "Usuario alterou a porta do modulo " + portaModulo.Identificador;
-            var retornoLog = fachada.InserirLog(log);
-            var retorno = fachada.AlterarPortaModulo(portaModulo);
-            return retorno;
-        }
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string ExcluirPortaModulo(string jChave)
-        {
-            int chave = JsonConvert.DeserializeObject<int>(jChave);
-            log.Descricao = "Usuario excluiu uma portas do modulo " + chave;
-            var retornoLog = fachada.InserirLog(log);
-            var portaModulo = fachada.RemoverTipoPortaPorChave(chave);
-            return JsonConvert.SerializeObject("Usuário removido com sucesso");
+            var modulo = fachada.ConsultarModuloPorUsuario(chave);
+            return JsonConvert.SerializeObject(modulo);
         }
         #endregion
-
+               
         #region Tipo porta
 
         // Tipo de Porta
@@ -408,7 +363,7 @@ namespace HomeAutomexWebApplication
             fachada.RemoverDispositivoPorChave(chave);
             return JsonConvert.SerializeObject("Dispositivo removido com sucesso");
         }
-      
+
         #endregion
 
         #region Ambiente
@@ -464,8 +419,62 @@ namespace HomeAutomexWebApplication
 
         #endregion
 
+        #region Porta
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string InserirPorta(string jPorta)
+        {
+            var porta = JsonConvert.DeserializeObject<Porta>(jPorta);
+            log.Descricao = "Usuario inseriu uma nova Porta na rua " + porta.Identificador;
+            var retornoLog = fachada.InserirLog(log);
+            var retorno = fachada.InserirPorta(porta);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsutarTodosPorta()
+        {
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosPorta());
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string BuscarPortaPorChave(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            var residencia = fachada.BuscarPortaPorChave(chave);
+            return JsonConvert.SerializeObject(residencia);
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string AlterarPorta(string jResidencia)
+        {
+            var porta = JsonConvert.DeserializeObject<Porta>(jResidencia);
+            log.Descricao = "Usuario alterou a Porta: " + porta.Identificador;
+            var retornoLog = fachada.InserirLog(log);
+            var retorno = fachada.AlterarPorta(porta);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ExcluirPorta(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            log.Descricao = "Usuario excluiu uma Porta: " + chave;
+            var retornoLog = fachada.InserirLog(log);
+            var residencia = fachada.RemoverPortaPorChave(chave);
+            return JsonConvert.SerializeObject("Porta removida com sucesso");
+        }
+        #endregion
 
+        #region Arduino
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string StatusArduino(string ip)
+        {
+            return fachada.StatusArduino(ip);
+        }
 
+        #endregion
 
 
         //[WebMethod]

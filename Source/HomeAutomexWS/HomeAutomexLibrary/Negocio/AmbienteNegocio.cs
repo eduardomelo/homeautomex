@@ -14,25 +14,27 @@ namespace HomeAutomexLibrary.Negocio
         
 
         private AmbienteRepositorio ambienteRepositorio;
+        private ResidenciaRepositorio residenciaRepositorio;
         private DatabaseContext contexto;
 
         public AmbienteNegocio(DatabaseContext contexto)
         {
             this.contexto = contexto;
             ambienteRepositorio = new AmbienteRepositorio(contexto);
+            residenciaRepositorio = new ResidenciaRepositorio(contexto);
            
         }
 
         public string InserirAmbiente(Ambiente ambiente)
         {
             ambiente.DataAlteracao = null;
-            ambiente.DataCadastro = DateTime.Now;
             ambiente.DataExclusao = null;
-            base.Inserir(ambiente);
+            ambiente.Residencia = residenciaRepositorio.BuscarPorChave(ambiente.Residencia.Chave);
+            ambienteRepositorio.Inserir(ambiente);
 
             try
             {
-                base.SaveChanges();
+                contexto.SaveChanges();
                 return "Operação realizada com sucesso!";
             }
             catch (Exception ex)
@@ -44,9 +46,9 @@ namespace HomeAutomexLibrary.Negocio
         public string AlterarAmbiente(Ambiente ambiente)
         {
 
-            ambiente.DataAlteracao = DateTime.Now; ;
-            ambiente.DataCadastro = null;
-            ambiente.DataExclusao = null;
+            //ambiente.DataAlteracao = DateTime.Now; ;
+            //ambiente.DataCadastro = null;
+            //ambiente.DataExclusao = null;
             base.Alterar(ambiente);
             try
             {

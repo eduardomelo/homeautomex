@@ -8,16 +8,10 @@ namespace HomeAutomexLibrary.Entidade
 {
     public class Modulo : EntidadeBase<int>
     {
-       
-        public string NumeroIP { get; set; }
-        public string NumeroPorta { get; set; }
-        public string Nome { get; set; }
-        public string NumeroMac { get; set; }
-        public int Residencia { get; set; }
-
-   
-
-       
-
+        public virtual string IP { get; set; }
+        public virtual string Porta { get; set; }
+        public virtual string Nome { get; set; }
+        public virtual string MAC { get; set; }
+        public virtual Residencia Residencia { get; set; }        
     }
 }

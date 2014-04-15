@@ -13,22 +13,29 @@ namespace HomeAutomexLibrary.Negocio
     {
 
         private DatabaseContext contexto;
-        public DispositivoNegocio()
-            //: base(new DispositivoRepositorio(new DatabaseContext()))
+        private DispositivoRepositorio dispositivoRepositorio;
+        private AmbienteRepositorio ambienteRepositorio;
+        private PortaRepositorio portaRepositorio;
+        private ModuloRepositorio moduloRepositorio;
+
+        public DispositivoNegocio(DatabaseContext contexto)
         {
-            this.contexto = new DatabaseContext();
+            this.contexto = contexto;
+            this.dispositivoRepositorio = new DispositivoRepositorio(contexto);
+            this.ambienteRepositorio = new AmbienteRepositorio(contexto);
+            this.portaRepositorio = new PortaRepositorio(contexto);
+            this.moduloRepositorio = new ModuloRepositorio(contexto);
         }
 
         public string InserirDispositivo(Dispositivo dispositivo)
         {
-            dispositivo.DataAlteracao = null;
-            dispositivo.DataCadastro = DateTime.Now;
-            dispositivo.DataExclusao = null;
-            base.Inserir(dispositivo);
+            dispositivo.Ambiente = ambienteRepositorio.BuscarPorChave(dispositivo.Ambiente.Chave);
+            dispositivo.Porta = portaRepositorio.BuscarPorChave(dispositivo.Porta.Chave);
+            dispositivoRepositorio.Inserir(dispositivo);
 
             try
             {
-                base.SaveChanges();
+                contexto.SaveChanges();
                 return "Operação realizada com sucesso!";
             }
             catch (Exception ex)
@@ -39,15 +46,18 @@ namespace HomeAutomexLibrary.Negocio
 
         public string AlterarDispositivo(Dispositivo dispositivo)
         {
+            var disp = dispositivoRepositorio.BuscarPorChave(dispositivo.Chave);
+            disp.Ambiente = ambienteRepositorio.BuscarPorChave(dispositivo.Ambiente.Chave);
+            disp.Porta = portaRepositorio.BuscarPorChave(dispositivo.Porta.Chave);
+            disp.Descricao = dispositivo.Descricao;
+            disp.Favorito = dispositivo.Favorito;
+            disp.Status = dispositivo.Status;
+            disp.Desativado = dispositivo.Desativado;
 
-            dispositivo.DataAlteracao = DateTime.Now; ;
-            dispositivo.DataCadastro = null;
-            dispositivo.DataExclusao = null;
-            base.Alterar(dispositivo);
-
+            dispositivoRepositorio.Alterar(disp);
             try
             {
-                base.SaveChanges();
+                contexto.SaveChanges();
                 return "Operação realizada com sucesso!";
             }
             catch (Exception ex)
@@ -78,8 +88,27 @@ namespace HomeAutomexLibrary.Negocio
         {
             return base.Consultar(e => e.Favorito == true).ToList();
         }
-       
 
+        public string StatusArduino(string ip)
+        {
+            if(!string.IsNullOrEmpty(ip))
+            {
+                var modulo = moduloRepositorio.Buscar(e => e.IP.Trim() == ip.Trim());
+                if (modulo != null)
+                {
+                    var dispositivos = dispositivoRepositorio.Consultar(e => e.Porta.Modulo.Chave == modulo.Chave).ToList();
+                    var retorno = string.Empty;
+                    retorno = string.Join("|", dispositivos.Select(e => e.Porta.Tipo.Identificador.Trim() + e.Porta.NumeroPorta + ":" + (e.Status ? "1" : "0")).ToList());
+                    return retorno;
+                }
+                else
+                {
+                    return "O IP não está cadastrado" + ip.Trim();
+                }
+            }
+            else
+                return "IP Inválido";
+        }
     }
 }
 

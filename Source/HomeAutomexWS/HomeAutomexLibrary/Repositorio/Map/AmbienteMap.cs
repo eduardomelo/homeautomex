@@ -21,15 +21,12 @@ namespace HomeAutomexLibrary.Repositorio.Map
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             Property(e => e.Descricao).HasColumnName("DS_DESCRICAO").IsRequired();
-            Property(e => e.Residencia).HasColumnName("CD_RESIDENCIA");
-            Property(e => e.Dispositivo).HasColumnName("CD_DISPOSITIVO");
             Property(e => e.DataCadastro).HasColumnName("DT_CADASTRO");
             Property(e => e.DataAlteracao).HasColumnName("DT_ALTERACAO");
             Property(e => e.DataExclusao).HasColumnName("DT_EXCLUSAO");
             Property(e => e.Desativado).HasColumnName("IS_DESATIVADO");
-     
-
-        
+            
+            HasRequired(e => e.Residencia).WithMany().Map(e => e.MapKey("CD_RESIDENCIA"));
         }
 
     }

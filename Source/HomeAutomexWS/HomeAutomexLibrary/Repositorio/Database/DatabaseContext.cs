@@ -20,8 +20,7 @@ namespace HomeAutomexLibrary.Repositorio.Database
         }
 
         public DatabaseContext()
-           // : base("HomeAutomexConnection")
-            : base(@"data source=casa-pc;initial catalog=HomeAutomexdb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
+            : base("HomeAutomexConnection")            
         {            
         }
 
@@ -31,11 +30,11 @@ namespace HomeAutomexLibrary.Repositorio.Database
             modelBuilder.Configurations.Add(new ResidenciaMap());
             modelBuilder.Configurations.Add(new ModuloMap());
             modelBuilder.Configurations.Add(new TipoPortaMap());
-            modelBuilder.Configurations.Add(new PortaModuloMap());
             modelBuilder.Configurations.Add(new DispositivoMap());
             modelBuilder.Configurations.Add(new AmbienteMap());
             modelBuilder.Configurations.Add(new UTDispositivoMap());
             modelBuilder.Configurations.Add(new LogMap());
+            modelBuilder.Configurations.Add(new PortaMap());
                 
             base.OnModelCreating(modelBuilder);
         }

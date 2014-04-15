@@ -16,22 +16,23 @@ namespace HomeAutomexLibrary.Fachada
         private ModuloNegocio       moduloNegocio;
         private AmbienteNegocio     ambienteNegocio;
         private TipoPortaNeogocio   tipoPortaNegocio;
-        private PortaModuloNegocio  portaModuloNegocio;
         private DispositivoNegocio  dispositivoNegocio;
         private UTUtilizacaoNegocio utDispositivoNegocio;
         private LogNegocio          logNegocio;
+        private PortaNegocio   portaNegocio;
         private DatabaseContext     contexto;
+        
 
         public Fachada()
         {
             this.contexto = new DatabaseContext();
             this.usuarioNegocio = new UsuarioNegocio();
             this.residenciaNegocio = new ResidenciaNegocio(contexto);
-            this.moduloNegocio = new ModuloNegocio();
+            this.moduloNegocio = new ModuloNegocio(contexto);
             this.ambienteNegocio = new AmbienteNegocio(contexto);
+            this.portaNegocio = new PortaNegocio(contexto);
             this.tipoPortaNegocio = new TipoPortaNeogocio();
-            this.portaModuloNegocio = new PortaModuloNegocio();
-            this.dispositivoNegocio = new DispositivoNegocio();
+            this.dispositivoNegocio = new DispositivoNegocio(contexto);
             this.utDispositivoNegocio   = new UTUtilizacaoNegocio();
             this.logNegocio             = new LogNegocio();
             
@@ -167,6 +168,10 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.moduloNegocio.RemoverModuloPorChave(chave);
         }
+        public List<Modulo> ConsultarModuloPorUsuario(int chave)
+        {
+            return this.moduloNegocio.ConsultarModuloPorUsuario(chave);
+        }
         #endregion
 
 
@@ -194,36 +199,8 @@ namespace HomeAutomexLibrary.Fachada
             return this.tipoPortaNegocio.RemoverTipoPortaPorChave(chave);
         }
 
-            #endregion
 
-
-
-        #region Porta do Modulo
-        //  Porta modulo
-        public string InserirPortaModulo(PortaModulo tipoPorta)
-        {
-            return this.portaModuloNegocio.InserirPortaModulo(tipoPorta);
-        }
-        public List<PortaModulo> ConsultarTodosPortaModulo()
-        {
-            return this.portaModuloNegocio.ConsultarTodosPortaModulo();
-        }
-        public string AlterarPortaModulo(PortaModulo tipoPorta)
-        {
-            return this.portaModuloNegocio.AlterarPortaModulo(tipoPorta);
-        }
-        public PortaModulo BuscarPortaModuloPorChave(int chave)
-        {
-            return this.portaModuloNegocio.BuscarPorChave(chave);
-        }
-        public string RemoverPortaModuloPorChave(int chave)
-        {
-            return this.portaModuloNegocio.RemoverPortaModuloPorChave(chave);
-        }
         #endregion
-
-
-
 
         #region Dispositivo
         public string InserirDispositivo(Dispositivo dispositivo)
@@ -290,9 +267,35 @@ namespace HomeAutomexLibrary.Fachada
         #endregion
 
 
+        #region Porta
+        public string InserirPorta(Porta porta)
+        {
+            return this.portaNegocio.Inserir(porta);
+        }
+        public List<Porta> ConsultarTodosPorta()
+        {
+            return this.portaNegocio.ConsultarTodos().ToList();
+        }
+        public string AlterarPorta(Porta porta)
+        {
+            return this.portaNegocio.Alterar(porta);
+        }
+        public Porta BuscarPortaPorChave(int chave)
+        {
+            return this.portaNegocio.BuscarPorChave(chave);
+        }
+        public string RemoverPortaPorChave(int chave)
+        {
+            return this.portaNegocio.RemoverPorChave(chave);
+        }
+        #endregion
 
-
-
+        #region Arduino        
+        public string StatusArduino(string ip)
+        {
+            return dispositivoNegocio.StatusArduino(ip);
+        }
+        #endregion
 
 
 
@@ -307,7 +310,8 @@ namespace HomeAutomexLibrary.Fachada
         //    return this.dispositivoNegocio.MudarStatusDispositivo(dispositivos);
         //}
 
-      
+
+
 
 
     }

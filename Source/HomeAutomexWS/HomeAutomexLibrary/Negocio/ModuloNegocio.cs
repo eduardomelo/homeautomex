@@ -11,19 +11,25 @@ namespace HomeAutomexLibrary.Negocio
 {
     public class ModuloNegocio : NegocioBase<Modulo, int>
     {
+        private ModuloRepositorio moduloRepositorio;
+        private ResidenciaRepositorio residenciaRepositorio;
 
         private DatabaseContext contexto;
-        public ModuloNegocio()
+        public ModuloNegocio(DatabaseContext contexto)
             //: base(new ModuloRepositorio(new DatabaseContext()))
         {
-            this.contexto = new DatabaseContext();
+            this.contexto = contexto;
+            moduloRepositorio = new ModuloRepositorio(contexto);
+            residenciaRepositorio = new ResidenciaRepositorio(contexto);
         }
         public string InserirModulo(Modulo modulo)
         {
-            base.Inserir(modulo);
+
+            modulo.Residencia = residenciaRepositorio.BuscarPorChave(modulo.Residencia.Chave);
+            moduloRepositorio.Inserir(modulo);
             try
             {
-                base.SaveChanges();
+                contexto.SaveChanges();
                 return "Operação realizada com sucesso!";
             }
             catch (Exception ex)
@@ -60,6 +66,11 @@ namespace HomeAutomexLibrary.Negocio
         public List<Modulo> ConsultarTodosModulo()
         {
             return base.ConsultarTodos().ToList();
+        }
+
+        public List<Modulo> ConsultarModuloPorUsuario(int chave)
+        {
+            return base.Consultar(e => e.Residencia != null && e.Residencia.Usuarios.Any(u => u.Chave == chave)).ToList();
         }
     }
 }

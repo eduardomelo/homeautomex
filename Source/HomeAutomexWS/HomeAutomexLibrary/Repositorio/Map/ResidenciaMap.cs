@@ -21,6 +21,7 @@ namespace HomeAutomexLibrary.Repositorio.Map
                 .HasColumnName("CD_RESIDENCIA")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
+            Property(e => e.Nome).HasColumnName("NM_RESIDENCIA").IsRequired();
             Property(e => e.Logradouro).HasColumnName("DS_LOGRADOURO").IsRequired();
             Property(e => e.Cidade).HasColumnName("DS_CIDADE").IsRequired();
             Property(e => e.Bairro).HasColumnName("DS_BAIRRO").IsRequired();

@@ -21,7 +21,6 @@ namespace HomeAutomexLibrary.Repositorio.Map
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             Property(e => e.Descricao).HasColumnName("DS_DESCRICAO").IsRequired();
-            Property(e => e.PortaModulo).HasColumnName("CD_PORTA");
             Property(e => e.DataCadastro).HasColumnName("DT_CADASTRO");
             Property(e => e.DataAlteracao).HasColumnName("DT_ALTERACAO");
             Property(e => e.DataExclusao).HasColumnName("DT_EXCLUSAO");
@@ -29,7 +28,8 @@ namespace HomeAutomexLibrary.Repositorio.Map
             Property(e => e.Status).HasColumnName("STATUS");
             Property(e => e.Favorito).HasColumnName("FAVORITO");
  
-        
+            HasRequired(e => e.Ambiente).WithMany().Map(e => e.MapKey("CD_AMBIENTE"));
+            HasRequired(e => e.Porta).WithMany().Map(e => e.MapKey("CD_PORTA"));     
         }
 
     }
