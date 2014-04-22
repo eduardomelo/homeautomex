@@ -25,19 +25,19 @@ public class OpcoesUsuariosActivity extends Activity implements OnClickListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_opcoes_usuarios);
 
-		btnFavoritos = (Button) findViewById(R.id.btnFavoritos);
+		btnFavoritos = (Button) findViewById(R.id.btn_favoritos);
 		btnFavoritos.setOnClickListener(this);
 
-		btnConfiguracoes = (Button) findViewById(R.id.btnConfiguracoes);
+		btnConfiguracoes = (Button) findViewById(R.id.btn_configuracoes);
 		btnConfiguracoes.setOnClickListener(this);
 
-		btnCenario = (Button) findViewById(R.id.btnCenario);
+		btnCenario = (Button) findViewById(R.id.btn_cenario);
 		btnCenario.setOnClickListener(this);
 
-		btnAmbientes = (Button) findViewById(R.id.btnAmbiente);
+		btnAmbientes = (Button) findViewById(R.id.btn_ambiente);
 		btnAmbientes.setOnClickListener(this);
 
-		btnProgramacao = (Button) findViewById(R.id.btnProgramacao);
+		btnProgramacao = (Button) findViewById(R.id.btn_programacao);
 		btnProgramacao.setOnClickListener(this);
 
 		intent = getIntent();
@@ -57,26 +57,26 @@ public class OpcoesUsuariosActivity extends Activity implements OnClickListener 
 	public void onClick(View v) {
 
 		switch (v.getId()) {
-		case R.id.btnAmbiente:
-			Intent itAmbiente = new Intent(this,AmbienteActivity.class);
-			itAmbiente.putExtra("idAmbiente", teste);
-			startActivity(itAmbiente);
+		case R.id.btn_ambiente:
+//			Intent itAmbiente = new Intent(this,AmbienteActivity.class);
+//			itAmbiente.putExtra("idAmbiente", teste);
+//			startActivity(itAmbiente);
 			Toast.makeText(getApplication(), "Ambiente", Toast.LENGTH_LONG).show();
 			break;
-		case R.id.btnCenario:
+		case R.id.btn_cenario:
 			Toast.makeText(getApplication(), "Cenario", Toast.LENGTH_LONG).show();
 			break;
-		case R.id.btnConfiguracoes:
-			Toast.makeText(getApplication(), "Configurações", Toast.LENGTH_LONG).show();
+		case R.id.btn_configuracoes:
+			Toast.makeText(getApplication(), "Configuraï¿½ï¿½es", Toast.LENGTH_LONG).show();
 			break;
-		case R.id.btnProgramacao:
-			Toast.makeText(getApplication(), "Programação", Toast.LENGTH_LONG).show();
+		case R.id.btn_programacao:
+			Toast.makeText(getApplication(), "Programaï¿½ï¿½o", Toast.LENGTH_LONG).show();
 			break;
-		case R.id.btnFavoritos:
+		case R.id.btn_favoritos:
 			Toast.makeText(getApplication(), "Favoritos", Toast.LENGTH_LONG).show();
-			Intent itFavoritos = new Intent(this,FavoritosActivity.class);
-			itFavoritos.putExtra("idAmbiente", teste);
-			startActivity(itFavoritos);
+//			Intent itFavoritos = new Intent(this,FavoritosActivity.class);
+//			itFavoritos.putExtra("idAmbiente", teste);
+//			startActivity(itFavoritos);
 			break;
 
 		default:

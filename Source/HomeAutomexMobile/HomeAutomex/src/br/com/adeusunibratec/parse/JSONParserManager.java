@@ -15,6 +15,7 @@ import android.util.Log;
 
 import br.com.adeusunibratec.bean.Residencia;
 import br.com.adeusunibratec.bean.Usuario;
+import java.util.List;
 
 
 
@@ -24,9 +25,11 @@ import br.com.adeusunibratec.bean.Usuario;
 public class JSONParserManager {
 
 	@SuppressLint("NewApi")
-	public static void parseJSONSapiensFirstAccess(String jsonString)
+	public static Usuario parseJSONUsuario(String jsonString)
 			throws JSONException {
 
+		Usuario retorno = new Usuario();
+		
 		Log.e("segundo", jsonString);
 
 		if (jsonString == null || jsonString.isEmpty()) {
@@ -54,7 +57,50 @@ public class JSONParserManager {
 		usuario.setChave(pingJSON.getString(JSONFields.CHAVE));
 		//Log.e("testando", usuario.getChave());
 
+		retorno = usuario;
+		
 		HomeAutomexJSONObject.getInstance().setUsuario(usuario);
+		
+		return retorno;
+	}
+        
+        public static ArrayList<Residencia> parseJSONResidencia(String jsonString)
+			throws JSONException , Exception{
+
+		ArrayList<Residencia> retorno = new ArrayList<Residencia>();
+		
+		Log.e("segundo", jsonString);
+
+		if (jsonString == null || jsonString.isEmpty()) {
+			throw new ParserException(ParserException.Error.INTERNAL_ERROR);
+		}
+
+		try {
+			jsonString = new String(jsonString.getBytes(Charset
+					.defaultCharset()), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
+		JSONObject pingJSON = new JSONObject(jsonString);
+
+                JSONArray jsonArray = pingJSON.getJSONArray("Residencias");
+                
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject obj = jsonArray.getJSONObject(i);
+                    Residencia residencia = new Residencia();
+                
+                    residencia.setLogradouro(obj.getString("Logradouro"));
+                    residencia.setCidade(obj.getString("Cidade"));
+                    residencia.setBairro(obj.getString("Bairro"));
+                    residencia.setCep(obj.getString("Cep"));
+                    residencia.setNumero(obj.getString("Numero"));
+                    residencia.setComplemento(obj.getString("Complemento"));
+                    residencia.setIdResidencia(obj.getInt("Chave"));
+                    
+                    retorno.add(residencia);
+                }
+		return retorno;
 	}
 
 	public static JSONObject createJSONLogin(String login, String senha)

@@ -10,69 +10,43 @@
     tools:context=".DispositivosActivity" >
 
     <Button
-        android:id="@+id/btnCenario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="90dp"
-        android:background="@layout/layout_botoes"
-        android:text="Cenário"
-        android:textColor="#fff"
-        android:textSize="15sp" />
-
-    <Button
-        android:id="@+id/btnFavoritos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:id="@+id/btn_favoritos"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:background="@layout/layout_botoes"
-        android:text="Favoritos"
-        android:textColor="#fff"
-        android:textSize="15sp" />
+        android:layout_centerVertical="true"
+        android:background="@drawable/btn_favoritos" />
 
     <Button
-        android:id="@+id/btnProgramacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnCenario"
-        android:layout_alignBottom="@+id/btnCenario"
-        android:layout_alignParentRight="true"
-        android:background="@layout/layout_botoes"
-        android:text="Programação"
-        android:textColor="#fff"
-        android:textSize="15sp" />
+        android:id="@+id/btn_configuracoes"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/btn_favoritos"
+        android:layout_toLeftOf="@+id/btn_favoritos"
+        android:background="@drawable/btn_configuracoes" />
 
     <Button
-        android:id="@+id/btnConfiguracoes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnFavoritos"
-        android:layout_below="@+id/btnFavoritos"
-        android:background="@layout/layout_botoes"
-        android:text="Configurações"
-        android:textColor="#fff"
-        android:textSize="15sp" />
+        android:id="@+id/btn_ambiente"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/btn_favoritos"
+        android:layout_toRightOf="@+id/btn_favoritos"
+        android:background="@drawable/btn_ambiente" />
 
     <Button
-        android:id="@+id/Button03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnCenario"
-        android:layout_below="@+id/btnCenario"
-        android:background="@layout/layout_botoes" />
+        android:id="@+id/btn_programacao"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/btn_favoritos"
+        android:layout_toLeftOf="@+id/btn_favoritos"
+        android:background="@drawable/btn_programacao" />
 
     <Button
-        android:id="@+id/btnAmbiente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/Button03"
-        android:layout_alignBottom="@+id/Button03"
-        android:layout_alignLeft="@+id/btnProgramacao"
-        android:background="@layout/layout_botoes"
-        android:text="Ambientes"
-        android:textColor="#fff"
-        android:textSize="15sp" />
+        android:id="@+id/btn_cenario"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/btn_favoritos"
+        android:layout_toRightOf="@+id/btn_favoritos"
+        android:background="@drawable/btn_cenario" />
 
 </RelativeLayout>

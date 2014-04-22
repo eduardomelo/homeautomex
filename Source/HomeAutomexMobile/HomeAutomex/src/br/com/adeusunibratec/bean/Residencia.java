@@ -5,12 +5,6 @@ import android.provider.ContactsContract.Contacts.Data;
 public class Residencia {
 	 
 	private long idResidencia;
-	public long getIdResidencia() {
-		return idResidencia;
-	}
-	public void setIdResidencia(long idResidencia) {
-		this.idResidencia = idResidencia;
-	}
 	private String Logradouro;
 	private String Cidade;
 	private String Bairro;
@@ -83,6 +77,12 @@ public class Residencia {
 	}
 	public void setDesativado(boolean desativado) {
 		Desativado = desativado;
+	}
+        public long getIdResidencia() {
+		return idResidencia;
+	}
+	public void setIdResidencia(long idResidencia) {
+		this.idResidencia = idResidencia;
 	}
 
 }

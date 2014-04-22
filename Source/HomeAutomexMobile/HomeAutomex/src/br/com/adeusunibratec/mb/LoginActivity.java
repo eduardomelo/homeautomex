@@ -5,10 +5,12 @@ import java.io.UnsupportedEncodingException;
 
 
 
+
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
+
 
 
 import br.com.adeusunibratec.acesso.AcessoWSDL;
@@ -17,7 +19,7 @@ import br.com.adeusunibratec.ha.R.layout;
 import br.com.adeusunibratec.ha.R.menu;
 import br.com.adeusunibratec.parse.JSONFields;
 import br.com.adeusunibratec.util.HomeAutomexUtils;
-
+import br.com.adeusunibratec.util.Util;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -90,8 +92,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 		if (!"".equals(login)) {
 			if (!"".equals(senha)) {
-				if (HomeAutomexUtils
-						.internetConnection(getApplicationContext())) {
+				if (Util.verificaConexao(this)) {
 
 					new LoginTask(this.progressDialog).execute(login, senha);
 

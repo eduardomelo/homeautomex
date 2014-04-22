@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lin_lay"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/radialback"
     android:layout_gravity="center"
-     android:id="@+id/lin_lay"
+    android:background="@drawable/wallpaper_residencia"
     android:gravity="center"
-    android:orientation="vertical" >
-
+    android:orientation="vertical" 
     
+    >
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/logo"
-        android:background="@drawable/logo1" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:background="@drawable/logo_marca_titulo" />
 
 </LinearLayout>
