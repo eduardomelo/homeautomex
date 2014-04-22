@@ -177,9 +177,6 @@ namespace HomeAutomexWebApplication
         #endregion
 
         #region Modulo
-
-
-        // Modulo
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string InserirModulo(string jModdulo)
@@ -288,9 +285,6 @@ namespace HomeAutomexWebApplication
         #endregion
 
         #region Dispositivo
-
-
-        // Dispositivo
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string InserirDispositivo(string jDispositivo)
@@ -306,11 +300,10 @@ namespace HomeAutomexWebApplication
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string ConsutarTodosDispositivo()
+        public string ConsutarTodosDispositivoPorUsuarioChave(string jChave)
         {
-            log.Descricao = "Usuario consultou um todos os dispositivos";
-            var retornoLog = fachada.InserirLog(log);
-            return JsonConvert.SerializeObject(fachada.ConsultarTodosDispositivo());
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosDispositivoPorUsuarioChave(chave));
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -320,7 +313,6 @@ namespace HomeAutomexWebApplication
             var retornoLog = fachada.InserirLog(log);
             return JsonConvert.SerializeObject(fachada.ConsutarTodosDispositivoFavorito());
         }
-
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string BuscarDispositivoPorChave(string jChave)
@@ -329,7 +321,6 @@ namespace HomeAutomexWebApplication
             var dispositivo = fachada.BuscarDispositivoPorChave(chave);
             return JsonConvert.SerializeObject(dispositivo);
         }
-      
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string AlterarDispositivo(string jDispositivo)
@@ -367,9 +358,6 @@ namespace HomeAutomexWebApplication
         #endregion
 
         #region Ambiente
-
-
-        // Ambiente
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string InserirAmbiente(string jAmbiente)
@@ -382,11 +370,10 @@ namespace HomeAutomexWebApplication
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string ConsutarTodosAmbiente()
+        public string ConsultarTodosAmbientePorUsuarioChave(string jChave)
         {
-            log.Descricao = "Usuario consultou todos os Ambientes";
-            var retornoLog = fachada.InserirLog(log);
-            return JsonConvert.SerializeObject(fachada.ConsultarTodosAmbiente());
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosAmbientePorUsuarioChave(chave));
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -416,7 +403,6 @@ namespace HomeAutomexWebApplication
             var ambiente = fachada.RemoverAmbientePorChave(chave);
             return JsonConvert.SerializeObject("Ambiente removido com sucesso");
         }
-
         #endregion
 
         #region Porta

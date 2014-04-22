@@ -88,10 +88,9 @@ namespace HomeAutomexLibrary.Negocio
         {
             return base.Consultar(e => e.Favorito == true).ToList();
         }
-
         public string StatusArduino(string ip)
         {
-            if(!string.IsNullOrEmpty(ip))
+            if (!string.IsNullOrEmpty(ip))
             {
                 var modulo = moduloRepositorio.Buscar(e => e.IP.Trim() == ip.Trim());
                 if (modulo != null)
@@ -108,6 +107,13 @@ namespace HomeAutomexLibrary.Negocio
             }
             else
                 return "IP Inválido";
+        }
+
+        public List<Dispositivo> ConsultarTodosDispositivoPorUsuarioChave(int chave)
+        {
+            return this.dispositivoRepositorio.Consultar(e =>
+                e.Ambiente.Residencia.Usuarios.Any(u => u.Chave == chave))
+                .ToList();
         }
     }
 }

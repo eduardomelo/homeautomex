@@ -59,9 +59,7 @@ namespace HomeAutomexLibrary.Fachada
             return this.logNegocio.ConsultarTodosLog();
         }
         #endregion
-
-
-
+        
         #region UTDispositivo
         public string InserirUTDispositivo(UTDispositivo utDispositivo)
         {
@@ -76,9 +74,7 @@ namespace HomeAutomexLibrary.Fachada
             return this.utDispositivoNegocio.ConsultarTodosUTDispositivo();
         }
         #endregion
-
         
-
         #region Usuário
         public Usuario Logar(Usuario usuario)
         {
@@ -114,8 +110,6 @@ namespace HomeAutomexLibrary.Fachada
         }
         #endregion
 
-
-
         #region Residência
         // Requisições da Residencia
         public string InserirResidencia(Residencia residencia)
@@ -144,8 +138,6 @@ namespace HomeAutomexLibrary.Fachada
         }
         #endregion
 
-
-
         #region Modulo
         // Modulo
         public string InserirModulo(Modulo modulo)
@@ -173,8 +165,6 @@ namespace HomeAutomexLibrary.Fachada
             return this.moduloNegocio.ConsultarModuloPorUsuario(chave);
         }
         #endregion
-
-
 
         #region Tipo de Porta
         // Tipo Porta
@@ -207,9 +197,9 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.dispositivoNegocio.InserirDispositivo(dispositivo);
         }
-        public List<Dispositivo> ConsultarTodosDispositivo()
+        public List<Dispositivo> ConsultarTodosDispositivoPorUsuarioChave(int chave)
         {
-            return this.dispositivoNegocio.ConsultarTodosDispositivo();
+            return this.dispositivoNegocio.ConsultarTodosDispositivoPorUsuarioChave(chave);
         }
         public List<Dispositivo> ConsutarTodosDispositivoFavorito()
         {
@@ -235,18 +225,15 @@ namespace HomeAutomexLibrary.Fachada
         //}
         #endregion
 
-
-
-
         #region Ambiente
         // Ambiente
         public string InserirAmbiente(Ambiente ambiente)
         {
             return this.ambienteNegocio.InserirAmbiente(ambiente);
         }
-        public List<Ambiente> ConsultarTodosAmbiente()
+        public List<Ambiente> ConsultarTodosAmbientePorUsuarioChave(int chave)
         {
-            return this.ambienteNegocio.ConsultarTodosAmbiente();
+            return this.ambienteNegocio.ConsultarTodosAmbientePorUsuarioChave(chave);
         }
         public string AlterarAmbiente(Ambiente ambiente)
         {
@@ -265,7 +252,6 @@ namespace HomeAutomexLibrary.Fachada
             this.ambienteNegocio.RemoverAmbientePorChaveEstrageira(chave);
         }
         #endregion
-
 
         #region Porta
         public string InserirPorta(Porta porta)
@@ -290,7 +276,7 @@ namespace HomeAutomexLibrary.Fachada
         }
         #endregion
 
-        #region Arduino        
+        #region Arduino
         public string StatusArduino(string ip)
         {
             return dispositivoNegocio.StatusArduino(ip);

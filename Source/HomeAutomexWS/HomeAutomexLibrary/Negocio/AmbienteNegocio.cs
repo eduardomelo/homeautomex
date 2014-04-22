@@ -87,6 +87,13 @@ namespace HomeAutomexLibrary.Negocio
           this.ambienteRepositorio.RemoverDispositivoPorChave(chave);
         }
 
+
+        public List<Ambiente> ConsultarTodosAmbientePorUsuarioChave(int chave)
+        {
+            return this.ambienteRepositorio.Consultar(e =>
+                e.Residencia.Usuarios.Any(u => u.Chave == chave))
+                .ToList();
+        }
     }
 }
 
