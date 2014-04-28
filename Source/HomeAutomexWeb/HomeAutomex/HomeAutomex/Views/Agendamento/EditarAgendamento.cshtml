@@ -1,0 +1,43 @@
+﻿@model HomeAutomex.Models.AgendamentoModel
+
+@{
+    ViewBag.Title = "EditarAgendamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Editar Agendamento</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Descricao)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Descricao)
+            @Html.ValidationMessageFor(model => model.Descricao)
+        </div>
+
+         <div class="editor-label">
+            @Html.DropDownListFor(model => model.Cenario, ViewBag.Cenario as List<SelectListItem>, "Selecione...", new { @class = "input" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Ativo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Ativo)
+            @Html.ValidationMessageFor(model => model.Ativo)
+        </div> <br />
+        <p>
+              <input type="submit" value="Editar" class="btn-glow primary login" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<HomeAutomex.Models.CenarioModel>
+
+@{
+    ViewBag.Title = "ListarCenario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<legend>Cenário</legend>    
+
+<p>
+    @Html.ActionLink("Criar novo", "RegistrarCenario")
+</p>
+<table id="Grid" class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cadastro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alteracao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Exclusao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desativado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Chave)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cadastro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Alteracao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Exclusao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desativado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chave)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "EditarCenario", new { chave = item.Chave }) |
+            @Html.ActionLink("Delete", "DeleteCenario", new { chave = item.Chave })
+        </td>
+    </tr>
+}
+
+</table>
