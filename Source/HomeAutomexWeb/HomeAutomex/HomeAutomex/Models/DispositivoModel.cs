@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using HomeAutomexLibrary.Entidade;
 
 namespace HomeAutomex.Models
 {
@@ -27,5 +28,9 @@ namespace HomeAutomex.Models
 
         [Display(Name = "Favorito")]
         public bool Favorito { get; set; }
+
+        public List<UsuarioModel> Usuarios { get; set; }
+     
+
     }
 }

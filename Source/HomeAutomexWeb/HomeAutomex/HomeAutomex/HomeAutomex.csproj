@@ -184,8 +184,10 @@
     <Compile Include="BootstrapSupport\ControlGroupExtensions.cs" />
     <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AgendamentoController.cs" />
     <Compile Include="Controllers\AmbienteController.cs" />
     <Compile Include="Controllers\BootstrapBaseController.cs" />
+    <Compile Include="Controllers\CenarioController.cs" />
     <Compile Include="Controllers\DispositivoController.cs" />
     <Compile Include="Controllers\DispositivosFavoritosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -217,6 +219,8 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AmbienteModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\CenarioModel.cs" />
+    <Compile Include="Models\AgendamentoModel.cs" />
     <Compile Include="Models\DispositivoModel.cs" />
     <Compile Include="Models\ModuloModel.cs" />
     <Compile Include="Models\PortaModel.cs" />
@@ -431,9 +435,6 @@
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosAmbienteResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirAmbienteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -459,9 +460,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarDispositivoPorChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosDispositivoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirDispositivoResponse.datasource">
@@ -495,6 +493,48 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirPortaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarCenarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarCenarioPorChaveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsultarTodosAmbientePorUsuarioChaveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosDispositivoPorUsuarioChaveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirCenarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirCenarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.StatusArduinoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosCenarioPorUsuarioChaveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosCenarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarAgendamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarAgendamentoPorChaveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirAgendamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirAgendamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosAgendamentoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
@@ -575,6 +615,12 @@
     <Content Include="Views\Home\Index.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Cenario\ListarCenario.cshtml" />
+    <Content Include="Views\Cenario\RegistrarCenario.cshtml" />
+    <Content Include="Views\Cenario\EditarCenario.cshtml" />
+    <Content Include="Views\Agendamento\RegistrarAgendamento.cshtml" />
+    <Content Include="Views\Agendamento\ListarAgendamento.cshtml" />
+    <Content Include="Views\Agendamento\EditarAgendamento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

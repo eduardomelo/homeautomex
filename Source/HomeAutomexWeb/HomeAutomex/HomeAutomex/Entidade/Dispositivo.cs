@@ -5,9 +5,9 @@ using System.Text;
 
 namespace HomeAutomexLibrary.Entidade
 {
-   public class Dispositivo : EntidadeBase<int>
+    public class Dispositivo : EntidadeBase<int>
     {
-       
+
         public virtual string Descricao { get; set; }
         public virtual DateTime? DataCadastro { get; set; }
         public virtual DateTime? DataAlteracao { get; set; }
@@ -17,7 +17,16 @@ namespace HomeAutomexLibrary.Entidade
         public virtual Ambiente Ambiente { get; set; }
         public virtual Porta Porta { get; set; }
         public virtual bool Favorito { get; set; }
+        public virtual List<Usuario> Usuarios { get; set; }
+
+        public Dispositivo()
+        {
+            Usuarios = new List<Usuario>();
+
+            //Modulos = new List<Modulo>();
+        }
     }
+}
 
    //public class DispositivoTeste : EntidadeBase<int>
    //{
@@ -25,4 +34,4 @@ namespace HomeAutomexLibrary.Entidade
    //    public virtual bool Status { get; set; }
    //}
 
-}
+

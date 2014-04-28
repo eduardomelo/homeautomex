@@ -17,14 +17,9 @@ namespace HomeAutomexLibrary.Entidade
         public DateTime exclusao { get; set; }
         public bool desativado { get; set; }
 
-        public Usuario usuario { get; set; }
-        public Logs cenario { get; set; }
+        public int Usuario { get; set; }
+        public int Cenario { get; set; }
 
-        public Agendamento()
-        {
-            this.usuario = new Usuario();
-            this.cenario = new Logs();
-        }
 
     }
 }

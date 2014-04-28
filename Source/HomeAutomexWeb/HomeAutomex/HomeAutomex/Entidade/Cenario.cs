@@ -5,13 +5,13 @@ using System.Text;
 
 namespace HomeAutomexLibrary.Entidade
 {
-    public class Logs : EntidadeBase<int>
+   public class Cenario : EntidadeBase<int>
     {
-      
-        public string descricao { get; set; }
-        public DateTime cadastro { get; set; }
-        public DateTime alteracao { get; set; }
-        public DateTime exclusao { get; set; }
-        public bool desativado { get; set; } 
+
+        public string Descricao { get; set; }
+        public DateTime Cadastro { get; set; }
+        public DateTime Alteracao { get; set; }
+        public DateTime Exclusao { get; set; }
+        public bool Desativado { get; set; }
     }
 }
