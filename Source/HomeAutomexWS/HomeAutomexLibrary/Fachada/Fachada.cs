@@ -16,23 +16,27 @@ namespace HomeAutomexLibrary.Fachada
         private ModuloNegocio       moduloNegocio;
         private AmbienteNegocio     ambienteNegocio;
         private TipoPortaNeogocio   tipoPortaNegocio;
+        private AgendamentoNegocio  agendamentoNegocio;
         private DispositivoNegocio  dispositivoNegocio;
+        private CenarioNegocio      cenarioNegocio;
         private UTUtilizacaoNegocio utDispositivoNegocio;
         private LogNegocio          logNegocio;
-        private PortaNegocio   portaNegocio;
+        private PortaNegocio        portaNegocio;
         private DatabaseContext     contexto;
         
 
         public Fachada()
         {
-            this.contexto = new DatabaseContext();
-            this.usuarioNegocio = new UsuarioNegocio();
-            this.residenciaNegocio = new ResidenciaNegocio(contexto);
-            this.moduloNegocio = new ModuloNegocio(contexto);
-            this.ambienteNegocio = new AmbienteNegocio(contexto);
-            this.portaNegocio = new PortaNegocio(contexto);
-            this.tipoPortaNegocio = new TipoPortaNeogocio();
-            this.dispositivoNegocio = new DispositivoNegocio(contexto);
+            this.contexto               = new DatabaseContext();
+            this.usuarioNegocio         = new UsuarioNegocio();
+            this.residenciaNegocio      = new ResidenciaNegocio(contexto);
+            this.moduloNegocio          = new ModuloNegocio(contexto);
+            this.ambienteNegocio        = new AmbienteNegocio(contexto);
+            this.cenarioNegocio         = new CenarioNegocio(contexto);
+            this.portaNegocio           = new PortaNegocio(contexto);
+            this.tipoPortaNegocio       = new TipoPortaNeogocio();
+            this.dispositivoNegocio     = new DispositivoNegocio(contexto);
+            this.agendamentoNegocio     = new AgendamentoNegocio(contexto);
             this.utDispositivoNegocio   = new UTUtilizacaoNegocio();
             this.logNegocio             = new LogNegocio();
             
@@ -48,7 +52,7 @@ namespace HomeAutomexLibrary.Fachada
             return instancia;
         }
 
-
+        
         #region Log
         public string InserirLog(Log log) 
         {
@@ -253,6 +257,34 @@ namespace HomeAutomexLibrary.Fachada
         }
         #endregion
 
+        #region Cenario
+        // Ambiente
+        public string InserirCenario(Cenario cenario)
+        {
+            return this.cenarioNegocio.InserirCenario(cenario);
+        }
+        public string AlterarCenario(Cenario cenario)
+        {
+            return this.cenarioNegocio.AlterarCenario(cenario);
+        }
+        public Cenario BuscarCenarioPorChave(int chave)
+        {
+            return this.cenarioNegocio.BuscarPorChave(chave);
+        }
+        public string RemoverCenarioPorChave(int chave)
+        {
+            return this.cenarioNegocio.RemoverCenarioPorChave(chave);
+        }
+        public List<Cenario> ConsultarTodosCenarioPorUsuarioChave(int chave)
+        {
+            return this.cenarioNegocio.ConsultarTodosCenarioPorUsuarioChave(chave);
+        }
+        public List<Cenario> ConsultarTodosCenario()
+        {
+            return this.cenarioNegocio.ConsultarTodosCenario();
+        }
+        #endregion
+
         #region Porta
         public string InserirPorta(Porta porta)
         {
@@ -273,6 +305,30 @@ namespace HomeAutomexLibrary.Fachada
         public string RemoverPortaPorChave(int chave)
         {
             return this.portaNegocio.RemoverPorChave(chave);
+        }
+        #endregion
+
+        #region Agendamento
+        public string InserirAgendamento(Agendamento agendamento)
+        {
+            return this.agendamentoNegocio.InserirAgendamento(agendamento);
+        }
+      
+        public List<Agendamento> ConsutarTodosAgendamento()
+        {
+            return this.agendamentoNegocio.ConsultarTodosAgendamento();
+        }
+        public string AlterarAgendamento(Agendamento agendamento)
+        {
+            return this.agendamentoNegocio.AlterarAgendamento(agendamento);
+        }
+        public Agendamento BuscarAgendamentoPorChave(int chave)
+        {
+            return this.agendamentoNegocio.BuscarPorChave(chave);
+        }
+        public string RemoverAgendamentoPorChave(int chave)
+        {
+            return this.agendamentoNegocio.RemoverAgendamentoPorChave(chave);
         }
         #endregion
 

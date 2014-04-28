@@ -69,6 +69,8 @@
     <Compile Include="Entidade\Usuario.cs" />
     <Compile Include="Fachada\Fachada.cs" />
     <Compile Include="Negocio\AmbienteNegocio.cs" />
+    <Compile Include="Negocio\CenarioNegocio.cs" />
+    <Compile Include="Negocio\AgendamentoNegocio.cs" />
     <Compile Include="Negocio\PortaNegocio.cs" />
     <Compile Include="Negocio\UTUtilizacaoNegocio.cs" />
     <Compile Include="Negocio\LogNegocio.cs" />
@@ -81,6 +83,10 @@
     <Compile Include="Negocio\UsuarioNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\AmbienteRepositorio.cs" />
+    <Compile Include="Repositorio\CenarioRepositorio.cs" />
+    <Compile Include="Repositorio\AgendamentoRepositorio.cs" />
+    <Compile Include="Repositorio\Map\CenarioMap.cs" />
+    <Compile Include="Repositorio\Map\AgendamentoMap.cs" />
     <Compile Include="Repositorio\PortaRepositorio.cs" />
     <Compile Include="Repositorio\UTDispositivoRepositorio.cs" />
     <Compile Include="Repositorio\LogRepositorio.cs" />

@@ -87,7 +87,7 @@ namespace HomeAutomexLibrary.Negocio
             catch (Exception ex)
             {
 
-                throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
+                    throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
         public List<Residencia> ConsultarTodosResidencia()

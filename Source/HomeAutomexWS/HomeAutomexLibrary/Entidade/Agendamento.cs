@@ -10,21 +10,17 @@ namespace HomeAutomexLibrary.Entidade
     public class Agendamento : EntidadeBase<int>
     {
       
-        public string descricao { get; set; }
-        public bool ativo { get; set; }
-        public DateTime cadastro { get; set; }
-        public DateTime altaracao { get; set; }
-        public DateTime exclusao { get; set; }
-        public bool desativado { get; set; }
+        public string Descricao { get; set; }
+        public bool Ativo { get; set; }
+        public DateTime? Cadastro { get; set; }
+        public DateTime? Altaracao { get; set; }
+        public DateTime? Exclusao { get; set; }
+        public bool Desativado { get; set; }
 
-        public Usuario usuario { get; set; }
-        public Logs cenario { get; set; }
+        public int Usuario { get; set; }
+        public int Cenario { get; set; }
 
-        public Agendamento()
-        {
-            this.usuario = new Usuario();
-            this.cenario = new Logs();
-        }
+       
 
     }
 }
