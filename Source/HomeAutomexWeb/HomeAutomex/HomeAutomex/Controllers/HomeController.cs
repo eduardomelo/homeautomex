@@ -14,27 +14,34 @@ namespace HomeAutomex.Controllers
     public class HomeController : Controller
     {
         private HomeAutomexWSSoapClient webService;
-       
 
-        public HomeController() {
-            
+
+        public HomeController()
+        {
+
         }
 
         public ActionResult Index()
         {
-            var chave = 1;
+            try
+            {
+                var chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
+                webService = new HomeAutomexWSSoapClient();
+                var model = JsonConvert.DeserializeObject<List<Residencia>>(webService
+                    .ConsultarResidenciaPorUsuarioChave(JsonConvert.SerializeObject((Session["Usuario"] as UsuarioModel))))
+                    .Select(e => Mapper.DynamicMap<ResidenciaModel>(e));
+                ViewBag.Ambientes = JsonConvert.DeserializeObject<List<AmbienteModel>>(webService.ConsultarTodosAmbientePorUsuarioChave(chave.ToString()));
 
-            webService = new HomeAutomexWSSoapClient();
+                var dispositivos = JsonConvert.DeserializeObject<List<DispositivoModel>>(webService.ConsutarTodosDispositivoPorUsuarioChave(chave.ToString()));
+                ViewBag.Dispositivos = dispositivos;
 
-            var model = JsonConvert.DeserializeObject<List<Residencia>>(webService
-                .ConsultarResidenciaPorUsuarioChave(JsonConvert.SerializeObject((Session["Usuario"] as UsuarioModel))))
-                .Select(e => Mapper.DynamicMap<ResidenciaModel>(e));
-            ViewBag.Ambientes = JsonConvert.DeserializeObject<List<AmbienteModel>>(webService.ConsultarTodosAmbientePorUsuarioChave(chave.ToString()));
+                return View(model);
+            }
+            catch (Exception)
+            {
 
-            var dispositivos = JsonConvert.DeserializeObject<List<DispositivoModel>>(webService.ConsutarTodosDispositivoPorUsuarioChave(chave.ToString()));
-            ViewBag.Dispositivos = dispositivos;
-
-            return View(model);
+                return RedirectToAction("SessaoExpirou", "Account");
+            }
         }
 
         public ActionResult About()

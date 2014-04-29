@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using AutoMapper;
 using HomeAutomex.HomeAutomexService;
 using HomeAutomex.Models;
+using HomeAutomexLibrary.Entidade;
 using Newtonsoft.Json;
 
 namespace HomeAutomex.Controllers
@@ -13,10 +15,11 @@ namespace HomeAutomex.Controllers
     public class DispositivosFavoritosController : Controller
     {
         private DispositivoModel dispositivoModel;
-
+        private HomeAutomexWSSoapClient webService;
         public DispositivosFavoritosController()
         {
             this.dispositivoModel = new DispositivoModel();
+            this.webService = new HomeAutomexWSSoapClient();
 
         }
         public ActionResult Index()
@@ -25,20 +28,26 @@ namespace HomeAutomex.Controllers
         }
         public ActionResult ListarDispositivo(string pesquisa)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var webService = new HomeAutomexWSSoapClient();
-                var x = webService.ConsutarTodosDispositivoFavorito();
-                var dispositivo = JsonConvert.DeserializeObject<List<DispositivoModel>>(x);
-                if (!string.IsNullOrEmpty(pesquisa))
-                    return View(dispositivo.Where(e =>
-                                e.Descricao.Contains(pesquisa) ||
-                                
-                                e.Descricao.Contains(pesquisa)));
-                                
-                return View(dispositivo);
+
+            var chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
+            webService = new HomeAutomexWSSoapClient();
+            var model = JsonConvert.DeserializeObject<List<Residencia>>(webService
+                .ConsultarResidenciaPorUsuarioChave(JsonConvert.SerializeObject((Session["Usuario"] as UsuarioModel))))
+                .Select(e => Mapper.DynamicMap<ResidenciaModel>(e));
+            ViewBag.Ambientes = JsonConvert.DeserializeObject<List<AmbienteModel>>(webService.ConsultarTodosAmbientePorUsuarioChave(chave.ToString()));
+
+            var dispositivos = JsonConvert.DeserializeObject<List<DispositivoModel>>(webService.ConsutarTodosDispositivoFavorito());
+            ViewBag.Dispositivos = dispositivos;
+
+            return View(model);
             }
-            return View();
+            catch (Exception)
+            {
+
+                return RedirectToAction("SessaoExpirou", "Account");
+            }
 
         }
         [HttpGet]

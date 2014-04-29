@@ -1,72 +1,180 @@
-﻿@model List<HomeAutomex.Models.DispositivoModel>
-
+﻿@model IEnumerable<HomeAutomex.Models.ResidenciaModel>
 @{
-    ViewBag.Title = "ListarDispositivo";
+    ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
- <legend>Favoritos</legend>
-<p>
-    @Html.ActionLink("Criar novo", "Create")
-</p>
-<table id="Grid" class="table table-bordered">
-    <tr>
-        <td>
-            Favorito
-        </td>
-        <th>
-            Descrição
-        </th>
-        <th>
-            Status
-        </th>
-    </tr>
-    @for (int i = 0; i < Model.Count; i++)
-    {
-        <tr>
-          <td> <div id="divImagem"> <img src="~/Images/estrela.png" /></div></td>
-        <td>
-            @Html.DisplayFor(e => e[i].Descricao)
-        </td>
-       <td>
-          
-        <li>
-       <label class="checkbox-switch"> 
-       @Html.CheckBoxFor(e => e[i].Status, new { id = Model[i].Chave })
-      <span class="checkbox-switch-inner">
-      <span class="checkbox-switch-on">ON</span>
-      <span class="checkbox-switch-off">OFF</span>
-      <span class="checkbox-switch-handle"></span>
-    </span>
-     </label>
-     </li>
-       </td>
-    </tr>
+<div class="container">
+    @foreach (var residencia in Model)
+    {  
+    
+        <div class="row">
+            <div class="span8">
+                <div class="menu">
+                    <div class="accordion">
+                        <!-- Áreas -->
+                        <div class="accordion-group">
+                            <!-- Área -->
+                            <div class="accordion-heading area">
+                                <a class="accordion-toggle" data-toggle="collapse" href="#residencia-@residencia.Chave">@residencia.Nome</a>
+
+                                <div class="dropdown edit">
+                                    <a class="dropdown-toggle icon-pencil" data-toggle="dropdown"
+                                        href="#" style="font-style: italic"></a>
+
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="#"><i class="icon-pencil"></i>Editar residência</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /Área -->
+                            <div class="accordion-body collapse" id="residencia-@residencia.Chave">
+                                <div class="accordion-inner">
+                                    <div class="accordion" id="equipamento1">
+                                        <!-- Equipamentos -->
+                                        @foreach (var ambiente in (ViewBag.Ambientes as IEnumerable<HomeAutomex.Models.AmbienteModel>)
+                                            .Where(e => e.Residencia.Chave == residencia.Chave))
+                                        {                                            
+                                        
+                                            <div class="accordion-group">
+                                                <div class="accordion-heading equipamento">
+                                                    <a class="accordion-toggle" data-parent="#equipamento1-1"
+                                                        data-toggle="collapse" href="#ambiente-@ambiente.Chave">@ambiente.Descricao</a>
+
+                                                    <div class="dropdown edit">
+                                                        <a class="dropdown-toggle icon-pencil"
+                                                            data-toggle="dropdown" href="#" style="font-style: italic"></a>
+
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a href="../equipamento/edit.php"><i class="icon-pencil"></i>Editar
+                                                        equipamento</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <!-- Pontos -->
+                                                <div class="accordion-body collapse" id="ambiente-@ambiente.Chave">
+                                                @foreach (var dispositivo in (ViewBag.Dispositivos as IEnumerable<HomeAutomex.Models.DispositivoModel>)
+                                            .Where(e => e.Ambiente.Chave == ambiente.Chave))
+                                                {
+                                                    <div  id="ponto1-1">
+                                                        <div class="accordion-inner">
+                                                            <div class="accordion" id="servico1">
+                                                                <div class="accordion-group">
+                                                                    <div class="accordion-heading ponto">
+                                                                        <a class="accordion-toggle"
+                                                                            data-parent="#servico1-1-1"
+                                                                            data-toggle="collapse" href="#dispositivo-@dispositivo.Chave">@dispositivo.Descricao</a>
+
+                                                                        <div class="dropdown edit">
+                                                                            <a class="dropdown-toggle icon-pencil"
+                                                                                data-toggle="dropdown"
+                                                                                href="#" style="font-style: italic"></a>
+
+                                                                            <ul class="dropdown-menu">
+                                                                                <!-- Adicionar servico -->
+                                                                                <li class="divider"></li>
+                                                                                <!-- Editar ponto -->
+
+                                                                                <li>
+                                                                                    <a href="../ponto/edit.php">
+                                                                                        <i class="icon-pencil"></i>
+                                                                                        Editar ponto</a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Serviços -->
+
+                                                                    <div class="accordion-body collapse"
+                                                                        id="dispositivo-@dispositivo.Chave">
+                                                                        <div class="accordion-inner">
+                                                                            <ul class="nav nav-list">
+                                                                                <li>
+                                                                                    @Html.CheckBox("dispositivo", dispositivo.Status, new { @class = "ckbSwitch", id = dispositivo.Chave })
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- /Serviços -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                                    </div>
+                                                <!-- /Pontos -->
+                                            </div>
+                                        }
+                                        <!-- /Equipamentos -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /accordion -->
+                </div>
+            </div>
+        </div>
     }
-</table>
+</div>
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<link href="~/css/bootstrap-switch.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-switch.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+    $(document).ready(function () {
+        $(".ckbSwitch").bootstrapSwitch();
 
-    $(document).ready(function () {       
-        $('input[type=checkbox]').change(function () {
-            var status;
-            if ($(this).is(':checked'))
-                status = true;
-            else
-                status = false
-            $.ajax({
-                url: '@Url.Action("EditarStatus", "DispositivosFavoritos")',
-                type: 'GET',
-                contentType: 'application/json',
-                data: { chave: $(this).attr('id'), status: status },
-                success: function () {
-                    console.log("sucesso!");
-                },
-                error: function (data) {
-                    console.log(data.e);
-                }
-            });
+    });
+    $('input[type="checkbox"]').on('switchChange.bootstrapSwitch', function (event, state) {
+        $.ajax({
+            url: '@Url.Action("AlterarStatus", "Dispositivo")',
+            type: 'GET',
+            contentType: 'application/json',
+            data: { chave: $(this).attr('id'), status: state },
+            success: function () {
+                console.log("sucesso!");
+            },
+            error: function (data) {
+                console.log(data.e);
+            }
         });
     });
 </script>
+
+<style type="text/css">
+    .menu .accordion-heading {
+        position: relative;
+    }
+
+        .menu .accordion-heading .edit {
+            position: absolute;
+            top: 8px;
+            right: 30px;
+        }
+
+    .menu .area {
+        border-left: 4px solid #f38787;
+    }
+
+    .menu .equipamento {
+        border-left: 4px solid #65c465;
+    }
+
+    .menu .ponto {
+        border-left: 4px solid #98b3fa;
+    }
+
+    .menu .collapse.in {
+        overflow: visible;
+    }
+</style>
