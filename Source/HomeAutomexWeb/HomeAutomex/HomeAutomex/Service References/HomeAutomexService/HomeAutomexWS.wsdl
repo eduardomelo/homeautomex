@@ -242,69 +242,17 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="InserirPortaModulo">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="jPortaModulo" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="InserirPortaModuloResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="InserirPortaModuloResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="ConsutarTodosPortaModulo">
-        <s:complexType />
-      </s:element>
-      <s:element name="ConsutarTodosPortaModuloResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosPortaModuloResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="BuscarPortaModuloPorChave">
+      <s:element name="ConsultarModuloPorUsuario">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="BuscarPortaModuloPorChaveResponse">
+      <s:element name="ConsultarModuloPorUsuarioResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="BuscarPortaModuloPorChaveResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="AlterarPortaModulo">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="jPortaModulo" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="AlterarPortaModuloResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="AlterarPortaModuloResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="ExcluirPortaModulo">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="ExcluirPortaModuloResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="ExcluirPortaModuloResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultarModuloPorUsuarioResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -388,13 +336,17 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="ConsutarTodosDispositivo">
-        <s:complexType />
-      </s:element>
-      <s:element name="ConsutarTodosDispositivoResponse">
+      <s:element name="ConsutarTodosDispositivoPorUsuarioChave">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosDispositivoResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsutarTodosDispositivoPorUsuarioChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosDispositivoPorUsuarioChaveResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -464,13 +416,17 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="ConsutarTodosAmbiente">
-        <s:complexType />
-      </s:element>
-      <s:element name="ConsutarTodosAmbienteResponse">
+      <s:element name="ConsultarTodosAmbientePorUsuarioChave">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosAmbienteResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultarTodosAmbientePorUsuarioChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultarTodosAmbientePorUsuarioChaveResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -513,6 +469,232 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="ExcluirAmbienteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserirCenario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jCenario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserirCenarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InserirCenarioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsutarTodosCenarioPorUsuarioChave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsutarTodosCenarioPorUsuarioChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosCenarioPorUsuarioChaveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsutarTodosCenario">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsutarTodosCenarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosCenarioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarCenarioPorChave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarCenarioPorChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarCenarioPorChaveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AlterarCenario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jCenario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AlterarCenarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AlterarCenarioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirCenario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirCenarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExcluirCenarioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserirPorta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jPorta" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserirPortaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InserirPortaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsutarTodosPorta">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsutarTodosPortaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosPortaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarPortaPorChave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarPortaPorChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarPortaPorChaveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AlterarPorta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jResidencia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AlterarPortaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AlterarPortaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirPorta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirPortaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExcluirPortaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserirAgendamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jAgendamento" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserirAgendamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InserirAgendamentoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsutarTodosAgendamento">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsutarTodosAgendamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosAgendamentoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarAgendamentoPorChave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarAgendamentoPorChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarAgendamentoPorChaveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AlterarAgendamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jAgendamento" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AlterarAgendamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AlterarAgendamentoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirAgendamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirAgendamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExcluirAgendamentoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StatusArduino">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StatusArduinoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StatusArduinoResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -626,35 +808,11 @@
   <wsdl:message name="ExcluirModuloSoapOut">
     <wsdl:part name="parameters" element="tns:ExcluirModuloResponse" />
   </wsdl:message>
-  <wsdl:message name="InserirPortaModuloSoapIn">
-    <wsdl:part name="parameters" element="tns:InserirPortaModulo" />
+  <wsdl:message name="ConsultarModuloPorUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultarModuloPorUsuario" />
   </wsdl:message>
-  <wsdl:message name="InserirPortaModuloSoapOut">
-    <wsdl:part name="parameters" element="tns:InserirPortaModuloResponse" />
-  </wsdl:message>
-  <wsdl:message name="ConsutarTodosPortaModuloSoapIn">
-    <wsdl:part name="parameters" element="tns:ConsutarTodosPortaModulo" />
-  </wsdl:message>
-  <wsdl:message name="ConsutarTodosPortaModuloSoapOut">
-    <wsdl:part name="parameters" element="tns:ConsutarTodosPortaModuloResponse" />
-  </wsdl:message>
-  <wsdl:message name="BuscarPortaModuloPorChaveSoapIn">
-    <wsdl:part name="parameters" element="tns:BuscarPortaModuloPorChave" />
-  </wsdl:message>
-  <wsdl:message name="BuscarPortaModuloPorChaveSoapOut">
-    <wsdl:part name="parameters" element="tns:BuscarPortaModuloPorChaveResponse" />
-  </wsdl:message>
-  <wsdl:message name="AlterarPortaModuloSoapIn">
-    <wsdl:part name="parameters" element="tns:AlterarPortaModulo" />
-  </wsdl:message>
-  <wsdl:message name="AlterarPortaModuloSoapOut">
-    <wsdl:part name="parameters" element="tns:AlterarPortaModuloResponse" />
-  </wsdl:message>
-  <wsdl:message name="ExcluirPortaModuloSoapIn">
-    <wsdl:part name="parameters" element="tns:ExcluirPortaModulo" />
-  </wsdl:message>
-  <wsdl:message name="ExcluirPortaModuloSoapOut">
-    <wsdl:part name="parameters" element="tns:ExcluirPortaModuloResponse" />
+  <wsdl:message name="ConsultarModuloPorUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultarModuloPorUsuarioResponse" />
   </wsdl:message>
   <wsdl:message name="InserirTipoPortaSoapIn">
     <wsdl:part name="parameters" element="tns:InserirTipoPorta" />
@@ -692,11 +850,11 @@
   <wsdl:message name="InserirDispositivoSoapOut">
     <wsdl:part name="parameters" element="tns:InserirDispositivoResponse" />
   </wsdl:message>
-  <wsdl:message name="ConsutarTodosDispositivoSoapIn">
-    <wsdl:part name="parameters" element="tns:ConsutarTodosDispositivo" />
+  <wsdl:message name="ConsutarTodosDispositivoPorUsuarioChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosDispositivoPorUsuarioChave" />
   </wsdl:message>
-  <wsdl:message name="ConsutarTodosDispositivoSoapOut">
-    <wsdl:part name="parameters" element="tns:ConsutarTodosDispositivoResponse" />
+  <wsdl:message name="ConsutarTodosDispositivoPorUsuarioChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosDispositivoPorUsuarioChaveResponse" />
   </wsdl:message>
   <wsdl:message name="ConsutarTodosDispositivoFavoritoSoapIn">
     <wsdl:part name="parameters" element="tns:ConsutarTodosDispositivoFavorito" />
@@ -728,11 +886,11 @@
   <wsdl:message name="InserirAmbienteSoapOut">
     <wsdl:part name="parameters" element="tns:InserirAmbienteResponse" />
   </wsdl:message>
-  <wsdl:message name="ConsutarTodosAmbienteSoapIn">
-    <wsdl:part name="parameters" element="tns:ConsutarTodosAmbiente" />
+  <wsdl:message name="ConsultarTodosAmbientePorUsuarioChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultarTodosAmbientePorUsuarioChave" />
   </wsdl:message>
-  <wsdl:message name="ConsutarTodosAmbienteSoapOut">
-    <wsdl:part name="parameters" element="tns:ConsutarTodosAmbienteResponse" />
+  <wsdl:message name="ConsultarTodosAmbientePorUsuarioChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultarTodosAmbientePorUsuarioChaveResponse" />
   </wsdl:message>
   <wsdl:message name="BuscarAmbientePorChaveSoapIn">
     <wsdl:part name="parameters" element="tns:BuscarAmbientePorChave" />
@@ -751,6 +909,108 @@
   </wsdl:message>
   <wsdl:message name="ExcluirAmbienteSoapOut">
     <wsdl:part name="parameters" element="tns:ExcluirAmbienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="InserirCenarioSoapIn">
+    <wsdl:part name="parameters" element="tns:InserirCenario" />
+  </wsdl:message>
+  <wsdl:message name="InserirCenarioSoapOut">
+    <wsdl:part name="parameters" element="tns:InserirCenarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosCenarioPorUsuarioChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosCenarioPorUsuarioChave" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosCenarioPorUsuarioChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosCenarioPorUsuarioChaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosCenarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosCenario" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosCenarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosCenarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarCenarioPorChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarCenarioPorChave" />
+  </wsdl:message>
+  <wsdl:message name="BuscarCenarioPorChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarCenarioPorChaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="AlterarCenarioSoapIn">
+    <wsdl:part name="parameters" element="tns:AlterarCenario" />
+  </wsdl:message>
+  <wsdl:message name="AlterarCenarioSoapOut">
+    <wsdl:part name="parameters" element="tns:AlterarCenarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirCenarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ExcluirCenario" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirCenarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ExcluirCenarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="InserirPortaSoapIn">
+    <wsdl:part name="parameters" element="tns:InserirPorta" />
+  </wsdl:message>
+  <wsdl:message name="InserirPortaSoapOut">
+    <wsdl:part name="parameters" element="tns:InserirPortaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosPortaSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosPorta" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosPortaSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosPortaResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarPortaPorChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarPortaPorChave" />
+  </wsdl:message>
+  <wsdl:message name="BuscarPortaPorChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarPortaPorChaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="AlterarPortaSoapIn">
+    <wsdl:part name="parameters" element="tns:AlterarPorta" />
+  </wsdl:message>
+  <wsdl:message name="AlterarPortaSoapOut">
+    <wsdl:part name="parameters" element="tns:AlterarPortaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirPortaSoapIn">
+    <wsdl:part name="parameters" element="tns:ExcluirPorta" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirPortaSoapOut">
+    <wsdl:part name="parameters" element="tns:ExcluirPortaResponse" />
+  </wsdl:message>
+  <wsdl:message name="InserirAgendamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:InserirAgendamento" />
+  </wsdl:message>
+  <wsdl:message name="InserirAgendamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:InserirAgendamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosAgendamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosAgendamento" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosAgendamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosAgendamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarAgendamentoPorChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarAgendamentoPorChave" />
+  </wsdl:message>
+  <wsdl:message name="BuscarAgendamentoPorChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarAgendamentoPorChaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="AlterarAgendamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:AlterarAgendamento" />
+  </wsdl:message>
+  <wsdl:message name="AlterarAgendamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:AlterarAgendamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirAgendamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:ExcluirAgendamento" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirAgendamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:ExcluirAgendamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="StatusArduinoSoapIn">
+    <wsdl:part name="parameters" element="tns:StatusArduino" />
+  </wsdl:message>
+  <wsdl:message name="StatusArduinoSoapOut">
+    <wsdl:part name="parameters" element="tns:StatusArduinoResponse" />
   </wsdl:message>
   <wsdl:portType name="HomeAutomexWSSoap">
     <wsdl:operation name="InserirUsuário">
@@ -825,25 +1085,9 @@
       <wsdl:input message="tns:ExcluirModuloSoapIn" />
       <wsdl:output message="tns:ExcluirModuloSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="InserirPortaModulo">
-      <wsdl:input message="tns:InserirPortaModuloSoapIn" />
-      <wsdl:output message="tns:InserirPortaModuloSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="ConsutarTodosPortaModulo">
-      <wsdl:input message="tns:ConsutarTodosPortaModuloSoapIn" />
-      <wsdl:output message="tns:ConsutarTodosPortaModuloSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="BuscarPortaModuloPorChave">
-      <wsdl:input message="tns:BuscarPortaModuloPorChaveSoapIn" />
-      <wsdl:output message="tns:BuscarPortaModuloPorChaveSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="AlterarPortaModulo">
-      <wsdl:input message="tns:AlterarPortaModuloSoapIn" />
-      <wsdl:output message="tns:AlterarPortaModuloSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="ExcluirPortaModulo">
-      <wsdl:input message="tns:ExcluirPortaModuloSoapIn" />
-      <wsdl:output message="tns:ExcluirPortaModuloSoapOut" />
+    <wsdl:operation name="ConsultarModuloPorUsuario">
+      <wsdl:input message="tns:ConsultarModuloPorUsuarioSoapIn" />
+      <wsdl:output message="tns:ConsultarModuloPorUsuarioSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="InserirTipoPorta">
       <wsdl:input message="tns:InserirTipoPortaSoapIn" />
@@ -869,9 +1113,9 @@
       <wsdl:input message="tns:InserirDispositivoSoapIn" />
       <wsdl:output message="tns:InserirDispositivoSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="ConsutarTodosDispositivo">
-      <wsdl:input message="tns:ConsutarTodosDispositivoSoapIn" />
-      <wsdl:output message="tns:ConsutarTodosDispositivoSoapOut" />
+    <wsdl:operation name="ConsutarTodosDispositivoPorUsuarioChave">
+      <wsdl:input message="tns:ConsutarTodosDispositivoPorUsuarioChaveSoapIn" />
+      <wsdl:output message="tns:ConsutarTodosDispositivoPorUsuarioChaveSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ConsutarTodosDispositivoFavorito">
       <wsdl:input message="tns:ConsutarTodosDispositivoFavoritoSoapIn" />
@@ -893,9 +1137,9 @@
       <wsdl:input message="tns:InserirAmbienteSoapIn" />
       <wsdl:output message="tns:InserirAmbienteSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="ConsutarTodosAmbiente">
-      <wsdl:input message="tns:ConsutarTodosAmbienteSoapIn" />
-      <wsdl:output message="tns:ConsutarTodosAmbienteSoapOut" />
+    <wsdl:operation name="ConsultarTodosAmbientePorUsuarioChave">
+      <wsdl:input message="tns:ConsultarTodosAmbientePorUsuarioChaveSoapIn" />
+      <wsdl:output message="tns:ConsultarTodosAmbientePorUsuarioChaveSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="BuscarAmbientePorChave">
       <wsdl:input message="tns:BuscarAmbientePorChaveSoapIn" />
@@ -908,6 +1152,74 @@
     <wsdl:operation name="ExcluirAmbiente">
       <wsdl:input message="tns:ExcluirAmbienteSoapIn" />
       <wsdl:output message="tns:ExcluirAmbienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InserirCenario">
+      <wsdl:input message="tns:InserirCenarioSoapIn" />
+      <wsdl:output message="tns:InserirCenarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosCenarioPorUsuarioChave">
+      <wsdl:input message="tns:ConsutarTodosCenarioPorUsuarioChaveSoapIn" />
+      <wsdl:output message="tns:ConsutarTodosCenarioPorUsuarioChaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosCenario">
+      <wsdl:input message="tns:ConsutarTodosCenarioSoapIn" />
+      <wsdl:output message="tns:ConsutarTodosCenarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCenarioPorChave">
+      <wsdl:input message="tns:BuscarCenarioPorChaveSoapIn" />
+      <wsdl:output message="tns:BuscarCenarioPorChaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AlterarCenario">
+      <wsdl:input message="tns:AlterarCenarioSoapIn" />
+      <wsdl:output message="tns:AlterarCenarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirCenario">
+      <wsdl:input message="tns:ExcluirCenarioSoapIn" />
+      <wsdl:output message="tns:ExcluirCenarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InserirPorta">
+      <wsdl:input message="tns:InserirPortaSoapIn" />
+      <wsdl:output message="tns:InserirPortaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosPorta">
+      <wsdl:input message="tns:ConsutarTodosPortaSoapIn" />
+      <wsdl:output message="tns:ConsutarTodosPortaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarPortaPorChave">
+      <wsdl:input message="tns:BuscarPortaPorChaveSoapIn" />
+      <wsdl:output message="tns:BuscarPortaPorChaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AlterarPorta">
+      <wsdl:input message="tns:AlterarPortaSoapIn" />
+      <wsdl:output message="tns:AlterarPortaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirPorta">
+      <wsdl:input message="tns:ExcluirPortaSoapIn" />
+      <wsdl:output message="tns:ExcluirPortaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InserirAgendamento">
+      <wsdl:input message="tns:InserirAgendamentoSoapIn" />
+      <wsdl:output message="tns:InserirAgendamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosAgendamento">
+      <wsdl:input message="tns:ConsutarTodosAgendamentoSoapIn" />
+      <wsdl:output message="tns:ConsutarTodosAgendamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarAgendamentoPorChave">
+      <wsdl:input message="tns:BuscarAgendamentoPorChaveSoapIn" />
+      <wsdl:output message="tns:BuscarAgendamentoPorChaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AlterarAgendamento">
+      <wsdl:input message="tns:AlterarAgendamentoSoapIn" />
+      <wsdl:output message="tns:AlterarAgendamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirAgendamento">
+      <wsdl:input message="tns:ExcluirAgendamentoSoapIn" />
+      <wsdl:output message="tns:ExcluirAgendamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StatusArduino">
+      <wsdl:input message="tns:StatusArduinoSoapIn" />
+      <wsdl:output message="tns:StatusArduinoSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="HomeAutomexWSSoap" type="tns:HomeAutomexWSSoap">
@@ -1074,44 +1386,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InserirPortaModulo">
-      <soap:operation soapAction="http://tempuri.org/InserirPortaModulo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ConsutarTodosPortaModulo">
-      <soap:operation soapAction="http://tempuri.org/ConsutarTodosPortaModulo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="BuscarPortaModuloPorChave">
-      <soap:operation soapAction="http://tempuri.org/BuscarPortaModuloPorChave" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AlterarPortaModulo">
-      <soap:operation soapAction="http://tempuri.org/AlterarPortaModulo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ExcluirPortaModulo">
-      <soap:operation soapAction="http://tempuri.org/ExcluirPortaModulo" style="document" />
+    <wsdl:operation name="ConsultarModuloPorUsuario">
+      <soap:operation soapAction="http://tempuri.org/ConsultarModuloPorUsuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1173,8 +1449,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ConsutarTodosDispositivo">
-      <soap:operation soapAction="http://tempuri.org/ConsutarTodosDispositivo" style="document" />
+    <wsdl:operation name="ConsutarTodosDispositivoPorUsuarioChave">
+      <soap:operation soapAction="http://tempuri.org/ConsutarTodosDispositivoPorUsuarioChave" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1227,8 +1503,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ConsutarTodosAmbiente">
-      <soap:operation soapAction="http://tempuri.org/ConsutarTodosAmbiente" style="document" />
+    <wsdl:operation name="ConsultarTodosAmbientePorUsuarioChave">
+      <soap:operation soapAction="http://tempuri.org/ConsultarTodosAmbientePorUsuarioChave" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1256,6 +1532,159 @@
     </wsdl:operation>
     <wsdl:operation name="ExcluirAmbiente">
       <soap:operation soapAction="http://tempuri.org/ExcluirAmbiente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserirCenario">
+      <soap:operation soapAction="http://tempuri.org/InserirCenario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosCenarioPorUsuarioChave">
+      <soap:operation soapAction="http://tempuri.org/ConsutarTodosCenarioPorUsuarioChave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosCenario">
+      <soap:operation soapAction="http://tempuri.org/ConsutarTodosCenario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCenarioPorChave">
+      <soap:operation soapAction="http://tempuri.org/BuscarCenarioPorChave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlterarCenario">
+      <soap:operation soapAction="http://tempuri.org/AlterarCenario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirCenario">
+      <soap:operation soapAction="http://tempuri.org/ExcluirCenario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserirPorta">
+      <soap:operation soapAction="http://tempuri.org/InserirPorta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosPorta">
+      <soap:operation soapAction="http://tempuri.org/ConsutarTodosPorta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarPortaPorChave">
+      <soap:operation soapAction="http://tempuri.org/BuscarPortaPorChave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlterarPorta">
+      <soap:operation soapAction="http://tempuri.org/AlterarPorta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirPorta">
+      <soap:operation soapAction="http://tempuri.org/ExcluirPorta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserirAgendamento">
+      <soap:operation soapAction="http://tempuri.org/InserirAgendamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosAgendamento">
+      <soap:operation soapAction="http://tempuri.org/ConsutarTodosAgendamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarAgendamentoPorChave">
+      <soap:operation soapAction="http://tempuri.org/BuscarAgendamentoPorChave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlterarAgendamento">
+      <soap:operation soapAction="http://tempuri.org/AlterarAgendamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirAgendamento">
+      <soap:operation soapAction="http://tempuri.org/ExcluirAgendamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StatusArduino">
+      <soap:operation soapAction="http://tempuri.org/StatusArduino" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1428,44 +1857,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InserirPortaModulo">
-      <soap12:operation soapAction="http://tempuri.org/InserirPortaModulo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ConsutarTodosPortaModulo">
-      <soap12:operation soapAction="http://tempuri.org/ConsutarTodosPortaModulo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="BuscarPortaModuloPorChave">
-      <soap12:operation soapAction="http://tempuri.org/BuscarPortaModuloPorChave" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AlterarPortaModulo">
-      <soap12:operation soapAction="http://tempuri.org/AlterarPortaModulo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ExcluirPortaModulo">
-      <soap12:operation soapAction="http://tempuri.org/ExcluirPortaModulo" style="document" />
+    <wsdl:operation name="ConsultarModuloPorUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ConsultarModuloPorUsuario" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1527,8 +1920,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ConsutarTodosDispositivo">
-      <soap12:operation soapAction="http://tempuri.org/ConsutarTodosDispositivo" style="document" />
+    <wsdl:operation name="ConsutarTodosDispositivoPorUsuarioChave">
+      <soap12:operation soapAction="http://tempuri.org/ConsutarTodosDispositivoPorUsuarioChave" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1581,8 +1974,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ConsutarTodosAmbiente">
-      <soap12:operation soapAction="http://tempuri.org/ConsutarTodosAmbiente" style="document" />
+    <wsdl:operation name="ConsultarTodosAmbientePorUsuarioChave">
+      <soap12:operation soapAction="http://tempuri.org/ConsultarTodosAmbientePorUsuarioChave" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1610,6 +2003,159 @@
     </wsdl:operation>
     <wsdl:operation name="ExcluirAmbiente">
       <soap12:operation soapAction="http://tempuri.org/ExcluirAmbiente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserirCenario">
+      <soap12:operation soapAction="http://tempuri.org/InserirCenario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosCenarioPorUsuarioChave">
+      <soap12:operation soapAction="http://tempuri.org/ConsutarTodosCenarioPorUsuarioChave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosCenario">
+      <soap12:operation soapAction="http://tempuri.org/ConsutarTodosCenario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCenarioPorChave">
+      <soap12:operation soapAction="http://tempuri.org/BuscarCenarioPorChave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlterarCenario">
+      <soap12:operation soapAction="http://tempuri.org/AlterarCenario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirCenario">
+      <soap12:operation soapAction="http://tempuri.org/ExcluirCenario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserirPorta">
+      <soap12:operation soapAction="http://tempuri.org/InserirPorta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosPorta">
+      <soap12:operation soapAction="http://tempuri.org/ConsutarTodosPorta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarPortaPorChave">
+      <soap12:operation soapAction="http://tempuri.org/BuscarPortaPorChave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlterarPorta">
+      <soap12:operation soapAction="http://tempuri.org/AlterarPorta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirPorta">
+      <soap12:operation soapAction="http://tempuri.org/ExcluirPorta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserirAgendamento">
+      <soap12:operation soapAction="http://tempuri.org/InserirAgendamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosAgendamento">
+      <soap12:operation soapAction="http://tempuri.org/ConsutarTodosAgendamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarAgendamentoPorChave">
+      <soap12:operation soapAction="http://tempuri.org/BuscarAgendamentoPorChave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlterarAgendamento">
+      <soap12:operation soapAction="http://tempuri.org/AlterarAgendamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirAgendamento">
+      <soap12:operation soapAction="http://tempuri.org/ExcluirAgendamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StatusArduino">
+      <soap12:operation soapAction="http://tempuri.org/StatusArduino" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
