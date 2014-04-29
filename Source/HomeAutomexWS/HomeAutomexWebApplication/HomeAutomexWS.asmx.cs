@@ -315,6 +315,14 @@ namespace HomeAutomexWebApplication
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsutarTodosDispositivoFavoritoPorChaveUsuario(int chave)
+        {
+            log.Descricao = "Usuario consultou um todos os dispositivos";
+            var retornoLog = fachada.InserirLog(log);
+            return JsonConvert.SerializeObject(fachada.ConsutarTodosDispositivoFavorito(chave));
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string BuscarDispositivoPorChave(string jChave)
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
@@ -526,6 +534,13 @@ namespace HomeAutomexWebApplication
             log.Descricao = "Usuario consultou um todos os agendamentos";
             var retornoLog = fachada.InserirLog(log);
             return JsonConvert.SerializeObject(fachada.ConsutarTodosAgendamento());
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsutarTodosAgendamentoPorUsuarioChave(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosAgendamentoPorUsuarioChave(chave));
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
