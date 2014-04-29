@@ -23,20 +23,19 @@ namespace HomeAutomexLibrary.Repositorio.Map
 
             Property(e => e.Ativo).HasColumnName("IS_ATIVO");
             Property(e => e.Descricao).HasColumnName("DS_DESCRICAO").IsRequired();
-            Property(e => e.Cadastro).HasColumnName("DT_CADASTRO");
-            Property(e => e.Altaracao).HasColumnName("DT_ALTERACAO");
-            Property(e => e.Exclusao).HasColumnName("DT_EXCLUSAO");
+            Property(e => e.DataCadastro).HasColumnName("DT_CADASTRO");
+            Property(e => e.DataAlteracao).HasColumnName("DT_ALTERACAO");
+            Property(e => e.DataExclusao).HasColumnName("DT_EXCLUSAO");
             Property(e => e.Desativado).HasColumnName("IS_DESATIVADO");
             Property(e => e.Usuario).HasColumnName("CD_USUARIO");
             Property(e => e.Cenario).HasColumnName("CD_CENARIO");
             Property(e => e.DataAgendamento).HasColumnName("DT_AGENDAMENTO");
 
-            Ignore(e => e.DataCadastro);
-            Ignore(e => e.DataAlteracao);
-            Ignore(e => e.DataExclusao);
+            //Ignore(e => e.DataCadastro);
+            //Ignore(e => e.DataAlteracao);
+            //Ignore(e => e.DataExclusao);
             
-            //HasRequired(e => e.Usuario).WithMany().Map(e => e.MapKey("CD_USUARIO"));
-            //HasRequired(e => e.Cenario).WithMany().Map(e => e.MapKey("CD_CENARIO"));
+          
         }
 
     }

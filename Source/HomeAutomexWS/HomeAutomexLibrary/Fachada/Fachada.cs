@@ -318,6 +318,10 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.agendamentoNegocio.ConsultarTodosAgendamento();
         }
+        public List<Agendamento> ConsultarTodosAgendamentoPorUsuarioChave(int chave)
+        {
+            return this.agendamentoNegocio.ConsultarTodosAgendamentoPorUsuarioChave(chave);
+        }
         public string AlterarAgendamento(Agendamento agendamento)
         {
             return this.agendamentoNegocio.AlterarAgendamento(agendamento);
