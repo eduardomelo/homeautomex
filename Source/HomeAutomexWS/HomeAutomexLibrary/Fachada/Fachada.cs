@@ -205,6 +205,10 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.dispositivoNegocio.ConsultarTodosDispositivoPorUsuarioChave(chave);
         }
+        public List<Dispositivo> ConsutarTodosDispositivoFavorito(int chave)
+        {
+            return this.dispositivoNegocio.ConsutarTodosDispositivoFavorito(chave);
+        }
         public List<Dispositivo> ConsutarTodosDispositivoFavorito()
         {
             return this.dispositivoNegocio.ConsutarTodosDispositivoFavorito();

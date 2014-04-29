@@ -84,6 +84,10 @@ namespace HomeAutomexLibrary.Negocio
         {
             return base.ConsultarTodos().ToList();
         }
+        public List<Dispositivo> ConsutarTodosDispositivoFavorito (int chave)
+        {
+            return this.dispositivoRepositorio.Consultar(e => e.Ambiente.Residencia.Usuarios.Any(u => u.Chave == chave && u.Chave == chave)).ToList();
+        }
         public List<Dispositivo> ConsutarTodosDispositivoFavorito()
         {
             return base.Consultar(e => e.Favorito == true).ToList();
