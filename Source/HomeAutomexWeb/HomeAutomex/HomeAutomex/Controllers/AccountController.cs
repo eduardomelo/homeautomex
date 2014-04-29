@@ -66,7 +66,7 @@ namespace HomeAutomex.Controllers
                 if (ModelState.IsValid && Membership.ValidateUser(model.UserName, model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                    return Redirect(returnUrl ?? Url.Action("ListarDispositivo", "DispositivosFavoritos"));
+                    return Redirect(returnUrl ?? Url.Action("Index", "Home"));
                 }
                 return View(model);
             }
@@ -174,6 +174,13 @@ namespace HomeAutomex.Controllers
 
             return View("ListarUsuario", modelPesquisa);
 
+        }
+
+
+        public ActionResult SessaoExpirou()
+        {
+            return View();
+        
         }
 
 

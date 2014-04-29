@@ -50,10 +50,10 @@
 //            }
 //            return lista;
 //        }
-        
 
 
-       
+
+
 //        [HttpPost]
 //        [AllowAnonymous]
 //        [ValidateAntiForgeryToken]
@@ -134,7 +134,7 @@
 
 
 //        [AllowAnonymous]
-//        public ActionResult DeletePortaModulo(int chave)    
+//        public ActionResult DeletePortaModulo(int chave)
 //        {
 //            var retorno = JsonConvert.DeserializeObject(webService.ExcluirPortaModulo(chave.ToString()));
 //            return RedirectToAction("ListarPortaModulo", "PortaModulo");
@@ -156,7 +156,7 @@
 //            }
 //            return View();
 //        }
-      
+
 
 //    }
 //}

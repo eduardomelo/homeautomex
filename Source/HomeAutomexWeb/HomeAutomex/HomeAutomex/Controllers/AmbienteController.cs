@@ -133,11 +133,18 @@ namespace HomeAutomex.Controllers
         {
             if (ModelState.IsValid)
             {
-                Usuario u = new Usuario();
-                var webService = new HomeAutomexWSSoapClient();
+                var chave = "";
+                try
+                {
+                    chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
 
-                var chave = 1;
+                }
+                catch (Exception)
+                {
 
+                    return RedirectToAction("SessaoExpirou", "Account");
+                }
+               var webService = new HomeAutomexWSSoapClient();
                var x = webService.ConsultarTodosAmbientePorUsuarioChave(chave.ToString());
                 var ambiente = JsonConvert.DeserializeObject<List<AmbienteModel>>(x);
                 if (!string.IsNullOrEmpty(pesquisa))

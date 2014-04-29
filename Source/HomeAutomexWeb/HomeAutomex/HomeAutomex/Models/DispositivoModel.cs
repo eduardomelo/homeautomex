@@ -10,6 +10,7 @@ namespace HomeAutomex.Models
 {
     public class DispositivoModel : BaseModel
     {
+        [Required]
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 

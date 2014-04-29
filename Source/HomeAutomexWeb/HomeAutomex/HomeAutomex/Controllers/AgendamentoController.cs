@@ -50,9 +50,21 @@ namespace HomeAutomex.Controllers
             {
                 try
                 {
-                   
+                    var chave = "";
+                    try
+                    {
+                        chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
+
+                    }
+                    catch (Exception)
+                    {
+
+                        return RedirectToAction("SessaoExpirou", "Account");
+                    }
                     var agendamento = Mapper.DynamicMap<Agendamento>(model);
-                    agendamento.Usuarios = new List<Usuario> { new Usuario { Chave = (Session["Usuario"] as UsuarioModel).Chave } };
+                    agendamento.Usuario = Convert.ToInt32(chave);
+                    agendamento.DataAgendamento = DateTime.Now;
+                    agendamento.Desativado = true;
                     var retorno = webService.InserirAgendamento(JsonConvert.SerializeObject(agendamento));
                     if (retorno.StartsWith("Erro:"))
                     {
@@ -76,10 +88,18 @@ namespace HomeAutomex.Controllers
         {
             if (ModelState.IsValid)
             {
+                var chave = "";
+                try
+                {
+                     chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
+                   
+                }
+                catch (Exception)
+                {
+                    return RedirectToAction("SessaoExpirou", "Account");
+                }
                 var webService = new HomeAutomexWSSoapClient();
-                //     var chave = 1;
-                var x = webService.ConsutarTodosAgendamento();
-                //    var x = webService.ConsutarTodosCenarioPorUsuarioChave(chave.ToString());
+                var x = webService.ConsutarTodosAgendamentoPorUsuarioChave(chave.ToString());
                 var agendamento = JsonConvert.DeserializeObject<List<AgendamentoModel>>(x);
                 if (!string.IsNullOrEmpty(pesquisa))
                     return View(agendamento.Where(e =>
@@ -98,10 +118,22 @@ namespace HomeAutomex.Controllers
             {
                 try
                 {
-                   
+                    var agendamento = Mapper.DynamicMap<Agendamento>(model);
+
+                    try
+                    {
+                        var chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
+                        agendamento.Usuario = Convert.ToInt32(chave);
+                    }
+                    catch (Exception)
+                    {
+
+                        return RedirectToAction("SessaoExpirou", "Account");
+                    }
+                    agendamento.DataAgendamento = DateTime.Now;
                     var webService = new HomeAutomexWSSoapClient();
-                    var agendamento = JsonConvert.SerializeObject(model);
-                    var x = webService.AlterarAgendamento(agendamento);
+             
+                     var x = webService.AlterarAgendamento(JsonConvert.SerializeObject(agendamento));
                     if (x.StartsWith("Erro:"))
                     {
                         ModelState.AddModelError("WSErro", x);

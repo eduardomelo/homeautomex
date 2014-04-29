@@ -9,15 +9,11 @@ namespace HomeAutomex.Models
 {
     public class CenarioModel : BaseModel
     {
+        [Required]
         public string Descricao { get; set; }
-        public DateTime Cadastro { get; set; }
-        public DateTime Alteracao { get; set; }
-        public DateTime Exclusao { get; set; }
-        public bool Desativado { get; set; }
 
-        [Display(Name="Ambiente")]
+        public bool Desativado { get; set; }
         public virtual int ChaveAmbiente { get; set; }
-        public virtual AmbienteModel Ambiente { get; set; }
        
 
     }

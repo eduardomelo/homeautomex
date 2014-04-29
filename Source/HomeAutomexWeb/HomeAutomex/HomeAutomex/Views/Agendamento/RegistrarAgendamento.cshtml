@@ -4,19 +4,7 @@
     ViewBag.Title = "RegistrarAgendamento";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style type="text/css">
-    .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
-    .ui-timepicker-div dl { text-align: left; }
-    .ui-timepicker-div dl dt { float: left; clear:left; padding: 0 0 0 5px; }
-    .ui-timepicker-div dl dd { margin: 0 10px 10px 45%; }
-    .ui-timepicker-div td { font-size: 90%; }
-    .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
 
-    .ui-timepicker-rtl{ direction: rtl; }
-    .ui-timepicker-rtl dl { text-align: right; padding: 0 5px 0 0; }
-    .ui-timepicker-rtl dl dt{ float: right; clear: right; }
-    .ui-timepicker-rtl dl dd { margin: 0 45% 10px 10px; }
-</style>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -31,10 +19,12 @@
             @Html.EditorFor(model => model.Descricao)
             @Html.ValidationMessageFor(model => model.Descricao)
         </div>
-
+         <div class="editor-label">
+            @Html.LabelFor(model => model.Cenario)
+        </div>
          <div class="editor-label">
             @Html.DropDownListFor(model => model.Cenario, ViewBag.Cenario as List<SelectListItem>, "Selecione...", new { @class = "input" })
-        </div>
+        </div>    <br />
         <div class="editor-label">
             @Html.LabelFor(model => model.Ativo)
         </div>
@@ -42,15 +32,11 @@
             @Html.EditorFor(model => model.Ativo)
             @Html.ValidationMessageFor(model => model.Ativo)
         </div> 
-        <input id="datetimepicker1" type="text"/>
-         <div class="editor-field">
-                <div class="field-box">
-                            <label>Datepicker:</label>
-                            <input type="text" value="03/29/2013" class="form-control input-datepicker" />
-                        </div>
-             </div> 
         <br />
-
+<div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+  <input class="span2" size="16" type="text" value="12-02-2012">
+  <span class="add-on"><i class="icon-th"></i></span>
+</div>
         <p>
            <input type="submit" value="Registrar" class="btn-glow primary login" />
         </p>
@@ -64,7 +50,14 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 
-<script src="~/Scripts/jquery-ui-timepicker-addon.js"></script>
-@*  *@
+<script type="text/javascript">
+$('#sandbox-container input').datepicker({
+    calendarWeeks: true,
+    autoclose: true,
+    todayHighlight: true
+});
+</script>
+
+
 
 

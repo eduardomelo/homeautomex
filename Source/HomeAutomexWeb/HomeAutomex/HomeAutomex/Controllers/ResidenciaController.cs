@@ -104,20 +104,32 @@ namespace HomeAutomex.Controllers
         [AllowAnonymous]
         public ActionResult ListarResidencia(string pesquisa)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var webService = new HomeAutomexWSSoapClient();
-                var retorno = webService.ConsultarResidenciaPorUsuarioChave(JsonConvert.SerializeObject((Session["Usuario"] as UsuarioModel)));
-                var residencia = JsonConvert.DeserializeObject<List<ResidenciaModel>>(retorno);
-                if (!string.IsNullOrEmpty(pesquisa))
-                    return View(residencia.Where(e =>
-                                e.Cep.Contains(pesquisa) ||
-                                e.Logradouro.Contains(pesquisa)));
-                return View(residencia);
+
+
+
+                if (ModelState.IsValid)
+                {
+
+                    var webService = new HomeAutomexWSSoapClient();
+                    var retorno = webService.ConsultarResidenciaPorUsuarioChave(JsonConvert.SerializeObject((Session["Usuario"] as UsuarioModel)));
+                    var residencia = JsonConvert.DeserializeObject<List<ResidenciaModel>>(retorno);
+                    if (!string.IsNullOrEmpty(pesquisa))
+                        return View(residencia.Where(e =>
+                                    e.Cep.Contains(pesquisa) ||
+                                    e.Logradouro.Contains(pesquisa)));
+                    return View(residencia);
+                }
+                return View();
+
             }
-            return View();
+
+            catch (Exception)
+            {
+
+                return RedirectToAction("SessaoExpirou", "Account");
+            }
         }
-
-
     }
 }
