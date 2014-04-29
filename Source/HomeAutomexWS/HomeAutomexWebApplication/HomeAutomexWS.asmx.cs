@@ -405,6 +405,62 @@ namespace HomeAutomexWebApplication
         }
         #endregion
 
+        #region Cenario
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string InserirCenario(string jCenario)
+        {
+            var cenario = JsonConvert.DeserializeObject<Cenario>(jCenario);
+            log.Descricao = "Usuario inseriu um ambiente " + cenario.Descricao;
+            var retornoLog = fachada.InserirLog(log);
+            var retorno = fachada.InserirCenario(cenario);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsutarTodosCenarioPorUsuarioChave(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosCenarioPorUsuarioChave(chave));
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsutarTodosCenario()
+        {
+            log.Descricao = "Usuario consultou todos os tipos de porta";
+            var retornoLog = fachada.InserirLog(log);
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosCenario());
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string BuscarCenarioPorChave(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            var cenario = fachada.BuscarCenarioPorChave(chave);
+            return JsonConvert.SerializeObject(cenario);
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string AlterarCenario(string jCenario)
+        {
+            var cenario = JsonConvert.DeserializeObject<Ambiente>(jCenario);
+            log.Descricao = "Usuario alterou o cenario, " + cenario.Descricao;
+            var retornoLog = fachada.InserirLog(log);
+            var retorno = fachada.AlterarAmbiente(cenario);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ExcluirCenario(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            log.Descricao = "Usuario excluiu um cenario, " + jChave;
+            var retornoLog = fachada.InserirLog(log);
+            var cenario = fachada.RemoverCenarioPorChave(chave);
+            return JsonConvert.SerializeObject("Cenario removido com sucesso");
+        }
+        #endregion
+
         #region Porta
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -450,6 +506,62 @@ namespace HomeAutomexWebApplication
             var residencia = fachada.RemoverPortaPorChave(chave);
             return JsonConvert.SerializeObject("Porta removida com sucesso");
         }
+        #endregion
+
+        #region Agendamento
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string InserirAgendamento(string jAgendamento)
+        {
+            var agendamento = JsonConvert.DeserializeObject<Agendamento>(jAgendamento);
+            log.Descricao = "Usuario cadastrou um novo agendamento " + agendamento.Descricao;
+            var retornoLog = fachada.InserirLog(log);
+            var retorno = fachada.InserirAgendamento(agendamento);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsutarTodosAgendamento()
+        {
+            log.Descricao = "Usuario consultou um todos os agendamentos";
+            var retornoLog = fachada.InserirLog(log);
+            return JsonConvert.SerializeObject(fachada.ConsutarTodosAgendamento());
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string BuscarAgendamentoPorChave(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            var agendamento = fachada.BuscarAgendamentoPorChave(chave);
+            return JsonConvert.SerializeObject(agendamento);
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string AlterarAgendamento(string jAgendamento)
+        {
+            var agendamento = JsonConvert.DeserializeObject<Agendamento>(jAgendamento);
+
+            // Registrar log.
+            log.Descricao = "Usuario alterou um agendamento " + agendamento.Descricao;
+            var retornoLog = fachada.InserirLog(log);
+
+            fachada.InserirUTDispositivo(utDispositivo);
+
+            // Alterar registro.
+            var retorno = fachada.AlterarAgendamento(agendamento);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ExcluirAgendamento(string jChave)
+        {
+            int chave = JsonConvert.DeserializeObject<int>(jChave);
+            log.Descricao = "Usuario excluiu um agendamento " + jChave;
+            var retornoLog = fachada.InserirLog(log);
+            fachada.RemoverAgendamentoPorChave(chave);
+            return JsonConvert.SerializeObject("Agendamento removido com sucesso");
+        }
+
         #endregion
 
         #region Arduino
