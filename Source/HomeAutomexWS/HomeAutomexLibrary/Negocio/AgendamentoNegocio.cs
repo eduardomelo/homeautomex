@@ -13,6 +13,7 @@ namespace HomeAutomexLibrary.Negocio
     {
 
         private DatabaseContext contexto;
+    //    private UsuarioRepositorio usuarioRepositorio;
         private AgendamentoRepositorio agendamentoRepositorio;
         private PortaRepositorio portaRepositorio;
     
@@ -20,6 +21,7 @@ namespace HomeAutomexLibrary.Negocio
         public AgendamentoNegocio(DatabaseContext contexto)
         {
             this.contexto = contexto;
+         //   this.usuarioRepositorio = new UsuarioRepositorio(contexto);
             this.agendamentoRepositorio = new AgendamentoRepositorio(contexto);
             this.portaRepositorio = new PortaRepositorio(contexto);
 
@@ -27,9 +29,7 @@ namespace HomeAutomexLibrary.Negocio
 
         public string InserirAgendamento(Agendamento agendamento)
         {
-            agendamento.Cadastro = DateTime.Now;
-            agendamento.Altaracao = null;
-            agendamento.Exclusao = null;
+
             agendamentoRepositorio.Inserir(agendamento);
             try
             {
@@ -44,9 +44,7 @@ namespace HomeAutomexLibrary.Negocio
 
         public string AlterarAgendamento(Agendamento agendamento)
         {
-            agendamento.Cadastro = DateTime.Now;
-            agendamento.Altaracao = null;
-            agendamento.Exclusao = null;
+
             agendamentoRepositorio.Alterar(agendamento);
             try
             {
@@ -76,7 +74,11 @@ namespace HomeAutomexLibrary.Negocio
         public List<Agendamento> ConsultarTodosAgendamento()
         {
             return base.ConsultarTodos().ToList();
-        }       
+        }
+        public List<Agendamento> ConsultarTodosAgendamentoPorUsuarioChave(int chave)
+        {
+            return base.Consultar(e => e.Usuario == chave).ToList();
+        }
     }
 }
 

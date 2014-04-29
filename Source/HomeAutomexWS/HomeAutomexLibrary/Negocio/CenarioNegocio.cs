@@ -25,8 +25,7 @@ namespace HomeAutomexLibrary.Negocio
         }
         public string InserirCenario(Cenario cenario)
         {
-            var ambiente = ambienteRepositorio.BuscarPorChave(cenario.Ambiente.Chave);
-            cenario.Ambiente = ambiente;
+           
             cenarioRepositorio.Inserir(cenario);
             try
             {
