@@ -17,8 +17,16 @@ namespace HomeAutomexLibrary.Entidade
         public DateTime exclusao { get; set; }
         public bool desativado { get; set; }
 
+        public virtual List<Usuario> Usuarios { get; set; }
+
+        public virtual DateTime? DataAgendamento { get; set; }
+
         public int Usuario { get; set; }
         public int Cenario { get; set; }
+
+        public Agendamento() {
+            this.Usuarios = new List<Usuario>();
+        }
 
 
     }

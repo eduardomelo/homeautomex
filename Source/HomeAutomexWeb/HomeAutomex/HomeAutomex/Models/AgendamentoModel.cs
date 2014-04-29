@@ -17,8 +17,12 @@ namespace HomeAutomex.Models
         public DateTime? Exclusao { get; set; }
         public bool Desativado { get; set; }
 
-        public int Usuario { get; set; }
+        public virtual DateTime? DataAgendamento { get; set; }
+
+       
         public int Cenario { get; set; }
+
+        public List<UsuarioModel> Usuarios { get; set; }
 
      
 

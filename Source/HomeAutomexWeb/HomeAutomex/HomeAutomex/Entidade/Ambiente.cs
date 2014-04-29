@@ -12,9 +12,11 @@ namespace HomeAutomexLibrary.Entidade
         public virtual bool Desativado { get; set; }
         public virtual Residencia Residencia { get; set; }
         public virtual List<Usuario> Usuarios { get; set; }
+        public virtual List<Cenario> Cenarios { get; set; }
 
-          public Ambiente()
+        public Ambiente()
         {
+            Cenarios = new List<Cenario>();
             Usuarios = new List<Usuario>();
         }
 

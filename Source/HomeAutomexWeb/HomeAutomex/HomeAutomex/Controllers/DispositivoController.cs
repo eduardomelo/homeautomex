@@ -45,8 +45,7 @@ namespace HomeAutomex.Controllers
         public List<SelectListItem> GetDropDownAmbientes()
         {
             var lista = new List<SelectListItem>();
-            var chave = 1;
-            var x = webService.ConsultarTodosAmbientePorUsuarioChave(chave.ToString());
+            var x = webService.ConsultarTodosAmbientePorUsuarioChave((Session["Usuario"] as UsuarioModel).Chave.ToString());
             var ambientes = JsonConvert.DeserializeObject<List<AmbienteModel>>(x);
             foreach (var item in ambientes)
             {
@@ -137,8 +136,7 @@ namespace HomeAutomex.Controllers
             if (ModelState.IsValid)
             {
                 var webService = new HomeAutomexWSSoapClient();
-                var chave = 1;
-                var x = webService.ConsutarTodosDispositivoPorUsuarioChave(chave.ToString());
+                var x = webService.ConsutarTodosDispositivoPorUsuarioChave((Session["Usuario"] as UsuarioModel).Chave.ToString());
                 var dispositivo = JsonConvert.DeserializeObject<List<DispositivoModel>>(x);
                 if (!string.IsNullOrEmpty(pesquisa))
                     return View(dispositivo.Where(e =>

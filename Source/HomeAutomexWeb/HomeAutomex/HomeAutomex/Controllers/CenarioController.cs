@@ -26,6 +26,7 @@ namespace HomeAutomex.Controllers
 
         public ActionResult RegistrarCenario()
         {
+            ViewBag.Ambientes = GetDropDownAmbientes();
             return View();
         }
         [HttpPost]
@@ -113,6 +114,19 @@ namespace HomeAutomex.Controllers
         {
             var cenario = JsonConvert.DeserializeObject<CenarioModel>(webService.BuscarCenarioPorChave(chave.ToString()));
             return View(cenario);
+        }
+
+        public List<SelectListItem> GetDropDownAmbientes()
+        {
+            var lista = new List<SelectListItem>();
+            //var chave = 1;
+            var x = webService.ConsultarTodosAmbientePorUsuarioChave((Session["Usuario"] as UsuarioModel).Chave.ToString());
+            var ambientes = JsonConvert.DeserializeObject<List<AmbienteModel>>(x);
+            foreach (var item in ambientes)
+            {
+                lista.Add(new SelectListItem() { Text = item.Descricao, Value = item.Chave.ToString() });
+            }
+            return lista;
         }
     }
 

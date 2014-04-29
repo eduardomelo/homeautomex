@@ -314,6 +314,7 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\css.css" />
     <Content Include="css\dark.css" />
+    <Content Include="css\data.css" />
     <Content Include="css\elements.css" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\icons.css" />
@@ -354,6 +355,7 @@
     <Content Include="Scripts\bootstrap-switch.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\data.js" />
     <Content Include="Scripts\highlight.js" />
     <Content Include="Scripts\html5shiv.js" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
@@ -363,6 +365,7 @@
     <Content Include="Scripts\jquery-latest.js" />
     <Content Include="Scripts\jquery-migrate-1.2.1.js" />
     <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Scripts\jquery-ui-timepicker-addon.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />

@@ -23,6 +23,8 @@ namespace HomeAutomex.Models
         [Display(Name = "Desativado")]
         public bool Desativado { get; set; }
 
+        public virtual List<CenarioModel> Cenarios { get; set; }
+
         public List<UsuarioModel> Usuarios { get; set; }
 
        

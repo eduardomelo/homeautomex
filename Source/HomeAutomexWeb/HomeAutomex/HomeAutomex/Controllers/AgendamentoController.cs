@@ -50,8 +50,9 @@ namespace HomeAutomex.Controllers
             {
                 try
                 {
-                    model.Usuario = 1;
+                   
                     var agendamento = Mapper.DynamicMap<Agendamento>(model);
+                    agendamento.Usuarios = new List<Usuario> { new Usuario { Chave = (Session["Usuario"] as UsuarioModel).Chave } };
                     var retorno = webService.InserirAgendamento(JsonConvert.SerializeObject(agendamento));
                     if (retorno.StartsWith("Erro:"))
                     {
@@ -97,7 +98,7 @@ namespace HomeAutomex.Controllers
             {
                 try
                 {
-                    model.Usuario = 1;
+                   
                     var webService = new HomeAutomexWSSoapClient();
                     var agendamento = JsonConvert.SerializeObject(model);
                     var x = webService.AlterarAgendamento(agendamento);
@@ -127,6 +128,8 @@ namespace HomeAutomex.Controllers
         public ActionResult EditarAgendamento(int chave)
         {
             var agendamento = JsonConvert.DeserializeObject<AgendamentoModel>(webService.BuscarAgendamentoPorChave(chave.ToString()));
+            ViewBag.Cenario = GetDropDownCenario();
+           
             return View(agendamento);
         }
 

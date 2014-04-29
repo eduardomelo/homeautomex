@@ -4,6 +4,19 @@
     ViewBag.Title = "RegistrarAgendamento";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style type="text/css">
+    .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+    .ui-timepicker-div dl { text-align: left; }
+    .ui-timepicker-div dl dt { float: left; clear:left; padding: 0 0 0 5px; }
+    .ui-timepicker-div dl dd { margin: 0 10px 10px 45%; }
+    .ui-timepicker-div td { font-size: 90%; }
+    .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+    .ui-timepicker-rtl{ direction: rtl; }
+    .ui-timepicker-rtl dl { text-align: right; padding: 0 5px 0 0; }
+    .ui-timepicker-rtl dl dt{ float: right; clear: right; }
+    .ui-timepicker-rtl dl dd { margin: 0 45% 10px 10px; }
+</style>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -28,14 +41,21 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Ativo)
             @Html.ValidationMessageFor(model => model.Ativo)
-        </div> <br />
+        </div> 
+        <input id="datetimepicker1" type="text"/>
+         <div class="editor-field">
+                <div class="field-box">
+                            <label>Datepicker:</label>
+                            <input type="text" value="03/29/2013" class="form-control input-datepicker" />
+                        </div>
+             </div> 
+        <br />
 
         <p>
            <input type="submit" value="Registrar" class="btn-glow primary login" />
         </p>
     </fieldset>
 }
-
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
@@ -43,3 +63,8 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script src="~/Scripts/jquery-ui-timepicker-addon.js"></script>
+@*  *@
+
+
