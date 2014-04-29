@@ -7,12 +7,9 @@ namespace HomeAutomexLibrary.Entidade
 {
     public class Cenario : EntidadeBase<int>
     {
-      
-        public string Descricao { get; set; }
-        public DateTime? Cadastro { get; set; }
-        public DateTime? Alteracao { get; set; }
-        public DateTime? Exclusao { get; set; }
-        public bool Desativado { get; set; }
+        public virtual string Descricao { get; set; }
+        public virtual bool Desativado { get; set; }
+        public virtual Ambiente Ambiente { get; set; }
 
   //      public virtual Ambiente Ambiente { get; set; }
     }

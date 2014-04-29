@@ -12,6 +12,7 @@ namespace HomeAutomexLibrary.Entidade
       
         public string Descricao { get; set; }
         public bool Ativo { get; set; }
+        public virtual DateTime? DataAgendamento { get; set; }
         public DateTime? Cadastro { get; set; }
         public DateTime? Altaracao { get; set; }
         public DateTime? Exclusao { get; set; }

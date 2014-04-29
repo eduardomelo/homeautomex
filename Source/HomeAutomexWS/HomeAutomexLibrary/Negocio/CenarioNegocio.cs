@@ -13,22 +13,21 @@ namespace HomeAutomexLibrary.Negocio
     {
         private CenarioRepositorio cenarioRepositorio;
         private ResidenciaRepositorio residenciaRepositorio;
+        private AmbienteRepositorio ambienteRepositorio;
         private DatabaseContext contexto;
 
         public CenarioNegocio(DatabaseContext contexto)
         {
             this.contexto = contexto;
             cenarioRepositorio = new CenarioRepositorio(contexto);
-            residenciaRepositorio = new ResidenciaRepositorio(contexto);  
+            residenciaRepositorio = new ResidenciaRepositorio(contexto);
+            ambienteRepositorio = new AmbienteRepositorio(contexto);
         }
         public string InserirCenario(Cenario cenario)
         {
-          
-            cenario.Cadastro  = DateTime.Now;
-            cenario.Alteracao = null;
-            cenario.Exclusao = null;
+            var ambiente = ambienteRepositorio.BuscarPorChave(cenario.Ambiente.Chave);
+            cenario.Ambiente = ambiente;
             cenarioRepositorio.Inserir(cenario);
-
             try
             {
                 contexto.SaveChanges();
@@ -42,10 +41,6 @@ namespace HomeAutomexLibrary.Negocio
 
         public string AlterarCenario(Cenario cenario)
         {
-
-            cenario.Cadastro = null;
-            cenario.Alteracao = DateTime.Now;
-            cenario.Exclusao = null;
             base.Alterar(cenario);
             try
             {

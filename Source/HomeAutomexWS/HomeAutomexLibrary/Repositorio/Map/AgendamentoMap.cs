@@ -29,6 +29,7 @@ namespace HomeAutomexLibrary.Repositorio.Map
             Property(e => e.Desativado).HasColumnName("IS_DESATIVADO");
             Property(e => e.Usuario).HasColumnName("CD_USUARIO");
             Property(e => e.Cenario).HasColumnName("CD_CENARIO");
+            Property(e => e.DataAgendamento).HasColumnName("DT_AGENDAMENTO");
 
             Ignore(e => e.DataCadastro);
             Ignore(e => e.DataAlteracao);
