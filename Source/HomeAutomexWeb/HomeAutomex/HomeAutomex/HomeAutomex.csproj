@@ -234,6 +234,11 @@
     <Compile Include="NavigationRoutes\NavigationRouteConfigurationExtensions.cs" />
     <Compile Include="NavigationRoutes\NavigationRouteFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Service References\HomeAutomexService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -355,9 +360,12 @@
     <Content Include="Scripts\bootstrap-switch.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\data.js" />
     <Content Include="Scripts\highlight.js" />
     <Content Include="Scripts\html5shiv.js" />
+    <Content Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -366,6 +374,7 @@
     <Content Include="Scripts\jquery-migrate-1.2.1.js" />
     <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
     <Content Include="Scripts\jquery-ui-timepicker-addon.js" />
+    <Content Include="Scripts\jquery.mask.min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -381,172 +390,13 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirUsuárioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirResidenciaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExistirUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsultarTodosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarUsuarioPorChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosUsuariosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarResidenciaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarResidenciaPorChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosResideciaResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirResidenciaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarModuloResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarModuloPorChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosModuloResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirModuloResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirModuloResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarAmbienteResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarAmbientePorChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirAmbienteResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirAmbienteResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarTipoPortaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarTipoPortaPorChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosTipoPortaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirTipoPortaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirTipoPortaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarDispositivoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarDispositivoPorChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirDispositivoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirDispositivoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.LogarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsultarResidenciaPorUsuarioChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosDispositivoFavoritoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarPortaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarPortaPorChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsultarModuloPorUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosPortaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirPortaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirPortaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarCenarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarCenarioPorChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsultarTodosAmbientePorUsuarioChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosDispositivoPorUsuarioChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirCenarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirCenarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.StatusArduinoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosCenarioPorUsuarioChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosCenarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AlterarAgendamentoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.BuscarAgendamentoPorChaveResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ExcluirAgendamentoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirAgendamentoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosAgendamentoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
-    <None Include="Service References\HomeAutomexService\configuration91.svcinfo" />
-    <None Include="Service References\HomeAutomexService\configuration.svcinfo" />
-    <None Include="Service References\HomeAutomexService\Reference.svcmap">
+    <Content Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
+    <Content Include="Service References\HomeAutomexService\configuration91.svcinfo" />
+    <Content Include="Service References\HomeAutomexService\configuration.svcinfo" />
+    <Content Include="Service References\HomeAutomexService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -580,7 +430,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <None Include="Service References\HomeAutomexService\HomeAutomexWS.wsdl" />
     <Content Include="Views\Account\ListarUsuario.cshtml" />
     <Content Include="Views\Account\Editar.cshtml" />
     <Content Include="Views\Shared\_html5shiv.cshtml" />
@@ -624,6 +473,7 @@
     <Content Include="Views\Agendamento\RegistrarAgendamento.cshtml" />
     <Content Include="Views\Agendamento\ListarAgendamento.cshtml" />
     <Content Include="Views\Agendamento\EditarAgendamento.cshtml" />
+    <Content Include="Service References\HomeAutomexService\HomeAutomexWS.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -633,6 +483,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\HomeAutomexService\" />
