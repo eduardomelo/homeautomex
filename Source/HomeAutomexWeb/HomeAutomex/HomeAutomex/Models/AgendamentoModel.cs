@@ -10,7 +10,7 @@ namespace HomeAutomex.Models
 {
     public class AgendamentoModel : BaseModel
     {
-        [Required]
+    //    [Required]
         public string Descricao { get; set; }
         public bool Ativo { get; set; }
         [Display(Name = "Data e Hora do Agendamento")]

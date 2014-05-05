@@ -31,12 +31,16 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Ativo)
             @Html.ValidationMessageFor(model => model.Ativo)
+        </div>   <br />
+         <div class="editor-label">
+            @Html.LabelFor(model => model.DataAgendamento)
+        </div>
+              <div class="editor-field">
+            @Html.EditorFor(model => model.DataAgendamento)
+        @*    @Html.ValidationMessageFor(model => model.DataAgendamento)*@
         </div> 
         <br />
-<div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-  <input class="span2" size="16" type="text" value="12-02-2012">
-  <span class="add-on"><i class="icon-th"></i></span>
-</div>
+
         <p>
            <input type="submit" value="Registrar" class="btn-glow primary login" />
         </p>
@@ -49,13 +53,11 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
+<script src="~/Scripts/jquery.mask.min.js"></script>
 <script type="text/javascript">
-$('#sandbox-container input').datepicker({
-    calendarWeeks: true,
-    autoclose: true,
-    todayHighlight: true
-});
+    $(document).ready(function () {
+        $("#DataAgendamento").mask('00/00/0000 00:00:00');
+    });
 </script>
 
 
