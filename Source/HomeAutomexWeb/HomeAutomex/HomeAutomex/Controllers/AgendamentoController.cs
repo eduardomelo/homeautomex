@@ -1,169 +1,168 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Web;
-//using System.Web.Mvc;
-//using System.Web.Security;
-//using AutoMapper;
-//using HomeAutomex.HomeAutomexService;
-//using HomeAutomex.Models;
-//using HomeAutomexLibrary.Entidade;
-//using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Security;
+using AutoMapper;
+using HomeAutomex.HomeAutomexService;
+using HomeAutomex.Models;
+using HomeAutomexLibrary.Entidade;
+using Newtonsoft.Json;
 
-//namespace HomeAutomex.Controllers
-//{
-//    public class AgendamentoController : Controller
-//    {
-//        //
-//        // GET: /Agendamento/
-//        private HomeAutomexWSSoapClient webService;
-//        public AgendamentoController()
-//        {
+namespace HomeAutomex.Controllers
+{
+    public class AgendamentoController : Controller
+    {
+        //
+        // GET: /Agendamento/
+        private HomeAutomexWSSoapClient webService;
+        public AgendamentoController()
+        {
 
-//            this.webService = new HomeAutomexWSSoapClient();
-        
-//        }
+            this.webService = new HomeAutomexWSSoapClient();
 
-//        public ActionResult RegistrarAgendamento()
-//        {
-//            //ViewBag.Cenario = GetDropDownCenario();
-            
-//            return View();
-//        }
-//        //public List<SelectListItem> GetDropDownCenario()
-//        //{
-//        //    //var lista = new List<SelectListItem>();
-//        //    ////var x = webService.ConsutarTodosCenario();
-//        //    ////var cenario = JsonConvert.DeserializeObject<List<CenarioModel>>(x);
-//        //    //foreach (var item in cenario)
-//        //    //{
-//        //    //    lista.Add(new SelectListItem() { Text = item.Descricao, Value = item.Chave.ToString() });
-//        //    //}
-//        //    //return lista;
-//        //}
-//        [HttpPost]
-//        [AllowAnonymous]
-//        [ValidateAntiForgeryToken]
-//        public ActionResult RegistrarAgendamento(AgendamentoModel model)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                try
-//                {
-//                    var chave = "";
-//                    try
-//                    {
-//                        chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
+        }
 
-//                    }
-//                    catch (Exception)
-//                    {
+        public ActionResult RegistrarAgendamento()
+        {
+            ViewBag.Cenario = GetDropDownCenario();
 
-//                        return RedirectToAction("SessaoExpirou", "Account");
-//                    }
-//                    var agendamento = Mapper.DynamicMap<Agendamento>(model);
-//                    agendamento.Usuario = Convert.ToInt32(chave);
-//                 //   agendamento.DataAgendamento = DateTime.Now;
-//                    agendamento.Desativado = true;
-//                    var retorno = webService.InserirAgendamento(JsonConvert.SerializeObject(agendamento));
-//                    if (retorno.StartsWith("Erro:"))
-//                    {
-//                        ModelState.AddModelError("WSErro", retorno);
-//                    }
-//                    else
-//                    {
-//                        return RedirectToAction("ListarAgendamento", "Agendamento");
-//                    }
-//                }
-//                catch (MembershipCreateUserException e)
-//                {
-//                    ModelState.AddModelError("", e);
-//                }
-//            }
+            return View();
+        }
+        public List<SelectListItem> GetDropDownCenario()
+        {
+            var lista = new List<SelectListItem>();
+            var x = webService.ConsutarTodosCenario();
+            var cenario = JsonConvert.DeserializeObject<List<CenarioModel>>(x);
+            foreach (var item in cenario)
+            {
+                lista.Add(new SelectListItem() { Text = item.Descricao, Value = item.Chave.ToString() });
+            }
+            return lista;
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegistrarAgendamento(AgendamentoModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var chave = "";
+                    try
+                    {
+                        chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
 
-//            return View(model);
-//        }
+                    }
+                    catch (Exception)
+                    {
 
-//        public ActionResult ListarAgendamento(string pesquisa)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                var chave = "";
-//                try
-//                {
-//                     chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
-                   
-//                }
-//                catch (Exception)
-//                {
-//                    return RedirectToAction("SessaoExpirou", "Account");
-//                }
-//                var webService = new HomeAutomexWSSoapClient();
-//                var x = webService.ConsutarTodosAgendamento();
-//                var agendamento = JsonConvert.DeserializeObject<List<AgendamentoModel>>(x);
-//                if (!string.IsNullOrEmpty(pesquisa))
-//                    return View(agendamento.Where(e =>
-//                                e.Descricao.Contains(pesquisa) ||
-//                                e.Descricao.Contains(pesquisa)));
-//                return View(agendamento);
-//            }
-//            return View();
-//        }
+                        return RedirectToAction("SessaoExpirou", "Account");
+                    }
+                    var agendamento = Mapper.DynamicMap<Agendamento>(model);
+                    agendamento.Usuario = Convert.ToInt32(chave);
+                    agendamento.Desativado = true;
+                    var retorno = webService.InserirAgendamento(JsonConvert.SerializeObject(agendamento));
+                    if (retorno.StartsWith("Erro:"))
+                    {
+                        ModelState.AddModelError("WSErro", retorno);
+                    }
+                    else
+                    {
+                        return RedirectToAction("ListarAgendamento", "Agendamento");
+                    }
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", e);
+                }
+            }
 
-//        [HttpPost]
-//        [AllowAnonymous]
-//        public ActionResult EditarAgendamento(AgendamentoModel model)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                try
-//                {
-//                    var agendamento = Mapper.DynamicMap<Agendamento>(model);
+            return View(model);
+        }
 
-//                    try
-//                    {
-//                        var chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
-//                        agendamento.Usuario = Convert.ToInt32(chave);
-//                    }
-//                    catch (Exception)
-//                    {
+        public ActionResult ListarAgendamento(string pesquisa)
+        {
+            if (ModelState.IsValid)
+            {
+                var chave = "";
+                try
+                {
+                    chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
 
-//                        return RedirectToAction("SessaoExpirou", "Account");
-//                    }
-//                 //   agendamento.DataAgendamento = DateTime.Now;
-//                    var webService = new HomeAutomexWSSoapClient();
-             
-//                     var x = webService.AlterarAgendamento(JsonConvert.SerializeObject(agendamento));
-//                    if (x.StartsWith("Erro:"))
-//                    {
-//                        ModelState.AddModelError("WSErro", x);
-//                    }
-//                    else
-//                    {
-//                        return RedirectToAction("ListarAgendamento", "Agendamento");
-//                    }
-//                }
-//                catch (MembershipCreateUserException e)
-//                {
-//                    ModelState.AddModelError("", e);
-//                }
+                }
+                catch (Exception)
+                {
+                    return RedirectToAction("SessaoExpirou", "Account");
+                }
+                var webService = new HomeAutomexWSSoapClient();
+                var x = webService.ConsutarTodosAgendamento();
+                var agendamento = JsonConvert.DeserializeObject<List<AgendamentoModel>>(x);
+                if (!string.IsNullOrEmpty(pesquisa))
+                    return View(agendamento.Where(e =>
+                                e.Descricao.Contains(pesquisa) ||
+                                e.Descricao.Contains(pesquisa)));
+                return View(agendamento);
+            }
+            return View();
+        }
 
-//            }
-//            return View(model);
-//        }
-//        [AllowAnonymous]
-//        public ActionResult DeleteAgendamento(int chave)
-//        {
-//            var retorno = JsonConvert.DeserializeObject(webService.ExcluirAgendamento(chave.ToString()));
-//            return RedirectToAction("ListarAgendamento", "Agendamento");
-//        }
-//        public ActionResult EditarAgendamento(int chave)
-//        {
-//            var agendamento = JsonConvert.DeserializeObject<AgendamentoModel>(webService.BuscarAgendamentoPorChave(chave.ToString()));
-//            ViewBag.Cenario = GetDropDownCenario();
-           
-//            return View(agendamento);
-//        }
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult EditarAgendamento(AgendamentoModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var agendamento = Mapper.DynamicMap<Agendamento>(model);
 
-//    }
-//}
+                    try
+                    {
+                        var chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
+                        agendamento.Usuario = Convert.ToInt32(chave);
+                    }
+                    catch (Exception)
+                    {
+
+                        return RedirectToAction("SessaoExpirou", "Account");
+                    }
+                    //   agendamento.DataAgendamento = DateTime.Now;
+                    var webService = new HomeAutomexWSSoapClient();
+
+                    var x = webService.AlterarAgendamento(JsonConvert.SerializeObject(agendamento));
+                    if (x.StartsWith("Erro:"))
+                    {
+                        ModelState.AddModelError("WSErro", x);
+                    }
+                    else
+                    {
+                        return RedirectToAction("ListarAgendamento", "Agendamento");
+                    }
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", e);
+                }
+
+            }
+            return View(model);
+        }
+        [AllowAnonymous]
+        public ActionResult DeleteAgendamento(int chave)
+        {
+            var retorno = JsonConvert.DeserializeObject(webService.ExcluirAgendamento(chave.ToString()));
+            return RedirectToAction("ListarAgendamento", "Agendamento");
+        }
+        public ActionResult EditarAgendamento(int chave)
+        {
+            var agendamento = JsonConvert.DeserializeObject<AgendamentoModel>(webService.BuscarAgendamentoPorChave(chave.ToString()));
+            ViewBag.Cenario = GetDropDownCenario();
+
+            return View(agendamento);
+        }
+
+    }
+}
