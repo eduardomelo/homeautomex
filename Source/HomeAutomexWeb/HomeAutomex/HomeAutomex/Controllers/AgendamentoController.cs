@@ -98,7 +98,7 @@ namespace HomeAutomex.Controllers
                     return RedirectToAction("SessaoExpirou", "Account");
                 }
                 var webService = new HomeAutomexWSSoapClient();
-                var x = webService.ConsutarTodosAgendamento();
+                var x = webService.ConsutarTodosAgendamentoPorUsuarioChave(chave.ToString());
                 var agendamento = JsonConvert.DeserializeObject<List<AgendamentoModel>>(x);
                 if (!string.IsNullOrEmpty(pesquisa))
                     return View(agendamento.Where(e =>
