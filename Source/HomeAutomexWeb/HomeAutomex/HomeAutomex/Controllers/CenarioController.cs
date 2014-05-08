@@ -27,7 +27,7 @@ namespace HomeAutomex.Controllers
 
         public ActionResult RegistrarCenario()
         {
-            ViewBag.Ambientes = GetDropDownAmbientes();
+            ViewBag.Dispositivo = GetDropDownDispositivo();
             return View();
         }
         [HttpPost]
@@ -117,11 +117,11 @@ namespace HomeAutomex.Controllers
             return View(cenario);
         }
 
-        public List<SelectListItem> GetDropDownAmbientes()
+        public List<SelectListItem> GetDropDownDispositivo()
         {
             var lista = new List<SelectListItem>();
             var chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
-            var x = webService.ConsultarTodosAmbientePorUsuarioChave(chave.ToString());
+            var x = webService.ConsutarTodosDispositivoPorUsuarioChave(chave.ToString());
             var ambientes = JsonConvert.DeserializeObject<List<AmbienteModel>>(x);
             foreach (var item in ambientes)
             {

@@ -13,7 +13,7 @@ namespace HomeAutomex.Models
         public string Descricao { get; set; }
 
         public bool Desativado { get; set; }
-        public virtual int ChaveAmbiente { get; set; }
+        public virtual int ChaveDispositivo { get; set; }
        
 
     }

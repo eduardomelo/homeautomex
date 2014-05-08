@@ -19,7 +19,12 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Descricao)
             @Html.ValidationMessageFor(model => model.Descricao)
-        </div> <br />
+        </div> 
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ChaveDispositivo, ViewBag.Dispositivo as List<SelectListItem>, "Selecione...", new { @class = "input" })
+            @Html.ValidationMessageFor(model => model.ChaveDispositivo)
+        </div>
+        <br />
         <p>
                       <input type="submit" value="Editar" class="btn-glow primary login" />
 
