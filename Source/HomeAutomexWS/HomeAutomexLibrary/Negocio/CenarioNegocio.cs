@@ -12,25 +12,46 @@ namespace HomeAutomexLibrary.Negocio
     public class CenarioNegocio : NegocioBase<Cenario, int>
     {
         private CenarioRepositorio cenarioRepositorio;
-        private ResidenciaRepositorio residenciaRepositorio;
-        private AmbienteRepositorio ambienteRepositorio;
+        private DispositivoRepositorio dispositivoRepositorio;
         private DatabaseContext contexto;
 
         public CenarioNegocio(DatabaseContext contexto)
         {
             this.contexto = contexto;
             cenarioRepositorio = new CenarioRepositorio(contexto);
-            residenciaRepositorio = new ResidenciaRepositorio(contexto);
-            ambienteRepositorio = new AmbienteRepositorio(contexto);
+            dispositivoRepositorio = new DispositivoRepositorio(contexto);
         }
         public string InserirCenario(Cenario cenario)
         {
-           
+            var ids = cenario.Dispositivo.Select(e => e.Chave).ToList();
+            var dispositivo = new List<Dispositivo>();
+            cenario.Dispositivo.Clear();
+            foreach (var chave in ids)
+            {
+                dispositivo.Add(dispositivoRepositorio.BuscarPorChave(chave));
+            }
+
+            cenario.Dispositivo = dispositivo;
+
             cenarioRepositorio.Inserir(cenario);
             try
             {
                 contexto.SaveChanges();
                 return "Operação realizada com sucesso!";
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
             }
             catch (Exception ex)
             {

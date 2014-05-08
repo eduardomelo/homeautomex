@@ -11,34 +11,36 @@ namespace HomeAutomexLibrary.Fachada
 {
     public class Fachada
     {
-        private UsuarioNegocio      usuarioNegocio;
-        private ResidenciaNegocio   residenciaNegocio;
-        private ModuloNegocio       moduloNegocio;
-        private AmbienteNegocio     ambienteNegocio;
-        private TipoPortaNeogocio   tipoPortaNegocio;
-        private AgendamentoNegocio  agendamentoNegocio;
-        private DispositivoNegocio  dispositivoNegocio;
-        private CenarioNegocio      cenarioNegocio;
-        private UTUtilizacaoNegocio utDispositivoNegocio;
-        private LogNegocio          logNegocio;
-        private PortaNegocio        portaNegocio;
-        private DatabaseContext     contexto;
+        private UsuarioNegocio                      usuarioNegocio;
+        private ResidenciaNegocio                   residenciaNegocio;
+        private ModuloNegocio                       moduloNegocio;
+        private AmbienteNegocio                     ambienteNegocio;
+        private TipoPortaNeogocio                   tipoPortaNegocio;
+        private AgendamentoNegocio                  agendamentoNegocio;
+        private DispositivoNegocio                  dispositivoNegocio;
+        private CenarioNegocio                      cenarioNegocio;
+        private UTUtilizacaoNegocio                 utDispositivoNegocio;
+        private LogNegocio                          logNegocio;
+        private PortaNegocio                        portaNegocio;
+       
+        private DatabaseContext                     contexto;
         
 
         public Fachada()
         {
-            this.contexto               = new DatabaseContext();
-            this.usuarioNegocio         = new UsuarioNegocio();
-            this.residenciaNegocio      = new ResidenciaNegocio(contexto);
-            this.moduloNegocio          = new ModuloNegocio(contexto);
-            this.ambienteNegocio        = new AmbienteNegocio(contexto);
-            this.cenarioNegocio         = new CenarioNegocio(contexto);
-            this.portaNegocio           = new PortaNegocio(contexto);
-            this.tipoPortaNegocio       = new TipoPortaNeogocio();
-            this.dispositivoNegocio     = new DispositivoNegocio(contexto);
-            this.agendamentoNegocio     = new AgendamentoNegocio(contexto);
-            this.utDispositivoNegocio   = new UTUtilizacaoNegocio();
-            this.logNegocio             = new LogNegocio();
+            this.contexto                           = new DatabaseContext();
+            this.usuarioNegocio                     = new UsuarioNegocio();
+            this.residenciaNegocio                  = new ResidenciaNegocio(contexto);
+            this.moduloNegocio                      = new ModuloNegocio(contexto);
+            this.ambienteNegocio                    = new AmbienteNegocio(contexto);
+            this.cenarioNegocio                     = new CenarioNegocio(contexto);
+            this.portaNegocio                       = new PortaNegocio(contexto);
+            this.tipoPortaNegocio                   = new TipoPortaNeogocio();
+            this.dispositivoNegocio                 = new DispositivoNegocio(contexto);
+            this.agendamentoNegocio                 = new AgendamentoNegocio(contexto);
+            this.utDispositivoNegocio               = new UTUtilizacaoNegocio();
+            this.logNegocio                         = new LogNegocio();
+         
             
         }
         private static Fachada instancia;
@@ -340,6 +342,7 @@ namespace HomeAutomexLibrary.Fachada
         }
         #endregion
 
+        
         #region Arduino
         public string StatusArduino(string ip)
         {

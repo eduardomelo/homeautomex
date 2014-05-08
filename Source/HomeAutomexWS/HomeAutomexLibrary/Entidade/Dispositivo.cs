@@ -14,12 +14,12 @@ namespace HomeAutomexLibrary.Entidade
         public virtual Ambiente Ambiente { get; set; }
         public virtual Porta Porta { get; set; }
         public virtual bool Favorito { get; set; }
+    
+       public virtual List<Cenario> Cenario { get; set; }
+
+       public Dispositivo()
+       {
+            this.Cenario = new List<Cenario>();
+        }
     }
-
-    //public class DispositivoTeste : EntidadeBase<int>
-    //{
-    //    public virtual string Identificador { get; set; }
-    //    public virtual bool Status { get; set; }
-    //}
-
 }

@@ -23,6 +23,7 @@ namespace HomeAutomexLibrary.Negocio
         {
             if (base.Existir(e => e.Login == usuario.Login))
                 return "Erro: Usuário inválido";
+
             base.Inserir(usuario);
             try
             {

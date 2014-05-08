@@ -29,7 +29,17 @@ namespace HomeAutomexLibrary.Repositorio.Map
             Property(e => e.Favorito).HasColumnName("FAVORITO");
  
             HasRequired(e => e.Ambiente).WithMany().Map(e => e.MapKey("CD_AMBIENTE"));
-            HasRequired(e => e.Porta).WithMany().Map(e => e.MapKey("CD_PORTA"));     
+            HasRequired(e => e.Porta).WithMany().Map(e => e.MapKey("CD_PORTA"));
+
+
+            HasMany(e => e.Cenario)
+              .WithMany(e => e.Dispositivo)
+              .Map(e =>
+              {
+                  e.ToTable("DISPOSITIVO_CENARIO");
+                  e.MapLeftKey("CD_CENARIO");
+                  e.MapRightKey("CD_DISPOSITIVO");
+              });
         }
 
     }

@@ -11,8 +11,6 @@ namespace HomeAutomexLibrary.Negocio
 {
     public class ResidenciaNegocio : NegocioBase<Residencia, int>
     {
-
-        //private DatabaseContext contexto = new DatabaseContext();
         private UsuarioRepositorio usuarioRepositorio;
         private ResidenciaRepositorio residenciaRepositorio;
         private DatabaseContext contexto;

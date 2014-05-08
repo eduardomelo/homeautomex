@@ -69,8 +69,8 @@
     <Compile Include="Entidade\Usuario.cs" />
     <Compile Include="Fachada\Fachada.cs" />
     <Compile Include="Negocio\AmbienteNegocio.cs" />
-    <Compile Include="Negocio\CenarioNegocio.cs" />
     <Compile Include="Negocio\AgendamentoNegocio.cs" />
+    <Compile Include="Negocio\CenarioNegocio.cs" />
     <Compile Include="Negocio\PortaNegocio.cs" />
     <Compile Include="Negocio\UTUtilizacaoNegocio.cs" />
     <Compile Include="Negocio\LogNegocio.cs" />
