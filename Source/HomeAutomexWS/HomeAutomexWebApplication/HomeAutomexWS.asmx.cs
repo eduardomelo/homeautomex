@@ -590,6 +590,8 @@ namespace HomeAutomexWebApplication
         #endregion
 
 
+
+       
         //[WebMethod]
         //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         //public string StatusArduino()
