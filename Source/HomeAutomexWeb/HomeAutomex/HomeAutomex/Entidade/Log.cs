@@ -9,7 +9,7 @@ namespace HomeAutomexLibrary.Entidade
     {
         public int Cd_usuario { get; set; }
         public string Descricao { get; set; }
-        public DateTime? DataCadastro { get; set; }
+       
         
     }
 }
