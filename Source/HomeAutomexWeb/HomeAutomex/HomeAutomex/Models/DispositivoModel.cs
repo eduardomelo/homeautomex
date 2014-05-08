@@ -31,6 +31,9 @@ namespace HomeAutomex.Models
         public bool Favorito { get; set; }
 
         public List<UsuarioModel> Usuarios { get; set; }
+
+
+    
      
 
     }

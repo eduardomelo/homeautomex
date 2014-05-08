@@ -4,8 +4,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+    <legend>Cenário</legend>
+  <div class="editor-label">
+           Escolha seu cenário
+        </div>
+    <div class="editor-label" style="margin-left:35px;"> 
+       @Html.DropDownList("Cenario", ViewBag.Cenario as List<SelectListItem>, new { @class="inputCenario"})
+      </div>
+<br /><br />
 <div class="container">
-        <legend>Favorito</legend>
+
     @foreach (var residencia in Model)
     {  
     
@@ -17,7 +25,7 @@
                         <div class="accordion-group">
                             <!-- Área -->
                             <div class="accordion-heading area">
-                                <a class="accordion-toggle" data-toggle="collapse" href="#residencia-@residencia.Chave">@residencia.Nome</a>
+                                <a class="accordion-toggle" data-toggle="collapse" href="#residencia-@residencia.Chave">Residência: @residencia.Nome</a>
 
                                 <div class="dropdown edit">
                                     <a class="dropdown-toggle icon-pencil" data-toggle="dropdown"
@@ -42,7 +50,7 @@
                                             <div class="accordion-group">
                                                 <div class="accordion-heading equipamento">
                                                     <a class="accordion-toggle" data-parent="#equipamento1-1"
-                                                        data-toggle="collapse" href="#ambiente-@ambiente.Chave">@ambiente.Descricao</a>
+                                                        data-toggle="collapse" href="#ambiente-@ambiente.Chave">Ambiente: @ambiente.Descricao</a>
 
                                                     <div class="dropdown edit">
                                                         <a class="dropdown-toggle icon-pencil"
@@ -68,7 +76,7 @@
                                                                     <div class="accordion-heading ponto">
                                                                         <a class="accordion-toggle"
                                                                             data-parent="#servico1-1-1"
-                                                                            data-toggle="collapse" href="#dispositivo-@dispositivo.Chave">@dispositivo.Descricao</a>
+                                                                            data-toggle="collapse" href="#dispositivo-@dispositivo.Chave">Adicionar dispositivo ao cenário: @dispositivo.Descricao</a>
 
                                                                         <div class="dropdown edit">
                                                                             <a class="dropdown-toggle icon-pencil"
@@ -95,7 +103,7 @@
                                                                         <div class="accordion-inner">
                                                                             <ul class="nav nav-list">
                                                                                 <li>
-                                                                                    @Html.CheckBox("dispositivo", dispositivo.Status, new { @class = "ckbSwitch", id = dispositivo.Chave })
+                                                                                    @Html.CheckBox("dispositivo", new { @class = "ckbSwitch", id = dispositivo.Chave })
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
@@ -138,10 +146,10 @@
     });
     $('input[type="checkbox"]').on('switchChange.bootstrapSwitch', function (event, state) {
         $.ajax({
-            url: '@Url.Action("AlterarStatus", "Dispositivo")',
+            url: '@Url.Action("RegistrarDispositivosCenario", "Cenario")',
             type: 'GET',
             contentType: 'application/json',
-            data: { chave: $(this).attr('id'), status: state },
+            data: { chave: $(this).attr('id') },
             success: function () {
                 console.log("sucesso!");
             },

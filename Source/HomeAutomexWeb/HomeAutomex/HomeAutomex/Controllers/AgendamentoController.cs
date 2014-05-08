@@ -19,11 +19,9 @@ namespace HomeAutomex.Controllers
         private HomeAutomexWSSoapClient webService;
         public AgendamentoController()
         {
-
             this.webService = new HomeAutomexWSSoapClient();
 
         }
-
         public ActionResult RegistrarAgendamento()
         {
             ViewBag.Cenario = GetDropDownCenario();
@@ -129,7 +127,7 @@ namespace HomeAutomex.Controllers
 
                         return RedirectToAction("SessaoExpirou", "Account");
                     }
-                    //   agendamento.DataAgendamento = DateTime.Now;
+                       agendamento.DataAgendamento = DateTime.Now;
                     var webService = new HomeAutomexWSSoapClient();
 
                     var x = webService.AlterarAgendamento(JsonConvert.SerializeObject(agendamento));
