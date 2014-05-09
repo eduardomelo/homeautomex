@@ -42,14 +42,7 @@ namespace HomeAutomexLibrary.Repositorio.Map
                     m.MapRightKey("CD_RESIDENCIA");
                 });
 
-            //HasMany(e => e.Usuarios)
-            //    .WithMany(e => e.Residencias)
-            //    .Map(m =>
-            //    {
-            //        m.ToTable("USUARIO_RESIDENCIA");
-            //        m.MapLeftKey("CD_RESIDENCIA");
-            //        m.MapRightKey("CD_USUARIO");
-            //    });
+         
         }
     }
 }

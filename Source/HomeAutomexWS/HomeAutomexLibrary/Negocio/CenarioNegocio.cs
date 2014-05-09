@@ -32,8 +32,7 @@ namespace HomeAutomexLibrary.Negocio
             }
 
             cenario.Dispositivo = dispositivo;
-
-            cenarioRepositorio.Inserir(cenario);
+            cenarioRepositorio.Inserir(cenario); 
             try
             {
                 contexto.SaveChanges();
