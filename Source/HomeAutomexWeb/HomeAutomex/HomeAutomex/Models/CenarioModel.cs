@@ -9,7 +9,7 @@ namespace HomeAutomex.Models
 {
     public class CenarioModel : BaseModel
     {
-        [Required]
+      
         public string Descricao { get; set; }
 
         public bool Desativado { get; set; }

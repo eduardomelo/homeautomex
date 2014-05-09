@@ -6,7 +6,14 @@ width:210px;
 .inputCenario
 {
 	height: 40px;
-	width: 210px;
+	width: 800px;
+}
+
+.inputTexArea
+{
+height: 40px;
+	width: 800px;
+
 }
 h1,
 h2,

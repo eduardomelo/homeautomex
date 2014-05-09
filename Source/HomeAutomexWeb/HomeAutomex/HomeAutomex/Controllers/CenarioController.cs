@@ -21,6 +21,11 @@ namespace HomeAutomex.Controllers
         {
             this.webService = new HomeAutomexWSSoapClient();
         }
+
+        public ActionResult RegistrarCenario()
+        {
+            return View();
+        }
         public List<SelectListItem> GetDropDownCenario()
         {
             var lista = new List<SelectListItem>();
@@ -56,27 +61,20 @@ namespace HomeAutomex.Controllers
         }
 
          [HttpGet]
-         public void RegistrarDispositivosCenario(int chave)
+         public void RegistrarDispositivosCenario(int chaveDispositivo)
          {
-
              if (ModelState.IsValid)
              {
                  try
                  {
-                     Cenario model = new Cenario();
                      var webService = new HomeAutomexWSSoapClient();
-                     var cenario = Mapper.DynamicMap<Cenario>(model);
-                     cenario.Dispositivo = new List<Dispositivo> { new Dispositivo { Chave = chave } };
-                     
-                     cenario.Descricao = "SAIR DE CASA";
-                     var retorno = webService.InserirCenario(JsonConvert.SerializeObject(cenario));
+                     var cenario = JsonConvert.DeserializeObject<Cenario>(webService.BuscarCenarioPorChave(103.ToString()));
+                     cenario.Dispositivo = new List<Dispositivo> { new Dispositivo { Chave = chaveDispositivo } };
+                      var retorno = webService.AssociarCenarioDispositivo(JsonConvert.SerializeObject(cenario));
+                    // var retorno = webService.InserirCenario(JsonConvert.SerializeObject(cenario));
                      if (retorno.StartsWith("Erro:"))
                      {
                          ModelState.AddModelError("WSErro", retorno);
-                     }
-                     else
-                     {
-                         RedirectToAction("ListarCenario", "Cenario");
                      }
                  }
                  catch (MembershipCreateUserException e)

@@ -4,9 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <legend>Cenário</legend>
+    <legend>Criar Cenário - Escolha os dispositivos que estaram em seu cenário!</legend>
   <div class="editor-label">
-           Escolha seu cenário
         </div>
     <div class="editor-label" style="margin-left:35px;"> 
        @Html.DropDownList("Cenario", ViewBag.Cenario as List<SelectListItem>, new { @class="inputCenario"})
@@ -137,7 +136,7 @@
 
 <script src="~/Scripts/jquery-1.9.1.js"></script>
 <link href="~/css/bootstrap-switch.css" rel="stylesheet" />
-<script src="~/Scripts/bootstrap-switch.js"></script>
+<script src="~/Scripts/bootstrap-switch2.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -149,7 +148,7 @@
             url: '@Url.Action("RegistrarDispositivosCenario", "Cenario")',
             type: 'GET',
             contentType: 'application/json',
-            data: { chave: $(this).attr('id') },
+            data: { chaveDispositivo: $(this).attr('id') },
             success: function () {
                 console.log("sucesso!");
             },

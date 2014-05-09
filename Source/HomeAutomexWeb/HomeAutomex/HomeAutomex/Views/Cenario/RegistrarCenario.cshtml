@@ -5,30 +5,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
 @using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+ @Html.AntiForgeryToken()
+ @Html.ValidationSummary(true)
+
 
     <fieldset>
-        <legend>Registrar Cenario</legend>
+        <legend>Diga uma breve descrição do seu cenario!</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Descricao)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Descricao)
+            @Html.TextAreaFor(model => model.Descricao, new { @class="inputTexArea"})
             @Html.ValidationMessageFor(model => model.Descricao)
         </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ChaveDispositivo)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.ChaveDispositivo, ViewBag.Dispositivo as List<SelectListItem>, "Selecione...", new { @class = "input" })
-            @Html.ValidationMessageFor(model => model.ChaveDispositivo)
-        </div>
-        <p> <br />
-         <input type="submit" value="Registrar" class="btn-glow primary login" />
+  <br /><br />
 
+        <p>
+          <input type="submit" value="Registrar" class="btn-glow primary login" />
         </p>
     </fieldset>
 }
