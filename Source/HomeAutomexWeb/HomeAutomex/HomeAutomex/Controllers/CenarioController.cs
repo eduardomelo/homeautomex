@@ -61,17 +61,17 @@ namespace HomeAutomex.Controllers
         }
 
          [HttpGet]
-         public void RegistrarDispositivosCenario(int chaveDispositivo)
+         public void RegistrarDispositivosCenario(int chaveDispositivo, int chaveCenario)
          {
              if (ModelState.IsValid)
              {
                  try
                  {
                      var webService = new HomeAutomexWSSoapClient();
-                     var cenario = JsonConvert.DeserializeObject<Cenario>(webService.BuscarCenarioPorChave(103.ToString()));
+                     var cenario = JsonConvert.DeserializeObject<Cenario>(webService.BuscarCenarioPorChave(chaveCenario.ToString()));
                      cenario.Dispositivo = new List<Dispositivo> { new Dispositivo { Chave = chaveDispositivo } };
-                      var retorno = webService.AssociarCenarioDispositivo(JsonConvert.SerializeObject(cenario));
-                    // var retorno = webService.InserirCenario(JsonConvert.SerializeObject(cenario));
+                   //   var retorno = webService.AssociarCenarioDispositivo(JsonConvert.SerializeObject(cenario));
+                     var retorno = webService.AlterarCenario(JsonConvert.SerializeObject(cenario));
                      if (retorno.StartsWith("Erro:"))
                      {
                          ModelState.AddModelError("WSErro", retorno);

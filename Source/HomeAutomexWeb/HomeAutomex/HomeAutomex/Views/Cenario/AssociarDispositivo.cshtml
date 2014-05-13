@@ -147,8 +147,8 @@
         $.ajax({
             url: '@Url.Action("RegistrarDispositivosCenario", "Cenario")',
             type: 'GET',
-            contentType: 'application/json',
-            data: { chaveDispositivo: $(this).attr('id') },
+           // contentType: 'application/json',
+            data: { chaveDispositivo: $(this).attr('id'), chaveCenario: $("#Cenario").val() },
             success: function () {
                 console.log("sucesso!");
             },

@@ -81,6 +81,8 @@ namespace HomeAutomex.Controllers
             return View(model);
         }
 
+
+       
         public ActionResult ListarAgendamento(string pesquisa)
         {
             if (ModelState.IsValid)
@@ -89,6 +91,7 @@ namespace HomeAutomex.Controllers
                 try
                 {
                     chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
+
 
                 }
                 catch (Exception)
@@ -106,7 +109,7 @@ namespace HomeAutomex.Controllers
             }
             return View();
         }
-
+    
         [HttpPost]
         [AllowAnonymous]
         public ActionResult EditarAgendamento(AgendamentoModel model)
