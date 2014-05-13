@@ -20,10 +20,10 @@
             @Html.ValidationMessageFor(model => model.Descricao)
         </div>
          <div class="editor-label">
-            @Html.LabelFor(model => model.Cenario)
+            @Html.LabelFor(model => model.Dispositivo)
         </div>
          <div class="editor-label">
-            @Html.DropDownListFor(model => model.Cenario, ViewBag.Cenario as List<SelectListItem>, "Selecione...", new { @class = "input" })
+            @Html.DropDownListFor(model => model.Dispositivo, ViewBag.Dispositivo as List<SelectListItem>, "Selecione...", new { @class = "input" })
         </div>    <br />
         <div class="editor-label">
             @Html.LabelFor(model => model.Ativo)

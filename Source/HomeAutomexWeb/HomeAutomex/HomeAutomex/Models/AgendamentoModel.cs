@@ -19,7 +19,7 @@ namespace HomeAutomex.Models
         public bool Desativado { get; set; }
 
         public int Usuario { get; set; }
-        public int Cenario { get; set; }
+        public int Dispositivo { get; set; }
 
 
      

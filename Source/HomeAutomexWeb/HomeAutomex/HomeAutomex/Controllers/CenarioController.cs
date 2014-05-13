@@ -26,6 +26,11 @@ namespace HomeAutomex.Controllers
         {
             return View();
         }
+        public ActionResult AtivarCenario()
+        {
+             ViewBag.Cenario = GetDropDownCenario();
+            return View();
+        }
         public List<SelectListItem> GetDropDownCenario()
         {
             var lista = new List<SelectListItem>();
@@ -60,6 +65,8 @@ namespace HomeAutomex.Controllers
             }
         }
 
+
+
          [HttpGet]
          public void RegistrarDispositivosCenario(int chaveDispositivo, int chaveCenario)
          {
@@ -70,7 +77,6 @@ namespace HomeAutomex.Controllers
                      var webService = new HomeAutomexWSSoapClient();
                      var cenario = JsonConvert.DeserializeObject<Cenario>(webService.BuscarCenarioPorChave(chaveCenario.ToString()));
                      cenario.Dispositivo = new List<Dispositivo> { new Dispositivo { Chave = chaveDispositivo } };
-                   //   var retorno = webService.AssociarCenarioDispositivo(JsonConvert.SerializeObject(cenario));
                      var retorno = webService.AlterarCenario(JsonConvert.SerializeObject(cenario));
                      if (retorno.StartsWith("Erro:"))
                      {
@@ -82,6 +88,44 @@ namespace HomeAutomex.Controllers
                      ModelState.AddModelError("", e);
                  }
              }
+         }
+         [HttpPost]
+         [AllowAnonymous]
+
+         public ActionResult AtivarCenario(CenarioModel model)
+         {
+             if (ModelState.IsValid)
+             {
+                 try
+                 {
+                     var cenario = Mapper.DynamicMap<Cenario>(model);
+                     cenario = JsonConvert.DeserializeObject<Cenario>(webService.BuscarCenarioPorChave(cenario.Chave.ToString()));
+
+                     while (cenario.Dispositivo.Count > 0)
+                     {
+                         int chaveDispositivo = cenario.Dispositivo[0].Chave;
+                         var dispositivo = JsonConvert.DeserializeObject<Dispositivo>(webService.BuscarDispositivoPorChave(chaveDispositivo.ToString()));
+                         dispositivo.Status = true;
+                         var retorno = webService.AlterarDispositivo(JsonConvert.SerializeObject(dispositivo));
+
+                         if (retorno.StartsWith("Erro:"))
+                         {
+                             ModelState.AddModelError("WSErro", retorno);
+                         }
+
+                     }
+
+                 }
+
+                 catch (MembershipCreateUserException e)
+                 {
+                     ModelState.AddModelError("", e);
+                 }
+             }
+
+
+             ViewBag.Cenario = GetDropDownCenario();
+             return View();
          }
         [HttpPost]
         [AllowAnonymous]

@@ -1,0 +1,33 @@
+﻿@model HomeAutomex.Models.CenarioModel
+
+@{
+    ViewBag.Title = "AtivarCenario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>CenarioModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Chave)
+        </div>
+        <div>
+            @Html.DropDownListFor(model => model.Chave, ViewBag.Cenario as List<SelectListItem>, "Selecione...", new { @class = "inputCenario" })
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
