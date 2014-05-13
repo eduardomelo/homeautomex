@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HomeAutomexLibrary.Repositorio
 {
-    public class CenarioRepositorio : RepositorioBase<Cenario,int>
+    public class CenarioRepositorio : RepositorioBase<Cenario, int>
     {
         public CenarioRepositorio(DatabaseContext contexto)
             : base(contexto)
@@ -17,17 +17,12 @@ namespace HomeAutomexLibrary.Repositorio
         /// <summary>
         /// Exemplo
         /// </summary>
-     
+
         /// <returns></returns>
         public IEnumerable<Cenario> BuscarPorDescricao(string Descricao)
         {
             return base.Consultar(e => e.Descricao.Contains(Descricao));
         }
 
-        public void AssociarCenarioDispositivo(Cenario cenario)
-        {
-            Context.Database.ExecuteSqlCommand("insert into DISPOSITIVO_CENARIO(CD_DISPOSITIVO, CD_CENARIO) values (" + cenario.Dispositivo[0].Chave + ", " + cenario.Chave + ");");
-        }
-     
     }
 }

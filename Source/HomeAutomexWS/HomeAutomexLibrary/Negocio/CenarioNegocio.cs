@@ -22,16 +22,7 @@ namespace HomeAutomexLibrary.Negocio
             dispositivoRepositorio = new DispositivoRepositorio(contexto);
         }
         public string InserirCenario(Cenario cenario)
-        {
-            var ids = cenario.Dispositivo.Select(e => e.Chave).ToList();
-            var dispositivo = new List<Dispositivo>();
-            cenario.Dispositivo.Clear();
-            foreach (var chave in ids)
-            {
-                dispositivo.Add(dispositivoRepositorio.BuscarPorChave(chave));
-            }
-
-            cenario.Dispositivo = dispositivo;
+        {           
             cenarioRepositorio.Inserir(cenario); 
             try
             {
@@ -58,12 +49,22 @@ namespace HomeAutomexLibrary.Negocio
             }
         }
 
-        public string AlterarCenario(Cenario cenario)
+        public string AlterarCenario(Cenario cenarioNovo)
         {
-            base.Alterar(cenario);
+            var ids = cenarioNovo.Dispositivo.Select(e => e.Chave).ToList();
+            var dispositivo = new List<Dispositivo>();
+            cenarioNovo.Dispositivo.Clear();
+            var cenario = cenarioRepositorio.BuscarPorChave(cenarioNovo.Chave);
+            foreach (var chave in ids)
+            {
+                dispositivo.Add(dispositivoRepositorio.BuscarPorChave(chave));
+            }
+
+            cenario.Dispositivo.AddRange(dispositivo);
+            cenarioRepositorio.Alterar(cenario);
             try
             {
-                base.SaveChanges();
+                cenarioRepositorio.SaveChanges();
                 return "Operação realizada com sucesso!";
             }
             catch (Exception ex)
