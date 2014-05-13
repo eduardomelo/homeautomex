@@ -40,12 +40,12 @@ namespace HomeAutomex.Controllers
         public List<SelectListItem> GetDropDownModulo()
         {
             var lista = new List<SelectListItem>();
-          //  var x = webService.ConsultarModuloPorUsuario((Session["Usuario"] as UsuarioModel).Chave.ToString());
-          //  var modulo = JsonConvert.DeserializeObject<List<ModuloModel>>(x);
-            //foreach (var item in modulo)
-            //{
-            //    lista.Add(new SelectListItem() { Text = item.Nome, Value = item.Chave.ToString() });
-            //}
+            var x = webService.ConsultarModuloPorUsuario((Session["Usuario"] as UsuarioModel).Chave.ToString());
+            var modulo = JsonConvert.DeserializeObject<List<ModuloModel>>(x);
+            foreach (var item in modulo)
+            {
+                lista.Add(new SelectListItem() { Text = item.Nome, Value = item.Chave.ToString() });
+            }
             return lista;
         }
                
