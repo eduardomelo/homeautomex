@@ -413,20 +413,7 @@ namespace HomeAutomexWebApplication
         }
         #endregion
 
-        #region Cenario - obs...existe um metodo associar cenario ao dispositivo fora do padrão!
-
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string AssociarCenarioDispositivo(string jCenario) // metodo improvisado, para deixar funcionando por enquanto! 
-        {
-                 var cenario = JsonConvert.DeserializeObject<Cenario>(jCenario);
-                 log.Descricao = "Usuario inseriu um cenário " + cenario.Descricao;
-                 var retornoLog = fachada.InserirLog(log);
-                 DatabaseContext context = new DatabaseContext();
-                 CenarioRepositorio repositorioCenario = new CenarioRepositorio(context);
-                 repositorioCenario.AssociarCenarioDispositivo(cenario);
-                 return "Sucess!";
-        }
+        #region Cenario 
        
         
         [WebMethod]
@@ -466,10 +453,10 @@ namespace HomeAutomexWebApplication
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string AlterarCenario(string jCenario)
         {
-            var cenario = JsonConvert.DeserializeObject<Ambiente>(jCenario);
+            var cenario = JsonConvert.DeserializeObject<Cenario>(jCenario);
             log.Descricao = "Usuario alterou o cenario, " + cenario.Descricao;
             var retornoLog = fachada.InserirLog(log);
-            var retorno = fachada.AlterarAmbiente(cenario);
+            var retorno = fachada.AlterarCenario(cenario);
             return retorno;
         }
         [WebMethod]
