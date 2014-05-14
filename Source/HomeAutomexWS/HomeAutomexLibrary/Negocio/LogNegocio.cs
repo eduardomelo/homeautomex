@@ -11,10 +11,12 @@ namespace HomeAutomexLibrary.Negocio
 {
     public class LogNegocio : NegocioBase<Log, int>
     {
-
+      
         private DatabaseContext contexto;
         public LogNegocio()
         {
+         
+    
             this.contexto = new DatabaseContext();
         }
 
@@ -22,9 +24,9 @@ namespace HomeAutomexLibrary.Negocio
         {
             log.Cd_usuario = 99;
             log.DataCadastro = DateTime.Now;
-            
-
+            //  ConsultarTodosAgendamento();
             base.Inserir(log);
+
 
             try
             {
@@ -40,6 +42,14 @@ namespace HomeAutomexLibrary.Negocio
         {
             return base.ConsultarTodos().ToList();
         }
+
+      
+
+
+
+
+        
+
 
 
     }

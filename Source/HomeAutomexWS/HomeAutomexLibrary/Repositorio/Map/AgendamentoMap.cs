@@ -31,9 +31,6 @@ namespace HomeAutomexLibrary.Repositorio.Map
             Property(e => e.Dispositivo).HasColumnName("CD_DISPOSITIVO");
             Property(e => e.DataAgendamento).HasColumnName("DT_AGENDAMENTO");
 
-            //Ignore(e => e.DataCadastro);
-            //Ignore(e => e.DataAlteracao);
-            //Ignore(e => e.DataExclusao);
             
           
         }

@@ -13,17 +13,17 @@ namespace HomeAutomexLibrary.Negocio
     {
 
         private DatabaseContext contexto;
-    //    private UsuarioRepositorio usuarioRepositorio;
+        private DispositivoRepositorio dispositivoRepositorio;
         private AgendamentoRepositorio agendamentoRepositorio;
-        private PortaRepositorio portaRepositorio;
-    
+
+
 
         public AgendamentoNegocio(DatabaseContext contexto)
         {
             this.contexto = contexto;
-         //   this.usuarioRepositorio = new UsuarioRepositorio(contexto);
+            this.dispositivoRepositorio = new DispositivoRepositorio(contexto);
             this.agendamentoRepositorio = new AgendamentoRepositorio(contexto);
-            this.portaRepositorio = new PortaRepositorio(contexto);
+
 
         }
 
@@ -79,6 +79,22 @@ namespace HomeAutomexLibrary.Negocio
         {
             return base.Consultar(e => e.Usuario == chave).ToList();
         }
-    }
-}
 
+        public List<Agendamento> VerificarTodosAgendamento()
+        {
+
+            DateTime dataMomento = DateTime.Now;
+            var agendamento = new Agendamento();
+            List<Agendamento> ListAgendamento = agendamentoRepositorio.Consultar(e => e.DataAgendamento <= dataMomento).ToList();
+
+            foreach (Agendamento ChaveDispositivo in ListAgendamento)
+            {
+                var dipositivoNovo = this.dispositivoRepositorio.BuscarPorChave(ChaveDispositivo.Dispositivo);
+                dipositivoNovo.Status = true;
+                this.dispositivoRepositorio.Alterar(dipositivoNovo);
+            }
+            return ListAgendamento;
+        }
+    }
+
+}
