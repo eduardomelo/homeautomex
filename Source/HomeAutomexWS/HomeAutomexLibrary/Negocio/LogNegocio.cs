@@ -24,7 +24,6 @@ namespace HomeAutomexLibrary.Negocio
         {
             log.Cd_usuario = 99;
             log.DataCadastro = DateTime.Now;
-            //  ConsultarTodosAgendamento();
             base.Inserir(log);
 
 
