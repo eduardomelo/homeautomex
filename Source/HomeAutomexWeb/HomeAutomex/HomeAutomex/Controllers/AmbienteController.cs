@@ -27,7 +27,7 @@ namespace HomeAutomex.Controllers
             ViewBag.Residencias = GetDropDownResidencia();
             return View();
         }
-        //  Carregar DropList
+        //  Carregar DropList 
         public List<SelectListItem> GetDropDownResidencia()
         {
             var lista = new List<SelectListItem>();
