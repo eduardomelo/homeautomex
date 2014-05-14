@@ -1,39 +1,71 @@
-﻿@model HomeAutomex.Models.CenarioModel
+﻿using HomeAutomexLibrary.Entidade;
+using HomeAutomexLibrary.Repositorio;
+using HomeAutomexLibrary.Repositorio.Database;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-@{
-    ViewBag.Title = "RegistrarCenario";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+namespace HomeAutomexLibrary.Negocio
+{
+    public class LogNegocio : NegocioBase<Log, int>
+    {
+        private AgendamentoRepositorio agendamentoRepositorio;
+        private DispositivoRepositorio dipositivoRepositorio; 
+        private DatabaseContext contexto;
+        public LogNegocio()
+        {
+            this.dipositivoRepositorio = new DispositivoRepositorio(contexto);
+            this.agendamentoRepositorio = new AgendamentoRepositorio(contexto);
+            this.contexto = new DatabaseContext();
+        }
+
+        public string InserirLog(Log log)
+        {
+            log.Cd_usuario = 99;
+            log.DataCadastro = DateTime.Now;
+          //  ConsultarTodosAgendamento();
+            base.Inserir(log);
+
+
+            try
+            {
+                base.SaveChanges();
+                return "Operação realizada com sucesso!";
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
+            }
+        }
+        public List<Log> ConsultarTodosLog()
+        {
+            return base.ConsultarTodos().ToList();
+        }
+
+        public List<Agendamento> ConsultarTodosAgendamento()
+        {
+            
+            DateTime dataMomento = DateTime.Now;
+            var agendamento = new Agendamento();
+            List<Agendamento> ListAgendamento = agendamentoRepositorio.Consultar(e => e.DataAgendamento <= dataMomento).ToList();
+
+            foreach (Agendamento ChaveDispositivo in ListAgendamento)
+            {
+                var dipositivoNovo = this.dipositivoRepositorio.BuscarPorChave(ChaveDispositivo.Dispositivo);
+                dipositivoNovo.Status = true;
+                this.dipositivoRepositorio.Alterar(dipositivoNovo);
+            }
+            return ListAgendamento;
+            
+
+
+            
+        }
+     
+
+
+    }
 }
 
-
-
-@using (Html.BeginForm()) {
- @Html.AntiForgeryToken()
- @Html.ValidationSummary(true)
-
-
-    <fieldset>
-        <legend>Diga uma breve descrição do seu cenario!</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Descricao)
-        </div>
-        <div class="editor-field">
-            @Html.TextAreaFor(model => model.Descricao, new { @class="inputTexArea"})
-            @Html.ValidationMessageFor(model => model.Descricao)
-        </div>
-  <br /><br />
-
-        <p>
-          <input type="submit" value="Registrar" class="btn-glow primary login" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
