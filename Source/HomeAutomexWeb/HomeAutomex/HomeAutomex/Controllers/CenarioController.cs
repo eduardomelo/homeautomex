@@ -15,7 +15,7 @@ namespace HomeAutomex.Controllers
     public class CenarioController : Controller
     {
         //
-        // GET: /Cenario/
+        // GET: /Cenario//
         private HomeAutomexWSSoapClient webService;
         public CenarioController()
         {
