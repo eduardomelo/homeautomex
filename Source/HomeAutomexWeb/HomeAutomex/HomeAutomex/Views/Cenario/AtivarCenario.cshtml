@@ -9,17 +9,17 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>CenarioModel</legend>
+        <legend>Ativar Cenário</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Chave)
+            @Html.LabelFor(model => model.Descricao)
         </div>
         <div>
             @Html.DropDownListFor(model => model.Chave, ViewBag.Cenario as List<SelectListItem>, "Selecione...", new { @class = "inputCenario" })
-        </div>
+        </div><br /><br />
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Registrar" class="btn-glow primary login" />
         </p>
     </fieldset>
 }

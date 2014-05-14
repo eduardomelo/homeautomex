@@ -28,7 +28,7 @@ namespace HomeAutomex.Controllers
         }
         public ActionResult AtivarCenario()
         {
-             ViewBag.Cenario = GetDropDownCenario();
+            ViewBag.Cenario = GetDropDownCenario();
             return View();
         }
         public List<SelectListItem> GetDropDownCenario()
@@ -42,7 +42,7 @@ namespace HomeAutomex.Controllers
             }
             return lista;
         }
-         public ActionResult AssociarDispositivo(string pesquisa)
+        public ActionResult AssociarDispositivo(string pesquisa)
         {
             try
             {
@@ -52,7 +52,6 @@ namespace HomeAutomex.Controllers
                     .ConsultarResidenciaPorUsuarioChave(JsonConvert.SerializeObject((Session["Usuario"] as UsuarioModel))))
                     .Select(e => Mapper.DynamicMap<ResidenciaModel>(e));
                 ViewBag.Ambientes = JsonConvert.DeserializeObject<List<AmbienteModel>>(webService.ConsultarTodosAmbientePorUsuarioChave(chave.ToString()));
-
                 var dispositivos = JsonConvert.DeserializeObject<List<DispositivoModel>>(webService.ConsutarTodosDispositivoPorUsuarioChave(chave.ToString()));
                 ViewBag.Dispositivos = dispositivos;
                 ViewBag.Cenario = GetDropDownCenario();
@@ -64,73 +63,57 @@ namespace HomeAutomex.Controllers
                 return RedirectToAction("SessaoExpirou", "Account");
             }
         }
+        [HttpGet]
+        public void RegistrarDispositivosCenario(int chaveDispositivo, int chaveCenario)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var webService = new HomeAutomexWSSoapClient();
+                    var cenario = JsonConvert.DeserializeObject<Cenario>(webService.BuscarCenarioPorChave(chaveCenario.ToString()));
+                    cenario.Dispositivo = new List<Dispositivo> { new Dispositivo { Chave = chaveDispositivo } };
+                    var retorno = webService.AlterarCenario(JsonConvert.SerializeObject(cenario));
+                    if (retorno.StartsWith("Erro:"))
+                    {
+                        ModelState.AddModelError("WSErro", retorno);
+                    }
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", e);
+                }
+            }
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult AtivarCenario(CenarioModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var webService = new HomeAutomexWSSoapClient();
+                    var cenario = JsonConvert.SerializeObject(model);
+                    var x = webService.AtivarCenarioDispositivo(cenario);
+                    if (x.StartsWith("Erro:"))
+                    {
+                        ModelState.AddModelError("WSErro", x);
+                    }
+                    else
+                    {
+                        return RedirectToAction("ListarCenario", "Cenario");
+                    }
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", e);
+                }
 
-
-
-         [HttpGet]
-         public void RegistrarDispositivosCenario(int chaveDispositivo, int chaveCenario)
-         {
-             if (ModelState.IsValid)
-             {
-                 try
-                 {
-                     var webService = new HomeAutomexWSSoapClient();
-
-                     var cenario = JsonConvert.DeserializeObject<Cenario>(webService.BuscarCenarioPorChave(chaveCenario.ToString()));
-                     cenario.Dispositivo = new List<Dispositivo> { new Dispositivo { Chave = chaveDispositivo } };
-                     var retorno = webService.AlterarCenario(JsonConvert.SerializeObject(cenario));
-                     if (retorno.StartsWith("Erro:"))
-                     {
-                         ModelState.AddModelError("WSErro", retorno);
-                     }
-                 }
-                 catch (MembershipCreateUserException e)
-                 {
-                     ModelState.AddModelError("", e);
-                 }
-             }
-         }
-         [HttpPost]
-         [AllowAnonymous]
-
-         public ActionResult AtivarCenario(CenarioModel model)
-         {
-             if (ModelState.IsValid)
-             {
-                 try
-                 {
-                     var cenario = Mapper.DynamicMap<Cenario>(model);
-                     cenario = JsonConvert.DeserializeObject<Cenario>(webService.BuscarCenarioPorChave(cenario.Chave.ToString()));
-                     for (int i = 0; i < cenario.Dispositivo.Count; i++)
-                     {
-                         
-                         var dispositivo = Mapper.DynamicMap<DispositivoModel>(JsonConvert.DeserializeObject<Dispositivo>
-                         (webService.BuscarDispositivoPorChave(cenario.Dispositivo[0].Chave.ToString())));
-                        
-                             dispositivo.Status = true;
-                             var retorno = webService.AlterarDispositivo(JsonConvert.SerializeObject(dispositivo));
-
-
-
-                             if (retorno.StartsWith("Erro:"))
-                             {
-                                 ModelState.AddModelError("WSErro", retorno);
-                             }
-                         }
-
-                     }
-
-       
-          catch (MembershipCreateUserException e)
-                 {
-                     ModelState.AddModelError("", e);
-                 }
-             }
-
-
-             ViewBag.Cenario = GetDropDownCenario();
-             return View();
-         }
+            }
+            ViewBag.Cenario = GetDropDownCenario();
+            return View();
+        }
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -164,9 +147,7 @@ namespace HomeAutomex.Controllers
             if (ModelState.IsValid)
             {
                 var webService = new HomeAutomexWSSoapClient();
-                //     var chave = 1;
                 var x = webService.ConsutarTodosCenario();
-                //    var x = webService.ConsutarTodosCenarioPorUsuarioChave(chave.ToString());
                 var cenario = JsonConvert.DeserializeObject<List<CenarioModel>>(x);
                 if (!string.IsNullOrEmpty(pesquisa))
                     return View(cenario.Where(e =>
@@ -176,7 +157,6 @@ namespace HomeAutomex.Controllers
             }
             return View();
         }
-
         [HttpPost]
         [AllowAnonymous]
         public ActionResult EditarCenario(CenarioModel model)
@@ -205,7 +185,6 @@ namespace HomeAutomex.Controllers
             }
             return View(model);
         }
-
         [AllowAnonymous]
         public ActionResult DeleteCenario(int chave)
         {
@@ -218,18 +197,7 @@ namespace HomeAutomex.Controllers
             return View(cenario);
         }
 
-        public List<SelectListItem> GetDropDownDispositivo()
-        {
-            var lista = new List<SelectListItem>();
-            var chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
-            var x = webService.ConsutarTodosDispositivoPorUsuarioChave(chave.ToString());
-            var ambientes = JsonConvert.DeserializeObject<List<AmbienteModel>>(x);
-            foreach (var item in ambientes)
-            {
-                lista.Add(new SelectListItem() { Text = item.Descricao, Value = item.Chave.ToString() });
-            }
-            return lista;
-        }
+
     }
 
 }
