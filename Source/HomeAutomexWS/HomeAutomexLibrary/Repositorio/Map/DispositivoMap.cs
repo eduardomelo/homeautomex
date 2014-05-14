@@ -33,7 +33,7 @@ namespace HomeAutomexLibrary.Repositorio.Map
 
 
             HasMany(e => e.Cenario)
-              .WithMany(e => e.Dispositivos)
+              .WithMany(e => e.Dispositivo)
               .Map(e =>
               {
                   e.ToTable("DISPOSITIVO_CENARIO");

@@ -51,16 +51,16 @@ namespace HomeAutomexLibrary.Negocio
 
         public string AlterarCenario(Cenario cenarioNovo)
         {
-            var ids = cenarioNovo.Dispositivos.Select(e => e.Chave).ToList();
+            var ids = cenarioNovo.Dispositivo.Select(e => e.Chave).ToList();
             var dispositivo = new List<Dispositivo>();
-            cenarioNovo.Dispositivos.Clear();
+            cenarioNovo.Dispositivo.Clear();
             var cenario = cenarioRepositorio.BuscarPorChave(cenarioNovo.Chave);
             foreach (var chave in ids)
-            {
+            {   
                 dispositivo.Add(dispositivoRepositorio.BuscarPorChave(chave));
             }
 
-            cenario.Dispositivos.AddRange(dispositivo);
+            cenario.Dispositivo.AddRange(dispositivo);
             cenarioRepositorio.Alterar(cenario);
             try
             {
@@ -91,7 +91,7 @@ namespace HomeAutomexLibrary.Negocio
         {
           //  return base.ConsultarTodos().ToList();
 
-            return this.cenarioRepositorio.Consultar(e => e.Dispositivos.Any(d => d.Ambiente.Residencia.Usuarios.Any(u => u.Chave == chave))).ToList();
+            return this.cenarioRepositorio.Consultar(e => e.Dispositivo.Any(d => d.Ambiente.Residencia.Usuarios.Any(u => u.Chave == chave))).ToList();
            
         }
 

@@ -11,10 +11,10 @@ namespace HomeAutomexLibrary.Entidade
         public bool Desativado { get; set; }
         
 
-        public virtual List<Dispositivo> Dispositivos { get; set; }
+        public virtual List<Dispositivo> Dispositivo { get; set; }
 
         public Cenario() {
-            this.Dispositivos = new List<Dispositivo>();
+            this.Dispositivo = new List<Dispositivo>();
         }
       
       
