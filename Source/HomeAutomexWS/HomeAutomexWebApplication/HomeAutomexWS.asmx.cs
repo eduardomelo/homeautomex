@@ -336,6 +336,7 @@ namespace HomeAutomexWebApplication
             var dispositivo = JsonConvert.DeserializeObject<Dispositivo>(jDispositivo);
   
             // Registrar log.
+
             log.Descricao = "Usuario alterou um dispositivo " + dispositivo.Descricao;
             var retornoLog = fachada.InserirLog(log);
 
