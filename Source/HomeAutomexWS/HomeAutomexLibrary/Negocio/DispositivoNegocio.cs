@@ -66,6 +66,9 @@ namespace HomeAutomexLibrary.Negocio
                 throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
+
+
+     
         public string RemoverDispositivoPorChave(int chave)
         {
             base.RemoverPorChave(chave);

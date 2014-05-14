@@ -73,6 +73,31 @@ namespace HomeAutomexLibrary.Negocio
                 throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
+
+
+        public string AtivarCenarioDispositivo(Cenario cenario)
+        {
+            var cenarioNovo = new Cenario();
+            cenarioNovo = repositorio.BuscarPorChave(cenario.Chave);
+            foreach (Dispositivo dispositivo in cenarioNovo.Dispositivo)
+            {
+                var dispositivoNovo = dispositivoRepositorio.BuscarPorChave(dispositivo.Chave);
+                dispositivoNovo.Status = true;
+                this.dispositivoRepositorio.Alterar(dispositivoNovo);
+            }
+            
+
+            try
+            {
+                cenarioRepositorio.SaveChanges();
+                return "Operação realizada com sucesso!";
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
+            }
+        }
         public string RemoverCenarioPorChave(int chave)
         {
             base.RemoverPorChave(chave);

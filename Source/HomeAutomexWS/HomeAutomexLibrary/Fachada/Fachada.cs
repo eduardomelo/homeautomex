@@ -273,6 +273,10 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.cenarioNegocio.AlterarCenario(cenario);
         }
+        public string AtivarCenarioDispositivo(Cenario chave)
+        {
+            return this.cenarioNegocio.AtivarCenarioDispositivo(chave);
+        }
         public Cenario BuscarCenarioPorChave(int chave)
         {
             return this.cenarioNegocio.BuscarPorChave(chave);
