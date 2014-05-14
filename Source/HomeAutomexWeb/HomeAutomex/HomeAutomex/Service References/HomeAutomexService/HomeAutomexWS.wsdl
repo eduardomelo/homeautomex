@@ -360,6 +360,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ConsutarTodosDispositivoFavoritoPorChaveUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="chave" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsutarTodosDispositivoFavoritoPorChaveUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosDispositivoFavoritoPorChaveUsuarioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="BuscarDispositivoPorChave">
         <s:complexType>
           <s:sequence>
@@ -538,6 +552,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="AtivarCenarioDispositivo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jCenario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AtivarCenarioDispositivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AtivarCenarioDispositivoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ExcluirCenario">
         <s:complexType>
           <s:sequence>
@@ -639,6 +667,20 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosAgendamentoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsutarTodosAgendamentoPorUsuarioChave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsutarTodosAgendamentoPorUsuarioChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsutarTodosAgendamentoPorUsuarioChaveResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -862,6 +904,12 @@
   <wsdl:message name="ConsutarTodosDispositivoFavoritoSoapOut">
     <wsdl:part name="parameters" element="tns:ConsutarTodosDispositivoFavoritoResponse" />
   </wsdl:message>
+  <wsdl:message name="ConsutarTodosDispositivoFavoritoPorChaveUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosDispositivoFavoritoPorChaveUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosDispositivoFavoritoPorChaveUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosDispositivoFavoritoPorChaveUsuarioResponse" />
+  </wsdl:message>
   <wsdl:message name="BuscarDispositivoPorChaveSoapIn">
     <wsdl:part name="parameters" element="tns:BuscarDispositivoPorChave" />
   </wsdl:message>
@@ -940,6 +988,12 @@
   <wsdl:message name="AlterarCenarioSoapOut">
     <wsdl:part name="parameters" element="tns:AlterarCenarioResponse" />
   </wsdl:message>
+  <wsdl:message name="AtivarCenarioDispositivoSoapIn">
+    <wsdl:part name="parameters" element="tns:AtivarCenarioDispositivo" />
+  </wsdl:message>
+  <wsdl:message name="AtivarCenarioDispositivoSoapOut">
+    <wsdl:part name="parameters" element="tns:AtivarCenarioDispositivoResponse" />
+  </wsdl:message>
   <wsdl:message name="ExcluirCenarioSoapIn">
     <wsdl:part name="parameters" element="tns:ExcluirCenario" />
   </wsdl:message>
@@ -987,6 +1041,12 @@
   </wsdl:message>
   <wsdl:message name="ConsutarTodosAgendamentoSoapOut">
     <wsdl:part name="parameters" element="tns:ConsutarTodosAgendamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosAgendamentoPorUsuarioChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosAgendamentoPorUsuarioChave" />
+  </wsdl:message>
+  <wsdl:message name="ConsutarTodosAgendamentoPorUsuarioChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsutarTodosAgendamentoPorUsuarioChaveResponse" />
   </wsdl:message>
   <wsdl:message name="BuscarAgendamentoPorChaveSoapIn">
     <wsdl:part name="parameters" element="tns:BuscarAgendamentoPorChave" />
@@ -1121,6 +1181,10 @@
       <wsdl:input message="tns:ConsutarTodosDispositivoFavoritoSoapIn" />
       <wsdl:output message="tns:ConsutarTodosDispositivoFavoritoSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosDispositivoFavoritoPorChaveUsuario">
+      <wsdl:input message="tns:ConsutarTodosDispositivoFavoritoPorChaveUsuarioSoapIn" />
+      <wsdl:output message="tns:ConsutarTodosDispositivoFavoritoPorChaveUsuarioSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="BuscarDispositivoPorChave">
       <wsdl:input message="tns:BuscarDispositivoPorChaveSoapIn" />
       <wsdl:output message="tns:BuscarDispositivoPorChaveSoapOut" />
@@ -1173,6 +1237,10 @@
       <wsdl:input message="tns:AlterarCenarioSoapIn" />
       <wsdl:output message="tns:AlterarCenarioSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="AtivarCenarioDispositivo">
+      <wsdl:input message="tns:AtivarCenarioDispositivoSoapIn" />
+      <wsdl:output message="tns:AtivarCenarioDispositivoSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ExcluirCenario">
       <wsdl:input message="tns:ExcluirCenarioSoapIn" />
       <wsdl:output message="tns:ExcluirCenarioSoapOut" />
@@ -1204,6 +1272,10 @@
     <wsdl:operation name="ConsutarTodosAgendamento">
       <wsdl:input message="tns:ConsutarTodosAgendamentoSoapIn" />
       <wsdl:output message="tns:ConsutarTodosAgendamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosAgendamentoPorUsuarioChave">
+      <wsdl:input message="tns:ConsutarTodosAgendamentoPorUsuarioChaveSoapIn" />
+      <wsdl:output message="tns:ConsutarTodosAgendamentoPorUsuarioChaveSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="BuscarAgendamentoPorChave">
       <wsdl:input message="tns:BuscarAgendamentoPorChaveSoapIn" />
@@ -1467,6 +1539,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosDispositivoFavoritoPorChaveUsuario">
+      <soap:operation soapAction="http://tempuri.org/ConsutarTodosDispositivoFavoritoPorChaveUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="BuscarDispositivoPorChave">
       <soap:operation soapAction="http://tempuri.org/BuscarDispositivoPorChave" style="document" />
       <wsdl:input>
@@ -1584,6 +1665,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AtivarCenarioDispositivo">
+      <soap:operation soapAction="http://tempuri.org/AtivarCenarioDispositivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ExcluirCenario">
       <soap:operation soapAction="http://tempuri.org/ExcluirCenario" style="document" />
       <wsdl:input>
@@ -1649,6 +1739,15 @@
     </wsdl:operation>
     <wsdl:operation name="ConsutarTodosAgendamento">
       <soap:operation soapAction="http://tempuri.org/ConsutarTodosAgendamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosAgendamentoPorUsuarioChave">
+      <soap:operation soapAction="http://tempuri.org/ConsutarTodosAgendamentoPorUsuarioChave" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1938,6 +2037,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosDispositivoFavoritoPorChaveUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ConsutarTodosDispositivoFavoritoPorChaveUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="BuscarDispositivoPorChave">
       <soap12:operation soapAction="http://tempuri.org/BuscarDispositivoPorChave" style="document" />
       <wsdl:input>
@@ -2055,6 +2163,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AtivarCenarioDispositivo">
+      <soap12:operation soapAction="http://tempuri.org/AtivarCenarioDispositivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ExcluirCenario">
       <soap12:operation soapAction="http://tempuri.org/ExcluirCenario" style="document" />
       <wsdl:input>
@@ -2120,6 +2237,15 @@
     </wsdl:operation>
     <wsdl:operation name="ConsutarTodosAgendamento">
       <soap12:operation soapAction="http://tempuri.org/ConsutarTodosAgendamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsutarTodosAgendamentoPorUsuarioChave">
+      <soap12:operation soapAction="http://tempuri.org/ConsutarTodosAgendamentoPorUsuarioChave" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
