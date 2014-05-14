@@ -105,10 +105,10 @@ namespace HomeAutomexWebApplication
         public string Logar(string jUsuario)
         {
             var usuario = JsonConvert.DeserializeObject<Usuario>(jUsuario);
-           
             var retorno = fachada.Logar(usuario);
             log.Descricao = "Usuario logou no sistema: " + retorno.Nome;
             var retornoLog = fachada.InserirLog(log);
+            var veificarAgendamentos = fachada.VerificarTodosAgendamento();
             return JsonConvert.SerializeObject(retorno);
         }
 
