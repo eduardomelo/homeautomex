@@ -31,6 +31,7 @@ namespace HomeAutomex.Controllers
              ViewBag.Cenario = GetDropDownCenario();
             return View();
         }
+        // Carrega drop list
         public List<SelectListItem> GetDropDownCenario()
         {
             var lista = new List<SelectListItem>();
