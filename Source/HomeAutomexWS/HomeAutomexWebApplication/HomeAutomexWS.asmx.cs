@@ -461,6 +461,16 @@ namespace HomeAutomexWebApplication
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string AtivarCenarioDispositivo(string jCenario)
+        {
+            var cenario = JsonConvert.DeserializeObject<Cenario>(jCenario);
+            log.Descricao = "Usuario alterou o cenario, " + cenario.Descricao;
+            var retornoLog = fachada.InserirLog(log);
+            var retorno = fachada.AtivarCenarioDispositivo(cenario);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ExcluirCenario(string jChave)
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
