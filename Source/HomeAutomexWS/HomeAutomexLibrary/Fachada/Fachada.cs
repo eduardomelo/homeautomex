@@ -350,7 +350,6 @@ namespace HomeAutomexLibrary.Fachada
         }
         #endregion
 
-        
         #region Arduino
         public string StatusArduino(string ip)
         {
