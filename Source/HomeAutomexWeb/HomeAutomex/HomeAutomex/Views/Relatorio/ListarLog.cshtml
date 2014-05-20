@@ -1,0 +1,62 @@
+﻿@model IEnumerable<HomeAutomexLibrary.Entidade.LogModel>
+
+@{
+    ViewBag.Title = "ListarLog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListarLog</h2>
+
+
+<table id="Grid" class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cd_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.DataCadastro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataAlteracao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataExclusao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cd_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataCadastro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataAlteracao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataExclusao)
+        </td>
+       
+    </tr>
+}
+
+</table>
+<div style="padding:10px; border:1px solid black">
+    <div><a href="@Url.Action("Report",new {id= "PDF"})"> Get Report PDF</a></div>
+    <div><a href="@Url.Action("Report",new {id= "Excel"})"> Get Report Excel</a></div>
+    <div><a href="@Url.Action("Report",new {id= "Word"})"> Get Report Word</a></div>
+    <div><a href="@Url.Action("Report",new {id= "Image"})"> Get Report Image</a></div>
+</div>
