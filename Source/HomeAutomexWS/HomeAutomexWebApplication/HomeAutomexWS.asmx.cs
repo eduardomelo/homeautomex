@@ -38,7 +38,13 @@ namespace HomeAutomexWebApplication
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             };
         }
-
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsutarTodosLogs()
+        {
+            
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosLog());
+        }
         #region Usuario
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
