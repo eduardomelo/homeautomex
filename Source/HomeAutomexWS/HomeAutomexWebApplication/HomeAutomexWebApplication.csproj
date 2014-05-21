@@ -82,7 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\filipe.oliveira.pubxml" />
+    <None Include="Properties\PublishProfiles\EdsonGouveia.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

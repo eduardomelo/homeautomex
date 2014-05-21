@@ -45,6 +45,11 @@ namespace HomeAutomexWebApplication
             
             return JsonConvert.SerializeObject(fachada.ConsultarTodosLog());
         }
+        [WebMethod]
+        public string ConsultarLogPorIntervaloData(DateTime JDataInicial, DateTime JDataFinal)
+        {
+            return JsonConvert.SerializeObject(fachada.ConsultarLogPorIntervaloData(JDataInicial, JDataFinal));
+        }
         #region Usuario
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
