@@ -328,6 +328,10 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.agendamentoNegocio.ConsultarTodosAgendamento();
         }
+        public List<Log> ConsultarLogPorIntervaloData(DateTime DataInicial, DateTime DataFinal)
+        {
+            return this.logNegocio.ConsultarPorIntervaloData(DataInicial, DataFinal);
+        }
         public List<Agendamento> ConsultarTodosAgendamentoPorUsuarioChave(int chave)
         {
             return this.agendamentoNegocio.ConsultarTodosAgendamentoPorUsuarioChave(chave);

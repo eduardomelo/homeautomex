@@ -41,6 +41,13 @@ namespace HomeAutomexLibrary.Negocio
         {
             return base.ConsultarTodos().ToList();
         }
+        public List<Log> ConsultarPorIntervaloData(DateTime DataInicial, DateTime DataFinal)
+        {
+            return base.Consultar(e => e.DataCadastro >= DataInicial && 
+            e.DataCadastro <=  DataFinal).ToList();
+        
+        }
+
 
       
 
