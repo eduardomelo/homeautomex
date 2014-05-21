@@ -269,6 +269,10 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.cenarioNegocio.InserirCenario(cenario);
         }
+        public string CriarCenarioDispositivo(Cenario cenarioNovo, bool status)
+        {
+            return this.cenarioNegocio.CriarCenarioDispositivo(cenarioNovo, status);
+        }
         public string AlterarCenario(Cenario cenario)
         {
             return this.cenarioNegocio.AlterarCenario(cenario);
