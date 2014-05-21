@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using HomeAutomex.HomeAutomexService;
 using HomeAutomex.Models;
 using HomeAutomexLibrary.Entidade;
+using HomeAutomexLibrary.Models;
 using Microsoft.Reporting.WebForms;
 using Microsoft.Reporting.WebForms.Internal.Soap.ReportingServices2005.Execution;
 using Newtonsoft.Json;
@@ -23,33 +24,72 @@ namespace HomeAutomex.Controllers
             this.webService = new HomeAutomexWSSoapClient();
 
         }
-
-        public ActionResult ListarLogs(string pesquisa)
+        public ActionResult ConsultarLogPorIntervaloData(string DataInicial, string DataFinal)
         {
+            var log = new List<LogModel>();
             if (ModelState.IsValid)
             {
-
-                var chave = "";
                 try
                 {
-                    chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
+                    var chave = "";
+                    try
+                    {
+                        chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
+
+                    }
+                    catch (Exception)
+                    {
+
+                        return RedirectToAction("SessaoExpirou", "Account");
+                    }
+                    var webService = new HomeAutomexWSSoapClient();
+                    var x = webService.ConsultarLogPorIntervaloData(Convert.ToDateTime(DataInicial), Convert.ToDateTime(DataFinal));
+                    log = JsonConvert.DeserializeObject<List<LogModel>>(x);
 
                 }
                 catch (Exception)
                 {
 
-                    return RedirectToAction("SessaoExpirou", "Account");
+                    throw;
                 }
-                var webService = new HomeAutomexWSSoapClient();
-                var x = webService.ConsutarTodosLogs();
-                var log = JsonConvert.DeserializeObject<List<LogModel>>(x);
-                if (!string.IsNullOrEmpty(pesquisa))
-                    return View(log.Where(e =>
-                                e.Descricao.Contains(pesquisa) ||
-                                e.Descricao.Contains(pesquisa)));
-                return View(log);
             }
-            return View();
+            return View("ListarLogs", log);
+        }
+        public ActionResult ListarLogs(string pesquisa, List<LogModel> model = null)
+        {
+            if (model == null)
+            {
+
+                if (ModelState.IsValid)
+                {
+                    var chave = "";
+                    try
+                    {
+                        chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
+
+                    }
+                    catch (Exception)
+                    {
+
+                        return RedirectToAction("SessaoExpirou", "Account");
+                    }
+                    var webService = new HomeAutomexWSSoapClient();
+                    var x = webService.ConsutarTodosLogs();
+                    var log = JsonConvert.DeserializeObject<List<LogModel>>(x);
+                    if (!string.IsNullOrEmpty(pesquisa))
+                        return View(log.Where(e =>
+                                    e.Descricao.Contains(pesquisa) ||
+                                    e.Descricao.Contains(pesquisa)));
+                    return View(log);
+                }
+
+                return View();
+            }
+            else
+            {
+                return View(model);
+            }
+
         }
         public ActionResult Report(string tipoRelatorio)
         {
@@ -61,12 +101,12 @@ namespace HomeAutomex.Controllers
             }
             else
             {
-               // return View("");
+                // return View("");
             }
             var x = webService.ConsutarTodosLogs();
             var log = JsonConvert.DeserializeObject<List<LogModel>>(x);
 
-            ReportDataSource rd = new ReportDataSource("Log", log);
+            ReportDataSource rd = new ReportDataSource("DataSetLog", log);
             lr.DataSources.Add(rd);
             string reportType = tipoRelatorio;
             string mimeType;

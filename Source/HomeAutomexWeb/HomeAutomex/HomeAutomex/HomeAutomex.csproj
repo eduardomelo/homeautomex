@@ -47,6 +47,7 @@
       <HintPath>..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Mvc">
       <HintPath>..\packages\Mvc4Futures.4.0.20710.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
@@ -194,6 +195,7 @@
     <Compile Include="Controllers\ModuloController.cs" />
     <Compile Include="Controllers\PortaController.cs" />
     <Compile Include="Controllers\PortaModuloController.cs" />
+    <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="Controllers\ResidenciaController.cs" />
     <Compile Include="Controllers\TipoPortaController.cs" />
     <Compile Include="Entidade\Agendamento.cs" />
@@ -222,6 +224,7 @@
     <Compile Include="Models\CenarioModel.cs" />
     <Compile Include="Models\AgendamentoModel.cs" />
     <Compile Include="Models\DispositivoModel.cs" />
+    <Compile Include="Models\LogModel.cs" />
     <Compile Include="Models\ModuloModel.cs" />
     <Compile Include="Models\PortaModel.cs" />
     <Compile Include="Models\PortaModuloModel.cs" />
@@ -234,6 +237,11 @@
     <Compile Include="NavigationRoutes\NavigationRouteConfigurationExtensions.cs" />
     <Compile Include="NavigationRoutes\NavigationRouteFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="App_Data\Log.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Log.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Service References\HomeAutomexService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -357,6 +365,17 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\highlight.js" />
     <Content Include="Scripts\html5shiv.js" />
+    <Content Include="App_Data\Log.xsc">
+      <DependentUpon>Log.xsd</DependentUpon>
+    </Content>
+    <None Include="App_Data\Log.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Log.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="App_Data\Log.xss">
+      <DependentUpon>Log.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\bootstrap-switch2.js" />
@@ -547,6 +566,12 @@
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.AtivarCenarioDispositivoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsutarTodosLogsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsultarLogPorIntervaloDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
     <None Include="Service References\HomeAutomexService\configuration91.svcinfo" />
     <None Include="Service References\HomeAutomexService\configuration.svcinfo" />
@@ -633,10 +658,9 @@
     <Content Include="Views\Cenario\AssociarDispositivo.cshtml" />
     <Content Include="Views\Cenario\RegistrarCenario.cshtml" />
     <Content Include="Views\Cenario\AtivarCenario.cshtml" />
+    <Content Include="Views\Relatorio\ListarLogs.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -648,6 +672,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\HomeAutomexService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ReportViewer\RepLog.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

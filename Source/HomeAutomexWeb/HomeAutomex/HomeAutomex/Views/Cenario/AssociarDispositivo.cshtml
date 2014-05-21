@@ -102,7 +102,7 @@
                                                                         <div class="accordion-inner">
                                                                             <ul class="nav nav-list">
                                                                                 <li>
-                                                                                    @Html.CheckBox("dispositivo", new { @class = "ckbSwitch", id = dispositivo.Chave })
+                                                                                    @Html.CheckBox("dispositivo",dispositivo.Status, new { @class = "ckbSwitch", id = dispositivo.Chave })
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
@@ -148,7 +148,7 @@
             url: '@Url.Action("RegistrarDispositivosCenario", "Cenario")',
             type: 'GET',
            // contentType: 'application/json',
-            data: { chaveDispositivo: $(this).attr('id'), chaveCenario: $("#Cenario").val() },
+            data: { chaveDispositivo: $(this).attr('id'), chaveCenario: $("#Cenario").val(), status: state },
             success: function () {
                 console.log("sucesso!");
             },

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<HomeAutomexLibrary.Models.LogModel>
+
+@{
+    ViewBag.Title = "ListarLogs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<legend>Log</legend>
+@using (Html.BeginForm("ConsultarLogPorIntervaloData", "Relatorio"))
+{
+    <div class="editor-field">
+        Data Inicial: @Html.Editor("DataInicial")
+    </div> 
+    <br />
+    <div class="editor-field">
+        Data Final:  @Html.Editor("DataFinal")
+    </div> 
+    <br />
+    <p>
+        <input type="submit" value="Consultar Intervalo" class="btn-glow primary login" />
+    </p>
+}
+<table id="Grid" class="table table-bordered">
+    <tr>
+        <th>#@Html.DisplayNameFor(model => model.Chave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cd_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCadastro)
+        </th>
+
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chave)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cd_usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCadastro)
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<div style="padding: 10px; border: double solid black">
+    <div><a href="@Url.Action("Report", new { tipoRelatorio = "PDF" })">Gerar relatório em PDF</a></div>
+    <div><a href="@Url.Action("Report", new { tipoRelatorio = "Excel" })">Gerar relátorio em Excel</a></div>
+    <div><a href="@Url.Action("Report", new { tipoRelatorio = "Word" })">Gerar relatório em Word</a></div>
+
+</div>
+
+<script src="~/Scripts/jquery.mask.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#DataInicial").mask('00/00/0000 00:00:00');
+        $("#DataFinal").mask('00/00/0000 00:00:00');
+    });
+</script>
+
