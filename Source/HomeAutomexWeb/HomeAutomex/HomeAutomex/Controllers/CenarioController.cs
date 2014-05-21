@@ -60,20 +60,35 @@ namespace HomeAutomex.Controllers
             catch (Exception)
             {
 
+
+
+
                 return RedirectToAction("SessaoExpirou", "Account");
+
             }
         }
         [HttpGet]
-        public void RegistrarDispositivosCenario(int chaveDispositivo, int chaveCenario)
+        public void RegistrarDispositivosCenario(int chaveDispositivo, int chaveCenario, bool addCenario)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+
                     var webService = new HomeAutomexWSSoapClient();
                     var cenario = JsonConvert.DeserializeObject<Cenario>(webService.BuscarCenarioPorChave(chaveCenario.ToString()));
                     cenario.Dispositivo = new List<Dispositivo> { new Dispositivo { Chave = chaveDispositivo } };
-                    var retorno = webService.AlterarCenario(JsonConvert.SerializeObject(cenario));
+
+                    if (addCenario == true)
+                    {
+                        addCenario = true;
+                    }
+                    else
+                    {
+                        addCenario = false;
+                    }
+
+                    var retorno = webService.CriarCenarioDispositivo(JsonConvert.SerializeObject(cenario), addCenario);
                     if (retorno.StartsWith("Erro:"))
                     {
                         ModelState.AddModelError("WSErro", retorno);
@@ -195,6 +210,7 @@ namespace HomeAutomex.Controllers
         {
             var cenario = JsonConvert.DeserializeObject<CenarioModel>(webService.BuscarCenarioPorChave(chave.ToString()));
             return View(cenario);
+
         }
 
 

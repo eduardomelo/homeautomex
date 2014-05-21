@@ -4,13 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <legend>Criar Cenário - Escolha os dispositivos que estaram em seu cenário!</legend>
-  <div class="editor-label">
-        </div>
-    <div class="editor-label" style="margin-left:35px;"> 
-       @Html.DropDownList("Cenario", ViewBag.Cenario as List<SelectListItem>, new { @class="inputCenario"})
-      </div>
-<br /><br />
+<legend>Criar Cenário - Escolha os dispositivos que estaram em seu cenário!</legend>
+<div class="editor-label">
+</div>
+<div class="editor-label" style="margin-left: 35px;">
+    @Html.DropDownList("Cenario", ViewBag.Cenario as List<SelectListItem>, new { @class = "inputCenario" })
+</div>
+<br />
+<br />
 <div class="container">
 
     @foreach (var residencia in Model)
@@ -65,55 +66,60 @@
                                                 </div>
                                                 <!-- Pontos -->
                                                 <div class="accordion-body collapse" id="ambiente-@ambiente.Chave">
-                                                @foreach (var dispositivo in (ViewBag.Dispositivos as IEnumerable<HomeAutomex.Models.DispositivoModel>)
+                                                    @foreach (var dispositivo in (ViewBag.Dispositivos as IEnumerable<HomeAutomex.Models.DispositivoModel>)
                                             .Where(e => e.Ambiente.Chave == ambiente.Chave))
-                                                {
-                                                    <div  id="ponto1-1">
-                                                        <div class="accordion-inner">
-                                                            <div class="accordion" id="servico1">
-                                                                <div class="accordion-group">
-                                                                    <div class="accordion-heading ponto">
-                                                                        <a class="accordion-toggle"
+                                                    {
+                                                        <div id="ponto1-1">
+                                                            <div class="accordion-inner">
+                                                                <div class="accordion" id="servico1">
+                                                                    <div class="accordion-group">
+                                                                        <div class="accordion-heading ponto">
+                                                                            <a class="accordion-toggle"
                                                                             data-parent="#servico1-1-1"
                                                                             data-toggle="collapse" href="#dispositivo-@dispositivo.Chave">Adicionar dispositivo ao cenário: @dispositivo.Descricao</a>
 
-                                                                        <div class="dropdown edit">
-                                                                            <a class="dropdown-toggle icon-pencil"
-                                                                                data-toggle="dropdown"
-                                                                                href="#" style="font-style: italic"></a>
+                                                                            <div class="dropdown edit">
+                                                                                <a class="dropdown-toggle icon-pencil"
+                                                                                    data-toggle="dropdown"
+                                                                                    href="#" style="font-style: italic"></a>
 
-                                                                            <ul class="dropdown-menu">
-                                                                                <!-- Adicionar servico -->
-                                                                                <li class="divider"></li>
-                                                                                <!-- Editar ponto -->
+                                                                                <ul class="dropdown-menu">
+                                                                                    <!-- Adicionar servico -->
+                                                                                    <li class="divider"></li>
+                                                                                    <!-- Editar ponto -->
 
-                                                                                <li>
-                                                                                    <a href="../ponto/edit.php">
-                                                                                        <i class="icon-pencil"></i>
-                                                                                        Editar ponto</a>
-                                                                                </li>
-                                                                            </ul>
+                                                                                    <li>
+                                                                                        <a href="../ponto/edit.php">
+                                                                                            <i class="icon-pencil"></i>
+                                                                                            Editar ponto</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <!-- Serviços -->
+                                                                        <!-- Serviços -->
 
-                                                                    <div class="accordion-body collapse"
+                                                                        <div class="accordion-body collapse"
                                                                         id="dispositivo-@dispositivo.Chave">
-                                                                        <div class="accordion-inner">
-                                                                            <ul class="nav nav-list">
-                                                                                <li>
-                                                                                    @Html.CheckBox("dispositivo",dispositivo.Status, new { @class = "ckbSwitch", id = dispositivo.Chave })
-                                                                                </li>
-                                                                            </ul>
+                                                                            <div class="accordion-inner">
+                                                                                <ul class="nav nav-list">
+                                                                                    <li>
+                                                                                        
+                                                                                       ON?<input type="radio" name="ex1" id="ex1_a" value="1">
+                                                                                        
+                                                                                        OFF? <input type="radio" name="ex2" id="ex1_b" value="2"> 
+                                                                                        @Html.CheckBox("dispositivo", false, new { @class = "ckbSwitch", id = dispositivo.Chave })
+                                                                                 
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
                                                                         </div>
+                                                                        <!-- /Serviços -->
                                                                     </div>
-                                                                    <!-- /Serviços -->
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                }
-                                                    </div>
+                                                    }
+                                                </div>
                                                 <!-- /Pontos -->
                                             </div>
                                         }
@@ -144,11 +150,24 @@
 
     });
     $('input[type="checkbox"]').on('switchChange.bootstrapSwitch', function (event, state) {
+
+        var isChecked, noChecked, Checked;
+        isChecked = $('input:radio[name=ex1]:checked').val();
+        noChecked = $('input:radio[name=ex2]:checked').val();
+
+        if (isChecked == 1) {
+            Checked = true;
+
+        }
+        if (noChecked == 2) {
+            Checked = false;
+
+        }
         $.ajax({
             url: '@Url.Action("RegistrarDispositivosCenario", "Cenario")',
             type: 'GET',
-           // contentType: 'application/json',
-            data: { chaveDispositivo: $(this).attr('id'), chaveCenario: $("#Cenario").val(), status: state },
+
+            data: { chaveDispositivo: $(this).attr('id'), chaveCenario: $("#Cenario").val(), addCenario: Checked },
             success: function () {
                 console.log("sucesso!");
             },
@@ -157,32 +176,40 @@
             }
         });
     });
+
+
 </script>
 
 <style type="text/css">
-    .menu .accordion-heading {
+    .menu .accordion-heading
+    {
         position: relative;
     }
 
-        .menu .accordion-heading .edit {
+        .menu .accordion-heading .edit
+        {
             position: absolute;
             top: 8px;
             right: 30px;
         }
 
-    .menu .area {
+    .menu .area
+    {
         border-left: 4px solid #f38787;
     }
 
-    .menu .equipamento {
+    .menu .equipamento
+    {
         border-left: 4px solid #65c465;
     }
 
-    .menu .ponto {
+    .menu .ponto
+    {
         border-left: 4px solid #98b3fa;
     }
 
-    .menu .collapse.in {
+    .menu .collapse.in
+    {
         overflow: visible;
     }
 </style>
