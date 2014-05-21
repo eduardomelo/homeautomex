@@ -25,24 +25,27 @@ namespace HomeAutomexWebApplication
         private Fachada fachada;
         private UTDispositivo utDispositivo;
         private Log log;
-        public HomeAutomexWS() {
-            
+        public HomeAutomexWS()
+        {
+
             this.log = new Log();
             this.utDispositivo = new UTDispositivo();
             this.fachada = new Fachada();
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings
-            
+
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate,
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             };
         }
+
+        #region logs
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosLogs()
         {
-            
+
             return JsonConvert.SerializeObject(fachada.ConsultarTodosLog());
         }
         [WebMethod]
@@ -50,6 +53,8 @@ namespace HomeAutomexWebApplication
         {
             return JsonConvert.SerializeObject(fachada.ConsultarLogPorIntervaloData(JDataInicial, JDataFinal));
         }
+        #endregion
+
         #region Usuario
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -58,7 +63,7 @@ namespace HomeAutomexWebApplication
             var usuario = JsonConvert.DeserializeObject<Usuario>(jUsuario);
             log.Descricao = "Usuario inseriu o usuário:" + usuario.Nome;
             var retornoLog = fachada.InserirLog(log);
-            var retorno = fachada.InserirUsuario(usuario);            
+            var retorno = fachada.InserirUsuario(usuario);
             return retorno;
         }
         [WebMethod]
@@ -119,7 +124,7 @@ namespace HomeAutomexWebApplication
             var retorno = fachada.Logar(usuario);
             log.Descricao = "Usuario logou no sistema: " + retorno.Nome;
             var retornoLog = fachada.InserirLog(log);
-       //     var veificarAgendamentos = fachada.VerificarTodosAgendamento();
+            //     var veificarAgendamentos = fachada.VerificarTodosAgendamento();
             return JsonConvert.SerializeObject(retorno);
         }
 
@@ -202,9 +207,9 @@ namespace HomeAutomexWebApplication
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ConsutarTodosModulo()
         {
-             log.Descricao = "Usuario consultou todos os modulos!";
-             var retornoLog = fachada.InserirLog(log);
-             return JsonConvert.SerializeObject(fachada.ConsultarTodosModulo());
+            log.Descricao = "Usuario consultou todos os modulos!";
+            var retornoLog = fachada.InserirLog(log);
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosModulo());
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -243,7 +248,7 @@ namespace HomeAutomexWebApplication
             return JsonConvert.SerializeObject(modulo);
         }
         #endregion
-               
+
         #region Tipo porta
 
         // Tipo de Porta
@@ -345,7 +350,7 @@ namespace HomeAutomexWebApplication
         public string AlterarDispositivo(string jDispositivo)
         {
             var dispositivo = JsonConvert.DeserializeObject<Dispositivo>(jDispositivo);
-  
+
             // Registrar log.
 
             log.Descricao = "Usuario alterou um dispositivo " + dispositivo.Descricao;
@@ -418,16 +423,16 @@ namespace HomeAutomexWebApplication
         public string ExcluirAmbiente(string jChave)
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
-            log.Descricao = "Usuario excluiu um ambiente, " +jChave;
+            log.Descricao = "Usuario excluiu um ambiente, " + jChave;
             var retornoLog = fachada.InserirLog(log);
             var ambiente = fachada.RemoverAmbientePorChave(chave);
             return JsonConvert.SerializeObject("Ambiente removido com sucesso");
         }
         #endregion
 
-        #region Cenario 
-       
-        
+        #region Cenario
+
+
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string InserirCenario(string jCenario)
@@ -469,6 +474,16 @@ namespace HomeAutomexWebApplication
             log.Descricao = "Usuario alterou o cenario, " + cenario.Descricao;
             var retornoLog = fachada.InserirLog(log);
             var retorno = fachada.AlterarCenario(cenario);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string CriarCenarioDispositivo(string jCenario, bool status)
+        {
+            var cenario = JsonConvert.DeserializeObject<Cenario>(jCenario);
+            log.Descricao = "Usuario crioi um cenario, " + cenario.Descricao;
+            var retornoLog = fachada.InserirLog(log);
+            var retorno = fachada.CriarCenarioDispositivo(cenario, status);
             return retorno;
         }
         [WebMethod]
@@ -615,7 +630,7 @@ namespace HomeAutomexWebApplication
 
 
 
-       
+
         //[WebMethod]
         //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         //public string StatusArduino()
