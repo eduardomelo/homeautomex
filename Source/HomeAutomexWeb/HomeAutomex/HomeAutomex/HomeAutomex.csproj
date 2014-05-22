@@ -575,6 +575,9 @@
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.CriarCenarioDispositivoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
     <None Include="Service References\HomeAutomexService\configuration91.svcinfo" />
     <None Include="Service References\HomeAutomexService\configuration.svcinfo" />
