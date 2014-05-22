@@ -340,10 +340,10 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.agendamentoNegocio.ConsultarTodosAgendamentoPorUsuarioChave(chave);
         }
-        //public List<Agendamento> VerificarTodosAgendamento()
-        //{
-        //    return this.agendamentoNegocio.VerificarTodosAgendamento();
-        //}
+        public List<Agendamento> VerificarTodosAgendamento()
+        {
+            return this.agendamentoNegocio.VerificarTodosAgendamento();
+        }
         public string AlterarAgendamento(Agendamento agendamento)
         {
             return this.agendamentoNegocio.AlterarAgendamento(agendamento);

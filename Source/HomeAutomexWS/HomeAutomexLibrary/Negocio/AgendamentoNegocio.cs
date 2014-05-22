@@ -80,21 +80,25 @@ namespace HomeAutomexLibrary.Negocio
             return base.Consultar(e => e.Usuario == chave).ToList();
         }
 
-        //public List<Agendamento> VerificarTodosAgendamento()
-        //{
+        public List<Agendamento> VerificarTodosAgendamento()
+        {
+            Task.Factory.StartNew(() =>
+            {
 
-        //    DateTime dataMomento = DateTime.Now;
-        //    var agendamento = new Agendamento();
-        //    List<Agendamento> ListAgendamento = agendamentoRepositorio.Consultar(e => e.DataAgendamento <= dataMomento).ToList();
+                DateTime dataMomento = DateTime.Now;
+                var agendamento = new Agendamento();
+                List<Agendamento> ListAgendamento = agendamentoRepositorio.Consultar(e => e.DataAgendamento <= dataMomento).ToList();
 
-        //    foreach (Agendamento ChaveDispositivo in ListAgendamento)
-        //    {
-        //        var dipositivoNovo = this.dispositivoRepositorio.BuscarPorChave(ChaveDispositivo.Dispositivo);
-        //        dipositivoNovo.Status = true;
-        //        this.dispositivoRepositorio.Alterar(dipositivoNovo);
-        //    }
-        //    return ListAgendamento;
-        //}
+                foreach (Agendamento ChaveDispositivo in ListAgendamento)
+                {
+                    var dipositivoNovo = this.dispositivoRepositorio.BuscarPorChave(ChaveDispositivo.Dispositivo);
+                    dipositivoNovo.Status = true;
+                    this.dispositivoRepositorio.Alterar(dipositivoNovo);
+                }
+                return ListAgendamento;
+            });
+            return null;
+        }
     }
 
 }

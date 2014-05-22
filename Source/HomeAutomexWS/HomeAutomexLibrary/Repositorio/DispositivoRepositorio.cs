@@ -26,10 +26,7 @@ namespace HomeAutomexLibrary.Repositorio
         }
 
 
-        //public void AlterarStatus(Dispositivo dispositivo)
-        //{
-        //    Context.Database.ExecuteSqlCommand("UPDATE DISPOSITIVO SET DS_DESCRICAO = '"+dispositivo.Desativado+"' WHERE CD_DISPOSITIVO ="+ dispositivo.Chave+"");
 
-        //}
+      
     }
 }

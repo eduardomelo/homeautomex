@@ -31,6 +31,7 @@ namespace HomeAutomexLibrary.Negocio
         {
             dispositivo.Ambiente = ambienteRepositorio.BuscarPorChave(dispositivo.Ambiente.Chave);
             dispositivo.Porta = portaRepositorio.BuscarPorChave(dispositivo.Porta.Chave);
+            dispositivo.Desativado = true;
             dispositivoRepositorio.Inserir(dispositivo);
 
             try
@@ -71,7 +72,11 @@ namespace HomeAutomexLibrary.Negocio
      
         public string RemoverDispositivoPorChave(int chave)
         {
-            base.RemoverPorChave(chave);
+            Dispositivo dispositivo = new Dispositivo();
+            dispositivo = BuscarPorChave(chave);
+            dispositivo.Desativado = false;
+            base.Alterar(dispositivo);
+          //  base.RemoverPorChave(chave);
             try
             {
                 base.SaveChanges();
@@ -119,7 +124,7 @@ namespace HomeAutomexLibrary.Negocio
         public List<Dispositivo> ConsultarTodosDispositivoPorUsuarioChave(int chave)
         {
             return this.dispositivoRepositorio.Consultar(e =>
-                e.Ambiente.Residencia.Usuarios.Any(u => u.Chave == chave))
+                e.Ambiente.Residencia.Usuarios.Any(u => u.Chave == chave && e.Desativado == true))
                 .ToList();
         }
     }

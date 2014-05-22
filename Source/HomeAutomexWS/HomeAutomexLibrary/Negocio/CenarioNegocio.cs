@@ -22,7 +22,8 @@ namespace HomeAutomexLibrary.Negocio
             dispositivoRepositorio = new DispositivoRepositorio(contexto);
         }
         public string InserirCenario(Cenario cenario)
-        {           
+        {
+            cenario.Desativado = true;
             cenarioRepositorio.Inserir(cenario); 
             try
             {
@@ -125,7 +126,11 @@ namespace HomeAutomexLibrary.Negocio
         }
         public string RemoverCenarioPorChave(int chave)
         {
-            base.RemoverPorChave(chave);
+            Cenario cenario = new Cenario();
+            cenario = BuscarPorChave(chave);
+            cenario.Desativado = false;
+            base.Alterar(cenario);
+        //    base.RemoverPorChave(chave);
             try
             {
                 base.SaveChanges();
@@ -140,7 +145,7 @@ namespace HomeAutomexLibrary.Negocio
         public List<Cenario> ConsultarTodosCenarioPorUsuarioChave(int chave)
         {
 
-            return this.cenarioRepositorio.Consultar(e => e.Usuario == chave).ToList();
+            return this.cenarioRepositorio.Consultar(e => e.Usuario == chave && e.Desativado == true).ToList();
         }
 
         public List<Cenario> ConsultarTodosCenario()
