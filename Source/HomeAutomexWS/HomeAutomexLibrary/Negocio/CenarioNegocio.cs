@@ -139,9 +139,9 @@ namespace HomeAutomexLibrary.Negocio
         }
         public List<Cenario> ConsultarTodosCenarioPorUsuarioChave(int chave)
         {
-          //  return base.ConsultarTodos().ToList();
-
-            return this.cenarioRepositorio.Consultar(e => e.Dispositivo.Any(d => d.Ambiente.Residencia.Usuarios.Any(u => u.Chave == chave))).ToList();
+  
+            return this.cenarioRepositorio.Consultar(e => e.Dispositivo.Any(d => 
+                d.Ambiente.Residencia.Usuarios.Any(u => u.Chave == chave))).ToList();
            
         }
 
