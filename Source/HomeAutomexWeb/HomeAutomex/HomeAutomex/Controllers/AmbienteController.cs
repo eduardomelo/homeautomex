@@ -123,6 +123,7 @@ namespace HomeAutomex.Controllers
         [AllowAnonymous]
         public ActionResult DeleteAmbiente(int chave)
         {
+            
             var retorno = JsonConvert.DeserializeObject(webService.ExcluirAmbiente(chave.ToString()));
             return RedirectToAction("ListarAmbiente", "Ambiente");
         }

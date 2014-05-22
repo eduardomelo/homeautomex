@@ -16,6 +16,7 @@ using System.Web.Script.Serialization;
 using BootstrapMvcSample.Controllers;
 using AutoMapper;
 using HomeAutomexLibrary.Entidade;
+using System.Threading.Tasks;
 
 namespace HomeAutomex.Controllers
 {
@@ -36,6 +37,7 @@ namespace HomeAutomex.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            this.webService.VerificarTodosAgendamento();
             return View();
         }
         [HttpPost]
