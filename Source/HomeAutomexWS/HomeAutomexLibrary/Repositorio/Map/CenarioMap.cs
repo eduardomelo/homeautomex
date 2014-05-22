@@ -26,6 +26,7 @@ namespace HomeAutomexLibrary.Repositorio.Map
             Property(e => e.DataAlteracao).HasColumnName("DT_ALTERACAO");
             Property(e => e.DataExclusao).HasColumnName("DT_EXCLUSAO");
             Property(e => e.Desativado).HasColumnName("IS_DESATIVADO");
+            Property(e => e.Usuario).HasColumnName("CD_USUARIO");
          
             HasMany(e => e.Dispositivo)
               .WithMany(e => e.Cenario)
