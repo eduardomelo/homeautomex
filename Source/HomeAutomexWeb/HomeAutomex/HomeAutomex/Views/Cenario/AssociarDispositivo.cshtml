@@ -103,11 +103,9 @@
                                                                             <div class="accordion-inner">
                                                                                 <ul class="nav nav-list">
                                                                                     <li>
-                                                                                        
-                                                                                       ON?<input type="radio" name="ex1" id="ex1_a" value="1">
-                                                                                        
-                                                                                        OFF? <input type="radio" name="ex2" id="ex1_b" value="2"> 
-                                                                                        @Html.CheckBox("dispositivo", false, new { @class = "ckbSwitch", id = dispositivo.Chave })
+                                                                                        Ligar @Html.RadioButton("Ativar" + @dispositivo.Chave, "Ligar", true, new { @class = "rdbAtivar" })
+                                                                                        Desligar @Html.RadioButton("Ativar" + @dispositivo.Chave, "Desligar", false, new { @class = "rdbAtivar" })
+                                                                                        @Html.CheckBox("dispositivo", dispositivo.Status, new { @class = "ckbSwitch", id = dispositivo.Chave })
                                                                                  
                                                                                     </li>
                                                                                 </ul>
@@ -149,17 +147,38 @@
         $(".ckbSwitch").bootstrapSwitch();
 
     });
+    $(".rdbAtivar").change(function () {
+        console.log($(this).parent('li').find('input:checkbox').is(':checked'));
+        console.log($(this).parent('li').find('input:checkbox').attr('id'));
+        if ($(this).parent('li').find('input:checkbox').is(':checked'))
+        {
+            $.ajax({
+                url: '@Url.Action("RegistrarDispositivosCenario", "Cenario")',
+                type: 'GET',
+                data: {
+                    chaveDispositivo: $(this).parent('li').find('input:checkbox').attr('id'), chaveCenario: $("#Cenario").val(),
+                    addCenario: $(this).val() == "Ligar" ? true : false
+                },
+                success: function () {
+                    console.log("sucesso!");
+                },
+                error: function (data) {
+                    console.log(data.e);
+                }
+            });
+        }
+    });
+
     $('input[type="checkbox"]').on('switchChange.bootstrapSwitch', function (event, state) {
 
         var isChecked, noChecked, Checked;
-        isChecked = $('input:radio[name=ex1]:checked').val();
-        noChecked = $('input:radio[name=ex2]:checked').val();
+        isChecked = $('input:radio[name=Ativar'+ $(this).attr("id") +']:checked').val();
 
-        if (isChecked == 1) {
+        if (isChecked == "Ligar") {
             Checked = true;
 
         }
-        if (noChecked == 2) {
+        if (noChecked == "Desligar") {
             Checked = false;
 
         }
