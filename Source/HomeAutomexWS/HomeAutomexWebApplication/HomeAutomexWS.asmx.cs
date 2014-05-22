@@ -9,6 +9,7 @@ using System.Web.Services;
 using HomeAutomexLibrary.Fachada;
 using Newtonsoft.Json;
 using System.Web.Script.Services;
+using System.Threading;
 
 namespace HomeAutomexWebApplication
 {
@@ -27,6 +28,7 @@ namespace HomeAutomexWebApplication
         private Log log;
         public HomeAutomexWS()
         {
+          
 
             this.log = new Log();
             this.utDispositivo = new UTDispositivo();
@@ -39,6 +41,17 @@ namespace HomeAutomexWebApplication
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             };
         }
+
+       
+        #region Thread, Verificar agendamentos!
+       
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string VerificarTodosAgendamento()
+        {
+            return JsonConvert.SerializeObject(fachada.VerificarTodosAgendamento());
+        }
+        #endregion
 
         #region logs
         [WebMethod]
@@ -373,9 +386,7 @@ namespace HomeAutomexWebApplication
             log.Descricao = "Usuario excluiu um dispositivo " + jChave;
             var retornoLog = fachada.InserirLog(log);
 
-            var dispositivo = fachada.BuscarDispositivoPorChave(chave);
-            this.fachada.RemoverAmbientePorChaveEstrageira(dispositivo.Chave);
-
+          
             fachada.RemoverDispositivoPorChave(chave);
             return JsonConvert.SerializeObject("Dispositivo removido com sucesso");
         }
@@ -627,6 +638,13 @@ namespace HomeAutomexWebApplication
         }
 
         #endregion
+
+
+
+
+
+
+
 
 
 
