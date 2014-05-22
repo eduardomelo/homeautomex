@@ -138,7 +138,11 @@ namespace HomeAutomex.Controllers
             {
                 try
                 {
+                    var Usuario = "";
                     var cenario = Mapper.DynamicMap<Cenario>(model);
+
+                    Usuario = (Session["Usuario"] as UsuarioModel).Chave.ToString();
+                    cenario.Usuario = Convert.ToInt32(Usuario);
                     var retorno = webService.InserirCenario(JsonConvert.SerializeObject(cenario));
                     if (retorno.StartsWith("Erro:"))
                     {
@@ -161,8 +165,19 @@ namespace HomeAutomex.Controllers
         {
             if (ModelState.IsValid)
             {
+                var chave = "";
+                try
+                {
+                    chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
+
+                }
+                catch (Exception)
+                {
+
+                    return RedirectToAction("SessaoExpirou", "Account");
+                }
                 var webService = new HomeAutomexWSSoapClient();
-                var x = webService.ConsutarTodosCenario();
+                var x = webService.ConsutarTodosCenarioPorUsuarioChave(chave.ToString());
                 var cenario = JsonConvert.DeserializeObject<List<CenarioModel>>(x);
                 if (!string.IsNullOrEmpty(pesquisa))
                     return View(cenario.Where(e =>
