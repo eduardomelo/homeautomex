@@ -12,9 +12,7 @@
 </p>
  <table id="Grid" class="table table-bordered">
     <tr>
-        <th>
-           Residência
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.Chave)
         </th>
@@ -29,11 +27,9 @@
            Data e Hora do Agendamento
         </th>
         
-        <th>
-            @Html.DisplayNameFor(model => model.Desativado)
-        </th>
+       
         
-        <th></th>
+        <th>Opções</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -52,15 +48,10 @@
             @Html.DisplayFor(modelItem => item.DataAgendamento)
         </td>
         <td>
-
-        <td>
-            @Html.DisplayFor(modelItem => item.Desativado)
-        </td>
-       
-        <td>
-              @Html.ActionLink("Editar", "EditarAgendamento", new { chave = item.Chave }) |
+             @Html.ActionLink("Editar", "EditarAgendamento", new { chave = item.Chave }) |
             @Html.ActionLink("Delete", "DeleteAgendamento", new { chave = item.Chave })
-        </td>
+       
+        
     </tr>
 }
 
