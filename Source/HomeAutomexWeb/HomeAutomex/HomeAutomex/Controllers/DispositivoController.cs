@@ -50,7 +50,7 @@ namespace HomeAutomex.Controllers
             var ambientes = JsonConvert.DeserializeObject<List<AmbienteModel>>(x);
             foreach (var item in ambientes)
             {
-                lista.Add(new SelectListItem() { Text = item.Descricao, Value = item.Chave.ToString() });
+                lista.Add(new SelectListItem() { Text = item.Residencia.Nome +": "+item.Descricao, Value = item.Chave.ToString() });
             }
             return lista;
         }
