@@ -36,6 +36,7 @@ namespace HomeAutomexLibrary.Negocio
 
         public string AlterarTipoPorta(TipoPorta tipoPorta)
         {
+            tipoPorta.Desativado = true;
             base.Alterar(tipoPorta);
             try
             {

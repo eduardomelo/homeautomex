@@ -54,7 +54,7 @@ namespace HomeAutomexLibrary.Negocio
             disp.Favorito = dispositivo.Favorito;
             disp.Status = dispositivo.Status;
             disp.Desativado = dispositivo.Desativado;
-
+            disp.Desativado = true;
             dispositivoRepositorio.Alterar(disp);
             try
             {

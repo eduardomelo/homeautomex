@@ -62,6 +62,7 @@ namespace HomeAutomexLibrary.Negocio
 
         public string AlterarResidencia(Residencia residencia)
         {
+            residencia.Desativado = true;
             base.Alterar(residencia);
             try
             {

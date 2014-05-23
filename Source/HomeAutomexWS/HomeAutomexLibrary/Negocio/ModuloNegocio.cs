@@ -39,6 +39,7 @@ namespace HomeAutomexLibrary.Negocio
         }
         public string AlterarModulo(Modulo modulo)
         {
+            modulo.Desativado = true;
             base.Alterar(modulo);
             try
             {

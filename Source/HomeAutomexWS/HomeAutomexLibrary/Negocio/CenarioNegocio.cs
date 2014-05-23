@@ -62,6 +62,7 @@ namespace HomeAutomexLibrary.Negocio
             }
 
             cenario.Dispositivo.AddRange(dispositivo);
+            cenario.Desativado = true;
             cenarioRepositorio.Alterar(cenario);
             try
             {

@@ -46,7 +46,7 @@ namespace HomeAutomexLibrary.Negocio
 
         public string AlterarAmbiente(Ambiente ambiente)
         {
-
+            ambiente.Desativado = true;
             base.Alterar(ambiente);
             try
             {

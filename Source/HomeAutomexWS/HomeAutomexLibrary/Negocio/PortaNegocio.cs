@@ -59,6 +59,7 @@ namespace HomeAutomexLibrary.Negocio
         {
             porta.Modulo = moduloRepositorio.BuscarPorChave(porta.Modulo.Chave);
             porta.Tipo = tipoPortaRepositorio.BuscarPorChave(porta.Tipo.Chave);
+            
             portaRepositorio.Alterar(porta);
             try
             {
