@@ -9,5 +9,6 @@ namespace HomeAutomexLibrary.Entidade
     {
         public string Tipo { get; set; }
         public string Identificador { get; set; }
+        public virtual bool Desativado { get; set; }
     }
 }

@@ -33,6 +33,7 @@ namespace HomeAutomex.Models
         public int ChaveResidencia {get; set;}
 
         public ResidenciaModel Residencia { get; set; }
+        public virtual bool Desativado { get; set; }
       
     }
 }

@@ -24,7 +24,7 @@ namespace HomeAutomexLibrary.Negocio
         }
         public string InserirModulo(Modulo modulo)
         {
-
+            modulo.Desativado = true;
             modulo.Residencia = residenciaRepositorio.BuscarPorChave(modulo.Residencia.Chave);
             moduloRepositorio.Inserir(modulo);
             try
@@ -52,7 +52,11 @@ namespace HomeAutomexLibrary.Negocio
         }
         public string RemoverModuloPorChave(int chave)
         {
-            base.RemoverPorChave(chave);
+            Modulo modulo = new Modulo();
+            modulo = BuscarPorChave(chave);
+            modulo.Desativado = false;
+            base.Alterar(modulo);
+          //  base.RemoverPorChave(chave);
             try
             {
                 base.SaveChanges();
@@ -65,7 +69,7 @@ namespace HomeAutomexLibrary.Negocio
         }
         public List<Modulo> ConsultarTodosModulo()
         {
-            return base.ConsultarTodos().ToList();
+            return base.Consultar(e => e.Desativado == true).ToList();
         }
 
         public List<Modulo> ConsultarModuloPorUsuario(int chave)

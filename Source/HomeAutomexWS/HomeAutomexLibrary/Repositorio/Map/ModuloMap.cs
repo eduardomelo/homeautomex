@@ -25,6 +25,7 @@ namespace HomeAutomexLibrary.Repositorio.Map
             Property(e => e.Porta).HasColumnName("NM_PORTA");
             Property(e => e.Nome).HasColumnName("DS_NOME");
             Property(e => e.MAC).HasColumnName("NM_MAC");
+            Property(e => e.Desativado).HasColumnName("IS_DESATIVADO");
 
             HasRequired(e => e.Residencia).WithMany().Map(e => e.MapKey("CD_RESIDENCIA"));            
             Ignore(e => e.DataCadastro);

@@ -22,6 +22,7 @@ namespace HomeAutomexLibrary.Repositorio.Map
 
             Property(e => e.Identificador).HasColumnName("NM_IDENTIFICADOR");
             Property(e => e.NumeroPorta).HasColumnName("NM_PORTA");
+          
 
             Ignore(e => e.DataAlteracao);
             Ignore(e => e.DataCadastro);

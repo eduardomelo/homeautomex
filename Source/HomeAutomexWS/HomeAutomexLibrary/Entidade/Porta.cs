@@ -11,5 +11,6 @@ namespace HomeAutomexLibrary.Entidade
         public virtual string NumeroPorta { get; set; }
         public virtual Modulo Modulo { get; set; }
         public virtual TipoPorta Tipo { get; set; }
+      
     }
 }

@@ -21,6 +21,7 @@ namespace HomeAutomexLibrary.Negocio
 
         public string InserirTipoPorta(TipoPorta tipoPorta)
         {
+            tipoPorta.Desativado = true;
             base.Inserir(tipoPorta);
             try
             {
@@ -49,7 +50,11 @@ namespace HomeAutomexLibrary.Negocio
         }
         public string RemoverTipoPortaPorChave(int chave)
         {
-            base.RemoverPorChave(chave);
+            TipoPorta tipoPorta = new TipoPorta();
+            tipoPorta = BuscarPorChave(chave);
+            tipoPorta.Desativado = false;
+            base.Alterar(tipoPorta);
+           // base.RemoverPorChave(chave);
             try
             {
                 base.SaveChanges();
@@ -63,7 +68,7 @@ namespace HomeAutomexLibrary.Negocio
         }
         public List<TipoPorta> ConsultarTodosTipoPorta()
         {
-            return base.ConsultarTodos().ToList();
+            return base.Consultar(e => e.Desativado == true).ToList();
         }
 
 

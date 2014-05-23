@@ -14,5 +14,6 @@ namespace HomeAutomex.Models
         [StringLength(200, ErrorMessage = "Complemento: O tamanho máximo são 200 caracteres.")]
         public string Tipo { get; set; }
         public string Identificador { get; set; }
+        public virtual bool Desativado { get; set; }
     }
 }

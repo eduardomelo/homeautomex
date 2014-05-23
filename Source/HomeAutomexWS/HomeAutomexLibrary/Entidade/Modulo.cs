@@ -12,6 +12,7 @@ namespace HomeAutomexLibrary.Entidade
         public virtual string Porta { get; set; }
         public virtual string Nome { get; set; }
         public virtual string MAC { get; set; }
-        public virtual Residencia Residencia { get; set; }        
+        public virtual Residencia Residencia { get; set; }
+        public virtual bool Desativado { get; set; }
     }
 }

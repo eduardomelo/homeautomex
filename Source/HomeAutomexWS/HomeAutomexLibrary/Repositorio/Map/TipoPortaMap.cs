@@ -22,6 +22,7 @@ namespace HomeAutomexLibrary.Repositorio.Map
 
             Property(e => e.Tipo).HasColumnName("DS_TIPO").IsRequired();
             Property(e => e.Identificador).HasColumnName("DS_IDENTIFICADOR").IsRequired();
+            Property(e => e.Desativado).HasColumnName("IS_DESATIVADO");
 
             Ignore(e => e.DataCadastro);
             Ignore(e => e.DataAlteracao);
