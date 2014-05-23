@@ -15,6 +15,13 @@ namespace HomeAutomex.HomeAutomexService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HomeAutomexService.HomeAutomexWSSoap")]
     public interface HomeAutomexWSSoap {
         
+        // CODEGEN: Generating message contract since element name VerificarTodosAgendamentoResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/VerificarTodosAgendamento", ReplyAction="*")]
+        HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoResponse VerificarTodosAgendamento(HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/VerificarTodosAgendamento", ReplyAction="*")]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoResponse> VerificarTodosAgendamentoAsync(HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoRequest request);
+        
         // CODEGEN: Generating message contract since element name ConsutarTodosLogsResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ConsutarTodosLogs", ReplyAction="*")]
         HomeAutomex.HomeAutomexService.ConsutarTodosLogsResponse ConsutarTodosLogs(HomeAutomex.HomeAutomexService.ConsutarTodosLogsRequest request);
@@ -420,6 +427,67 @@ namespace HomeAutomex.HomeAutomexService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/StatusArduino", ReplyAction="*")]
         System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.StatusArduinoResponse> StatusArduinoAsync(HomeAutomex.HomeAutomexService.StatusArduinoRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class VerificarTodosAgendamentoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="VerificarTodosAgendamento", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoRequestBody Body;
+        
+        public VerificarTodosAgendamentoRequest() {
+        }
+        
+        public VerificarTodosAgendamentoRequest(HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class VerificarTodosAgendamentoRequestBody {
+        
+        public VerificarTodosAgendamentoRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class VerificarTodosAgendamentoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="VerificarTodosAgendamentoResponse", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoResponseBody Body;
+        
+        public VerificarTodosAgendamentoResponse() {
+        }
+        
+        public VerificarTodosAgendamentoResponse(HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class VerificarTodosAgendamentoResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string VerificarTodosAgendamentoResult;
+        
+        public VerificarTodosAgendamentoResponseBody() {
+        }
+        
+        public VerificarTodosAgendamentoResponseBody(string VerificarTodosAgendamentoResult) {
+            this.VerificarTodosAgendamentoResult = VerificarTodosAgendamentoResult;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -4336,6 +4404,29 @@ namespace HomeAutomex.HomeAutomexService {
         
         public HomeAutomexWSSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoResponse HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.VerificarTodosAgendamento(HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoRequest request) {
+            return base.Channel.VerificarTodosAgendamento(request);
+        }
+        
+        public string VerificarTodosAgendamento() {
+            HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoRequest inValue = new HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoRequestBody();
+            HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoResponse retVal = ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).VerificarTodosAgendamento(inValue);
+            return retVal.Body.VerificarTodosAgendamentoResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoResponse> HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.VerificarTodosAgendamentoAsync(HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoRequest request) {
+            return base.Channel.VerificarTodosAgendamentoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoResponse> VerificarTodosAgendamentoAsync() {
+            HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoRequest inValue = new HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoRequestBody();
+            return ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).VerificarTodosAgendamentoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

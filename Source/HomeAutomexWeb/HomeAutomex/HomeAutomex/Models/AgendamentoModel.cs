@@ -10,15 +10,19 @@ namespace HomeAutomex.Models
 {
     public class AgendamentoModel : BaseModel
     {
-    //    [Required]
+        [Display(Name = "Descrição")]
         public string Descricao { get; set; }
         public bool Ativo { get; set; }
 
+        [Display(Name = "Data e Hora do Agendamento")]
         [DisplayFormat(ApplyFormatInEditMode = true)]
         public virtual DateTime? DataAgendamento { get; set; }
         public bool Desativado { get; set; }
 
+        [Display(Name = "Usuário")]
         public int Usuario { get; set; }
+
+        [Display(Name = "Dispositivo")]
         public int Dispositivo { get; set; }
 
 

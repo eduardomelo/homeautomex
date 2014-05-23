@@ -33,8 +33,8 @@ namespace HomeAutomex.Controllers
             var lista = new List<SelectListItem>();
             var chave = (Session["Usuario"] as UsuarioModel).Chave.ToString();
             var x = webService.ConsutarTodosDispositivoPorUsuarioChave(chave.ToString());
-            var cenario = JsonConvert.DeserializeObject<List<CenarioModel>>(x);
-            foreach (var item in cenario)
+            var dispositivo = JsonConvert.DeserializeObject<List<DispositivoModel>>(x);
+            foreach (var item in dispositivo)
             {
                 lista.Add(new SelectListItem() { Text = item.Descricao, Value = item.Chave.ToString() });
             }
@@ -161,7 +161,7 @@ namespace HomeAutomex.Controllers
         public ActionResult EditarAgendamento(int chave)
         {
             var agendamento = JsonConvert.DeserializeObject<AgendamentoModel>(webService.BuscarAgendamentoPorChave(chave.ToString()));
-            ViewBag.Cenario = GetDropDownDispositivo();
+            ViewBag.Dispositivo = GetDropDownDispositivo();
 
             return View(agendamento);
         }

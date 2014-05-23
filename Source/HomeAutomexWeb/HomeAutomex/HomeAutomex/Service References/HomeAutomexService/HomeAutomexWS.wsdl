@@ -2,6 +2,16 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="VerificarTodosAgendamento">
+        <s:complexType />
+      </s:element>
+      <s:element name="VerificarTodosAgendamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerificarTodosAgendamentoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ConsutarTodosLogs">
         <s:complexType />
       </s:element>
@@ -782,6 +792,12 @@
       </s:element>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="VerificarTodosAgendamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:VerificarTodosAgendamento" />
+  </wsdl:message>
+  <wsdl:message name="VerificarTodosAgendamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:VerificarTodosAgendamentoResponse" />
+  </wsdl:message>
   <wsdl:message name="ConsutarTodosLogsSoapIn">
     <wsdl:part name="parameters" element="tns:ConsutarTodosLogs" />
   </wsdl:message>
@@ -1131,6 +1147,10 @@
     <wsdl:part name="parameters" element="tns:StatusArduinoResponse" />
   </wsdl:message>
   <wsdl:portType name="HomeAutomexWSSoap">
+    <wsdl:operation name="VerificarTodosAgendamento">
+      <wsdl:input message="tns:VerificarTodosAgendamentoSoapIn" />
+      <wsdl:output message="tns:VerificarTodosAgendamentoSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ConsutarTodosLogs">
       <wsdl:input message="tns:ConsutarTodosLogsSoapIn" />
       <wsdl:output message="tns:ConsutarTodosLogsSoapOut" />
@@ -1366,6 +1386,15 @@
   </wsdl:portType>
   <wsdl:binding name="HomeAutomexWSSoap" type="tns:HomeAutomexWSSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="VerificarTodosAgendamento">
+      <soap:operation soapAction="http://tempuri.org/VerificarTodosAgendamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ConsutarTodosLogs">
       <soap:operation soapAction="http://tempuri.org/ConsutarTodosLogs" style="document" />
       <wsdl:input>
@@ -1891,6 +1920,15 @@
   </wsdl:binding>
   <wsdl:binding name="HomeAutomexWSSoap12" type="tns:HomeAutomexWSSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="VerificarTodosAgendamento">
+      <soap12:operation soapAction="http://tempuri.org/VerificarTodosAgendamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ConsutarTodosLogs">
       <soap12:operation soapAction="http://tempuri.org/ConsutarTodosLogs" style="document" />
       <wsdl:input>

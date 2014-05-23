@@ -200,3 +200,8 @@ C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\
 C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\bin\AutoMapper.dll
 C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\bin\AutoMapper.xml
 C:\Users\CASA\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\obj\Debug\HomeAutomex.csprojResolveAssemblyReference.cache
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\bin\AutoMapper.Net4.dll
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\bin\AutoMapper.dll
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\bin\AutoMapper.xml
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\obj\Debug\RdlCompile.cache
+C:\Users\EDSON-CST\Desktop\homeautomex\Source\HomeAutomexWeb\HomeAutomex\HomeAutomex\obj\Debug\RdlCompile.compiled

@@ -26,6 +26,9 @@ namespace HomeAutomex.Controllers
     {
         private HomeAutomexWSSoapClient webService;
         private BootstrapBaseController BootStrap;
+         
+
+
 
         public AccountController()
         {
@@ -37,7 +40,7 @@ namespace HomeAutomex.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            this.webService.VerificarTodosAgendamento();
+        //    this.webService.VerificarTodosAgendamento();
             return View();
         }
         [HttpPost]
