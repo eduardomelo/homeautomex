@@ -20,7 +20,7 @@
             @Html.ValidationMessageFor(model => model.Descricao)
         </div>
          <div class="editor-label">
-            @Html.LabelFor(model => model.Dispositivo)
+           Qual dispositivo deseja agendar? 
         </div>
          <div class="editor-label">
             @Html.DropDownListFor(model => model.Dispositivo, ViewBag.Dispositivo as List<SelectListItem>, "Selecione...", new { @class = "input" })

@@ -36,7 +36,7 @@ namespace HomeAutomex.Controllers
             var dispositivo = JsonConvert.DeserializeObject<List<DispositivoModel>>(x);
             foreach (var item in dispositivo)
             {
-                lista.Add(new SelectListItem() { Text = item.Descricao, Value = item.Chave.ToString() });
+                lista.Add(new SelectListItem() { Text = item.Ambiente.Residencia.Nome+": "+ item.Descricao, Value = item.Chave.ToString() });
             }
             return lista;
         }
