@@ -509,6 +509,16 @@ namespace HomeAutomexWebApplication
         }
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string DesativarCenarioDespositivo(string jCenario)
+        {
+            var cenario = JsonConvert.DeserializeObject<Cenario>(jCenario);
+            log.Descricao = "Usuario alterou o cenario, " + cenario.Descricao;
+            var retornoLog = fachada.InserirLog(log);
+            var retorno = fachada.DesativarCenarioDispositivo(cenario);
+            return retorno;
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string ExcluirCenario(string jChave)
         {
             int chave = JsonConvert.DeserializeObject<int>(jChave);
@@ -628,6 +638,18 @@ namespace HomeAutomexWebApplication
         }
 
         #endregion
+
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string InserirDispositivoCenario(string JDispositivoCenario)
+        {
+            var dispositivoCenario = JsonConvert.DeserializeObject<DispositivoCenario>(JDispositivoCenario);
+            log.Descricao = "Usuario ativou Cenario ";
+            var retornoLog = fachada.InserirLog(log);
+            var retorno = fachada.InserirDispositivoCenario(dispositivoCenario);
+            return retorno;
+        }
 
         #region Arduino
         [WebMethod]
