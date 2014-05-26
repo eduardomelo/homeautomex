@@ -25,6 +25,10 @@ namespace HomeAutomex.Models
         [Display(Name = "Dispositivo")]
         public int Dispositivo { get; set; }
 
+
+        public virtual string Data { get; set; }
+        public virtual string Hora { get; set; }
+
         
 
 

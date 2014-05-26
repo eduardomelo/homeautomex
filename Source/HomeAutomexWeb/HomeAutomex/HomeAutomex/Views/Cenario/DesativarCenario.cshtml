@@ -1,0 +1,33 @@
+﻿@model HomeAutomex.Models.CenarioModel
+
+@{
+    ViewBag.Title = "DesativarCenarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Desativar Cenário</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Descricao)
+        </div>
+        <div>
+            @Html.DropDownListFor(model => model.Chave, ViewBag.Cenario as List<SelectListItem>, "Selecione...", new { @class = "inputCenario" })
+        </div><br /><br />
+
+        <p>
+            <input type="submit" value="Registrar" class="btn-glow primary login" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -25,7 +25,6 @@ namespace HomeAutomex.Controllers
         public ActionResult RegistrarAgendamento()
         {
             ViewBag.Dispositivo = GetDropDownDispositivo();
-
             return View();
         }
         public List<SelectListItem> GetDropDownDispositivo()
@@ -43,7 +42,7 @@ namespace HomeAutomex.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult RegistrarAgendamento(AgendamentoModel model, string DataHoraAgendamento)
+        public ActionResult RegistrarAgendamento(AgendamentoModel model)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +62,7 @@ namespace HomeAutomex.Controllers
                     var agendamento = Mapper.DynamicMap<Agendamento>(model);
                     agendamento.Usuario = Convert.ToInt32(chave);
                     agendamento.Desativado = true;
-                    agendamento.DataAgendamento = Convert.ToDateTime(DataHoraAgendamento);
+               
                     var retorno = webService.InserirAgendamento(JsonConvert.SerializeObject(agendamento));
                     if (retorno.StartsWith("Erro:"))
                     {

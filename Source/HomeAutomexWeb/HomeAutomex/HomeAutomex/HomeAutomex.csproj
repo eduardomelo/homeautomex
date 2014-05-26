@@ -201,6 +201,7 @@
     <Compile Include="Entidade\Agendamento.cs" />
     <Compile Include="Entidade\Ambiente.cs" />
     <Compile Include="Entidade\Cenario.cs" />
+    <Compile Include="Entidade\DispositivoCenario.cs" />
     <Compile Include="Entidade\Dispositivo.cs" />
     <Compile Include="Entidade\EntidadeBase.cs" />
     <Compile Include="Entidade\Log.cs" />
@@ -317,6 +318,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="css\App.css" />
+    <Content Include="css\bootstrap-datetimepicker.min.css" />
     <Content Include="css\bootstrap-overrides.css" />
     <Content Include="css\bootstrap-switch.css" />
     <Content Include="css\bootstrap.css" />
@@ -360,6 +362,7 @@
     <Content Include="Images\landscape.jpg" />
     <Content Include="Images\logo-white.png" />
     <Content Include="Images\__utm.gif" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap-switch.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -578,6 +581,12 @@
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.VerificarTodosAgendamentoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirDispositivoCenarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
     <None Include="Service References\HomeAutomexService\configuration91.svcinfo" />
     <None Include="Service References\HomeAutomexService\configuration.svcinfo" />
@@ -665,6 +674,7 @@
     <Content Include="Views\Cenario\RegistrarCenario.cshtml" />
     <Content Include="Views\Cenario\AtivarCenario.cshtml" />
     <Content Include="Views\Relatorio\ListarLogs.cshtml" />
+    <Content Include="Views\Cenario\DesativarCenario.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
