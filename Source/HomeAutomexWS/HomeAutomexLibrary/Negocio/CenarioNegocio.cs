@@ -52,18 +52,18 @@ namespace HomeAutomexLibrary.Negocio
 
         public string AlterarCenario(Cenario cenarioNovo)
         {
-            var ids = cenarioNovo.Dispositivo.Select(e => e.Chave).ToList();
-            var dispositivo = new List<Dispositivo>();
-            cenarioNovo.Dispositivo.Clear();
-            var cenario = cenarioRepositorio.BuscarPorChave(cenarioNovo.Chave);
-            foreach (var chave in ids)
-            {   
-                dispositivo.Add(dispositivoRepositorio.BuscarPorChave(chave));
-            }
+            //var ids = cenarioNovo.Dispositivo.Select(e => e.Chave).ToList();
+            //var dispositivo = new List<Dispositivo>();
+            //cenarioNovo.Dispositivo.Clear();
+            //var cenario = cenarioRepositorio.BuscarPorChave(cenarioNovo.Chave);
+            //foreach (var chave in ids)
+            //{   
+            //    dispositivo.Add(dispositivoRepositorio.BuscarPorChave(chave));
+            //}
 
-            cenario.Dispositivo.AddRange(dispositivo);
-            cenario.Desativado = true;
-            cenarioRepositorio.Alterar(cenario);
+            //cenario.Dispositivo.AddRange(dispositivo);
+            //cenario.Desativado = true;
+            cenarioRepositorio.Alterar(cenarioNovo);
             try
             {
                 cenarioRepositorio.SaveChanges();
@@ -78,19 +78,19 @@ namespace HomeAutomexLibrary.Negocio
 
         public string CriarCenarioDispositivo(Cenario cenarioNovo, bool status)
         {
-            var ids = cenarioNovo.Dispositivo.Select(e => e.Chave).ToList();
-            var dispositivo = new List<Dispositivo>();
-            cenarioNovo.Dispositivo.Clear();
-            var cenario = cenarioRepositorio.BuscarPorChave(cenarioNovo.Chave);
-            foreach (var chave in ids)
-            {
-                dispositivo.Add(dispositivoRepositorio.BuscarPorChave(chave));
-                dispositivo[0].Status = status;
+            //var ids = cenarioNovo.Dispositivo.Select(e => e.Chave).ToList();
+            //var dispositivo = new List<Dispositivo>();
+            //cenarioNovo.Dispositivo.Clear();
+            //var cenario = cenarioRepositorio.BuscarPorChave(cenarioNovo.Chave);
+            //foreach (var chave in ids)
+            //{
+            //    dispositivo.Add(dispositivoRepositorio.BuscarPorChave(chave));
+            //    dispositivo[0].Status = status;
 
-            }
+            //}
 
-            cenario.Dispositivo.AddRange(dispositivo);
-            cenarioRepositorio.Alterar(cenario);
+            //cenario.Dispositivo.AddRange(dispositivo);
+            cenarioRepositorio.Alterar(cenarioNovo);
             try
             {
                 cenarioRepositorio.SaveChanges();
@@ -104,16 +104,35 @@ namespace HomeAutomexLibrary.Negocio
         }
         public string AtivarCenarioDispositivo(Cenario cenario)
         {
-            var cenarioNovo = new Cenario();
-            cenarioNovo = repositorio.BuscarPorChave(cenario.Chave);
-            foreach (Dispositivo dispositivo in cenarioNovo.Dispositivo)
+            //var cenarioNovo = new Cenario();
+            //cenarioNovo = repositorio.BuscarPorChave(cenario.Chave);
+            //foreach (Dispositivo dispositivo in cenarioNovo.Dispositivo)
+            //{
+            //    var dispositivoNovo = dispositivoRepositorio.BuscarPorChave(dispositivo.Chave);
+            //    dispositivoNovo.Status = true;
+            //    this.dispositivoRepositorio.Alterar(dispositivoNovo);
+            //}
+            try
             {
-                var dispositivoNovo = dispositivoRepositorio.BuscarPorChave(dispositivo.Chave);
-                dispositivoNovo.Status = true;
-                this.dispositivoRepositorio.Alterar(dispositivoNovo);
+                cenarioRepositorio.SaveChanges();
+                return "Operação realizada com sucesso!";
             }
-            
+            catch (Exception ex)
+            {
 
+                throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
+            }
+        }
+        public string DesativarCenarioDispositivo(Cenario cenario)
+        {
+            ////var cenarioNovo = new Cenario();
+            ////cenarioNovo = repositorio.BuscarPorChave(cenario.Chave);
+            ////foreach (Dispositivo dispositivo in cenarioNovo.Dispositivo)
+            ////{
+            ////    var dispositivoNovo = dispositivoRepositorio.BuscarPorChave(dispositivo.Chave);
+            ////    dispositivoNovo.Status = false;
+            //    this.dispositivoRepositorio.Alterar(dispositivoNovo);
+            //}
             try
             {
                 cenarioRepositorio.SaveChanges();

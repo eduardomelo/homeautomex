@@ -124,7 +124,7 @@ namespace HomeAutomexLibrary.Negocio
         public List<Dispositivo> ConsultarTodosDispositivoPorUsuarioChave(int chave)
         {
             return this.dispositivoRepositorio.Consultar(e =>
-                e.Ambiente.Residencia.Usuarios.Any(u => u.Chave == chave && e.Desativado == true))
+                e.Ambiente.Residencia.Usuarios.Any(u => u.Chave == chave))
                 .ToList();
         }
     }

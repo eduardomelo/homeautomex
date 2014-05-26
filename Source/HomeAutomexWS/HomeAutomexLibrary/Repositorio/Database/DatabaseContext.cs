@@ -36,6 +36,7 @@ namespace HomeAutomexLibrary.Repositorio.Database
             modelBuilder.Configurations.Add(new UTDispositivoMap());
             modelBuilder.Configurations.Add(new LogMap());
             modelBuilder.Configurations.Add(new PortaMap());
+            modelBuilder.Configurations.Add(new DispositivoCenarioMap());
           
             modelBuilder.Configurations.Add(new AgendamentoMap());
                 

@@ -12,11 +12,7 @@ namespace HomeAutomexLibrary.Entidade
         public int Usuario { get; set; }
         
 
-        public virtual List<Dispositivo> Dispositivo { get; set; }
-
-        public Cenario() {
-            this.Dispositivo = new List<Dispositivo>();
-        }
+     
       
       
     }

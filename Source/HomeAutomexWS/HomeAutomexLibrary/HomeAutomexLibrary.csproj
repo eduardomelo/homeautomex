@@ -56,6 +56,7 @@
     <Compile Include="Entidade\Agendamento.cs" />
     <Compile Include="Entidade\Ambiente.cs" />
     <Compile Include="Entidade\Cenario.cs" />
+    <Compile Include="Entidade\DispositivoCenario.cs" />
     <Compile Include="Entidade\UTDispositivo.cs" />
     <Compile Include="Entidade\Log.cs" />
     <Compile Include="Entidade\Dispositivo.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Negocio\AmbienteNegocio.cs" />
     <Compile Include="Negocio\AgendamentoNegocio.cs" />
     <Compile Include="Negocio\CenarioNegocio.cs" />
+    <Compile Include="Negocio\DispositivoCenarioNegocio.cs" />
     <Compile Include="Negocio\PortaNegocio.cs" />
     <Compile Include="Negocio\UTUtilizacaoNegocio.cs" />
     <Compile Include="Negocio\LogNegocio.cs" />
@@ -85,8 +87,10 @@
     <Compile Include="Repositorio\AmbienteRepositorio.cs" />
     <Compile Include="Repositorio\CenarioRepositorio.cs" />
     <Compile Include="Repositorio\AgendamentoRepositorio.cs" />
+    <Compile Include="Repositorio\DispositivoCenario.cs" />
     <Compile Include="Repositorio\Map\CenarioMap.cs" />
     <Compile Include="Repositorio\Map\AgendamentoMap.cs" />
+    <Compile Include="Repositorio\Map\DispositivoCenarioMap.cs" />
     <Compile Include="Repositorio\PortaRepositorio.cs" />
     <Compile Include="Repositorio\UTDispositivoRepositorio.cs" />
     <Compile Include="Repositorio\LogRepositorio.cs" />
