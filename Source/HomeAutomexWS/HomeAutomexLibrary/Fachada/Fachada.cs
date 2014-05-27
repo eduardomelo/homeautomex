@@ -22,8 +22,7 @@ namespace HomeAutomexLibrary.Fachada
         private UTUtilizacaoNegocio                 utDispositivoNegocio;
         private LogNegocio                          logNegocio;
         private PortaNegocio                        portaNegocio;
-        private DispositivoCenarioNegocio           dispositivoCenarioNegocio;
-       
+      
         private DatabaseContext                     contexto;
         
 
@@ -40,7 +39,7 @@ namespace HomeAutomexLibrary.Fachada
             this.dispositivoNegocio                 = new DispositivoNegocio(contexto);
             this.agendamentoNegocio                 = new AgendamentoNegocio(contexto);
             this.utDispositivoNegocio               = new UTUtilizacaoNegocio();
-            this.dispositivoCenarioNegocio          = new DispositivoCenarioNegocio(contexto);
+         
             this.logNegocio                         = new LogNegocio();
          
             
@@ -365,17 +364,7 @@ namespace HomeAutomexLibrary.Fachada
         #endregion
 
 
-        #region Dispositivo/Cenário
-        // Dispositvo e Cenario
-        public string InserirDispositivoCenario(DispositivoCenario dispositivoCenario)
-        {
-            return this.dispositivoCenarioNegocio.InserirDispositivoCenario(dispositivoCenario);
-        }
-        public string AlterarDispositivoCenario(DispositivoCenario dispositivoCenario)
-        {
-            return this.dispositivoCenarioNegocio.AlterarDispositivoCenario(dispositivoCenario);
-        }
-        #endregion
+     
 
 
 
@@ -386,21 +375,6 @@ namespace HomeAutomexLibrary.Fachada
             return dispositivoNegocio.StatusArduino(ip);
         }
         #endregion
-
-
-
-
-        //public string StatusArduino()
-        //{
-        //    return this.residenciaNegocio.StatusArduino();
-        //}
-
-        //public string MudarStatusDispositivo(List<Dispositivo> dispositivos)
-        //{
-        //    return this.dispositivoNegocio.MudarStatusDispositivo(dispositivos);
-        //}
-
-
 
 
 
