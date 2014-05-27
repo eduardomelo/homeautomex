@@ -640,16 +640,7 @@ namespace HomeAutomexWebApplication
         #endregion
 
 
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string InserirDispositivoCenario(string JDispositivoCenario)
-        {
-            var dispositivoCenario = JsonConvert.DeserializeObject<DispositivoCenario>(JDispositivoCenario);
-            log.Descricao = "Usuario ativou Cenario ";
-            var retornoLog = fachada.InserirLog(log);
-            var retorno = fachada.InserirDispositivoCenario(dispositivoCenario);
-            return retorno;
-        }
+     
 
         #region Arduino
         [WebMethod]
