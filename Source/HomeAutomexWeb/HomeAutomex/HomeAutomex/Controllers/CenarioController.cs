@@ -96,7 +96,7 @@ namespace HomeAutomex.Controllers
                     dispositivoCenario.Cenarios.Chave = Convert.ToInt32(chaveCenario);
                     dispositivoCenario.Dispositivos.Chave = Convert.ToInt32(chaveCenario);
                     dispositivoCenario.Status = addCenario;
-                    var retorno = webService.InserirDispositivoCenario(JsonConvert.SerializeObject(dispositivoCenario));
+                    var retorno = webService.CriarCenarioDispositivo(JsonConvert.SerializeObject(cenario), addCenario);
                     if (retorno.StartsWith("Erro:"))
                     {
                         ModelState.AddModelError("WSErro", retorno);
