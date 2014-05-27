@@ -16,8 +16,7 @@ namespace HomeAutomexLibrary.Entidade
         public virtual string Complemento { get; set; }
         public virtual bool Desativado { get; set; }
         public virtual List<Usuario> Usuarios { get; set; }
-      
-                
+          
         public Residencia()
         {
             Usuarios = new List<Usuario>();

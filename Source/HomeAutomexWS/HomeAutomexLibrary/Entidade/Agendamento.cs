@@ -18,7 +18,7 @@ namespace HomeAutomexLibrary.Entidade
         public int Usuario { get; set; }
         public int Dispositivo { get; set; }
 
-       
+     
 
     }
 }

@@ -20,7 +20,8 @@ namespace HomeAutomexLibrary.Repositorio.Database
         }
 
         public DatabaseContext()
-            : base("HomeAutomexConnection")            
+            : base("HomeAutomexConnection")   
+             // : base(@"data source=VICTOR\SQLEXPRESS;initial catalog=HomeAutomex;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
         {            
         }
 

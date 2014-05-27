@@ -62,8 +62,10 @@ namespace HomeAutomexLibrary.Negocio
             }
 
             cenario.Dispositivo.AddRange(dispositivo);
+
             cenario.Desativado = true;
-            cenarioRepositorio.Alterar(cenarioNovo);
+            cenarioRepositorio.Alterar(cenario);
+
             try
             {
                 cenarioRepositorio.SaveChanges();
@@ -75,6 +77,7 @@ namespace HomeAutomexLibrary.Negocio
                 throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
+
 
         public string CriarCenarioDispositivo(Cenario cenarioNovo, bool status)
         {
@@ -90,7 +93,7 @@ namespace HomeAutomexLibrary.Negocio
             }
 
             cenario.Dispositivo.AddRange(dispositivo);
-            cenarioRepositorio.Alterar(cenarioNovo);
+            cenarioRepositorio.Alterar(cenario);
             try
             {
                 cenarioRepositorio.SaveChanges();
@@ -102,6 +105,9 @@ namespace HomeAutomexLibrary.Negocio
                 throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
+       
+
+      
         public string AtivarCenarioDispositivo(Cenario cenario)
         {
             var cenarioNovo = new Cenario();
@@ -144,6 +150,7 @@ namespace HomeAutomexLibrary.Negocio
                 throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
+
         public string RemoverCenarioPorChave(int chave)
         {
             Cenario cenario = new Cenario();

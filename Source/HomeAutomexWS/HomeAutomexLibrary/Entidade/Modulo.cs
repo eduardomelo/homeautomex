@@ -8,7 +8,7 @@ namespace HomeAutomexLibrary.Entidade
 {
     public class Modulo : EntidadeBase<int>
     {
-        public virtual string IP { get; set; }
+       public virtual string IP { get; set; }
         public virtual string Porta { get; set; }
         public virtual string Nome { get; set; }
         public virtual string MAC { get; set; }

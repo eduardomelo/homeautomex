@@ -278,6 +278,7 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.cenarioNegocio.AlterarCenario(cenario);
         }
+
         public string AtivarCenarioDispositivo(Cenario chave)
         {
             return this.cenarioNegocio.AtivarCenarioDispositivo(chave);
@@ -286,6 +287,7 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.cenarioNegocio.DesativarCenarioDispositivo(cenario);
         }
+
         public Cenario BuscarCenarioPorChave(int chave)
         {
             return this.cenarioNegocio.BuscarPorChave(chave);
@@ -362,11 +364,6 @@ namespace HomeAutomexLibrary.Fachada
             return this.agendamentoNegocio.RemoverAgendamentoPorChave(chave);
         }
         #endregion
-
-
-     
-
-
 
 
         #region Arduino

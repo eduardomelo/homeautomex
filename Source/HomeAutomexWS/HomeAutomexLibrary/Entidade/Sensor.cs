@@ -12,6 +12,5 @@ namespace HomeAutomexLibrary.Entidade
 
         public string descricao { get; set; }
         public int valor { get; set; }
-
     }
 }

@@ -11,6 +11,5 @@ namespace HomeAutomexLibrary.Entidade
         public int Cd_dispositivo { get; set; }
         public DateTime? UT_utilizacao { get; set; }
         public bool status { get; set; }
-     
    }
 }

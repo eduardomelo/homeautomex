@@ -16,9 +16,5 @@ namespace HomeAutomexLibrary.Entidade
         public bool desativado { get; set; }
 
         public Residencia residencia { get; set; }
-
-        //public Perfil() {
-        //    this.residencia = new Residencia();
-        //}
    }
 }

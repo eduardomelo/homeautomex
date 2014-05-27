@@ -31,7 +31,6 @@ namespace HomeAutomexLibrary.Negocio
         {
             dispositivo.Ambiente = ambienteRepositorio.BuscarPorChave(dispositivo.Ambiente.Chave);
             dispositivo.Porta = portaRepositorio.BuscarPorChave(dispositivo.Porta.Chave);
-            dispositivo.Desativado = true;
             dispositivoRepositorio.Inserir(dispositivo);
 
             try
@@ -54,7 +53,7 @@ namespace HomeAutomexLibrary.Negocio
             disp.Favorito = dispositivo.Favorito;
             disp.Status = dispositivo.Status;
             disp.Desativado = dispositivo.Desativado;
-        //    disp.Desativado = true;
+
             dispositivoRepositorio.Alterar(disp);
             try
             {
