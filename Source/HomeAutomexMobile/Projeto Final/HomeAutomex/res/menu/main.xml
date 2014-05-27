@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/opcaoUsuario"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="OPÇÕES DO USUARIO"/>
+     <item
+        android:id="@+id/programacao"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="PROGRAMAÇÃO"/>
+     <!--  <item
+        android:id="@+id/ListarCenario"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="LISTAR CENARIO"/>
+      
+   
+        <item
+        android:id="@+id/ListarAgendamento"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="LISTAR AGENDAMENTO"/>
+        
+         <item
+        android:id="@+id/cadastrarAgendamento"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="CADASTRAR AGENDAMENTO"/> -->
+        
+        
+
+
+</menu>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Home Automex</string>
+    <string name="action_settings">Configurações</string>
+    <string name="title_activity_splash">Home Automex</string>
+    <string name="title_activity_login">Home Automex</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_residencias">Home Automex</string>
+    <string name="boasvindas">Seja Bem vindo %1$s %2$s.</string>
+    <string name="title_activity_opcoes_usuarios">Home Automex</string>
+    <string name="title_activity_favoritos">Home Automex</string>
+    <string name="title_activity_ambiente">Home Automex</string>
+    <string name="title_activity_configuracoes">Home Automex</string>
+    <string name="title_activity_cenario">Home Automex</string>
+    <string name="title_activity_programacao">Home Automex</string>
+    <string name="title_activity_listar_favoritos">Home Automex</string>
+    <string name="title_activity_main">Home Automex</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_activity_cadastro_dispositivos_cenario">Home Automex</string>
+    <string name="title_activity_listar_cenarios">Home Automex</string>
+    <string name="title_activity_listar_agendamento">Home Automex</string>
+    <string name="title_activity_cadastro_dispositivos_agendamento">CadastroDispositivosAgendamentoActivity</string>
+    <string name="title_activity_receive">ReceiveActivity</string>
+
+</resources>

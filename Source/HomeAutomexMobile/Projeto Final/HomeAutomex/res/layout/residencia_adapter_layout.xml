@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   
+    android:orientation="vertical" >
+
+    <!-- android:background="#52A3CC" -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+         >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@layout/gradient" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/homeautomex" />
+
+            <TextView
+                android:id="@+id/textNumero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/imageView1"
+                android:text="TextView"
+                android:textColor="#fff"
+                android:textSize="19sp" />
+
+            <TextView
+                android:id="@+id/textResidencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/textNumero"
+                android:layout_alignLeft="@+id/textNumero"
+                android:text="TextView"
+                android:textColor="#fff"
+                android:textSize="19sp" />
+
+            <TextView
+                android:id="@+id/textBairro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textNumero"
+                android:layout_below="@+id/textNumero"
+                android:text="TextView"
+                android:textColor="#fff"
+                android:textSize="19sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
