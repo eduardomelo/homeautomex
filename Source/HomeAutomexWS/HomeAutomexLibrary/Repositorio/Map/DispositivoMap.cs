@@ -32,16 +32,16 @@ namespace HomeAutomexLibrary.Repositorio.Map
             HasRequired(e => e.Porta).WithMany().Map(e => e.MapKey("CD_PORTA"));
 
 
-            //HasMany(e => e.Cenario)
-            //  .WithMany(e => e.Dispositivo)
-       
-            //  .Map(e =>
-            //  {
-            //      e.ToTable("DISPOSITIVO_CENARIO");
-            //      e.MapLeftKey("CD_CENARIO");
-            //      e.MapRightKey("CD_DISPOSITIVO");
-               
-            //  });
+            HasMany(e => e.Cenario)
+              .WithMany(e => e.Dispositivo)
+
+              .Map(e =>
+              {
+                  e.ToTable("DISPOSITIVO_CENARIO");
+                  e.MapLeftKey("CD_CENARIO");
+                  e.MapRightKey("CD_DISPOSITIVO");
+
+              });
              
         }
 
