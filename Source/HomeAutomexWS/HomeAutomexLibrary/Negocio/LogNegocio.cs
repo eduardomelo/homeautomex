@@ -22,11 +22,9 @@ namespace HomeAutomexLibrary.Negocio
 
         public string InserirLog(Log log)
         {
-            log.Cd_usuario = 99;
+            log.Cd_usuario = 1;
             log.DataCadastro = DateTime.Now;
             base.Inserir(log);
-
-
             try
             {
                 base.SaveChanges();
