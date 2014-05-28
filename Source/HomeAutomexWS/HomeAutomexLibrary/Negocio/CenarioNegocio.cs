@@ -119,18 +119,17 @@ namespace HomeAutomexLibrary.Negocio
         {
             var cenarioNovo = new Cenario();
         
-            List<UTCenario> utCenario = new List<UTCenario>();
+            List<UTCenario> ListUTCenarios = new List<UTCenario>();
             cenarioNovo = repositorio.BuscarPorChave(cenario.Chave);
 
             foreach (Dispositivo dispositivo in cenarioNovo.Dispositivo)
             {
-              utCenario = utCenarioRepositorio.Consultar(e => e.CD_Cenario == cenarioNovo.Chave && e.CD_Dispositivo == dispositivo.Chave).ToList();
-
+               ListUTCenarios = utCenarioRepositorio.Consultar(e => e.CD_Cenario == cenarioNovo.Chave && e.CD_Dispositivo == dispositivo.Chave).ToList();
                 var dispositivoNovo = dispositivoRepositorio.BuscarPorChave(dispositivo.Chave);
-                if (utCenario[0].CD_Dispositivo == dispositivo.Chave && utCenario[0].CD_Cenario == cenarioNovo.Chave)
+                if (ListUTCenarios[0].CD_Dispositivo == dispositivo.Chave && ListUTCenarios[0].CD_Cenario == cenarioNovo.Chave)
                 {
 
-                    dispositivoNovo.Status = utCenario[0].StatusDispositivo;
+                    dispositivoNovo.Status = ListUTCenarios[0].StatusDispositivo;
                     this.dispositivoRepositorio.Alterar(dispositivoNovo);
                 }
             }
