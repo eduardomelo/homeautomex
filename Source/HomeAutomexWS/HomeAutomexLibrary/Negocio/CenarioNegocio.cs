@@ -121,12 +121,14 @@ namespace HomeAutomexLibrary.Negocio
         
             List<UTCenario> ListUTCenarios = new List<UTCenario>();
             cenarioNovo = repositorio.BuscarPorChave(cenario.Chave);
+
             foreach (Dispositivo dispositivo in cenarioNovo.Dispositivo)
             {
                ListUTCenarios = utCenarioRepositorio.Consultar(e => e.CD_Cenario == cenarioNovo.Chave && e.CD_Dispositivo == dispositivo.Chave).ToList();
                 var dispositivoNovo = dispositivoRepositorio.BuscarPorChave(dispositivo.Chave);
                 if (ListUTCenarios[0].CD_Dispositivo == dispositivo.Chave && ListUTCenarios[0].CD_Cenario == cenarioNovo.Chave)
                 {
+
                     dispositivoNovo.Status = ListUTCenarios[0].StatusDispositivo;
                     this.dispositivoRepositorio.Alterar(dispositivoNovo);
                 }
@@ -185,12 +187,12 @@ namespace HomeAutomexLibrary.Negocio
         public List<Cenario> ConsultarTodosCenarioPorUsuarioChave(int chave)
         {
 
-            return this.cenarioRepositorio.Consultar(e => e.Usuario == chave && e.Desativado == true).ToList();
+            return this.cenarioRepositorio.Consultar(e => e.Usuario == chave && e.Desativado == true).OrderByDescending(e => e.Chave).ToList();
         }
 
         public List<Cenario> ConsultarTodosCenario()
         {
-            return base.ConsultarTodos().ToList();
+            return base.ConsultarTodos().OrderByDescending(e => e.Chave).ToList();
         }
     }
 }
