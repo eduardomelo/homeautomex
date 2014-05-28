@@ -616,6 +616,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="DesativarCenarioDespositivo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jCenario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DesativarCenarioDespositivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DesativarCenarioDespositivoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ExcluirCenario">
         <s:complexType>
           <s:sequence>
@@ -1068,6 +1082,12 @@
   <wsdl:message name="AtivarCenarioDispositivoSoapOut">
     <wsdl:part name="parameters" element="tns:AtivarCenarioDispositivoResponse" />
   </wsdl:message>
+  <wsdl:message name="DesativarCenarioDespositivoSoapIn">
+    <wsdl:part name="parameters" element="tns:DesativarCenarioDespositivo" />
+  </wsdl:message>
+  <wsdl:message name="DesativarCenarioDespositivoSoapOut">
+    <wsdl:part name="parameters" element="tns:DesativarCenarioDespositivoResponse" />
+  </wsdl:message>
   <wsdl:message name="ExcluirCenarioSoapIn">
     <wsdl:part name="parameters" element="tns:ExcluirCenario" />
   </wsdl:message>
@@ -1330,6 +1350,10 @@
     <wsdl:operation name="AtivarCenarioDispositivo">
       <wsdl:input message="tns:AtivarCenarioDispositivoSoapIn" />
       <wsdl:output message="tns:AtivarCenarioDispositivoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DesativarCenarioDespositivo">
+      <wsdl:input message="tns:DesativarCenarioDespositivoSoapIn" />
+      <wsdl:output message="tns:DesativarCenarioDespositivoSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ExcluirCenario">
       <wsdl:input message="tns:ExcluirCenarioSoapIn" />
@@ -1793,6 +1817,15 @@
     </wsdl:operation>
     <wsdl:operation name="AtivarCenarioDispositivo">
       <soap:operation soapAction="http://tempuri.org/AtivarCenarioDispositivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesativarCenarioDespositivo">
+      <soap:operation soapAction="http://tempuri.org/DesativarCenarioDespositivo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2334,6 +2367,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DesativarCenarioDespositivo">
+      <soap12:operation soapAction="http://tempuri.org/DesativarCenarioDespositivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ExcluirCenario">
       <soap12:operation soapAction="http://tempuri.org/ExcluirCenario" style="document" />
       <wsdl:input>
@@ -2454,10 +2496,10 @@
   </wsdl:binding>
   <wsdl:service name="HomeAutomexWS">
     <wsdl:port name="HomeAutomexWSSoap" binding="tns:HomeAutomexWSSoap">
-      <soap:address location="http://localhost:54090/HomeAutomexWS.asmx" />
+      <soap:address location="http://localhost:8447/HomeAutomexWS.asmx" />
     </wsdl:port>
     <wsdl:port name="HomeAutomexWSSoap12" binding="tns:HomeAutomexWSSoap12">
-      <soap12:address location="http://localhost:54090/HomeAutomexWS.asmx" />
+      <soap12:address location="http://localhost:8447/HomeAutomexWS.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

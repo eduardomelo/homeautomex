@@ -337,6 +337,13 @@ namespace HomeAutomex.HomeAutomexService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AtivarCenarioDispositivo", ReplyAction="*")]
         System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.AtivarCenarioDispositivoResponse> AtivarCenarioDispositivoAsync(HomeAutomex.HomeAutomexService.AtivarCenarioDispositivoRequest request);
         
+        // CODEGEN: Generating message contract since element name jCenario from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DesativarCenarioDespositivo", ReplyAction="*")]
+        HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoResponse DesativarCenarioDespositivo(HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DesativarCenarioDespositivo", ReplyAction="*")]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoResponse> DesativarCenarioDespositivoAsync(HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoRequest request);
+        
         // CODEGEN: Generating message contract since element name jChave from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ExcluirCenario", ReplyAction="*")]
         HomeAutomex.HomeAutomexService.ExcluirCenarioResponse ExcluirCenario(HomeAutomex.HomeAutomexService.ExcluirCenarioRequest request);
@@ -3513,6 +3520,74 @@ namespace HomeAutomex.HomeAutomexService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class DesativarCenarioDespositivoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DesativarCenarioDespositivo", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoRequestBody Body;
+        
+        public DesativarCenarioDespositivoRequest() {
+        }
+        
+        public DesativarCenarioDespositivoRequest(HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class DesativarCenarioDespositivoRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string jCenario;
+        
+        public DesativarCenarioDespositivoRequestBody() {
+        }
+        
+        public DesativarCenarioDespositivoRequestBody(string jCenario) {
+            this.jCenario = jCenario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class DesativarCenarioDespositivoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DesativarCenarioDespositivoResponse", Namespace="http://tempuri.org/", Order=0)]
+        public HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoResponseBody Body;
+        
+        public DesativarCenarioDespositivoResponse() {
+        }
+        
+        public DesativarCenarioDespositivoResponse(HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class DesativarCenarioDespositivoResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string DesativarCenarioDespositivoResult;
+        
+        public DesativarCenarioDespositivoResponseBody() {
+        }
+        
+        public DesativarCenarioDespositivoResponseBody(string DesativarCenarioDespositivoResult) {
+            this.DesativarCenarioDespositivoResult = DesativarCenarioDespositivoResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class ExcluirCenarioRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ExcluirCenario", Namespace="http://tempuri.org/", Order=0)]
@@ -5542,6 +5617,31 @@ namespace HomeAutomex.HomeAutomexService {
             inValue.Body = new HomeAutomex.HomeAutomexService.AtivarCenarioDispositivoRequestBody();
             inValue.Body.jCenario = jCenario;
             return ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).AtivarCenarioDispositivoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoResponse HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.DesativarCenarioDespositivo(HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoRequest request) {
+            return base.Channel.DesativarCenarioDespositivo(request);
+        }
+        
+        public string DesativarCenarioDespositivo(string jCenario) {
+            HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoRequest inValue = new HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoRequestBody();
+            inValue.Body.jCenario = jCenario;
+            HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoResponse retVal = ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).DesativarCenarioDespositivo(inValue);
+            return retVal.Body.DesativarCenarioDespositivoResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoResponse> HomeAutomex.HomeAutomexService.HomeAutomexWSSoap.DesativarCenarioDespositivoAsync(HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoRequest request) {
+            return base.Channel.DesativarCenarioDespositivoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoResponse> DesativarCenarioDespositivoAsync(string jCenario) {
+            HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoRequest inValue = new HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoRequest();
+            inValue.Body = new HomeAutomex.HomeAutomexService.DesativarCenarioDespositivoRequestBody();
+            inValue.Body.jCenario = jCenario;
+            return ((HomeAutomex.HomeAutomexService.HomeAutomexWSSoap)(this)).DesativarCenarioDespositivoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

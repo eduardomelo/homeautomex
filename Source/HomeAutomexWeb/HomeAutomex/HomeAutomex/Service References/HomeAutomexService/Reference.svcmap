@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:54090/HomeAutomexWS.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8447/HomeAutomexWS.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="HomeAutomexWS.disco" MetadataType="Disco" ID="03bb9ed3-299c-485a-bf4c-d00478249bd0" SourceId="1" SourceUrl="http://localhost:54090/HomeAutomexWS.asmx?disco" />
-    <MetadataFile FileName="HomeAutomexWS.wsdl" MetadataType="Wsdl" ID="d6d975d1-d381-4257-8c15-baafe5d14963" SourceId="1" SourceUrl="http://localhost:54090/HomeAutomexWS.asmx?wsdl" />
+    <MetadataFile FileName="HomeAutomexWS1.disco" MetadataType="Disco" ID="917f67c2-3d4b-4061-8dd8-d8c83a36819d" SourceId="1" SourceUrl="http://localhost:8447/HomeAutomexWS.asmx?disco" />
+    <MetadataFile FileName="HomeAutomexWS1.wsdl" MetadataType="Wsdl" ID="09f649a0-bf06-471c-a877-8f47f4f08f14" SourceId="1" SourceUrl="http://localhost:8447/HomeAutomexWS.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
