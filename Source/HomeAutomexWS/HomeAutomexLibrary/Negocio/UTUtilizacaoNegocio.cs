@@ -20,7 +20,7 @@ namespace HomeAutomexLibrary.Negocio
 
         public string InserirUTDispositivo(UTDispositivo utDispositivo)
         {
-            utDispositivo.Cd_usuario = 99;
+            utDispositivo.Cd_usuario = 1;
             utDispositivo.UT_utilizacao = DateTime.Now;
             base.Inserir(utDispositivo);
 
@@ -36,7 +36,7 @@ namespace HomeAutomexLibrary.Negocio
         }
         public string AlterarUTDispositivo(UTDispositivo utDispositivo)
         {
-            utDispositivo.Cd_usuario = 99;
+            utDispositivo.Cd_usuario = 1;
             utDispositivo.UT_utilizacao = DateTime.Now;
             base.Inserir(utDispositivo);
 

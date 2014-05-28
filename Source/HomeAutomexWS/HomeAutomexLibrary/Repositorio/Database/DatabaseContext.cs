@@ -35,7 +35,7 @@ namespace HomeAutomexLibrary.Repositorio.Database
             modelBuilder.Configurations.Add(new AmbienteMap());
             modelBuilder.Configurations.Add(new CenarioMap());
             modelBuilder.Configurations.Add(new UTDispositivoMap());
-         //   modelBuilder.Configurations.Add(new UTCenarioMap());
+            modelBuilder.Configurations.Add(new UTCenarioMap());
             modelBuilder.Configurations.Add(new LogMap());
             modelBuilder.Configurations.Add(new PortaMap());
            

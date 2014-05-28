@@ -12,19 +12,21 @@ namespace HomeAutomexLibrary.Negocio
     public class CenarioNegocio : NegocioBase<Cenario, int>
     {
         private CenarioRepositorio cenarioRepositorio;
+        private UTCenarioRepositorio utCenarioRepositorio;
         private DispositivoRepositorio dispositivoRepositorio;
         private DatabaseContext contexto;
 
         public CenarioNegocio(DatabaseContext contexto)
         {
             this.contexto = contexto;
+            this.utCenarioRepositorio = new UTCenarioRepositorio(contexto);
             cenarioRepositorio = new CenarioRepositorio(contexto);
             dispositivoRepositorio = new DispositivoRepositorio(contexto);
         }
         public string InserirCenario(Cenario cenario)
         {
             cenario.Desativado = true;
-            cenarioRepositorio.Inserir(cenario); 
+            cenarioRepositorio.Inserir(cenario);
             try
             {
                 contexto.SaveChanges();
@@ -66,6 +68,8 @@ namespace HomeAutomexLibrary.Negocio
             cenario.Desativado = true;
             cenarioRepositorio.Alterar(cenario);
 
+
+
             try
             {
                 cenarioRepositorio.SaveChanges();
@@ -77,8 +81,6 @@ namespace HomeAutomexLibrary.Negocio
                 throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
-
-
         public string CriarCenarioDispositivo(Cenario cenarioNovo, bool status)
         {
             var ids = cenarioNovo.Dispositivo.Select(e => e.Chave).ToList();
@@ -91,9 +93,14 @@ namespace HomeAutomexLibrary.Negocio
                 dispositivo[0].Status = status;
 
             }
-
             cenario.Dispositivo.AddRange(dispositivo);
             cenarioRepositorio.Alterar(cenario);
+
+            var utCenario = new UTCenario();
+            utCenario.CD_Cenario = cenario.Chave;
+            utCenario.CD_Dispositivo = dispositivo[0].Chave;
+            utCenario.StatusDispositivo = status;
+            this.utCenarioRepositorio.Inserir(utCenario);
             try
             {
                 cenarioRepositorio.SaveChanges();
@@ -105,18 +112,29 @@ namespace HomeAutomexLibrary.Negocio
                 throw new Exception(ex.InnerException.Message != null ? ex.InnerException.Message : ex.Message);
             }
         }
-       
 
-      
+
+
         public string AtivarCenarioDispositivo(Cenario cenario)
         {
             var cenarioNovo = new Cenario();
+            List<UTCenario> utCenario = new List<UTCenario>();
+
             cenarioNovo = repositorio.BuscarPorChave(cenario.Chave);
+
             foreach (Dispositivo dispositivo in cenarioNovo.Dispositivo)
             {
+
+                 utCenario = utCenarioRepositorio.Consultar(e => e.CD_Cenario == cenario.Chave &&
+                 e.CD_Dispositivo == cenario.Dispositivo[0].Chave).ToList();
+
                 var dispositivoNovo = dispositivoRepositorio.BuscarPorChave(dispositivo.Chave);
-                dispositivoNovo.Status = true;
-                this.dispositivoRepositorio.Alterar(dispositivoNovo);
+                if (utCenario[0].CD_Dispositivo == dispositivo.Chave)
+                {
+
+                    dispositivo.Status = utCenario[0].StatusDispositivo;
+                    this.dispositivoRepositorio.Alterar(dispositivoNovo);
+                }
             }
             try
             {
@@ -157,7 +175,7 @@ namespace HomeAutomexLibrary.Negocio
             cenario = BuscarPorChave(chave);
             cenario.Desativado = false;
             base.Alterar(cenario);
-        //    base.RemoverPorChave(chave);
+            //    base.RemoverPorChave(chave);
             try
             {
                 base.SaveChanges();
