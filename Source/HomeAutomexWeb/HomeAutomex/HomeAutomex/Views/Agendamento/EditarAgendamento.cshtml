@@ -34,7 +34,7 @@
             @Html.LabelFor(model => model.DataAgendamento)
         </div> 
                       <div class="editor-field">
-            @Html.EditorFor(model => model.DataAgendamento)
+             @Html.Editor("DataHoraAgendamento")
         @*    @Html.ValidationMessageFor(model => model.DataAgendamento)*@
         </div> 
         <br />
@@ -51,3 +51,9 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script src="~/Scripts/jquery.mask.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#DataHoraAgendamento").mask('00/00/0000 00:00:00');
+    });
+</script>
