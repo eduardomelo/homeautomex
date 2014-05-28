@@ -112,9 +112,9 @@ namespace HomeAutomex.Controllers
             return View();
         }
     
-        [HttpPost]
+      [HttpPost]
         [AllowAnonymous]
-        public ActionResult EditarAgendamento(AgendamentoModel model)
+        public ActionResult EditarAgendamento(AgendamentoModel model, string DataHoraAgendamento)
         {
             if (ModelState.IsValid)
             {
@@ -132,9 +132,9 @@ namespace HomeAutomex.Controllers
 
                         return RedirectToAction("SessaoExpirou", "Account");
                     }
-                       agendamento.DataAgendamento = DateTime.Now;
+                 
                     var webService = new HomeAutomexWSSoapClient();
-
+                    agendamento.DataAgendamento = Convert.ToDateTime(DataHoraAgendamento);
                     var x = webService.AlterarAgendamento(JsonConvert.SerializeObject(agendamento));
                     if (x.StartsWith("Erro:"))
                     {
@@ -147,11 +147,12 @@ namespace HomeAutomex.Controllers
                 }
                 catch (MembershipCreateUserException e)
                 {
-                    ModelState.AddModelError("", e);
+                   //
                 }
 
             }
             return View(model);
+        
         }
         [AllowAnonymous]
         public ActionResult DeleteAgendamento(int chave)
