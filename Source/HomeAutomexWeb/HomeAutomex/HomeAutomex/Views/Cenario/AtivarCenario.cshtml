@@ -19,7 +19,25 @@
         </div><br /><br />
 
         <p>
-            <input type="submit" value="Registrar" class="btn-glow primary login" />
+            <input type="submit" value="Ativar" class="btn-glow primary login" />
+        </p>
+    </fieldset>
+}
+
+@using (Html.BeginForm("DesativarCenarioDespositivo", "Cenario"))
+{
+    <fieldset>
+        <legend>Desativar Cenário</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Descricao)
+        </div>
+        <div>
+            @Html.DropDownListFor(model => model.Chave, ViewBag.Cenario as List<SelectListItem>, "Selecione...", new { @class = "inputCenario" })
+        </div><br /><br />
+
+        <p>
+            <input type="submit" value="Desativar" class="btn-glow primary login" />
         </p>
     </fieldset>
 }

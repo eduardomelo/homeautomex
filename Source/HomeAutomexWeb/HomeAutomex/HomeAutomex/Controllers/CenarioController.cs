@@ -59,10 +59,6 @@ namespace HomeAutomex.Controllers
             }
             catch (Exception)
             {
-
-
-
-
                 return RedirectToAction("SessaoExpirou", "Account");
 
             }
@@ -131,6 +127,35 @@ namespace HomeAutomex.Controllers
         }
         [HttpPost]
         [AllowAnonymous]
+        public ActionResult DesativarCenarioDespositivo(CenarioModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var webService = new HomeAutomexWSSoapClient();
+                    var cenario = JsonConvert.SerializeObject(model);
+                    var x = webService.DesativarCenarioDespositivo(cenario);
+                    if (x.StartsWith("Erro:"))
+                    {
+                        ModelState.AddModelError("WSErro", x);
+                    }
+                    else
+                    {
+                        return RedirectToAction("ListarCenario", "Cenario");
+                    }
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", e);
+                }
+
+            }
+            ViewBag.Cenario = GetDropDownCenario();
+            return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult RegistrarCenario(CenarioModel model)
         {
@@ -150,7 +175,7 @@ namespace HomeAutomex.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("ListarCenario", "Cenario");
+                        return RedirectToAction("AssociarDispositivo", "Cenario");
                     }
                 }
                 catch (MembershipCreateUserException e)
