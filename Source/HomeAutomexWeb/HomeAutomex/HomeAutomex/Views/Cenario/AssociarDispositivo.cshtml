@@ -105,7 +105,7 @@
                                                                                     <li>
                                                                                         Ligar @Html.RadioButton("Ativar" + @dispositivo.Chave, "Ligar", true, new { @class = "rdbAtivar" })
                                                                                         Desligar @Html.RadioButton("Ativar" + @dispositivo.Chave, "Desligar", false, new { @class = "rdbAtivar" })
-                                                                                        @Html.CheckBox("dispositivo",  new { @class = "ckbSwitch", id = dispositivo.Chave })
+                                                                                        @Html.CheckBox("dispositivo", dispositivo.Status, new { @class = "ckbSwitch", id = dispositivo.Chave })
                                                                                  
                                                                                     </li>
                                                                                 </ul>
