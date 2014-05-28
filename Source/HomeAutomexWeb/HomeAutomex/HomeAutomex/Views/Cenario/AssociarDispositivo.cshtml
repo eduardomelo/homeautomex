@@ -3,13 +3,15 @@
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<div class="editor-label" style="margin:auto; width:70%">
 <legend>Criar Cenário - Escolha os dispositivos que estaram em seu cenário!</legend>
 <div class="editor-label">
 </div>
-<div class="editor-label" style="margin-left: 35px;">
+<div>
+
     @Html.DropDownList("Cenario", ViewBag.Cenario as List<SelectListItem>, new { @class = "inputCenario" })
 </div>
+
 <br />
 <br />
 <div class="container">
@@ -33,7 +35,8 @@
 
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="#"><i class="icon-pencil"></i>Editar residência</a>
+                                            <li>@Html.ActionLink("Editar Residência", "EditarResidencia", "Residencia", new { chave = @residencia.Chave })
+        
                                         </li>
                                     </ul>
                                 </div>
@@ -130,10 +133,11 @@
                     <!-- /accordion -->
                 </div>
             </div>
+
         </div>
     }
 </div>
-
+  </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
