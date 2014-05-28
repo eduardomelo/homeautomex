@@ -175,30 +175,30 @@
                     <div class="arrow_border"></div>
                 </div>
                 <a href="@Url.Action("Index", "Home")">
-                    <i class="icon-home"></i>
+                    <i class="icon-th-large"></i>
                     <span>Home</span>
                 </a>
             </li>
-            <li>
-                <a class="dropdown-toggle" href="#">
+                        <li >
+                <div class="pointer">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+                <a href="@Url.Action("ListarDispositivo", "DispositivosFavoritos")">
                     <i class="icon-star"></i>
-                    <span>Favorito</span>
-                    <i class="icon-chevron-down"></i>
+                    <span>Favoritos</span>
                 </a>
-                <ul class="submenu">
-                    <li>@Html.ActionLink("Meus Favoritos", "ListarDispositivo", "DispositivosFavoritos")</li>
-
-                </ul>
             </li>
-                        <li>
+          
+               <li>
                 <a class="dropdown-toggle" href="#">
-                    <i class="icon-camera-retro"></i>
+                    <i class="icon-film"></i>
                     <span>Cenário</span>
                     <i class="icon-chevron-down"></i>
                 </a>
                 <ul class="submenu">
                      <li>@Html.ActionLink("Ativar Cenário", "AtivarCenario", "Cenario")</li>
-                    <li>@Html.ActionLink("ADD Dispositivos", "AssociarDispositivo", "Cenario")</li>
+                    <li>@Html.ActionLink("Dispositivos", "AssociarDispositivo", "Cenario")</li>
                     <li>@Html.ActionLink("Novo Cenário", "ListarCenario", "Cenario")</li>
                      
 
@@ -218,44 +218,59 @@
 
                 </ul>
             </li>
-            <li>
-                <a class="dropdown-toggle" href="#">
+
+             <li >
+                <div class="pointer">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+                <a href="@Url.Action("ListarUsuario", "Account")">
                     <i class="icon-group"></i>
                     <span>Usuários</span>
-                    <i class="icon-chevron-down"></i>
                 </a>
-                <ul class="submenu">
-                    <li>@Html.ActionLink("Usuários", "ListarUsuario", "Account")</li>
-
-                </ul>
             </li>
-             
-            <li>
-                <a class="dropdown-toggle" href="#">
-
-                    <span>Agendamento</span>
+                       <li >
+                <div class="pointer">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+                <a href="@Url.Action("ListarAgendamento", "Agendamento")">
                     <i class="icon-edit"></i>
+                    <span>Agendamento</span>
                 </a>
-                <ul class="submenu">
-                      <li>@Html.ActionLink("Agendamento", "ListarAgendamento", "Agendamento")</li>
-
-                </ul>
             </li>
-                  
-            <li>
-                <a class="dropdown-toggle" href="tables.html">
-                    <i class="icon-th-large"></i>
+          
+             <li >
+                <div class="pointer">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+                <a href="@Url.Action("ListarResidencia", "Residencia")">
+                    <i class="icon-home"></i>
+                    <span>Residência</span>
+                </a>
+            </li> 
+             <li >
+                <div class="pointer">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+                <a href="@Url.Action("ListarAmbiente", "Ambiente")">
+                    <i class="icon-qrcode"></i>
+                    <span>Ambiente</span>
+                </a>
+            </li>
+             <li >
+                <div class="pointer">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+                <a href="@Url.Action("ListarDispositivo", "Dispositivo")">
+                    <i class="icon-sitemap"></i>
                     <span>Dispositivo</span>
-                    <i class="icon-chevron-down"></i>
                 </a>
-                <ul class="submenu">
-                    <li>@Html.ActionLink("Residência", "ListarResidencia", "Residencia")</li>
-                    <li>@Html.ActionLink("Ambiente", "ListarAmbiente", "Ambiente")</li>
-                    <li>@Html.ActionLink("Dispositivo", "ListarDispositivo", "Dispositivo")</li>
-                    
-
-                </ul>
             </li>
+           
             <li>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-cog"></i>
