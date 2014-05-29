@@ -24,14 +24,14 @@ namespace HomeAutomexWebApplication
     public class HomeAutomexWS : System.Web.Services.WebService
     {
         private Fachada fachada;
-        private UTDispositivo utDispositivo;
+     
         private Log log;
         public HomeAutomexWS()
         {
           
 
             this.log = new Log();
-            this.utDispositivo = new UTDispositivo();
+          
             this.fachada = new Fachada();
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings
 
@@ -330,9 +330,6 @@ namespace HomeAutomexWebApplication
             var dispositivo = JsonConvert.DeserializeObject<Dispositivo>(jDispositivo);
             log.Descricao = "Usuario cadastrou um dispositivo " + dispositivo.Descricao;
             var retornoLog = fachada.InserirLog(log);
-            utDispositivo.Cd_dispositivo = dispositivo.Chave;
-            utDispositivo.status = dispositivo.Status;
-            fachada.InserirUTDispositivo(utDispositivo);
             var retorno = fachada.InserirDispositivo(dispositivo);
             return retorno;
         }
@@ -360,6 +357,17 @@ namespace HomeAutomexWebApplication
             return JsonConvert.SerializeObject(fachada.ConsutarTodosDispositivoFavorito(chave));
         }
         [WebMethod]
+        public string ConsultarHistoriocoUsuPorIntervaloData(DateTime JDataInicial, DateTime JDataFinal)
+        {
+            return JsonConvert.SerializeObject(fachada.ConsultarHistoriocoUsuPorIntervaloData(JDataInicial, JDataFinal));
+        }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string ConsultarTodosUTDispositivo()
+        {
+            return JsonConvert.SerializeObject(fachada.ConsultarTodosUTDispositivo());
+        }
+        [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string BuscarDispositivoPorChave(string jChave)
         {
@@ -377,11 +385,6 @@ namespace HomeAutomexWebApplication
 
             log.Descricao = "Usuario alterou um dispositivo " + dispositivo.Descricao;
             var retornoLog = fachada.InserirLog(log);
-
-            // Registrar log de uso.
-            utDispositivo.Cd_dispositivo = dispositivo.Chave;
-            utDispositivo.status = dispositivo.Status;
-            fachada.InserirUTDispositivo(utDispositivo);
 
             // Alterar registro.
             var retorno = fachada.AlterarDispositivo(dispositivo);
@@ -632,8 +635,6 @@ namespace HomeAutomexWebApplication
             // Registrar log.
             log.Descricao = "Usuario alterou um agendamento " + agendamento.Descricao;
             var retornoLog = fachada.InserirLog(log);
-
-            fachada.InserirUTDispositivo(utDispositivo);
 
             // Alterar registro.
             var retorno = fachada.AlterarAgendamento(agendamento);
