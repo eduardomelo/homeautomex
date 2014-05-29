@@ -20,8 +20,7 @@ namespace HomeAutomexLibrary.Negocio
 
         public string InserirUTDispositivo(UTDispositivo utDispositivo)
         {
-            utDispositivo.Cd_usuario = 1;
-            utDispositivo.UT_utilizacao = DateTime.Now;
+            
             base.Inserir(utDispositivo);
 
             try
@@ -36,8 +35,7 @@ namespace HomeAutomexLibrary.Negocio
         }
         public string AlterarUTDispositivo(UTDispositivo utDispositivo)
         {
-            utDispositivo.Cd_usuario = 1;
-            utDispositivo.UT_utilizacao = DateTime.Now;
+           
             base.Inserir(utDispositivo);
 
             try
@@ -53,6 +51,13 @@ namespace HomeAutomexLibrary.Negocio
         public List<UTDispositivo> ConsultarTodosUTDispositivo()
         {
             return base.ConsultarTodos().ToList();
+        }
+
+        public List<UTDispositivo> ConsultarHistoriocoUsuPorIntervaloData(DateTime DataInicial, DateTime DataFinal)
+        {
+            return base.Consultar(e => e.UT_utilizacao >= DataInicial &&
+            e.UT_utilizacao <= DataFinal).ToList();
+
         }
 
 

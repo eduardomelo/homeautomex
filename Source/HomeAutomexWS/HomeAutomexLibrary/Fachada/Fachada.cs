@@ -65,6 +65,10 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.logNegocio.ConsultarTodosLog();
         }
+        public List<Log> ConsultarLogPorIntervaloData(DateTime DataInicial, DateTime DataFinal)
+        {
+            return this.logNegocio.ConsultarPorIntervaloData(DataInicial, DataFinal);
+        }
         #endregion
         
         #region UTDispositivo
@@ -212,6 +216,10 @@ namespace HomeAutomexLibrary.Fachada
         {
             return this.dispositivoNegocio.ConsutarTodosDispositivoFavorito(chave);
         }
+        public List<UTDispositivo> ConsultarHistoriocoUsuPorIntervaloData(DateTime DataInicial, DateTime DataFinal)
+        {
+            return this.utDispositivoNegocio.ConsultarHistoriocoUsuPorIntervaloData(DataInicial, DataFinal);
+        }
         public List<Dispositivo> ConsutarTodosDispositivoFavorito()
         {
             return this.dispositivoNegocio.ConsutarTodosDispositivoFavorito();
@@ -338,10 +346,6 @@ namespace HomeAutomexLibrary.Fachada
         public List<Agendamento> ConsutarTodosAgendamento()
         {
             return this.agendamentoNegocio.ConsultarTodosAgendamento();
-        }
-        public List<Log> ConsultarLogPorIntervaloData(DateTime DataInicial, DateTime DataFinal)
-        {
-            return this.logNegocio.ConsultarPorIntervaloData(DataInicial, DataFinal);
         }
         public List<Agendamento> ConsultarTodosAgendamentoPorUsuarioChave(int chave)
         {

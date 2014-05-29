@@ -17,6 +17,7 @@ namespace HomeAutomexLibrary.Negocio
         private AmbienteRepositorio ambienteRepositorio;
         private PortaRepositorio portaRepositorio;
         private ModuloRepositorio moduloRepositorio;
+        private UTDispositivoRepositorio UTDispositivoRepositorio;
 
         public DispositivoNegocio(DatabaseContext contexto)
         {
@@ -25,6 +26,7 @@ namespace HomeAutomexLibrary.Negocio
             this.ambienteRepositorio = new AmbienteRepositorio(contexto);
             this.portaRepositorio = new PortaRepositorio(contexto);
             this.moduloRepositorio = new ModuloRepositorio(contexto);
+            this.UTDispositivoRepositorio = new UTDispositivoRepositorio(contexto);
         }
 
         public string InserirDispositivo(Dispositivo dispositivo)
@@ -32,6 +34,13 @@ namespace HomeAutomexLibrary.Negocio
             dispositivo.Ambiente = ambienteRepositorio.BuscarPorChave(dispositivo.Ambiente.Chave);
             dispositivo.Porta = portaRepositorio.BuscarPorChave(dispositivo.Porta.Chave);
             dispositivoRepositorio.Inserir(dispositivo);
+
+            var UTDispositivo = new UTDispositivo();
+            UTDispositivo.Descricao = dispositivo.Descricao;
+            UTDispositivo.Nome = dispositivo.Ambiente.Residencia.Usuarios[0].Nome;
+            UTDispositivo.UT_utilizacao = DateTime.Now;
+            UTDispositivo.status = dispositivo.Status;
+            this.UTDispositivoRepositorio.Inserir(UTDispositivo);
 
             try
             {
@@ -55,6 +64,30 @@ namespace HomeAutomexLibrary.Negocio
             disp.Desativado = dispositivo.Desativado;
 
             dispositivoRepositorio.Alterar(disp);
+
+
+           
+            if (dispositivo.Status == true)
+            {
+                var UTDispositivo = new UTDispositivo();
+                UTDispositivo.Nome = "Usuário: " + dispositivo.Ambiente.Residencia.Usuarios[0].Nome + " ativou dispositivo!";
+                UTDispositivo.Descricao = dispositivo.Descricao;
+                UTDispositivo.UT_utilizacao = DateTime.Now;
+                UTDispositivo.status = dispositivo.Status;
+                this.UTDispositivoRepositorio.Inserir(UTDispositivo);
+            }
+            else {
+
+                var UTDispositivo = new UTDispositivo();
+                UTDispositivo.Nome = "Usuário: " + dispositivo.Ambiente.Residencia.Usuarios[0].Nome + " realizou alterações!";
+                UTDispositivo.Descricao = dispositivo.Descricao;
+                UTDispositivo.UT_utilizacao = DateTime.Now;
+                UTDispositivo.status = dispositivo.Status;
+                this.UTDispositivoRepositorio.Inserir(UTDispositivo);
+            }
+
+          
+          
             try
             {
                 contexto.SaveChanges();

@@ -21,8 +21,8 @@ namespace HomeAutomexLibrary.Repositorio.Map
                 .HasColumnName("CD_UT_DISPOSITIVO")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            Property(e => e.Cd_usuario).HasColumnName("ID_USUARIO").IsRequired();
-            Property(e => e.Cd_dispositivo).HasColumnName("CD_DIPOSITIVO");
+            Property(e => e.Descricao).HasColumnName("DESCRICAO").IsRequired();
+            Property(e => e.Nome).HasColumnName("USUARIO").IsRequired();
             Property(e => e.UT_utilizacao).HasColumnName("DT_ULTILIZACAO");
             Property(e => e.status).HasColumnName("STATUS");
 

@@ -14,14 +14,16 @@ namespace HomeAutomexLibrary.Negocio
         private CenarioRepositorio cenarioRepositorio;
         private UTCenarioRepositorio utCenarioRepositorio;
         private DispositivoRepositorio dispositivoRepositorio;
+        private UTDispositivoRepositorio UTDispositivoRepositorio;
         private DatabaseContext contexto;
 
         public CenarioNegocio(DatabaseContext contexto)
         {
             this.contexto = contexto;
             this.utCenarioRepositorio = new UTCenarioRepositorio(contexto);
-            cenarioRepositorio = new CenarioRepositorio(contexto);
-            dispositivoRepositorio = new DispositivoRepositorio(contexto);
+            this.cenarioRepositorio = new CenarioRepositorio(contexto);
+            this.dispositivoRepositorio = new DispositivoRepositorio(contexto);
+            this.UTDispositivoRepositorio = new UTDispositivoRepositorio(contexto);
         }
         public string InserirCenario(Cenario cenario)
         {
@@ -118,19 +120,30 @@ namespace HomeAutomexLibrary.Negocio
         public string AtivarCenarioDispositivo(Cenario cenario)
         {
             var cenarioNovo = new Cenario();
-        
+
             List<UTCenario> ListUTCenarios = new List<UTCenario>();
             cenarioNovo = repositorio.BuscarPorChave(cenario.Chave);
 
             foreach (Dispositivo dispositivo in cenarioNovo.Dispositivo)
             {
-               ListUTCenarios = utCenarioRepositorio.Consultar(e => e.CD_Cenario == cenarioNovo.Chave && e.CD_Dispositivo == dispositivo.Chave).ToList();
+                ListUTCenarios = utCenarioRepositorio.Consultar(e => e.CD_Cenario == cenarioNovo.Chave && e.CD_Dispositivo == dispositivo.Chave).ToList();
                 var dispositivoNovo = dispositivoRepositorio.BuscarPorChave(dispositivo.Chave);
                 if (ListUTCenarios[0].CD_Dispositivo == dispositivo.Chave && ListUTCenarios[0].CD_Cenario == cenarioNovo.Chave)
                 {
 
                     dispositivoNovo.Status = ListUTCenarios[0].StatusDispositivo;
                     this.dispositivoRepositorio.Alterar(dispositivoNovo);
+
+                    if (dispositivo.Status == true)
+                    {
+                        // Registrando o histórico de utilização!
+                        var UTDispositivo = new UTDispositivo();
+                        UTDispositivo.Nome = "Usuário: " + dispositivoNovo.Ambiente.Residencia.Usuarios[0].Nome + " ativou dispositivo!";
+                        UTDispositivo.Descricao = dispositivoNovo.Descricao;
+                        UTDispositivo.UT_utilizacao = DateTime.Now;
+                        UTDispositivo.status = dispositivoNovo.Status;
+                        this.UTDispositivoRepositorio.Inserir(UTDispositivo);
+                    }
                 }
             }
             try

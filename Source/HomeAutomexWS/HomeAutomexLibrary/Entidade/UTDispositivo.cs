@@ -7,8 +7,8 @@ namespace HomeAutomexLibrary.Entidade
 {
     public class UTDispositivo : EntidadeBase<int>
     {
-        public int Cd_usuario { get; set; }
-        public int Cd_dispositivo { get; set; }
+        public string Descricao { get; set; }
+        public string Nome { get; set; }
         public DateTime? UT_utilizacao { get; set; }
         public bool status { get; set; }
    }
