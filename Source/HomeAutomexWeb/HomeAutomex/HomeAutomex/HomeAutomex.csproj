@@ -224,6 +224,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CenarioModel.cs" />
     <Compile Include="Models\AgendamentoModel.cs" />
+    <Compile Include="Models\UTDispositivo.cs" />
     <Compile Include="Models\DispositivoModel.cs" />
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="Models\ModuloModel.cs" />
@@ -587,13 +588,20 @@
     <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.InserirDispositivoCenarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\HomeAutomexService\HomeAutomexWS.disco" />
     <None Include="Service References\HomeAutomexService\configuration91.svcinfo" />
     <None Include="Service References\HomeAutomexService\configuration.svcinfo" />
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsultarHistoriocoUsuPorIntervaloDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\HomeAutomexService\HomeAutomex.HomeAutomexService.ConsultarTodosUTDispositivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\HomeAutomexService\HomeAutomexWS1.wsdl" />
     <None Include="Service References\HomeAutomexService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\HomeAutomexService\HomeAutomexWS1.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -669,12 +677,12 @@
     <Content Include="Views\Agendamento\RegistrarAgendamento.cshtml" />
     <Content Include="Views\Agendamento\ListarAgendamento.cshtml" />
     <Content Include="Views\Agendamento\EditarAgendamento.cshtml" />
-    <None Include="Service References\HomeAutomexService\HomeAutomexWS.wsdl" />
     <Content Include="Views\Cenario\AssociarDispositivo.cshtml" />
     <Content Include="Views\Cenario\RegistrarCenario.cshtml" />
     <Content Include="Views\Cenario\AtivarCenario.cshtml" />
     <Content Include="Views\Relatorio\ListarLogs.cshtml" />
     <Content Include="Views\Cenario\DesativarCenario.cshtml" />
+    <Content Include="Views\Relatorio\ListarHistoricoUsoDispositivo.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

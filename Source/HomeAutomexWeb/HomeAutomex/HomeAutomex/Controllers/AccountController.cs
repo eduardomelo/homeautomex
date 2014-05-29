@@ -70,17 +70,8 @@ namespace HomeAutomex.Controllers
             {
                 if (ModelState.IsValid && Membership.ValidateUser(model.UserName, model.Password))
                 {
-                    try
-                    {
-                        FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                        return Redirect(returnUrl ?? Url.Action("Index", "Home"));
-                    }
-                    catch (Exception)
-                    {
-
-                        return null;
-                    }
-                   
+                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                    return Redirect(returnUrl ?? Url.Action("Index", "Home"));
                 }
                 return View(model);
             }
