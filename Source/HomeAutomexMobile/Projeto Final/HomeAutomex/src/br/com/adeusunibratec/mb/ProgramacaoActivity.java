@@ -8,9 +8,7 @@ import org.json.JSONException;
 import org.xmlpull.v1.XmlPullParserException;
 
 import br.com.adeusunibratec.acesso.AcessoWSDL;
-import br.com.adeusunibratec.ha.R;
-import br.com.adeusunibratec.ha.R.layout;
-import br.com.adeusunibratec.ha.R.menu;
+
 import br.com.adeusunibratec.mb.CenarioActivity.CadastroCenarioTask;
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
 import android.os.AsyncTask;

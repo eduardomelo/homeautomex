@@ -30,7 +30,7 @@ import br.com.adeusunibratec.bean.AmbienteGson;
 import br.com.adeusunibratec.bean.Cenario;
 import br.com.adeusunibratec.bean.Dispositivo;
 import br.com.adeusunibratec.bean.DispositivoGson;
-import br.com.adeusunibratec.ha.R;
+import br.com.adeusunibratec.mb.R;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

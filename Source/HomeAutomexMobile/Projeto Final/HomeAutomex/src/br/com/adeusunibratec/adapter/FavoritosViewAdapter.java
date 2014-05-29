@@ -14,7 +14,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import br.com.adeusunibratec.acesso.AcessoWSDL;
 import br.com.adeusunibratec.adapter.AmbientesAdapter.LigarTask;
 import br.com.adeusunibratec.bean.Ambiente;
-import br.com.adeusunibratec.ha.R;
+import br.com.adeusunibratec.mb.R;
 import br.com.adeusunibratec.mb.FavoritosActivity;
 
 import android.content.Context;

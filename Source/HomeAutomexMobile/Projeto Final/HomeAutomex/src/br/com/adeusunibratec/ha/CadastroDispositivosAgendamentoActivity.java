@@ -28,6 +28,7 @@ import br.com.adeusunibratec.bean.Dispositivo;
 import br.com.adeusunibratec.bean.DispositivoGson;
 import br.com.adeusunibratec.bean.Residencia;
 import br.com.adeusunibratec.ha.CadastroDispositivosCenarioActivity.ResidenciaTask;
+import br.com.adeusunibratec.mb.R;
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
 import br.com.adeusunibratec.parse.JSONParserManager;
 import android.os.AsyncTask;

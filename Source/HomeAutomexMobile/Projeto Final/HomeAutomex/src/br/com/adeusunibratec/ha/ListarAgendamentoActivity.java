@@ -17,6 +17,7 @@ import br.com.adeusunibratec.bean.Ambiente;
 import br.com.adeusunibratec.bean.DispositivoGson;
 import br.com.adeusunibratec.bean.Residencia;
 import br.com.adeusunibratec.ha.ListarCenariosActivity.ResidenciaTask;
+import br.com.adeusunibratec.mb.R;
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
 import android.os.AsyncTask;
 import android.os.Bundle;

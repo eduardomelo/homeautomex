@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package br.com.adeusunibratec.ha;
+package br.com.adeusunibratec.mb;
 
 public final class R {
     public static final class anim {
@@ -255,12 +255,12 @@ containing a value of this type.
         public static final int setafrente=0x7f02003a;
     }
     public static final class id {
-        public static final int ListarAgendamento=0x7f06004a;
-        public static final int ListarAmbiente=0x7f060048;
-        public static final int ListarCenario=0x7f060049;
+        public static final int ListarAgendamento=0x7f06004b;
+        public static final int ListarAmbiente=0x7f060049;
+        public static final int ListarCenario=0x7f06004a;
         public static final int RelativeLayout1=0x7f06001a;
-        public static final int action_settings=0x7f060046;
-        public static final int address=0x7f06002d;
+        public static final int action_settings=0x7f060047;
+        public static final int address=0x7f06002e;
         public static final int btnAgendamento=0x7f06001f;
         public static final int btnAmbiente=0x7f06001c;
         public static final int btnCadastroAgendamento=0x7f06000d;
@@ -272,67 +272,68 @@ containing a value of this type.
         public static final int btnConfiguracao=0x7f06001d;
         public static final int btnFavorito=0x7f06001e;
         public static final int btnLogin=0x7f060017;
-        public static final int cadastrarAgendamento=0x7f06004b;
-        public static final int cadastroFavorito=0x7f060047;
-        public static final int checkBox1=0x7f06003e;
-        public static final int checkBoxAgendamento=0x7f060026;
+        public static final int cadastrarAgendamento=0x7f06004c;
+        public static final int cadastroFavorito=0x7f060048;
+        public static final int checkBox1=0x7f06003f;
+        public static final int checkBoxAgendamento=0x7f060027;
         public static final int container=0x7f060019;
-        public static final int deal=0x7f060030;
-        public static final int descricaoCenario=0x7f060040;
-        public static final int descricaoDispositivo=0x7f060034;
+        public static final int deal=0x7f060031;
+        public static final int descricaoCenario=0x7f060041;
+        public static final int descricaoDispositivo=0x7f060035;
         public static final int display=0x7f060018;
-        public static final int editAgendamento=0x7f060021;
+        public static final int editAgendamento=0x7f060022;
         public static final int editDescricaoCenario=0x7f06000b;
         public static final int editLogin=0x7f060015;
         public static final int editSenha=0x7f060013;
-        public static final int editText1=0x7f060024;
-        public static final int editText2=0x7f060025;
-        public static final int editTextData=0x7f060023;
-        public static final int editTextHora=0x7f060028;
+        public static final int editText1=0x7f060025;
+        public static final int editText2=0x7f060026;
+        public static final int editTextData=0x7f060024;
+        public static final int editTextHora=0x7f060029;
         public static final int expandableListView1=0x7f060005;
         public static final int expandableListViewCadastroDispositivo=0x7f060008;
         public static final int expandableListViewCadastroDispositivoAgendamento=0x7f060007;
         public static final int hybrid=0x7f060004;
-        public static final int imageView1=0x7f060042;
-        public static final int lblListItem=0x7f06003d;
-        public static final int lin_lay=0x7f060032;
-        public static final int listView1=0x7f060031;
+        public static final int imageView1=0x7f060043;
+        public static final int lblListItem=0x7f06003e;
+        public static final int lin_lay=0x7f060033;
+        public static final int listView1=0x7f060032;
         public static final int listViewAgendamento=0x7f060010;
         public static final int listViewCenarios=0x7f060011;
         public static final int listViewFavoritos=0x7f060012;
-        public static final int list_Usuarios=0x7f060020;
-        public static final int logo=0x7f060033;
-        public static final int name=0x7f06002f;
+        public static final int list_Usuarios=0x7f060021;
+        public static final int logo=0x7f060034;
+        public static final int name=0x7f060030;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
-        public static final int opcaoUsuario=0x7f06004c;
-        public static final int programacao=0x7f06004d;
+        public static final int opcaoUsuario=0x7f06004d;
+        public static final int programacao=0x7f06004e;
         public static final int satellite=0x7f060002;
-        public static final int section_label=0x7f060036;
-        public static final int switch1=0x7f06003f;
-        public static final int switchCenario=0x7f060041;
-        public static final int switchFavoritos=0x7f060035;
+        public static final int section_label=0x7f060037;
+        public static final int switch1=0x7f060040;
+        public static final int switchCenario=0x7f060042;
+        public static final int switchFavoritos=0x7f060036;
+        public static final int switchPortao=0x7f060020;
         public static final int terrain=0x7f060003;
-        public static final int textBairro=0x7f060045;
+        public static final int textBairro=0x7f060046;
         public static final int textBoasVindas=0x7f060006;
         public static final int textLogin=0x7f060014;
-        public static final int textNumero=0x7f060043;
-        public static final int textResidencia=0x7f060044;
+        public static final int textNumero=0x7f060044;
+        public static final int textResidencia=0x7f060045;
         public static final int textSenha=0x7f060016;
         public static final int textView1=0x7f060009;
-        public static final int textView2=0x7f060022;
-        public static final int textView3=0x7f060027;
-        public static final int textView4=0x7f06002b;
-        public static final int textView5=0x7f06002a;
-        public static final int textView6=0x7f06002e;
-        public static final int textView7=0x7f06002c;
-        public static final int txtCelular=0x7f060039;
-        public static final int txtEmail=0x7f06003a;
-        public static final int txtLogin=0x7f06003b;
-        public static final int txtNomeUsuario=0x7f060037;
-        public static final int txtSenha=0x7f06003c;
-        public static final int txtTelefone=0x7f060038;
-        public static final int valid=0x7f060029;
+        public static final int textView2=0x7f060023;
+        public static final int textView3=0x7f060028;
+        public static final int textView4=0x7f06002c;
+        public static final int textView5=0x7f06002b;
+        public static final int textView6=0x7f06002f;
+        public static final int textView7=0x7f06002d;
+        public static final int txtCelular=0x7f06003a;
+        public static final int txtEmail=0x7f06003b;
+        public static final int txtLogin=0x7f06003c;
+        public static final int txtNomeUsuario=0x7f060038;
+        public static final int txtSenha=0x7f06003d;
+        public static final int txtTelefone=0x7f060039;
+        public static final int valid=0x7f06002a;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f080000;
@@ -350,25 +351,26 @@ containing a value of this type.
         public static final int activity_login=0x7f030009;
         public static final int activity_main=0x7f03000a;
         public static final int activity_opcoes_usuarios=0x7f03000b;
-        public static final int activity_principal=0x7f03000c;
-        public static final int activity_programacao=0x7f03000d;
-        public static final int activity_receive=0x7f03000e;
-        public static final int activity_residencias=0x7f03000f;
-        public static final int activity_splash=0x7f030010;
-        public static final int favorito_adapter_layout=0x7f030011;
-        public static final int fragment_listar_favoritos_dummy=0x7f030012;
-        public static final int fragment_main_dummy=0x7f030013;
-        public static final int gradient=0x7f030014;
-        public static final int layout_botoes=0x7f030015;
-        public static final int linha_usuarios=0x7f030016;
-        public static final int list_group=0x7f030017;
-        public static final int list_item=0x7f030018;
-        public static final int list_item_ambiente=0x7f030019;
-        public static final int list_item_cadastrodispositivoagendamento=0x7f03001a;
-        public static final int list_item_cadastrodispositivocenario=0x7f03001b;
-        public static final int listar_agendamento_adapter_layout=0x7f03001c;
-        public static final int listar_cenario_adapter_layout=0x7f03001d;
-        public static final int residencia_adapter_layout=0x7f03001e;
+        public static final int activity_portao=0x7f03000c;
+        public static final int activity_principal=0x7f03000d;
+        public static final int activity_programacao=0x7f03000e;
+        public static final int activity_receive=0x7f03000f;
+        public static final int activity_residencias=0x7f030010;
+        public static final int activity_splash=0x7f030011;
+        public static final int favorito_adapter_layout=0x7f030012;
+        public static final int fragment_listar_favoritos_dummy=0x7f030013;
+        public static final int fragment_main_dummy=0x7f030014;
+        public static final int gradient=0x7f030015;
+        public static final int layout_botoes=0x7f030016;
+        public static final int linha_usuarios=0x7f030017;
+        public static final int list_group=0x7f030018;
+        public static final int list_item=0x7f030019;
+        public static final int list_item_ambiente=0x7f03001a;
+        public static final int list_item_cadastrodispositivoagendamento=0x7f03001b;
+        public static final int list_item_cadastrodispositivocenario=0x7f03001c;
+        public static final int listar_agendamento_adapter_layout=0x7f03001d;
+        public static final int listar_cenario_adapter_layout=0x7f03001e;
+        public static final int residencia_adapter_layout=0x7f03001f;
     }
     public static final class menu {
         public static final int ambiente=0x7f0b0000;
@@ -383,11 +385,12 @@ containing a value of this type.
         public static final int login=0x7f0b0009;
         public static final int main=0x7f0b000a;
         public static final int opcoes_usuarios=0x7f0b000b;
-        public static final int principal=0x7f0b000c;
-        public static final int programacao=0x7f0b000d;
-        public static final int receive=0x7f0b000e;
-        public static final int residencias=0x7f0b000f;
-        public static final int splash=0x7f0b0010;
+        public static final int portao=0x7f0b000c;
+        public static final int principal=0x7f0b000d;
+        public static final int programacao=0x7f0b000e;
+        public static final int receive=0x7f0b000f;
+        public static final int residencias=0x7f0b0010;
+        public static final int splash=0x7f0b0011;
     }
     public static final class string {
         public static final int action_settings=0x7f07001c;
@@ -503,6 +506,7 @@ containing a value of this type.
         public static final int title_activity_login=0x7f07001e;
         public static final int title_activity_main=0x7f070029;
         public static final int title_activity_opcoes_usuarios=0x7f070022;
+        public static final int title_activity_portao=0x7f070032;
         public static final int title_activity_programacao=0x7f070027;
         public static final int title_activity_receive=0x7f070031;
         public static final int title_activity_residencias=0x7f070020;
@@ -546,11 +550,11 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #AdsAttrs_adSize br.com.adeusunibratec.ha:adSize}</code></td><td>
+           <tr><td><code>{@link #AdsAttrs_adSize br.com.adeusunibratec.mb:adSize}</code></td><td>
     The size of the ad.</td></tr>
-           <tr><td><code>{@link #AdsAttrs_adSizes br.com.adeusunibratec.ha:adSizes}</code></td><td>
+           <tr><td><code>{@link #AdsAttrs_adSizes br.com.adeusunibratec.mb:adSizes}</code></td><td>
     A comma-separated list of the supported ad sizes.</td></tr>
-           <tr><td><code>{@link #AdsAttrs_adUnitId br.com.adeusunibratec.ha:adUnitId}</code></td><td> The ad unit ID.</td></tr>
+           <tr><td><code>{@link #AdsAttrs_adUnitId br.com.adeusunibratec.mb:adUnitId}</code></td><td> The ad unit ID.</td></tr>
            </table>
            @see #AdsAttrs_adSize
            @see #AdsAttrs_adSizes
@@ -576,7 +580,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name br.com.adeusunibratec.ha:adSize
+          @attr name br.com.adeusunibratec.mb:adSize
         */
         public static final int AdsAttrs_adSize = 0;
         /**
@@ -596,7 +600,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name br.com.adeusunibratec.ha:adSizes
+          @attr name br.com.adeusunibratec.mb:adSizes
         */
         public static final int AdsAttrs_adSizes = 1;
         /**
@@ -612,7 +616,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name br.com.adeusunibratec.ha:adUnitId
+          @attr name br.com.adeusunibratec.mb:adUnitId
         */
         public static final int AdsAttrs_adUnitId = 2;
         /** Attributes that can be used with a MapAttrs.
@@ -621,20 +625,20 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #MapAttrs_cameraBearing br.com.adeusunibratec.ha:cameraBearing}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTargetLat br.com.adeusunibratec.ha:cameraTargetLat}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTargetLng br.com.adeusunibratec.ha:cameraTargetLng}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTilt br.com.adeusunibratec.ha:cameraTilt}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraZoom br.com.adeusunibratec.ha:cameraZoom}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_mapType br.com.adeusunibratec.ha:mapType}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiCompass br.com.adeusunibratec.ha:uiCompass}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiRotateGestures br.com.adeusunibratec.ha:uiRotateGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiScrollGestures br.com.adeusunibratec.ha:uiScrollGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiTiltGestures br.com.adeusunibratec.ha:uiTiltGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiZoomControls br.com.adeusunibratec.ha:uiZoomControls}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiZoomGestures br.com.adeusunibratec.ha:uiZoomGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_useViewLifecycle br.com.adeusunibratec.ha:useViewLifecycle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_zOrderOnTop br.com.adeusunibratec.ha:zOrderOnTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraBearing br.com.adeusunibratec.mb:cameraBearing}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLat br.com.adeusunibratec.mb:cameraTargetLat}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLng br.com.adeusunibratec.mb:cameraTargetLng}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTilt br.com.adeusunibratec.mb:cameraTilt}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraZoom br.com.adeusunibratec.mb:cameraZoom}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_mapType br.com.adeusunibratec.mb:mapType}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiCompass br.com.adeusunibratec.mb:uiCompass}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiRotateGestures br.com.adeusunibratec.mb:uiRotateGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiScrollGestures br.com.adeusunibratec.mb:uiScrollGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiTiltGestures br.com.adeusunibratec.mb:uiTiltGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomControls br.com.adeusunibratec.mb:uiZoomControls}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomGestures br.com.adeusunibratec.mb:uiZoomGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_useViewLifecycle br.com.adeusunibratec.mb:useViewLifecycle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_zOrderOnTop br.com.adeusunibratec.mb:zOrderOnTop}</code></td><td></td></tr>
            </table>
            @see #MapAttrs_cameraBearing
            @see #MapAttrs_cameraTargetLat
@@ -658,7 +662,7 @@ containing a value of this type.
             0x7f01000f, 0x7f010010
         };
         /**
-          <p>This symbol is the offset where the {@link br.com.adeusunibratec.ha.R.attr#cameraBearing}
+          <p>This symbol is the offset where the {@link br.com.adeusunibratec.mb.R.attr#cameraBearing}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -668,11 +672,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name br.com.adeusunibratec.ha:cameraBearing
+          @attr name br.com.adeusunibratec.mb:cameraBearing
         */
         public static final int MapAttrs_cameraBearing = 1;
         /**
-          <p>This symbol is the offset where the {@link br.com.adeusunibratec.ha.R.attr#cameraTargetLat}
+          <p>This symbol is the offset where the {@link br.com.adeusunibratec.mb.R.attr#cameraTargetLat}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -682,11 +686,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name br.com.adeusunibratec.ha:cameraTargetLat
+          @attr name br.com.adeusunibratec.mb:cameraTargetLat
         */
         public static final int MapAttrs_cameraTargetLat = 2;
         /**
-          <p>This symbol is the offset where the {@link br.com.adeusunibratec.ha.R.attr#cameraTargetLng}
+          <p>This symbol is the offset where the {@link br.com.adeusunibratec.mb.R.attr#cameraTargetLng}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -696,11 +700,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name br.com.adeusunibratec.ha:cameraTargetLng
+          @attr name br.com.adeusunibratec.mb:cameraTargetLng
         */
         public static final int MapAttrs_cameraTargetLng = 3;
         /**
-          <p>This symbol is the offset where the {@link br.com.adeusunibratec.ha.R.attr#cameraTilt}
+          <p>This symbol is the offset where the {@link br.com.adeusunibratec.mb.R.attr#cameraTilt}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -710,11 +714,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name br.com.adeusunibratec.ha:cameraTilt
+          @attr name br.com.adeusunibratec.mb:cameraTilt
         */
         public static final int MapAttrs_cameraTilt = 4;
         /**
-          <p>This symbol is the offset where the {@link br.com.adeusunibratec.ha.R.attr#cameraZoom}
+          <p>This symbol is the offset where the {@link br.com.adeusunibratec.mb.R.attr#cameraZoom}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -724,11 +728,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name br.com.adeusunibratec.ha:cameraZoom
+          @attr name br.com.adeusunibratec.mb:cameraZoom
         */
         public static final int MapAttrs_cameraZoom = 5;
         /**
-          <p>This symbol is the offset where the {@link br.com.adeusunibratec.ha.R.attr#mapType}
+          <p>This symbol is the offset where the {@link br.com.adeusunibratec.mb.R.attr#mapType}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -744,11 +748,11 @@ containing a value of this type.
 <tr><td><code>terrain</code></td><td>3</td><td></td></tr>
 <tr><td><code>hybrid</code></td><td>4</td><td></td></tr>
 </table>
-          @attr name br.com.adeusunibratec.ha:mapType
+          @attr name br.com.adeusunibratec.mb:mapType
         */
         public static final int MapAttrs_mapType = 0;
         /**
-          <p>This symbol is the offset where the {@link br.com.adeusunibratec.ha.R.attr#uiCompass}
+          <p>This symbol is the offset where the {@link br.com.adeusunibratec.mb.R.attr#uiCompass}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -758,11 +762,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name br.com.adeusunibratec.ha:uiCompass
+          @attr name br.com.adeusunibratec.mb:uiCompass
         */
         public static final int MapAttrs_uiCompass = 6;
         /**
-          <p>This symbol is the offset where the {@link br.com.adeusunibratec.ha.R.attr#uiRotateGestures}
+          <p>This symbol is the offset where the {@link br.com.adeusunibratec.mb.R.attr#uiRotateGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -772,11 +776,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name br.com.adeusunibratec.ha:uiRotateGestures
+          @attr name br.com.adeusunibratec.mb:uiRotateGestures
         */
         public static final int MapAttrs_uiRotateGestures = 7;
         /**
-          <p>This symbol is the offset where the {@link br.com.adeusunibratec.ha.R.attr#uiScrollGestures}
+          <p>This symbol is the offset where the {@link br.com.adeusunibratec.mb.R.attr#uiScrollGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -786,11 +790,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name br.com.adeusunibratec.ha:uiScrollGestures
+          @attr name br.com.adeusunibratec.mb:uiScrollGestures
         */
         public static final int MapAttrs_uiScrollGestures = 8;
         /**
-          <p>This symbol is the offset where the {@link br.com.adeusunibratec.ha.R.attr#uiTiltGestures}
+          <p>This symbol is the offset where the {@link br.com.adeusunibratec.mb.R.attr#uiTiltGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -800,11 +804,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name br.com.adeusunibratec.ha:uiTiltGestures
+          @attr name br.com.adeusunibratec.mb:uiTiltGestures
         */
         public static final int MapAttrs_uiTiltGestures = 9;
         /**
-          <p>This symbol is the offset where the {@link br.com.adeusunibratec.ha.R.attr#uiZoomControls}
+          <p>This symbol is the offset where the {@link br.com.adeusunibratec.mb.R.attr#uiZoomControls}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -814,11 +818,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name br.com.adeusunibratec.ha:uiZoomControls
+          @attr name br.com.adeusunibratec.mb:uiZoomControls
         */
         public static final int MapAttrs_uiZoomControls = 10;
         /**
-          <p>This symbol is the offset where the {@link br.com.adeusunibratec.ha.R.attr#uiZoomGestures}
+          <p>This symbol is the offset where the {@link br.com.adeusunibratec.mb.R.attr#uiZoomGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -828,11 +832,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name br.com.adeusunibratec.ha:uiZoomGestures
+          @attr name br.com.adeusunibratec.mb:uiZoomGestures
         */
         public static final int MapAttrs_uiZoomGestures = 11;
         /**
-          <p>This symbol is the offset where the {@link br.com.adeusunibratec.ha.R.attr#useViewLifecycle}
+          <p>This symbol is the offset where the {@link br.com.adeusunibratec.mb.R.attr#useViewLifecycle}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -842,11 +846,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name br.com.adeusunibratec.ha:useViewLifecycle
+          @attr name br.com.adeusunibratec.mb:useViewLifecycle
         */
         public static final int MapAttrs_useViewLifecycle = 12;
         /**
-          <p>This symbol is the offset where the {@link br.com.adeusunibratec.ha.R.attr#zOrderOnTop}
+          <p>This symbol is the offset where the {@link br.com.adeusunibratec.mb.R.attr#zOrderOnTop}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -856,7 +860,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name br.com.adeusunibratec.ha:zOrderOnTop
+          @attr name br.com.adeusunibratec.mb:zOrderOnTop
         */
         public static final int MapAttrs_zOrderOnTop = 13;
     };

@@ -20,9 +20,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
-import br.com.adeusunibratec.ha.R;
-import br.com.adeusunibratec.ha.R.layout;
-import br.com.adeusunibratec.ha.R.menu;
+
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;

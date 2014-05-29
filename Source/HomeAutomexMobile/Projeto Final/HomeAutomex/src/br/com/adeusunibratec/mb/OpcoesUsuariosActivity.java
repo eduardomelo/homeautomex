@@ -17,9 +17,7 @@ import br.com.adeusunibratec.bean.DispositivoGson;
 import br.com.adeusunibratec.bean.Residencia;
 import br.com.adeusunibratec.ha.ListarAgendamentoActivity;
 import br.com.adeusunibratec.ha.ListarCenariosActivity;
-import br.com.adeusunibratec.ha.R;
-import br.com.adeusunibratec.ha.R.layout;
-import br.com.adeusunibratec.ha.R.menu;
+
 import br.com.adeusunibratec.mb.ListarFavoritos.ResidenciaTask;
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
 import android.os.AsyncTask;

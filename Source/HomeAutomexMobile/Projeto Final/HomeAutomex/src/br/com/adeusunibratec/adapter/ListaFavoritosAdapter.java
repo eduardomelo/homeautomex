@@ -24,7 +24,7 @@ import br.com.adeusunibratec.adapter.AmbientesAdapter.LigarTask;
 import br.com.adeusunibratec.bean.Ambiente;
 import br.com.adeusunibratec.bean.DispositivoGson;
 import br.com.adeusunibratec.bean.Residencia;
-import br.com.adeusunibratec.ha.R;
+import br.com.adeusunibratec.mb.R;
 
 public class ListaFavoritosAdapter extends BaseAdapter {
 

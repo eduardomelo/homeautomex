@@ -24,5 +24,6 @@
     <string name="title_activity_listar_agendamento">Home Automex</string>
     <string name="title_activity_cadastro_dispositivos_agendamento">CadastroDispositivosAgendamentoActivity</string>
     <string name="title_activity_receive">ReceiveActivity</string>
+    <string name="title_activity_portao">PortaoActivity</string>
 
 </resources>

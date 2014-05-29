@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.adeusunibratec.ha"
+    package="br.com.adeusunibratec.mb"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -8,10 +8,8 @@
         android:minSdkVersion="17"
         android:targetSdkVersion="17" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    
-     <!--  <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -20,56 +18,48 @@
         android:name="br.com.adeusunibratec.mb.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="br.com.adeusunibratec.mb.permission.C2D_MESSAGE" /> -->
-    
-    
+    <uses-permission android:name="br.com.adeusunibratec.mb.permission.C2D_MESSAGE" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
         <activity
             android:name="br.com.adeusunibratec.mb.SplashActivity"
-            android:label="@string/title_activity_splash" >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-         <!--  <receiver
+
+        <receiver
             android:name="br.com.adeusunibratec.mb.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
-            <intent-filter> -->
+            <intent-filter>
 
                 <!-- Receives the actual messages. -->
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
-               <!--  <category android:name="br.com.adeusunibratec.mb" />
+                <category android:name="br.com.adeusunibratec.mb" />
             </intent-filter>
-        </receiver> -->
+        </receiver>
 
-         <!--  <service android:name="br.com.adeusunibratec.mb.GcmIntentService" />
+        <service android:name="br.com.adeusunibratec.mb.GcmIntentService" />
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-         -->
-        
-        
-        
-        
-        <activity
-            android:name="br.com.adeusunibratec.mb.PrincipalActivity"
-            android:label="@string/app_name" >
-        </activity>
-        
-        
-        
+
         <activity
             android:name="br.com.adeusunibratec.mb.LoginActivity"
             android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name="br.com.adeusunibratec.mb.ReceiveActivity"
+            android:label="@string/title_activity_receive" >
         </activity>
         <activity
             android:name="br.com.adeusunibratec.mb.ResidenciasActivity"
@@ -112,25 +102,24 @@
             android:label="@string/title_activity_listar_favoritos" >
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.ha.CadastroDispositivosCenarioActivity"
+            android:name="br.com.adeusunibratec.mb.CadastroDispositivosCenarioActivity"
             android:label="@string/title_activity_cadastro_dispositivos_cenario" >
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.ha.ListarCenariosActivity"
+            android:name="br.com.adeusunibratec.mb.ListarCenariosActivity"
             android:label="@string/title_activity_listar_cenarios" >
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.ha.ListarAgendamentoActivity"
+            android:name="br.com.adeusunibratec.mb.ListarAgendamentoActivity"
             android:label="@string/title_activity_listar_agendamento" >
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.ha.CadastroDispositivosAgendamentoActivity"
+            android:name="br.com.adeusunibratec.mb.CadastroDispositivosAgendamentoActivity"
             android:label="@string/title_activity_cadastro_dispositivos_agendamento" >
         </activity>
-        
         <activity
-            android:name="br.com.adeusunibratec.mb.ReceiveActivity"
-            android:label="@string/title_activity_receive" >
+            android:name="br.com.adeusunibratec.mb.PortaoActivity"
+            android:label="@string/title_activity_portao" >
         </activity>
     </application>
 

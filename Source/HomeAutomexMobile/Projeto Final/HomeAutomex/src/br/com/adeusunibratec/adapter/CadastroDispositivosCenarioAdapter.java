@@ -27,7 +27,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import br.com.adeusunibratec.acesso.AcessoWSDL;
 import br.com.adeusunibratec.adapter.AmbientesAdapter.LigarTask;
 import br.com.adeusunibratec.bean.Ambiente;
-import br.com.adeusunibratec.ha.R;
+import br.com.adeusunibratec.mb.R;
 
 public class CadastroDispositivosCenarioAdapter extends
 		BaseExpandableListAdapter {

@@ -3,7 +3,7 @@ package br.com.adeusunibratec.adapter;
 import java.util.ArrayList;
 
 import br.com.adeusunibratec.bean.Residencia;
-import br.com.adeusunibratec.ha.R;
+import br.com.adeusunibratec.mb.R;
 
 
 

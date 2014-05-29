@@ -13,7 +13,8 @@ import org.xmlpull.v1.XmlPullParserException;
 import br.com.adeusunibratec.acesso.AcessoWSDL;
 import br.com.adeusunibratec.bean.Ambiente;
 import br.com.adeusunibratec.bean.Residencia;
-import br.com.adeusunibratec.ha.R;
+import br.com.adeusunibratec.mb.R;
+
 
 import android.content.Context;
 import android.graphics.Typeface;

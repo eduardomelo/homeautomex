@@ -24,6 +24,7 @@ import br.com.adeusunibratec.mb.ListarFavoritos;
 import br.com.adeusunibratec.mb.OpcoesUsuariosActivity;
 import br.com.adeusunibratec.mb.ProgramacaoActivity;
 import br.com.adeusunibratec.mb.ListarFavoritos.ResidenciaTask;
+import br.com.adeusunibratec.mb.R;
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
 import android.os.AsyncTask;
 import android.os.Bundle;

@@ -29,10 +29,7 @@ import br.com.adeusunibratec.bean.DispositivoGson;
 import br.com.adeusunibratec.bean.Residencia;
 import br.com.adeusunibratec.bean.ResidenciaGson;
 import br.com.adeusunibratec.bean.User;
-import br.com.adeusunibratec.ha.R;
-import br.com.adeusunibratec.ha.R.id;
-import br.com.adeusunibratec.ha.R.layout;
-import br.com.adeusunibratec.ha.R.menu;
+
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
 import br.com.adeusunibratec.parse.JSONParserManager;
 import android.os.AsyncTask;

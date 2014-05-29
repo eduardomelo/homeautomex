@@ -1,7 +1,7 @@
 package br.com.adeusunibratec.mb;
 
 
-import br.com.adeusunibratec.ha.R;
+
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 

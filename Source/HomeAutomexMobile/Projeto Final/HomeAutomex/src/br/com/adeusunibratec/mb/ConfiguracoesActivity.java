@@ -3,9 +3,7 @@ package br.com.adeusunibratec.mb;
 import br.com.adeusunibratec.ha.CadastroDispositivosCenarioActivity;
 import br.com.adeusunibratec.ha.ListarAgendamentoActivity;
 import br.com.adeusunibratec.ha.ListarCenariosActivity;
-import br.com.adeusunibratec.ha.R;
-import br.com.adeusunibratec.ha.R.layout;
-import br.com.adeusunibratec.ha.R.menu;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;

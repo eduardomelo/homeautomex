@@ -3,9 +3,7 @@ package br.com.adeusunibratec.mb;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import br.com.adeusunibratec.ha.R;
-import br.com.adeusunibratec.ha.R.layout;
-import br.com.adeusunibratec.ha.R.menu;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
