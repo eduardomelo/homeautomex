@@ -145,7 +145,7 @@ namespace HomeAutomexWebApplication
             catch (Exception)
             {
 
-                return "Usuário Inválido";
+                return null;
             }
            
         }
