@@ -32,7 +32,7 @@
             @Html.DisplayNameFor(model => model.UT_utilizacao)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.status)
+          Status
         </th>
     </tr>
 
@@ -57,8 +57,7 @@
 </table>
 
 <div style="padding: 10px; border: double solid black">
-    <div><a href="@Url.Action("ReportHistoricoUsoDispositivo", new { tipoRelatorio = "PDF" })">Gerar relatório em PDF</a></div>
-    <div><a href="@Url.Action("ReportHistoricoUsoDispositivo", new { tipoRelatorio = "Excel" })">Gerar relátorio em Excel</a></div>
+    <div><a href="@Url.Action("ReportHistoricoUsoDispositivo", new { tipoRelatorio = "Excel", DataInicial = "#DataInicial" })">Gerar relátorio em Excel</a></div>
     <div><a href="@Url.Action("ReportHistoricoUsoDispositivo", new { tipoRelatorio = "Word" })">Gerar relatório em Word</a></div>
 
 </div>

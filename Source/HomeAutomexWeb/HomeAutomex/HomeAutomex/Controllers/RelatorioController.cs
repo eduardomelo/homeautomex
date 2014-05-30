@@ -208,10 +208,10 @@ namespace HomeAutomex.Controllers
         }
 
 
-        public ActionResult ReportHistoricoUsoDispositivo(string tipoRelatorio)
+        public ActionResult ReportHistoricoUsoDispositivos(string DataInicial)
         {
             LocalReport lr = new LocalReport();
-            string path = Path.Combine(Server.MapPath("~/ReportViewer"), "RepLog.rdlc");
+            string path = Path.Combine(Server.MapPath("~/ReportViewer"), "RepUso.rdlc");
             if (System.IO.File.Exists(path))
             {
                 lr.ReportPath = path;
@@ -220,10 +220,61 @@ namespace HomeAutomex.Controllers
             {
                 // return View("");
             }
-            var x = webService.ConsutarTodosLogs();
-            var log = JsonConvert.DeserializeObject<List<LogModel>>(x);
+            var x = webService.ConsultarTodosUTDispositivo();
+            var UTDispositivo = JsonConvert.DeserializeObject<List<UTDispositivoModel>>(x);
 
-            ReportDataSource rd = new ReportDataSource("DataSetLog", log);
+            ReportDataSource rd = new ReportDataSource("DataSetUso", UTDispositivo);
+            lr.DataSources.Add(rd);
+            string reportType = DataInicial;
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+
+            string deviceInfo =
+              "<DeviceInfo>" +
+              " <OutputFormat>PDF</OutputFormat>" +
+              " <PageWidth>9in</PageWidth>" +
+              " <PageHeight>11in</PageHeight>" +
+              " <MarginTop>0.7in</MarginTop>" +
+              " <MarginLeft>2in</MarginLeft>" +
+              " <MarginRight>2in</MarginRight>" +
+              " <MarginBottom>0.7in</MarginBottom>" +
+              "</DeviceInfo>";
+
+            Microsoft.Reporting.WebForms.Warning[] warnings;
+            string[] streams;
+            byte[] bytes;
+
+            //Renderiza o relatório em bytes
+            bytes = lr.Render(
+            reportType,
+            deviceInfo,
+            out mimeType,
+            out encoding,
+            out fileNameExtension,
+            out streams,
+            out warnings);
+            return File(bytes, mimeType);
+
+        }
+
+
+        public ActionResult ReportHistoricoUsoDispositivo(string tipoRelatorio)
+        {
+            LocalReport lr = new LocalReport();
+            string path = Path.Combine(Server.MapPath("~/ReportViewer"), "RepUso.rdlc");
+            if (System.IO.File.Exists(path))
+            {
+                lr.ReportPath = path;
+            }
+            else
+            {
+                // return View("");
+            }
+            var x = webService.ConsultarTodosUTDispositivo();
+            var UTDispositivo = JsonConvert.DeserializeObject<List<UTDispositivoModel>>(x);
+
+            ReportDataSource rd = new ReportDataSource("DataSetUso", UTDispositivo);
             lr.DataSources.Add(rd);
             string reportType = tipoRelatorio;
             string mimeType;

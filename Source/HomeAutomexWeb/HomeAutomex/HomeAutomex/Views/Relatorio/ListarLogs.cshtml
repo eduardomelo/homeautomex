@@ -21,11 +21,7 @@
 }
 <table id="Grid" class="table table-bordered">
     <tr>
-        <th>#@Html.DisplayNameFor(model => model.Chave)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cd_usuario)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.Descricao)
         </th>
@@ -40,12 +36,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Chave)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cd_usuario)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.Descricao)
             </td>
@@ -59,7 +50,7 @@
 </table>
 
 <div style="padding: 10px; border: double solid black">
-    <div><a href="@Url.Action("Report", new { tipoRelatorio = "PDF" })">Gerar relatório em PDF</a></div>
+   
     <div><a href="@Url.Action("Report", new { tipoRelatorio = "Excel" })">Gerar relátorio em Excel</a></div>
     <div><a href="@Url.Action("Report", new { tipoRelatorio = "Word" })">Gerar relatório em Word</a></div>
 
