@@ -279,7 +279,7 @@ containing a value of this type.
         public static final int container=0x7f060019;
         public static final int deal=0x7f060031;
         public static final int descricaoCenario=0x7f060041;
-        public static final int descricaoDispositivo=0x7f060035;
+        public static final int descricaoDispositivo=0x7f060036;
         public static final int display=0x7f060018;
         public static final int editAgendamento=0x7f060022;
         public static final int editDescricaoCenario=0x7f06000b;
@@ -311,7 +311,7 @@ containing a value of this type.
         public static final int section_label=0x7f060037;
         public static final int switch1=0x7f060040;
         public static final int switchCenario=0x7f060042;
-        public static final int switchFavoritos=0x7f060036;
+        public static final int switchFavoritos=0x7f060035;
         public static final int switchPortao=0x7f060020;
         public static final int terrain=0x7f060003;
         public static final int textBairro=0x7f060046;

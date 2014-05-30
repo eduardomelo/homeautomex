@@ -211,7 +211,7 @@ public class ListarAgendamentoAdapter extends BaseAdapter {
 					dat.getAmbiente();
 					dat.getPorta();
 
-					// Log.e("aaaaaaa",dat.getAmbiente().getChave());
+					
 
 					if (liga == true) {
 						
@@ -304,7 +304,7 @@ public class ListarAgendamentoAdapter extends BaseAdapter {
 		protected void onPostExecute(String jResult) {
 			super.onPostExecute(jResult);
 
-			Log.e("Ambientes list", jResult);
+			
 			if (jResult != null) {
 
 			}

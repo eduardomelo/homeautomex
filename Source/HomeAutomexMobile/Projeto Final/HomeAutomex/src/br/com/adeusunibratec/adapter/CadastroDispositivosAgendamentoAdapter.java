@@ -239,7 +239,7 @@ public class CadastroDispositivosAgendamentoAdapter extends BaseExpandableListAd
 		protected void onPostExecute(String jResult) {
 			super.onPostExecute(jResult);
 
-			Log.e("Ambientes list", jResult);
+			
 			if (jResult != null) {
 
 			}

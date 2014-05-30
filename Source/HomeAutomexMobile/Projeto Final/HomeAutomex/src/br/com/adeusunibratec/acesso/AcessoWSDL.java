@@ -32,10 +32,10 @@ public class AcessoWSDL {
 
 	// minhas variaveis depois mudo
 	public final static String WSDL_TARGET_NAMESPACE = "http://tempuri.org/";
-	 public final static String SOAP_ADDRESS =
-	 "http://192.168.0.102/meuWebservice/HomeAutomexWS.asmx";
+	/* public final static String SOAP_ADDRESS =
+	 "http://192.168.0.102/vai/HomeAutomexWS.asmx";*/
 
-	//public final static String SOAP_ADDRESS = "http://10.0.2.2/meuWebservice/HomeAutomexWS.asmx";
+	public final static String SOAP_ADDRESS = "http://10.0.2.2/vai/HomeAutomexWS.asmx";
 
 	public final static String SOAP_LOGIN_ACTION = "http://tempuri.org/Logar";
 	public final static String OPERATION_LOGIN = "Logar";
@@ -68,6 +68,11 @@ public class AcessoWSDL {
 	public final static String SOAP_CADASTRO_AGENDAMENTO = "http://tempuri.org/InserirAgendamento";
 	public final static String OPERATION_CADASTRO_AGENDAMENTO = "InserirAgendamento";
 	public final static String AGENDAMENTO = "jAgendamento";
+	
+	public final static String SOAP_CADASTROCENARIODISPOSITIVO = "http://tempuri.org/CriarCenarioDispositivo";
+	public final static String OPERATION_CENARIODISPOSITIVO = "CriarCenarioDispositivo";
+	//public final static String J_LOGIN = "jUsuario";
+	
 
 	public static String loginWS(String login, String senha)
 			throws JSONException, ClientProtocolException,
@@ -83,6 +88,28 @@ public class AcessoWSDL {
 
 		return jResult;
 	}
+	
+	
+	
+	public static String cadastroDispositivoCenario(String json, String status)
+			throws JSONException, ClientProtocolException,
+			UnsupportedEncodingException, IOException, XmlPullParserException,
+			UnknownHostException {
+
+		String jResult = null;
+
+		//JSONObject jsonLogin = JSONParserManager.createJSONLogin(login, senha);
+     String teste = json + "Status="+status;
+     
+     //https://www.youtube.com/watch?v=jXyt-BwOdcE
+		
+		jResult = sendWebServiceContent(json, OPERATION_CENARIODISPOSITIVO,
+				CENARIO, SOAP_CADASTROCENARIODISPOSITIVO);
+
+		return jResult;
+	}
+	
+	
 
 	public static String buscarResidencia(String chave) throws JSONException,
 			ClientProtocolException, UnsupportedEncodingException,

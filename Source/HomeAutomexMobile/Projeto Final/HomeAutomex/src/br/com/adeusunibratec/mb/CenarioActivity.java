@@ -189,7 +189,7 @@ public class CenarioActivity extends Activity implements OnClickListener {
 	public void onClick(View arg0) {
 		
 		
-		Log.e("chegou", descricaoCenario.getText().toString());
+		
          
 		String chave = null;
 		

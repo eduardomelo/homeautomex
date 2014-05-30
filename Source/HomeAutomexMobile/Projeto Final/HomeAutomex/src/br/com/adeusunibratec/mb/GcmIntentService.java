@@ -67,7 +67,7 @@ public class GcmIntentService extends IntentService{
 	}
 	private void sendNotification(String msg) {
 		
-		Log.e("msg", msg);
+		//Log.e("msg", msg);
        
 		mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);

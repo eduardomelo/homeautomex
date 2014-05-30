@@ -28,6 +28,7 @@ import br.com.adeusunibratec.acesso.AcessoWSDL;
 import br.com.adeusunibratec.adapter.AmbientesAdapter.LigarTask;
 import br.com.adeusunibratec.bean.Ambiente;
 import br.com.adeusunibratec.mb.R;
+import br.com.adeusunibratec.mb.LoginActivity.LoginTask;
 
 public class CadastroDispositivosCenarioAdapter extends
 		BaseExpandableListAdapter {
@@ -36,7 +37,7 @@ public class CadastroDispositivosCenarioAdapter extends
 	private List<String> _listDataHeader; // header titles
 	// child data in format of header title, child title
 	private HashMap<String, List<String>> _listDataChild;
-	
+
 	String chaveCenario = null;
 
 	public CadastroDispositivosCenarioAdapter(Context context,
@@ -65,8 +66,8 @@ public class CadastroDispositivosCenarioAdapter extends
 
 		final String childText = (String) getChild(groupPosition, childPosition);
 
-		Log.e("teste json aaaa", childText);
 		
+
 		String a = childText;
 
 		if (convertView == null) {
@@ -78,46 +79,58 @@ public class CadastroDispositivosCenarioAdapter extends
 
 		TextView txtListChild = (TextView) convertView
 				.findViewById(R.id.lblListItem);
-		
-		
+
 		try {
 			JSONObject obj = new JSONObject(childText);
 
 			final Ambiente ambientes = new Ambiente();
 			ambientes.setDescricao(obj.getString("Descricao"));
-			   ambientes.setChave(obj.getString("ChaveDispositivo"));
-			  ambientes.setChaveAmbiente(obj.getString("chaveCenario"));
+			ambientes.setChave(obj.getString("Usuario"));
+			ambientes.setChaveAmbiente(obj.getString("chaveCenario"));
+			ambientes.setChaveDispositivos("ChaveDispositivo");
+
+			final String dispositivo = "{\"Usuario\":"
+					+ obj.getString("Usuario")
+					+ ",\"Dispositivo\":[{\"Chave\":"
+					+ obj.getString("ChaveDispositivo") + "}],\"Chave\":"
+					+ obj.getString("chaveCenario") + "}";
+
 			
-			
-		
 
-		Switch s = (Switch) convertView.findViewById(R.id.switch1);
+			// "{\"Descricao\":\""+abg.getDescricao()+"\",\"ChaveDispositivo\":"+abg.getChave()+",\"Usuario\":"+chave+",\"chaveCenario\":"+descricaoCenario.getChaveAmbiente()+"}"
+			Switch s = (Switch) convertView.findViewById(R.id.switch1);
 
-		if (s != null) {
+			if (s != null) {
 
-			s.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				s.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-				@Override
-				public void onCheckedChanged(CompoundButton buttonView,
-						boolean isChecked) {
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView,
+							boolean isChecked) {
 
-					if (isChecked) {
-						Toast.makeText(_context, "ei aqui"+ambientes.getChave()+"AM"+ambientes.getChaveAmbiente(), Toast.LENGTH_LONG).show();
+						if (isChecked) {
+							Toast.makeText(_context,
+									"ei aqui" + dispositivo.toString(),
+									Toast.LENGTH_LONG).show();
+                            String status = "true";
+							// new
+				 
+                          new LigarTask().execute(dispositivo,status);     
+
+						}
 					}
-				}
-			});
-		}
+				});
+			}
 
-		Log.e("testandojsn", childText);
+			
 
-		txtListChild.setText(ambientes.getDescricao());
+			txtListChild.setText(ambientes.getDescricao());
 
-		
-		}catch (JSONException e) {
+		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return convertView;
 	}
 
@@ -163,10 +176,10 @@ public class CadastroDispositivosCenarioAdapter extends
 		 */
 
 		lblListHeader.setTypeface(null, Typeface.BOLD);
-		
+
 		lblListHeader.setText(headerTitle);
 
-		Log.e("teeeeeee", "olha"+headerTitle);
+		
 		return convertView;
 	}
 
@@ -200,7 +213,11 @@ public class CadastroDispositivosCenarioAdapter extends
 	 * 
 	 * }
 	 */
-
+	
+	
+	
+	
+	
 	public class LigarTask extends AsyncTask<String, Void, String> {
 
 		// private ProgressDialog progressDialog;
@@ -234,7 +251,73 @@ public class CadastroDispositivosCenarioAdapter extends
 			String response = null;
 			try {
 
-				response = AcessoWSDL.AcenderLuz(params[0]);
+				response = AcessoWSDL.cadastroDispositivoCenario(params[0],params[1]);
+
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} catch (JSONException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (XmlPullParserException e) {
+				e.printStackTrace();
+			}
+
+			return response;
+		}
+
+		@Override
+		protected void onPostExecute(String jResult) {
+			super.onPostExecute(jResult);
+
+			
+			if (jResult != null) {
+
+			}
+
+		}
+
+	}
+	
+	
+
+/*	public class CadastroDispositivoCenari extends
+			AsyncTask<String, Void, String> {
+
+		// private ProgressDialog progressDialog;
+
+		// private int perfil;
+
+		
+		 * public ResidenciaTask(ProgressDialog params) {
+		 * 
+		 * this.progressDialog = params;
+		 * this.progressDialog.setMessage("Carregando Ambientes...");
+		 * 
+		 * }
+		 
+
+		@Override
+		protected void onCancelled() {
+			super.onCancelled();
+			// this.progressDialog.dismiss();
+		}
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			// this.progressDialog.show();
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+
+			String response = null;
+			try {
+
+				response = AcessoWSDL.cadastroDispositivoCenario(params[0],params[1]);
 
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();
@@ -262,6 +345,6 @@ public class CadastroDispositivosCenarioAdapter extends
 
 		}
 
-	}
+	}*/
 
 }

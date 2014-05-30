@@ -86,7 +86,7 @@ public class AmbientesAdapter extends BaseExpandableListAdapter {
 			
 			ambientes.setFavorito(obj.getString("Favorito"));
 			
-			Log.e("tstando log favorito","aqui"+ambientes.getFavorito() );
+			//Log.e("tstando log favorito","aqui"+ambientes.getFavorito() );
 			
 			ambientes.setChaveDispositivos(obj.getString("Chave"));
 			ambientes.setDataAlteracaoDispositivos(obj
@@ -157,15 +157,15 @@ public class AmbientesAdapter extends BaseExpandableListAdapter {
 								+ ambientes.getChavePorta() + "}}";
 
 						
-						Log.e("--------------", dispositivo);
+						//Log.e("--------------", dispositivo);
 						new LigarTask().execute(dispositivo);
 					}
 				});
 			}
 
 			if (ambientes.getStatusDispositivos().equals("true")) {
-				Log.e("Favorito Cadastrado",
-						"esse e favorito");
+				/*Log.e("Favorito Cadastrado",
+						"esse e favorito");*/
 				s.setChecked(true);
 			} else {
 				s.setChecked(false);
@@ -312,7 +312,7 @@ public class AmbientesAdapter extends BaseExpandableListAdapter {
 		protected void onPostExecute(String jResult) {
 			super.onPostExecute(jResult);
 
-			Log.e("Ambientes list", jResult);
+			//Log.e("Ambientes list", jResult);
 			if (jResult != null) {
 
 			}

@@ -324,7 +324,7 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 
 				this.progressDialog.dismiss();
 
-				Log.e("json", jResult);
+				
 				criarListaFavoritos(jResult, ChaveResidencia);
 
 			} else {
@@ -336,7 +336,7 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 
 	public void criarListaFavoritos(String json, String Chave) {
 
-		Log.e("entrou ", "chave aqui" + Chave);
+		
 
 		JSONArray jsonArray = null;
 

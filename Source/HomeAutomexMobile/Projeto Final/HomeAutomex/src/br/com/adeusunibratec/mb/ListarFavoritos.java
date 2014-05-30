@@ -99,6 +99,9 @@ public class ListarFavoritos extends Activity implements OnClickListener {
 			intent.putExtra("idResidencia", jLoginResult);
 
 			startActivity(intent);
+		
+			
+			this.finish();
 
 			return true;
 			

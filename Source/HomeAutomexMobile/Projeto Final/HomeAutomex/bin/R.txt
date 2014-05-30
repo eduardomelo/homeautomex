@@ -114,7 +114,7 @@ int id checkBoxAgendamento 0x7f060027
 int id container 0x7f060019
 int id deal 0x7f060031
 int id descricaoCenario 0x7f060041
-int id descricaoDispositivo 0x7f060035
+int id descricaoDispositivo 0x7f060036
 int id display 0x7f060018
 int id editAgendamento 0x7f060022
 int id editDescricaoCenario 0x7f06000b
@@ -146,7 +146,7 @@ int id satellite 0x7f060002
 int id section_label 0x7f060037
 int id switch1 0x7f060040
 int id switchCenario 0x7f060042
-int id switchFavoritos 0x7f060036
+int id switchFavoritos 0x7f060035
 int id switchPortao 0x7f060020
 int id terrain 0x7f060003
 int id textBairro 0x7f060046

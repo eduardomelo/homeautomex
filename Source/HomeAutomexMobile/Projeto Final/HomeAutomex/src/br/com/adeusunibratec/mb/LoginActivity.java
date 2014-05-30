@@ -73,7 +73,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		mDisplay = (TextView) findViewById(R.id.display);
+		/*mDisplay = (TextView) findViewById(R.id.display);
 		context = getApplicationContext();
 	
 		Log.e("111", context.toString());
@@ -88,7 +88,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 			}
 			Log.e("111", regid.toString());
 		}
-
+*/
 		createProgressDialog();
 
 		this.loginEdit = (EditText) findViewById(R.id.editLogin);
@@ -140,11 +140,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 	
 	
-	@Override
+	/*@Override
 	protected void onResume(){
 		super.onResume();
 		checkPlayServices();
-	}
+	}*/
 	class RegisterBackground extends AsyncTask<String,String,String>{
 
 		@Override
@@ -157,7 +157,7 @@ public class LoginActivity extends Activity implements OnClickListener {
                 }
                 regid = gcm.register(SENDER_ID);
                 msg = "Dvice registered, registration ID=" + regid;
-                          Log.e("111", msg.toString());
+                         
                 sendRegistrationIdToBackend();
                 
                 // Persist the regID - no need to register again.
@@ -182,7 +182,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	           DefaultHttpClient httpClient = new DefaultHttpClient();
 	            HttpPost httpPost = new HttpPost(url);
 	            try {
-	            	Log.e("entrou1", httpPost.toString());
+	            	
 					httpPost.setEntity(new UrlEncodedFormEntity(params));
 				} catch (UnsupportedEncodingException e1) {
 					// TODO Auto-generated catch block
@@ -190,7 +190,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 				}
 
 	            try {
-	            	Log.e("entroub", "aaaaaaaa");
+	            	
 					HttpResponse httpResponse = httpClient.execute(httpPost);
 				} catch (ClientProtocolException e) {
 					// TODO Auto-generated catch block
@@ -398,7 +398,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 						LoginActivity.this.finish();
 					}
 				} catch (JSONException e) {
-					e.printStackTrace();
+					//e.printStackTrace();
+					//Toast.makeText(getApplication(), "LOGIN INVALIDO TENTE NOVAMENTE", Toast.LENGTH_LONG).show();
 				}
 			} else {
 				this.progressDialog.dismiss();

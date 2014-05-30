@@ -10,15 +10,15 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /> -->
 
-    <permission
+    <!-- <permission
         android:name="br.com.adeusunibratec.mb.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="br.com.adeusunibratec.mb.permission.C2D_MESSAGE" />
+    <uses-permission android:name="br.com.adeusunibratec.mb.permission.C2D_MESSAGE" /> -->
 
     <application
         android:allowBackup="true"
@@ -35,12 +35,12 @@
             </intent-filter>
         </activity>
 
-        <receiver
+       <!--  <receiver
             android:name="br.com.adeusunibratec.mb.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
 
-                <!-- Receives the actual messages. -->
+                Receives the actual messages.
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
                 <category android:name="br.com.adeusunibratec.mb" />
@@ -52,15 +52,15 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
+ -->
         <activity
             android:name="br.com.adeusunibratec.mb.LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>
-        <activity
+       <!--  <activity
             android:name="br.com.adeusunibratec.mb.ReceiveActivity"
             android:label="@string/title_activity_receive" >
-        </activity>
+        </activity> -->
         <activity
             android:name="br.com.adeusunibratec.mb.ResidenciasActivity"
             android:label="@string/title_activity_residencias" >
@@ -90,7 +90,7 @@
             android:label="@string/title_activity_programacao" >
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.ha.ListarFavoritosActivity"
+            android:name="br.com.adeusunibratec.mb.ListarFavoritosActivity"
             android:label="@string/title_activity_listar_favoritos" >
         </activity>
         <activity

@@ -15,8 +15,6 @@ import br.com.adeusunibratec.adapter.ListaFavoritosAdapter;
 import br.com.adeusunibratec.bean.Ambiente;
 import br.com.adeusunibratec.bean.DispositivoGson;
 import br.com.adeusunibratec.bean.Residencia;
-import br.com.adeusunibratec.ha.ListarAgendamentoActivity;
-import br.com.adeusunibratec.ha.ListarCenariosActivity;
 
 import br.com.adeusunibratec.mb.ListarFavoritos.ResidenciaTask;
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;

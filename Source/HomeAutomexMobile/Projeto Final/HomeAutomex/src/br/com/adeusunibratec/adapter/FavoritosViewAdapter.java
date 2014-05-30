@@ -87,7 +87,7 @@ public class FavoritosViewAdapter extends BaseExpandableListAdapter {
 			ambientes.setFavorito(obj.getString("Favorito"));
 
 			
-			Log.e("-------------------------", ambientes.getFavorito());
+			
 			/*try {
 				ambientes.setFavorito(obj.getString("Favorito"));
 
@@ -139,8 +139,7 @@ public class FavoritosViewAdapter extends BaseExpandableListAdapter {
 								+ "},\"Porta\":{\"Chave\":"
 								+ ambientes.getChavePorta() + "}}";
 						new LigarTask().execute(dispositivo);
-						Log.e("Favorito Cadastrado",
-								"ESSE DISPOSITIVO É FAVORITO");
+					
 
 					} else {
 
@@ -160,8 +159,6 @@ public class FavoritosViewAdapter extends BaseExpandableListAdapter {
 								+ "},\"Porta\":{\"Chave\":"
 								+ ambientes.getChavePorta() + "}}";
 
-						Log.e("Favorito Cadastrado",
-								"ESSE DISPOSITIVO NÃO É FAVORITO");
 						new LigarTask().execute(dispositivo);
 					}
 
@@ -169,8 +166,7 @@ public class FavoritosViewAdapter extends BaseExpandableListAdapter {
 			});
 
 			if (ambientes.getFavorito().equals("true")) {
-				Log.e("Favorito Cadastrado",
-						"esse e favorito");
+				
 				mCheckBox.setChecked(true);
 			} else {
 				mCheckBox.setChecked(false);
@@ -298,7 +294,7 @@ public class FavoritosViewAdapter extends BaseExpandableListAdapter {
 		protected void onPostExecute(String jResult) {
 			super.onPostExecute(jResult);
 
-			Log.e("Ambientes list", jResult);
+			
 			if (jResult != null) {
 
 			}

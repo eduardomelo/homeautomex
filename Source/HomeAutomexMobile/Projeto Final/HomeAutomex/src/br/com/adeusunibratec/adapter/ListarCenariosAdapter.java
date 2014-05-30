@@ -39,7 +39,7 @@ import br.com.adeusunibratec.bean.Dispositivo;
 import br.com.adeusunibratec.bean.DispositivoGson;
 
 import br.com.adeusunibratec.bean.Residencia;
-import br.com.adeusunibratec.ha.ListarCenariosActivity;
+import br.com.adeusunibratec.mb.ListarCenariosActivity;
 import br.com.adeusunibratec.mb.R;
 
 public class ListarCenariosAdapter extends BaseAdapter {
@@ -144,7 +144,7 @@ public class ListarCenariosAdapter extends BaseAdapter {
 						
 						     liga = true;
 						     
-						    Log.e("chave cenario aqui", chaveCenario);
+						   
 						    
 						    chavCenario = chaveCenario;
 						new StatusDispositivo().execute(chaveUsuario);
@@ -212,7 +212,7 @@ public class ListarCenariosAdapter extends BaseAdapter {
 		protected void onPostExecute(String jResult) {
 			super.onPostExecute(jResult);
 
-			Log.e("json cenario", jResult);
+			
 			
 			Gson gson = new Gson();
 
@@ -226,7 +226,7 @@ public class ListarCenariosAdapter extends BaseAdapter {
 			for (Cenario dataset : datasets) {
 
 				dataset.getDispositivo();
-				Log.e("chave cenario teste2", dataset.getChave());
+				
 
 				ArrayList<AmbienteGson> af = new ArrayList<AmbienteGson>();
 
@@ -245,12 +245,12 @@ public class ListarCenariosAdapter extends BaseAdapter {
 						     try {
 								 favorit = dat.getFavorito();
 									
-									Log.e("teste fvorito1", favorit);
+								
 									
 								} catch (Exception e) {
 
 									favorit = "False";
-									Log.e("teste fvorito2", favorit);
+									
 								}
 						     
 						     
@@ -266,7 +266,7 @@ public class ListarCenariosAdapter extends BaseAdapter {
 								+ "},\"Porta\":{\"Chave\":"
 								+ dat.getPorta().getChave() + "}}";
 
-						Log.e("testecenario1", dispositivo);
+					
 						new AtivaCenario().execute(dispositivo);
 
 					}
@@ -288,7 +288,7 @@ public class ListarCenariosAdapter extends BaseAdapter {
 								+ "},\"Porta\":{\"Chave\":"
 								+ dat.getPorta().getChave() + "}}";
 
-						Log.e("testecenario2", dispositivo);
+					
 						new AtivaCenario().execute(dispositivo);
 
 					}
@@ -342,7 +342,7 @@ public class ListarCenariosAdapter extends BaseAdapter {
 		protected void onPostExecute(String jResult) {
 			super.onPostExecute(jResult);
 
-			Log.e("Ambientes list", jResult);
+			
 			if (jResult != null) {
 
 			}

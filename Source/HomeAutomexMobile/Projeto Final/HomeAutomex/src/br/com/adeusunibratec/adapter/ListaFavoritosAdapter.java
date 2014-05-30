@@ -107,7 +107,7 @@ public class ListaFavoritosAdapter extends BaseAdapter {
 								+ ambientes.getChaveAmbiente()
 								+ "},\"Porta\":{\"Chave\":"
 								+ ambientes.getChavePorta() + "}}";
-						Log.e("log do dispositivo true", dispositivo);
+						
 						new LigarTask().execute(dispositivo);
 						
 					}
@@ -129,7 +129,7 @@ public class ListaFavoritosAdapter extends BaseAdapter {
 								+ ambientes.getChavePorta() + "}}";
 
 						
-						Log.e("log do dispositivo false", dispositivo);
+						
 						new LigarTask().execute(dispositivo);
 					}
 
@@ -198,7 +198,7 @@ public class ListaFavoritosAdapter extends BaseAdapter {
 		protected void onPostExecute(String jResult) {
 			super.onPostExecute(jResult);
 
-			Log.e("Ambientes list", jResult);
+			
 			if (jResult != null) {
 
 			}
