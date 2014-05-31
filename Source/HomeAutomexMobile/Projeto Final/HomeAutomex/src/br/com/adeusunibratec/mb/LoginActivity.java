@@ -35,9 +35,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import br.com.adeusunibratec.acesso.AcessoWSDL;
-
 import br.com.adeusunibratec.parse.JSONFields;
 import br.com.adeusunibratec.util.HomeAutomexUtils;
+import br.com.adeusunibratec.util.Util;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -47,7 +47,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 	
 	
-	//----------------notificações----------------------------///
+	//----------------notificaï¿½ï¿½es----------------------------///
 	public static final String EXTRA_MESSAGE = "message";
     public static final String PROPERTY_REG_ID = "registration_id";
     private static final String PROPERTY_APP_VERSION = "appVersion";
@@ -60,14 +60,18 @@ public class LoginActivity extends Activity implements OnClickListener {
     Context context;
     String regid;
     
-  //----------------notificações----------------------------///
+  //----------------notificaï¿½ï¿½es----------------------------///
     
     private EditText loginEdit;
 	private EditText senhaEdit;
 	private Button logarBtn;
+	private Intent intent;
+	private String login;
+	private String senha;
 
 	private ProgressDialog progressDialog;
-    
+	
+	
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +93,12 @@ public class LoginActivity extends Activity implements OnClickListener {
 			Log.e("111", regid.toString());
 		}
 */
+		this.intent = getIntent();
+
+		this.login = intent.getStringExtra("login");
+		this.senha = intent.getStringExtra("senha");
+	    
+		
 		createProgressDialog();
 
 		this.loginEdit = (EditText) findViewById(R.id.editLogin);
@@ -99,6 +109,10 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 		this.logarBtn = (Button) findViewById(R.id.btnLogin);
 		this.logarBtn.setOnClickListener(this);
+		if(this.login != null && this.senha != null){
+			this.loginHomeAutomex(this.login, this.senha);
+		}
+		
 
 	}
 
@@ -271,8 +285,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 		if (!"".equals(login)) {
 			if (!"".equals(senha)) {
-				  if (HomeAutomexUtils
-						.internetConnection(getApplicationContext())) {
+				  if (Util.verificaConexao(this)) {
 
 					new LoginTask(this.progressDialog).execute(login, senha);
 

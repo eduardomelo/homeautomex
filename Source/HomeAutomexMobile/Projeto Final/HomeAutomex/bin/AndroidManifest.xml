@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="17"
-        android:targetSdkVersion="17" />
+        android:minSdkVersion="16"
+        android:targetSdkVersion="16" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -27,7 +27,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="br.com.adeusunibratec.mb.SplashActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+                        android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,7 +56,8 @@
  -->
         <activity
             android:name="br.com.adeusunibratec.mb.LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:label="@string/title_activity_login" 
+            android:screenOrientation="portrait">
         </activity>
        <!--  <activity
             android:name="br.com.adeusunibratec.mb.ReceiveActivity"
@@ -63,63 +65,78 @@
         </activity> -->
         <activity
             android:name="br.com.adeusunibratec.mb.ResidenciasActivity"
-            android:label="@string/title_activity_residencias" >
+            android:label="@string/title_activity_residencias" 
+                        android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="br.com.adeusunibratec.mb.OpcoesUsuariosActivity"
-            android:label="@string/title_activity_opcoes_usuarios" >
+            android:label="@string/title_activity_opcoes_usuarios" 
+                        android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="br.com.adeusunibratec.mb.FavoritosActivity"
-            android:label="@string/title_activity_favoritos" >
+            android:label="@string/title_activity_favoritos" 
+                        android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="br.com.adeusunibratec.mb.AmbienteActivity"
-            android:label="@string/title_activity_ambiente" >
+            android:label="@string/title_activity_ambiente" 
+                        android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="br.com.adeusunibratec.mb.ConfiguracoesActivity"
-            android:label="@string/title_activity_configuracoes" >
+            android:label="@string/title_activity_configuracoes" 
+                        android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="br.com.adeusunibratec.mb.CenarioActivity"
-            android:label="@string/title_activity_cenario" >
+            android:label="@string/title_activity_cenario" 
+                        android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="br.com.adeusunibratec.mb.ProgramacaoActivity"
-            android:label="@string/title_activity_programacao" >
+            android:label="@string/title_activity_programacao" 
+                        android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="br.com.adeusunibratec.mb.ListarFavoritosActivity"
-            android:label="@string/title_activity_listar_favoritos" >
+            android:label="@string/title_activity_listar_favoritos" 
+                        android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="br.com.adeusunibratec.ha.MainActivity"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main"
+                        android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="br.com.adeusunibratec.mb.ListarFavoritos"
-            android:label="@string/title_activity_listar_favoritos" >
+            android:label="@string/title_activity_listar_favoritos" 
+                        android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="br.com.adeusunibratec.mb.CadastroDispositivosCenarioActivity"
-            android:label="@string/title_activity_cadastro_dispositivos_cenario" >
+            android:label="@string/title_activity_cadastro_dispositivos_cenario" 
+                        android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="br.com.adeusunibratec.mb.ListarCenariosActivity"
-            android:label="@string/title_activity_listar_cenarios" >
+            android:label="@string/title_activity_listar_cenarios" 
+                        android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="br.com.adeusunibratec.mb.ListarAgendamentoActivity"
-            android:label="@string/title_activity_listar_agendamento" >
+            android:label="@string/title_activity_listar_agendamento" 
+                        android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="br.com.adeusunibratec.mb.CadastroDispositivosAgendamentoActivity"
-            android:label="@string/title_activity_cadastro_dispositivos_agendamento" >
+            android:label="@string/title_activity_cadastro_dispositivos_agendamento"
+                        android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="br.com.adeusunibratec.mb.PortaoActivity"
-            android:label="@string/title_activity_portao" >
+            android:label="@string/title_activity_portao" 
+                        android:screenOrientation="portrait">
         </activity>
     </application>
 

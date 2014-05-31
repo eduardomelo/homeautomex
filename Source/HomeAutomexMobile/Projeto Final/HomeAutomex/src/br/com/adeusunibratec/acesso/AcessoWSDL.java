@@ -25,7 +25,7 @@ import android.util.Log;
 
 public class AcessoWSDL {
 	private static String name_space = "http://tempuri.org/";
-	private static String url = "http://172.16.3.72/meuWebservice/HomeAutomexWS.asmx";
+	private static String url = "http://192.168.0.101/meuWebservice/HomeAutomexWS.asmx";
 
 	private static String soap_action_consutar_todos_usuarios = "http://tempuri.org/ConsutarTodosUsuarios";
 	private static String method_consutar_todos_usuarios = "ConsutarTodosUsuarios";
@@ -35,7 +35,7 @@ public class AcessoWSDL {
 	/* public final static String SOAP_ADDRESS =
 	 "http://192.168.0.102/vai/HomeAutomexWS.asmx";*/
 
-	public final static String SOAP_ADDRESS = "http://10.0.2.2/vai/HomeAutomexWS.asmx";
+	public final static String SOAP_ADDRESS = "http://192.168.0.101/meuWebservice/HomeAutomexWS.asmx";
 
 	public final static String SOAP_LOGIN_ACTION = "http://tempuri.org/Logar";
 	public final static String OPERATION_LOGIN = "Logar";
@@ -277,7 +277,7 @@ public class AcessoWSDL {
 	}
 
 	/**
-	 * Metodo generico para chamar WS. Obs:o atributo SOAP_ACTION concatenará
+	 * Metodo generico para chamar WS. Obs:o atributo SOAP_ACTION concatenarï¿½
 	 * com o METHOD_NAME.
 	 * 
 	 * @param url

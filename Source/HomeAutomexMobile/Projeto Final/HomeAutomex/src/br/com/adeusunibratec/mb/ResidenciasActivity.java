@@ -19,9 +19,9 @@ import br.com.adeusunibratec.bean.Residencia;
 import br.com.adeusunibratec.bean.Usuario;
 
 
+import br.com.adeusunibratec.dao.UsuarioDAO;
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
 import br.com.adeusunibratec.parse.JSONParserManager;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -29,6 +29,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -70,8 +71,10 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 		if (jLoginResult != null) {
 			try {
 
-				JSONParserManager
-						.parseJSONSapiensFirstAccess(this.jLoginResult);
+				Usuario usuario = JSONParserManager.parseJSONSapiensFirstAccess(this.jLoginResult);
+				
+				UsuarioDAO dao = new UsuarioDAO(this);
+				dao.inserir(usuario);
 
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -153,8 +156,8 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 
 		this.boasVindas.setText(sBoasVindas);
 
-		// lembrando que é para colocar a string chave dentro do parametro o "2"
-		// é só para testar o metodo
+		// lembrando que ï¿½ para colocar a string chave dentro do parametro o "2"
+		// ï¿½ sï¿½ para testar o metodo
 
 		new ResidenciaTask(this.progressDialog).execute(chave);
 
@@ -277,7 +280,7 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 
 			this.progressDialog = params;
 			this.progressDialog
-					.setMessage("Aguarde Enquanto\nCarregamos Suas\nConfigurações...");
+					.setMessage("Aguarde Enquanto\nCarregamos Suas\nConfiguraï¿½ï¿½es...");
 
 		}
 
@@ -418,7 +421,7 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 		
 		if (favoritos == false) {
 
-		// Toast.makeText(getApplication(), "ele é false",
+		// Toast.makeText(getApplication(), "ele ï¿½ false",
 		// Toast.LENGTH_LONG).show();
 
 			Intent intentFav = new Intent(this,
@@ -478,5 +481,56 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 
 		return usuarios;
 	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Take appropriate action for each action item click
+		switch (item.getItemId()) {
+
+		case R.id.opcaoUsuario:
+			Toast.makeText(getApplication(), "clicou", Toast.LENGTH_LONG)
+					.show();
+
+			Intent intent = new Intent(ResidenciasActivity.this,
+					OpcoesUsuariosActivity.class);
+
+			intent.putExtra("idResidencia", jLoginResult);
+
+			startActivity(intent);
+		
+			
+			this.finish();
+
+			return true;
+			
+			
+
+		case R.id.programacao:
+			Intent intentListarA = new Intent(ResidenciasActivity.this,
+					ConfiguracoesActivity.class);
+
+			intentListarA.putExtra("idResidencia", jLoginResult);
+
+			startActivity(intentListarA);
+			this.finish();
+			return true;
+			
+		case R.id.trocarUsuario:
+			Intent intentTrocaUsuario = new Intent(ResidenciasActivity.this,
+					LoginActivity.class);
+			
+			UsuarioDAO dao = new UsuarioDAO(this);
+			dao.excluir();
+
+			startActivity(intentTrocaUsuario);
+			this.finish();
+			return true;
+		
+		
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
 
 }

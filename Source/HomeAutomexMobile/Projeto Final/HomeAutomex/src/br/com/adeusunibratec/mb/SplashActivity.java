@@ -16,9 +16,16 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 
+
+
+import br.com.adeusunibratec.bean.Usuario;
+import br.com.adeusunibratec.dao.UsuarioDAO;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+
+
 
 
 import android.media.MediaPlayer;
@@ -100,8 +107,16 @@ public class SplashActivity extends Activity implements Runnable {
 		
 		finish();
 		if (!this.backPressed) {
+			Usuario usuario = new Usuario();
+			UsuarioDAO dao = new UsuarioDAO(this);
+			usuario = dao.buscarCarroPorNome();
 			 
 			this.intent = new Intent(SplashActivity.this, LoginActivity.class);
+			if(usuario.getLogin() != null && usuario.getSenha() != null){
+				intent.putExtra("login", usuario.getLogin());
+				intent.putExtra("senha", usuario.getSenha());
+			}
+			
 			SplashActivity.this.startActivity(intent);
 		}
 	}

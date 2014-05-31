@@ -18,7 +18,7 @@ import br.com.adeusunibratec.bean.Usuario;
 public class JSONParserManager {
 
 	@SuppressLint("NewApi")
-	public static void parseJSONSapiensFirstAccess(String jsonString)
+	public static Usuario parseJSONSapiensFirstAccess(String jsonString)
 			throws JSONException {
 
 		Log.e("segundo", jsonString);
@@ -49,6 +49,7 @@ public class JSONParserManager {
 		// Log.e("testando", usuario.getChave());
 
 		HomeAutomexJSONObject.getInstance().setUsuario(usuario);
+		return usuario;
 	}
 
 	public static JSONObject createJSONLogin(String login, String senha)
