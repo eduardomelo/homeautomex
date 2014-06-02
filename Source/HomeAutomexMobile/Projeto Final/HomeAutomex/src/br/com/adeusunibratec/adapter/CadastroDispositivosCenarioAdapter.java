@@ -109,9 +109,7 @@ public class CadastroDispositivosCenarioAdapter extends
 							boolean isChecked) {
 
 						if (isChecked) {
-							Toast.makeText(_context,
-									"ei aqui" + dispositivo.toString(),
-									Toast.LENGTH_LONG).show();
+							
                             String status = "true";
 							// new
 				 

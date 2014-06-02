@@ -5,6 +5,23 @@
     android:layout_height="55dip"
     android:orientation="vertical" >
 
+   <!--  <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lblListItem"
+        android:layout_alignBottom="@+id/lblListItem"
+        android:layout_alignParentRight="true"
+         /> -->
+
+    <Switch
+        android:id="@+id/switchFvorito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="" />
+
     <TextView
         android:id="@+id/lblListItem"
         android:layout_width="222dp"
@@ -16,14 +33,5 @@
         android:paddingTop="5dp"
         android:textColor="#fff"
         android:textSize="17dip" />
-
-    <CheckBox
-        android:id="@+id/checkBox1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/lblListItem"
-        android:layout_alignBottom="@+id/lblListItem"
-        android:layout_alignParentRight="true"
-         />
 
 </RelativeLayout>

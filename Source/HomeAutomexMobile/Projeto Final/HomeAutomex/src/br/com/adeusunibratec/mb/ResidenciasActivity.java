@@ -93,7 +93,7 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.residencias, menu);
 		return true;
 	}
 
@@ -280,7 +280,7 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 
 			this.progressDialog = params;
 			this.progressDialog
-					.setMessage("Aguarde Enquanto\nCarregamos Suas\nConfiguraï¿½ï¿½es...");
+					.setMessage("Aguarde Enquanto\nCarregamos Suas\nConfigurações...");
 
 		}
 
@@ -433,8 +433,7 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 	}
 		
 		else{
-			Toast.makeText(getApplication(), "verade",
-					Toast.LENGTH_LONG).show();
+			
 			Intent intentFav = new Intent(ResidenciasActivity.this,
 					ListarFavoritos.class);
 
@@ -488,8 +487,7 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 		switch (item.getItemId()) {
 
 		case R.id.opcaoUsuario:
-			Toast.makeText(getApplication(), "clicou", Toast.LENGTH_LONG)
-					.show();
+			
 
 			Intent intent = new Intent(ResidenciasActivity.this,
 					OpcoesUsuariosActivity.class);

@@ -28,8 +28,11 @@ import android.view.View.OnClickListener;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class FavoritosViewAdapter extends BaseExpandableListAdapter {
 
@@ -110,7 +113,74 @@ public class FavoritosViewAdapter extends BaseExpandableListAdapter {
 
 			//Log.e("JSONObject obj", porta);
 
-			CheckBox mCheckBox = (CheckBox) convertView
+			
+			
+			Switch s = (Switch) convertView.findViewById(R.id.switchFvorito);
+
+			if (s != null) {
+
+				s.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+					@Override
+					public void onCheckedChanged(CompoundButton button,
+							boolean isChecked) {
+
+						
+						if (isChecked) {
+
+							ambientes.setFavorito("true");
+							ambientes.setStatusDispositivos("False");
+							String dispositivo = "{\"Chave\":"
+									+ ambientes.getChaveDispositivos()
+									+ ",\"Favorito\":\"" + ambientes.getFavorito()
+									+ "\",\"Status\":\""
+									+ ambientes.getStatusDispositivos()
+									+ "\",\"Descricao\":\""
+									+ ambientes.getDescricao()
+									+ "\",\"DataACadastro\":\""
+									+ ambientes.getDataAlteracaoDispositivos()
+									+ "\",\"Ambiente\":{\"Chave\":"
+									+ ambientes.getChaveAmbiente()
+									+ "},\"Porta\":{\"Chave\":"
+									+ ambientes.getChavePorta() + "}}";
+
+
+						} else
+						
+							
+							ambientes.setFavorito("False");
+						ambientes.setStatusDispositivos("False");
+						String dispositivo = "{\"Chave\":"
+								+ ambientes.getChaveDispositivos()
+								+ ",\"Favorito\":\"" + ambientes.getFavorito()
+								+ "\",\"Status\":\""
+								+ ambientes.getStatusDispositivos()
+								+ "\",\"Descricao\":\""
+								+ ambientes.getDescricao()
+								+ "\",\"DataACadastro\":\""
+								+ ambientes.getDataAlteracaoDispositivos()
+								+ "\",\"Ambiente\":{\"Chave\":"
+								+ ambientes.getChaveAmbiente()
+								+ "},\"Porta\":{\"Chave\":"
+								+ ambientes.getChavePorta() + "}}";
+
+						new LigarTask().execute(dispositivo);
+
+						
+					}
+				});
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			/*CheckBox mCheckBox = (CheckBox) convertView
 					.findViewById(R.id.checkBox1);
 
 			mCheckBox.setOnClickListener(new OnClickListener() {
@@ -118,10 +188,10 @@ public class FavoritosViewAdapter extends BaseExpandableListAdapter {
 				public void onClick(View v) {
 					// is chkIos checked?
 					if (((CheckBox) v).isChecked()) {
-						/*
+						
 						 * Toast.makeText(_context, childText,
 						 * Toast.LENGTH_LONG) .show();
-						 */
+						 
 
 						ambientes.setFavorito("true");
 						ambientes.setStatusDispositivos("False");
@@ -164,13 +234,13 @@ public class FavoritosViewAdapter extends BaseExpandableListAdapter {
 
 				}
 			});
-
-			if (ambientes.getFavorito().equals("true")) {
+*/
+			/*if (ambientes.getFavorito().equals("true")) {
 				
 				mCheckBox.setChecked(true);
 			} else {
 				mCheckBox.setChecked(false);
-			}
+			}*/
 			
 
 			txtListChild.setText(ambientes.getDescricao());

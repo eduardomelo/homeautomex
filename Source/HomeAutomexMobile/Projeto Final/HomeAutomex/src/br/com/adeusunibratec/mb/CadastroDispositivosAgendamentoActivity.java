@@ -27,6 +27,7 @@ import br.com.adeusunibratec.bean.Cenario;
 import br.com.adeusunibratec.bean.Dispositivo;
 import br.com.adeusunibratec.bean.DispositivoGson;
 import br.com.adeusunibratec.bean.Residencia;
+import br.com.adeusunibratec.dao.UsuarioDAO;
 import br.com.adeusunibratec.mb.R;
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
 import br.com.adeusunibratec.parse.JSONParserManager;
@@ -37,6 +38,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
@@ -74,7 +76,7 @@ public class CadastroDispositivosAgendamentoActivity extends Activity {
 		intent = getIntent();
 		result = intent.getStringExtra("idResidencia");
 
-		Toast.makeText(getApplication(), result, Toast.LENGTH_LONG).show();
+		
 
 		setupViews();
 	
@@ -84,11 +86,61 @@ public class CadastroDispositivosAgendamentoActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.cadastro_dispositivos_agendamento,
+		getMenuInflater().inflate(R.menu.main,
 				menu);
 		return true;
 	}
 
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Take appropriate action for each action item click
+		switch (item.getItemId()) {
+
+		case R.id.opcaoUsuario:
+			
+
+			Intent intent = new Intent(this,
+					OpcoesUsuariosActivity.class);
+
+			intent.putExtra("idResidencia", result);
+
+			startActivity(intent);
+		
+			
+			this.finish();
+
+			return true;
+			
+			
+
+		case R.id.programacao:
+			Intent intentListarA = new Intent(this,
+					ConfiguracoesActivity.class);
+
+			intentListarA.putExtra("idResidencia", result);
+
+			startActivity(intentListarA);
+			return true;
+		
+		case R.id.trocarUsuario:
+			Intent intentTrocaUsuario = new Intent(this, LoginActivity.class);
+
+			UsuarioDAO dao = new UsuarioDAO(this);
+			dao.excluir();
+
+			startActivity(intentTrocaUsuario);
+			this.finish();
+			return true;
+			
+			
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	
+	
 	
 	private void setupViews() {
 
@@ -148,14 +200,14 @@ public class CadastroDispositivosAgendamentoActivity extends Activity {
 			@Override
 			public boolean onChildClick(ExpandableListView parent, View v,
 					int groupPosition, int childPosition, long id) {
-				Toast.makeText(
+				/*Toast.makeText(
 						getApplicationContext(),
 						listDataHeader.get(groupPosition)
 								+ " : "
 								+ listDataChild.get(
 										listDataHeader.get(groupPosition)).get(
 										childPosition), Toast.LENGTH_SHORT)
-						.show();// TODO Auto-generated method stub
+						.show();*/// TODO Auto-generated method stub
 
 				return false;
 			}
@@ -319,9 +371,9 @@ public class CadastroDispositivosAgendamentoActivity extends Activity {
 		
 			
 			listDataChild.put(listDataHeader.get(cont - 1), descri);
-			
+			/*
 			listAdapter = new CadastroDispositivosAgendamentoAdapter(CadastroDispositivosAgendamentoActivity.this,
-					listDataHeader, listDataChild);
+					listDataHeader, listDataChild);*/
 
 			
 

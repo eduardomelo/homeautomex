@@ -1,10 +1,12 @@
 package br.com.adeusunibratec.mb;
 
 
+import br.com.adeusunibratec.dao.UsuarioDAO;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -43,9 +45,58 @@ public class ConfiguracoesActivity extends Activity implements OnClickListener {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.configuracoes, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Take appropriate action for each action item click
+		switch (item.getItemId()) {
+
+		case R.id.opcaoUsuario:
+			
+
+			Intent intent = new Intent(this,
+					OpcoesUsuariosActivity.class);
+
+			intent.putExtra("idResidencia", teste);
+
+			startActivity(intent);
+		
+			
+			this.finish();
+
+			return true;
+			
+			
+
+		case R.id.programacao:
+			Intent intentListarA = new Intent(this,
+					ConfiguracoesActivity.class);
+
+			intentListarA.putExtra("idResidencia", teste);
+
+			startActivity(intentListarA);
+			return true;
+		
+		case R.id.trocarUsuario:
+			Intent intentTrocaUsuario = new Intent(this, LoginActivity.class);
+
+			UsuarioDAO dao = new UsuarioDAO(this);
+			dao.excluir();
+
+			startActivity(intentTrocaUsuario);
+			this.finish();
+			return true;
+			
+		
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
 
 	@Override
 	public void onClick(View v) {

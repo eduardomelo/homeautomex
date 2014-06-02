@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.adeusunibratec.acesso.AcessoWSDL;
@@ -31,6 +32,7 @@ import br.com.adeusunibratec.bean.DispositivoGson;
 import br.com.adeusunibratec.bean.ListCenario;
 import br.com.adeusunibratec.bean.Residencia;
 import br.com.adeusunibratec.bean.TesteCenario;
+import br.com.adeusunibratec.dao.UsuarioDAO;
 
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
 import br.com.adeusunibratec.parse.JSONParserManager;
@@ -41,6 +43,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
@@ -69,6 +72,9 @@ public class CadastroDispositivosCenarioActivity extends Activity {
 	String chave = null;
 	
 	  String chaveCenario = null;
+	  
+	  String descricaoCenario;
+	  String chaveCe;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +86,7 @@ public class CadastroDispositivosCenarioActivity extends Activity {
 		intent = getIntent();
 		result = intent.getStringExtra("idResidencia");
 
-		Toast.makeText(getApplication(), result, Toast.LENGTH_LONG).show();
+		
 
 		setupViews();
 
@@ -91,6 +97,57 @@ public class CadastroDispositivosCenarioActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Take appropriate action for each action item click
+		switch (item.getItemId()) {
+
+		case R.id.opcaoUsuario:
+			
+
+			Intent intent = new Intent(this,
+					OpcoesUsuariosActivity.class);
+
+			intent.putExtra("idResidencia", result);
+
+			startActivity(intent);
+		
+			
+			this.finish();
+
+			return true;
+			
+			
+
+		case R.id.programacao:
+			Intent intentListarA = new Intent(this,
+					ConfiguracoesActivity.class);
+
+			intentListarA.putExtra("idResidencia", result);
+
+			startActivity(intentListarA);
+			return true;
+		
+		
+		case R.id.trocarUsuario:
+			Intent intentTrocaUsuario = new Intent(this, LoginActivity.class);
+
+			UsuarioDAO dao = new UsuarioDAO(this);
+			dao.excluir();
+
+			startActivity(intentTrocaUsuario);
+			this.finish();
+			return true;
+			
+			
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	
 
 	private void setupViews() {
 
@@ -150,14 +207,14 @@ public class CadastroDispositivosCenarioActivity extends Activity {
 			@Override
 			public boolean onChildClick(ExpandableListView parent, View v,
 					int groupPosition, int childPosition, long id) {
-				Toast.makeText(
+				/*Toast.makeText(
 						getApplicationContext(),
 						listDataHeader.get(groupPosition)
 								+ " : "
 								+ listDataChild.get(
 										listDataHeader.get(groupPosition)).get(
 										childPosition), Toast.LENGTH_SHORT)
-						.show();// TODO Auto-generated method stub
+						.show();*/// TODO Auto-generated method stub
 
 				return false;
 			}
@@ -252,10 +309,15 @@ public class CadastroDispositivosCenarioActivity extends Activity {
 			
 			JSONArray jsonArray = null;
 
+			JSONArray jsonTeste = null;
+			
+			JSONArray jsonDispositivo = null;
 			 dispositivos = new ArrayList<Dispositivo>();
 
 			//ArrayList<DispositivoGson> dispositivos = new ArrayList<DispositivoGson>();
 			ArrayList<Ambiente> hg = new ArrayList<Ambiente>();
+			
+			HashSet lista = new HashSet();
 			try {
 				jsonArray = new JSONArray(jResult);
 
@@ -263,7 +325,7 @@ public class CadastroDispositivosCenarioActivity extends Activity {
 				Residencia residencia = null;
 				Dispositivo dispositivo = null;
 
-				HashSet lista = new HashSet();
+				
 
 				for (int i = 0; i < jsonArray.length(); i++) {
 
@@ -280,7 +342,99 @@ public class CadastroDispositivosCenarioActivity extends Activity {
 					JSONObject chav = new JSONObject(chaveResidenci);
 					residencia.setChave(chav.getString("Chave"));
 
-					if (chav.getString("Chave").equals(result)) {
+					String aa = jsonObject.getString("Cenario");
+					
+				//	Log.e("string json", aa);
+					try{
+						jsonTeste = new JSONArray(aa);
+						 
+						for (int j = 0; j <jsonTeste.length(); j++) {
+
+							
+							
+							JSONObject jsonOb = jsonTeste.getJSONObject(j);
+	
+							descricaoCenario = jsonOb.getString("Descricao");
+							
+							chaveCe = jsonOb.getString("Chave");
+							
+							
+					         
+							
+					       //Log.e("olha descricao",""+descricaoCenario);
+						   
+						     
+						      String dispoteste = jsonOb.getString("Dispositivo");
+						     
+						    // JSONObject TesteDispo = new JSONObject(dispoteste);
+						     
+						    
+						     jsonDispositivo = new JSONArray(dispoteste);
+						     
+						    for (int k = 0; k < jsonDispositivo.length(); k++) {
+								
+						    	 JSONObject jsonObj = jsonDispositivo.getJSONObject(0);
+								    
+							     String testambient = jsonObj.getString("Ambiente");
+
+							     JSONObject chaveAmbi = new JSONObject(testambient);
+							     
+							     String chaveResi = chaveAmbi.getString("Residencia");
+							     
+							     JSONObject chavR = new JSONObject(chaveResi);
+							    
+							    
+							     
+							     residencia.setCep(chavR.getString("Chave"));
+						    
+						    }
+						       
+						    
+						     
+						    
+						   
+						     
+						     if (chav.getString("Chave").equals(result)) {
+						    	 
+						    	// Log.e("ambiente","ambiente"+residencia.getCep());
+						    	 
+						    	 Log.e("cenario",""+descricaoCenario+"chave cenario"+chaveCe);
+						    	 
+						    	 
+						    	 ambiente = new Ambiente();
+
+									ambiente.setDescricao(descricaoCenario);
+									
+									ambiente.setChaveAmbiente(chaveCe);
+									
+									lista.add(ambiente);
+
+						    	 
+						     }
+								
+								
+								
+						     
+						     
+						     
+						   //  Log.e("olha","dispositivo"+jsonDispositivo);
+						     
+						
+						}
+					}
+					catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					/*JSONObject test = new JSONObject(aa);
+					
+					residencia.setBairro(test.getString("Descricao"));*/
+					   // jsonTeste = new JSONArray(aa);
+					
+					    //  Log.e("jsonteste","olha"+aa);
+					
+					//Log.e("logchave", chav.getString("Chave") + "resl" + result);
+					    if (chav.getString("Chave").equals(result)) {
 
 						String a = jsonObject.getString("Descricao");
 						String b = jsonObject.getString("Chave");
@@ -342,9 +496,9 @@ public class CadastroDispositivosCenarioActivity extends Activity {
 			List<Dispositivo> cenariosets = gson.fromJson(jResult,
 					cenariosetListType);
 
-			HashSet lista = new HashSet();
+			//HashSet lista = new HashSet();
 
-			ArrayList<Ambiente> cenario = new ArrayList<Ambiente>();
+			  ArrayList<Ambiente> cenario = new ArrayList<Ambiente>();
 
 			ArrayList<Dispositivo> dispositivo = new ArrayList<Dispositivo>();
 
@@ -366,7 +520,7 @@ public class CadastroDispositivosCenarioActivity extends Activity {
 
 				//Log.e("contador", Integer.toString(cont-1));
 				
-				for (Cenario dat : cenarioset.getCenario()) {
+				/*for (Cenario dat : cenarioset.getCenario()) {
 					
 					ambiente = new Ambiente();
 
@@ -379,7 +533,7 @@ public class CadastroDispositivosCenarioActivity extends Activity {
 					chaveCenario = dat.getChave();
 
 					//Log.e("bbbbb", dat.getChave());
-				}
+				}*/
 
 				/*dispo = new Dispositivo();
 
@@ -394,6 +548,7 @@ public class CadastroDispositivosCenarioActivity extends Activity {
 
 			for (Iterator it = lista.iterator(); it.hasNext();) {
 				cont++;
+				
 				Object objeto = it.next();
 
 				Ambiente descricaoCenario = (Ambiente) objeto;

@@ -121,7 +121,7 @@ public class ListarAgendamentoAdapter extends BaseAdapter {
 				public void onCheckedChanged(CompoundButton arg0,
 						boolean isChecked) {
 					
-					Toast.makeText(context, "clicado"+isChecked, Toast.LENGTH_LONG);
+					
 					
 					if (isChecked ) {
 

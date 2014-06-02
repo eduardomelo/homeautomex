@@ -14,6 +14,7 @@ import br.com.adeusunibratec.acesso.AcessoWSDL;
 import br.com.adeusunibratec.adapter.AmbientesAdapter;
 import br.com.adeusunibratec.bean.Ambiente;
 import br.com.adeusunibratec.bean.DispositivoGson;
+import br.com.adeusunibratec.dao.UsuarioDAO;
 
 import br.com.adeusunibratec.mb.AmbienteActivity.ResidenciaTask;
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
@@ -25,6 +26,7 @@ import android.content.Intent;
 import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -70,6 +72,56 @@ public class CenarioActivity extends Activity implements OnClickListener {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Take appropriate action for each action item click
+		switch (item.getItemId()) {
+
+		case R.id.opcaoUsuario:
+			
+
+			Intent intent = new Intent(this,
+					OpcoesUsuariosActivity.class);
+
+			intent.putExtra("idResidencia", result);
+
+			startActivity(intent);
+		
+			
+			this.finish();
+
+			return true;
+			
+			
+
+		case R.id.programacao:
+			Intent intentListarA = new Intent(this,
+					ConfiguracoesActivity.class);
+
+			intentListarA.putExtra("idResidencia", result);
+
+			startActivity(intentListarA);
+			return true;
+		
+			
+		case R.id.trocarUsuario:
+			Intent intentTrocaUsuario = new Intent(this, LoginActivity.class);
+
+			UsuarioDAO dao = new UsuarioDAO(this);
+			dao.excluir();
+
+			startActivity(intentTrocaUsuario);
+			this.finish();
+			return true;
+			
+		
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	
 	
 	
 	private void setupViews() {
@@ -197,10 +249,10 @@ public class CenarioActivity extends Activity implements OnClickListener {
 		
 		if(descricaoCenario.getText().toString().equals(null)){
 			
-			Toast.makeText(getApplication(), "clicou "+descricaoCenario.getText(), Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplication(), "Informe uma Descrição\n Para o Cenário ", Toast.LENGTH_LONG).show();
 		}
 		else{
-			Toast.makeText(getApplication(), "entrou no else", Toast.LENGTH_LONG).show();
+			//Toast.makeText(getApplication(), "entrou no else", Toast.LENGTH_LONG).show();
 		
 			this.cadastrarCenario(descricaoCenario.getText(),chave);
 		}

@@ -25,7 +25,7 @@ import android.util.Log;
 
 public class AcessoWSDL {
 	private static String name_space = "http://tempuri.org/";
-	private static String url = "http://192.168.0.101/meuWebservice/HomeAutomexWS.asmx";
+	private static String url = "192.168.0.102/meuWebservice/HomeAutomexWS.asmx";
 
 	private static String soap_action_consutar_todos_usuarios = "http://tempuri.org/ConsutarTodosUsuarios";
 	private static String method_consutar_todos_usuarios = "ConsutarTodosUsuarios";
@@ -35,7 +35,7 @@ public class AcessoWSDL {
 	/* public final static String SOAP_ADDRESS =
 	 "http://192.168.0.102/vai/HomeAutomexWS.asmx";*/
 
-	public final static String SOAP_ADDRESS = "http://192.168.0.101/meuWebservice/HomeAutomexWS.asmx";
+	public final static String SOAP_ADDRESS = "192.168.0.102/meuWebservice/HomeAutomexWS.asmx";
 
 	public final static String SOAP_LOGIN_ACTION = "http://tempuri.org/Logar";
 	public final static String OPERATION_LOGIN = "Logar";
@@ -116,7 +116,7 @@ public class AcessoWSDL {
 			UnknownHostException, IOException, XmlPullParserException {
 		String result = null;
 
-		Log.e("metodo buscar residencia", chave);
+		
 
 		// JSONObject jsonResidencia =
 		// JSONParserManager.createJSONBuscarResidencias(chave,senha);
@@ -132,7 +132,7 @@ public class AcessoWSDL {
 			UnknownHostException, IOException, XmlPullParserException {
 		String result = null;
 
-		Log.e("metodo buscar residencia", chave);
+		
 
 		// JSONObject jsonResidencia =
 		// JSONParserManager.createJSONBuscarResidencias(chave,senha);
@@ -150,7 +150,7 @@ public class AcessoWSDL {
 
 		String result = null;
 
-		Log.e("metodo buscar residencia", chave);
+		
 
 		// JSONObject jsonCadastroCenario =
 		// JSONParserManager.JsoncreateCrearCenario(chave);
@@ -161,7 +161,7 @@ public class AcessoWSDL {
 				+ "\",\"Desativado\":true,\"Usuario\":" + usuario
 				+ ",\"DataCadastro\":\"\"}";
 
-		Log.e("chegou aqui ", "" + cadastroCenario);
+		
 
 		result = sendWebServiceContent(cadastroCenario.toString(),
 				OPERATION_CADASTRO_CENARIO, CENARIO, SOAP_CADASTRO_CENARIO);
@@ -178,7 +178,7 @@ public class AcessoWSDL {
 
 		String result = null;
 
-		Log.e("metodo buscar residencia", chave);
+		
 
 		// JSONObject jsonCadastroCenario =
 		// JSONParserManager.JsoncreateCrearCenario(chave);
@@ -189,7 +189,7 @@ public class AcessoWSDL {
 				+ "\",\"Ativo\":true,\"DataAgendamento\":" + data+hora
 				+ ",\"Usuario\":"+usuario+",\"DataCadastro\":\"\"}";
 
-		Log.e("chegou aquina descricao agendamento ", "olha" + cadastroAgendamento);
+		
 
 		result = sendWebServiceContent(cadastroAgendamento.toString(),
 				OPERATION_CADASTRO_AGENDAMENTO, AGENDAMENTO, SOAP_CADASTRO_AGENDAMENTO);
@@ -206,7 +206,7 @@ public class AcessoWSDL {
 			UnknownHostException, IOException, XmlPullParserException {
 		String result = null;
 
-		Log.e("metodo buscar cenario", chave);
+		
 
 		// JSONObject jsonResidencia =
 		// JSONParserManager.createJSONBuscarResidencias(chave,senha);
@@ -222,7 +222,7 @@ public class AcessoWSDL {
 			UnknownHostException, IOException, XmlPullParserException {
 		String result = null;
 
-		Log.e("metodo buscar cenario", chave);
+		
 
 		// JSONObject jsonResidencia =
 		// JSONParserManager.createJSONBuscarResidencias(chave,senha);
@@ -252,7 +252,7 @@ public class AcessoWSDL {
 			pi.setType(String.class);
 
 			request.addProperty(pi);
-			Log.e("teste", request.toString());
+			
 		}
 
 		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
@@ -312,7 +312,7 @@ public class AcessoWSDL {
 			SoapPrimitive resultado_xml = (SoapPrimitive) envelope
 					.getResponse();
 
-			Log.e("valor de response", resultado_xml.toString());
+			
 
 			resultado = resultado_xml.toString();
 
@@ -341,7 +341,7 @@ public class AcessoWSDL {
 		result = sendWebServiceContent(chave, OPERATION_ACENDER_LUZ,
 				JDispositivo, SOAP_ACENDER_LUZ);
 
-		Log.e("teste Luzzzzzzzzzz", result);
+		
 
 		return result;
 	}

@@ -23,6 +23,7 @@ import br.com.adeusunibratec.bean.Ambiente;
 import br.com.adeusunibratec.bean.DispositivoGson;
 import br.com.adeusunibratec.bean.Residencia;
 import br.com.adeusunibratec.bean.Usuario;
+import br.com.adeusunibratec.dao.UsuarioDAO;
 
 import br.com.adeusunibratec.mb.AmbienteActivity.ResidenciaTask;
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
@@ -90,8 +91,7 @@ public class ListarFavoritos extends Activity implements OnClickListener {
 		switch (item.getItemId()) {
 
 		case R.id.opcaoUsuario:
-			Toast.makeText(getApplication(), "clicou", Toast.LENGTH_LONG)
-					.show();
+			
 
 			Intent intent = new Intent(ListarFavoritos.this,
 					OpcoesUsuariosActivity.class);
@@ -116,6 +116,16 @@ public class ListarFavoritos extends Activity implements OnClickListener {
 			startActivity(intentListarA);
 			return true;
 		
+			
+		case R.id.trocarUsuario:
+			Intent intentTrocaUsuario = new Intent(this, LoginActivity.class);
+
+			UsuarioDAO dao = new UsuarioDAO(this);
+			dao.excluir();
+
+			startActivity(intentTrocaUsuario);
+			this.finish();
+			return true;
 		
 		default:
 			return super.onOptionsItemSelected(item);

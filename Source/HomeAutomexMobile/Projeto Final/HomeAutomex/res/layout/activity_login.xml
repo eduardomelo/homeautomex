@@ -61,12 +61,12 @@
         android:textColor="#fff"
         android:textSize="15sp"  />
 
-    <TextView
+    <!-- <TextView
         android:id="@+id/display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/textLogin"
         android:layout_below="@+id/btnLogin"
-        android:text="TextView" />
+        android:text="TextView" /> -->
 
 </RelativeLayout>

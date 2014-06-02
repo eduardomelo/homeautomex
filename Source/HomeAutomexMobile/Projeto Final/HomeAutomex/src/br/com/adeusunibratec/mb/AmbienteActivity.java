@@ -16,8 +16,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
 
-
-
 import br.com.adeusunibratec.acesso.AcessoWSDL;
 import br.com.adeusunibratec.adapter.AmbientesAdapter;
 import br.com.adeusunibratec.adapter.FavoritosViewAdapter;
@@ -25,10 +23,10 @@ import br.com.adeusunibratec.bean.Ambiente;
 import br.com.adeusunibratec.bean.AmbienteGson;
 import br.com.adeusunibratec.bean.DispositivoGson;
 
-
 import br.com.adeusunibratec.bean.Residencia;
 import br.com.adeusunibratec.bean.ResidenciaGson;
 import br.com.adeusunibratec.bean.User;
+import br.com.adeusunibratec.dao.UsuarioDAO;
 
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
 import br.com.adeusunibratec.parse.JSONParserManager;
@@ -39,6 +37,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
@@ -73,17 +72,63 @@ public class AmbienteActivity extends Activity {
 		intent = getIntent();
 		result = intent.getStringExtra("idResidencia");
 
-		Toast.makeText(getApplication(), result, Toast.LENGTH_LONG).show();
-
 		setupViews();
 
 	}
-	
+
 	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Take appropriate action for each action item click
+		switch (item.getItemId()) {
+
+		case R.id.opcaoUsuario:
+
+			Intent intent = new Intent(this, OpcoesUsuariosActivity.class);
+
+			intent.putExtra("idResidencia", result);
+
+			startActivity(intent);
+
+			this.finish();
+
+			return true;
+
+		case R.id.programacao:
+			Intent intentListarA = new Intent(this, ConfiguracoesActivity.class);
+
+			intentListarA.putExtra("idResidencia", result);
+
+			startActivity(intentListarA);
+			return true;
+
+		case R.id.trocarUsuario:
+			Intent intentTrocaUsuario = new Intent(this, LoginActivity.class);
+
+			UsuarioDAO dao = new UsuarioDAO(this);
+			dao.excluir();
+
+			startActivity(intentTrocaUsuario);
+			this.finish();
+			return true;
+			
+			
+		case R.id.sair:
+			Intent intentSair = new Intent(Intent.ACTION_MAIN); finish();
+			
+			this.finish();
+			return true;
+			
+
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
 
 	private void setupViews() {
 
@@ -144,14 +189,13 @@ public class AmbienteActivity extends Activity {
 			@Override
 			public boolean onChildClick(ExpandableListView parent, View v,
 					int groupPosition, int childPosition, long id) {
-				Toast.makeText(
-						getApplicationContext(),
-						listDataHeader.get(groupPosition)
-								+ " : "
-								+ listDataChild.get(
-										listDataHeader.get(groupPosition)).get(
-										childPosition), Toast.LENGTH_SHORT)
-						.show();// TODO Auto-generated method stub
+				/*
+				 * Toast.makeText( getApplicationContext(),
+				 * listDataHeader.get(groupPosition) + " : " +
+				 * listDataChild.get( listDataHeader.get(groupPosition)).get(
+				 * childPosition), Toast.LENGTH_SHORT)
+				 */
+				// .show();// TODO Auto-generated method stub
 
 				return false;
 			}
@@ -266,26 +310,21 @@ public class AmbienteActivity extends Activity {
 
 					for (DispositivoGson a : ambi) {
 
-						
-						
-						String dispositiv ="{\"Chave\":"
-								+ a.getChaveDispositivos()
-								+ ",\"Status\":"
-								+ a.getStatusDispositivos()
-								+ ",\"Favorito\":"
-								+ a.getFavorito()
-								+",\"Descricao\":\""
-								 + a.getDescricao() + "\",\"DataCadastro\":\"" + a.getDataCadastroDispositivos()
+						String dispositiv = "{\"Chave\":"
+								+ a.getChaveDispositivos() + ",\"Status\":"
+								+ a.getStatusDispositivos() + ",\"Favorito\":"
+								+ a.getFavorito() + ",\"Descricao\":\""
+								+ a.getDescricao() + "\",\"DataCadastro\":\""
+								+ a.getDataCadastroDispositivos()
 								+ "\",\"Ambiente\":{\"Chave\":"
 								+ a.getChaveAmbiente()
-								+ "},\"Porta\":{\"Chave\":"
-								+ a.getChavePorta() + "}}";
+								+ "},\"Porta\":{\"Chave\":" + a.getChavePorta()
+								+ "}}";
 
-					//	Log.e("tstando log favorito","aqui"+dispositiv );
-						
+						// Log.e("tstando log favorito","aqui"+dispositiv );
+
 						dispo.add(dispositiv);
 
-						
 					}
 
 					listDataChild.put(listDataHeader.get(cont - 1), dispo);
@@ -294,8 +333,6 @@ public class AmbienteActivity extends Activity {
 
 				listAdapter = new AmbientesAdapter(AmbienteActivity.this,
 						listDataHeader, listDataChild);
-
-				
 
 				expListView.setAdapter(listAdapter);
 
@@ -347,8 +384,6 @@ public class AmbienteActivity extends Activity {
 					String d = jsonObject.getString("DataCadastro");
 
 					dispositivo.setDescricao(a);
-					
-					
 
 					String ambien = jsonObject.getString("Ambiente");
 					JSONObject chaveAmbiente = new JSONObject(ambien);
@@ -426,32 +461,29 @@ public class AmbienteActivity extends Activity {
 					String dispositivoChave = jsonObject.getString("Chave");
 					String dataCadastroDispositivo = jsonObject
 							.getString("DataCadastro");
-					
+
 					try {
 						String statusDispositivo = jsonObject
 								.getString("Status");
 						dispositivo.setStatusDispositivos(statusDispositivo);
-						
+
 					} catch (Exception e) {
 
 						dispositivo.setStatusDispositivos("False");
-						
+
 					}
-					
-					
+
 					try {
 						String dispositivoFavorito = jsonObject
 								.getString("Favorito");
 						dispositivo.setFavorito(dispositivoFavorito);
-						
+
 					} catch (Exception e) {
 
 						dispositivo.setFavorito("False");
-						
+
 					}
-					
-					
-					
+
 					dispositivo.setDescricao(descricaoDispositivo);
 					dispositivo.setChaveDispositivos(dispositivoChave);
 					dispositivo
@@ -479,7 +511,6 @@ public class AmbienteActivity extends Activity {
 
 						dispositivos.add(dispositivo);
 
-						
 					}
 				}
 

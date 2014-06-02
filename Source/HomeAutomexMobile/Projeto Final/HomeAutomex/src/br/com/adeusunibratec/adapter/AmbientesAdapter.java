@@ -16,6 +16,7 @@ import br.com.adeusunibratec.bean.Residencia;
 import br.com.adeusunibratec.mb.R;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -32,6 +33,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+@SuppressLint("NewApi")
 public class AmbientesAdapter extends BaseExpandableListAdapter {
 
 	private Context _context;
@@ -58,6 +60,7 @@ public class AmbientesAdapter extends BaseExpandableListAdapter {
 		return childPosition;
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public View getChildView(int groupPosition, final int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
@@ -163,13 +166,13 @@ public class AmbientesAdapter extends BaseExpandableListAdapter {
 				});
 			}
 
-			if (ambientes.getStatusDispositivos().equals("true")) {
-				/*Log.e("Favorito Cadastrado",
-						"esse e favorito");*/
+			/*if (ambientes.getStatusDispositivos().equals("true")) {
+				Log.e("Favorito Cadastrado",
+						"esse e favorito");
 				s.setChecked(true);
 			} else {
 				s.setChecked(false);
-			}
+			}*/
 			
 			txtListChild.setText(obj.getString("Descricao"));
 			//txtListChild.setText(childText);

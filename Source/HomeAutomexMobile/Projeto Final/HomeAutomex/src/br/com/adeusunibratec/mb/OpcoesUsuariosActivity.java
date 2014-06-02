@@ -68,6 +68,7 @@ public class OpcoesUsuariosActivity extends Activity implements OnClickListener 
 		intent = getIntent();
 		teste = intent.getStringExtra("idResidencia");
 
+		
 		//setupViews();
 
 	}
@@ -295,7 +296,7 @@ public class OpcoesUsuariosActivity extends Activity implements OnClickListener 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.opcoes_usuarios, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
