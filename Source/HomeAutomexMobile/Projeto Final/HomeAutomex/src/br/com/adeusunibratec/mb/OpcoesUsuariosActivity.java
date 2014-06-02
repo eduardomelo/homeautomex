@@ -15,7 +15,7 @@ import br.com.adeusunibratec.adapter.ListaFavoritosAdapter;
 import br.com.adeusunibratec.bean.Ambiente;
 import br.com.adeusunibratec.bean.DispositivoGson;
 import br.com.adeusunibratec.bean.Residencia;
-
+import br.com.adeusunibratec.dao.UsuarioDAO;
 import br.com.adeusunibratec.mb.ListarFavoritos.ResidenciaTask;
 import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
 import android.os.AsyncTask;
@@ -25,6 +25,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -68,6 +69,7 @@ public class OpcoesUsuariosActivity extends Activity implements OnClickListener 
 		intent = getIntent();
 		teste = intent.getStringExtra("idResidencia");
 
+		System.out.println("teste");
 		
 		//setupViews();
 
@@ -100,8 +102,8 @@ public class OpcoesUsuariosActivity extends Activity implements OnClickListener 
 		chave = HomeAutomexJSONObject.getInstance().getUsuario().getChave();
 
 		//Toast.makeText(getApplication(), "", duration)
-		// lembrando que é para colocar a string chave dentro do parametro o "2"
-		// é só para testar o metodo
+		// lembrando que ï¿½ para colocar a string chave dentro do parametro o "2"
+		// ï¿½ sï¿½ para testar o metodo
 		//new ResidenciaTask(this.progressDialog).execute(chave);
 
 	}
@@ -278,7 +280,7 @@ public class OpcoesUsuariosActivity extends Activity implements OnClickListener 
 
 			/*Toast.makeText(
 					getApplication(),
-					"VOCÊ NÃO TEM DISPOSITOS\nFAVORITOS\nCADASTRE PARA FACILITAR SUA NAVEGAÇÃO",
+					"VOCï¿½ Nï¿½O TEM DISPOSITOS\nFAVORITOS\nCADASTRE PARA FACILITAR SUA NAVEGAï¿½ï¿½O",
 					Toast.LENGTH_LONG).show();*/
 
 			Intent intent = new Intent(OpcoesUsuariosActivity.this,
@@ -349,6 +351,55 @@ public class OpcoesUsuariosActivity extends Activity implements OnClickListener 
 
 		default:
 			break;
+		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Take appropriate action for each action item click
+		switch (item.getItemId()) {
+
+		case R.id.opcaoUsuario:
+
+			Intent intent = new Intent(this, OpcoesUsuariosActivity.class);
+
+			intent.putExtra("idResidencia", teste);
+
+			startActivity(intent);
+
+			this.finish();
+
+			return true;
+
+		case R.id.programacao:
+			Intent intentListarA = new Intent(this, ConfiguracoesActivity.class);
+
+			intentListarA.putExtra("idResidencia", teste);
+
+			startActivity(intentListarA);
+			return true;
+
+		case R.id.trocarUsuario:
+			Intent intentTrocaUsuario = new Intent(this, LoginActivity.class);
+
+			UsuarioDAO dao = new UsuarioDAO(this);
+			dao.excluir();
+
+			startActivity(intentTrocaUsuario);
+			this.finish();
+			return true;
+			
+			
+//		case R.id.sair:
+////			Intent intentSair = new Intent(Intent.ACTION_MAIN); finish();
+//			
+//			this.finish();
+//			System.exit(0);
+//			return true;
+			
+
+		default:
+			return super.onOptionsItemSelected(item);
 		}
 	}
 

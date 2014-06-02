@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ListarAgendamentoActivity" 
-    android:background="@drawable/back11">
+    android:background="@drawable/background">
 
    <ListView
         android:id="@+id/listViewAgendamento"
@@ -25,6 +25,7 @@
          android:layout_alignParentTop="true"
          android:layout_centerHorizontal="true"
          android:text="AGENDAMENTOS CADASTRADOS"
-         android:textAppearance="?android:attr/textAppearanceLarge" />
+         android:textAppearance="?android:attr/textAppearanceLarge"
+         android:textColor="#ffffff" />
 
 </RelativeLayout>

@@ -15,11 +15,6 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="TROCAR USUÁRIO"/>
-     <item
-        android:id="@+id/sair"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="SAIR"/>
      <!--  <item
         android:id="@+id/ListarCenario"
         android:orderInCategory="100"

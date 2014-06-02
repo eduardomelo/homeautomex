@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ConfiguracoesActivity"
-    android:background="@drawable/back11" >
+    android:background="@drawable/background" >
 
         <Button
             android:id="@+id/btnCadastroFavoritos"
@@ -17,7 +17,7 @@
             android:layout_alignParentTop="true"
             android:background="@layout/layout_botoes"
             android:text="CADASTRO\nFAVORITOS"
-            android:textColor="#fff"
+            android:textColor="#ffffff"
             android:textSize="12sp" />
 
         <Button

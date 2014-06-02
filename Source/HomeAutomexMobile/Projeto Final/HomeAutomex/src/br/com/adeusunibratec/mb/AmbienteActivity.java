@@ -118,11 +118,12 @@ public class AmbienteActivity extends Activity {
 			return true;
 			
 			
-		case R.id.sair:
-			Intent intentSair = new Intent(Intent.ACTION_MAIN); finish();
-			
-			this.finish();
-			return true;
+//		case R.id.sair:
+////			Intent intentSair = new Intent(Intent.ACTION_MAIN); finish();
+//			
+//			this.finish();
+//			System.exit(0);
+//			return true;
 			
 
 		default:
@@ -136,7 +137,7 @@ public class AmbienteActivity extends Activity {
 		chave = HomeAutomexJSONObject.getInstance().getUsuario().getChave();
 
 		// lembrando a qui vai o result da activity anterior ou seja algum id
-		// coloquei "2" só pra testar
+		// coloquei "2" sï¿½ pra testar
 		new ResidenciaTask(this.progressDialog).execute(chave);
 		// ----------------------------------------------------------------------------//
 		// get the listview

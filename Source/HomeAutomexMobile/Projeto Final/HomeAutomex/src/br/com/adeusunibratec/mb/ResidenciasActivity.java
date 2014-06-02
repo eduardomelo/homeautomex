@@ -70,7 +70,7 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 
 		if (jLoginResult != null) {
 			try {
-
+				JSONParserManager.parseJSONSapiensFirstAccess(this.jLoginResult);
 				Usuario usuario = JSONParserManager.parseJSONSapiensFirstAccess(this.jLoginResult);
 				
 				UsuarioDAO dao = new UsuarioDAO(this);
@@ -280,7 +280,7 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 
 			this.progressDialog = params;
 			this.progressDialog
-					.setMessage("Aguarde Enquanto\nCarregamos Suas\nConfigurações...");
+					.setMessage("Aguarde Enquanto\nCarregamos Suas\nConfiguraÃ§Ãµes...");
 
 		}
 
@@ -436,8 +436,8 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 			
 			Intent intentFav = new Intent(ResidenciasActivity.this,
 					ListarFavoritos.class);
-
-			intentFav.putExtra("idResidencia", chave);
+//hksdjhfsk
+			intentFav.putExtra("idResidencia", ChaveResidencia);
 
 			startActivity(intentFav);
 			
@@ -514,16 +514,23 @@ public class ResidenciasActivity extends Activity implements OnClickListener {
 			return true;
 			
 		case R.id.trocarUsuario:
-			Intent intentTrocaUsuario = new Intent(ResidenciasActivity.this,
-					LoginActivity.class);
-			
+			Intent intentTrocaUsuario = new Intent(this, LoginActivity.class);
+
 			UsuarioDAO dao = new UsuarioDAO(this);
 			dao.excluir();
 
 			startActivity(intentTrocaUsuario);
 			this.finish();
 			return true;
-		
+			
+			
+//		case R.id.sair:
+////			Intent intentSair = new Intent(Intent.ACTION_MAIN); finish();
+//			
+//			this.finish();
+//			System.exit(0);
+//			return true;
+//		
 		
 		default:
 			return super.onOptionsItemSelected(item);

@@ -188,8 +188,8 @@ public class ListarFavoritos extends Activity implements OnClickListener {
 
 		chave = HomeAutomexJSONObject.getInstance().getUsuario().getChave();
 
-		// lembrando que é para colocar a string chave dentro do parametro o "2"
-		// é só para testar o metodo
+		// lembrando que ï¿½ para colocar a string chave dentro do parametro o "2"
+		// ï¿½ sï¿½ para testar o metodo
 		new ResidenciaTask(this.progressDialog).execute(chave);
 
 	}
@@ -388,7 +388,7 @@ public class ListarFavoritos extends Activity implements OnClickListener {
 
 			Toast.makeText(
 					getApplication(),
-					"VOCÊ NÃO TEM DISPOSITOS\nFAVORITOS\nCADASTRE PARA FACILITAR SUA NAVEGAÇÃO",
+					"VOCÃŠ NÃƒO TEM DISPOSITOS\nFAVORITOS\nCADASTRE PARA FACILITAR SUA NAVEGAÃ‡ÃƒO",
 					Toast.LENGTH_LONG).show();
 
 			Intent intent = new Intent(ListarFavoritos.this,

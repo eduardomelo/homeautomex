@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".TesteListviewActivity" 
-    android:background="@drawable/back6"
+    android:background="@drawable/background"
     >
 
     <ExpandableListView
@@ -28,7 +28,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="23dp"
         android:text="Ambientes Cadastrados"
-        android:textColor="#fff"
+        android:textColor="#ffffff"
         android:textSize="20dp" />
 
 </RelativeLayout>
