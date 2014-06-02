@@ -1,12 +1,12 @@
-package br.com.adeusunibratec.adapter;
+package br.com.homeautomex.adapter;
 
 import java.util.ArrayList;
 
-import br.com.adeusunibratec.bean.Residencia;
 import br.com.adeusunibratec.mb.R;
 
 
 
+import br.com.homeautomex.bean.Residencia;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;

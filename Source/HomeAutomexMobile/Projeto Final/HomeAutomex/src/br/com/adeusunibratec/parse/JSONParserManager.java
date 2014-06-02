@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.parse;
+package br.com.homeautomex.parse;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
@@ -10,9 +10,8 @@ import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
-
-import br.com.adeusunibratec.bean.Residencia;
-import br.com.adeusunibratec.bean.Usuario;
+import br.com.homeautomex.bean.Residencia;
+import br.com.homeautomex.bean.Usuario;
 
 @SuppressLint("NewApi")
 public class JSONParserManager {

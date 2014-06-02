@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.util;
+package br.com.homeautomex.util;
 
 import java.util.regex.Pattern;
 

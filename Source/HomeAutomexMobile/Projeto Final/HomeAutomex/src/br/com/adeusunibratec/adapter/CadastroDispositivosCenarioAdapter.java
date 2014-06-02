@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.adapter;
+package br.com.homeautomex.adapter;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -24,11 +24,11 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import br.com.adeusunibratec.acesso.AcessoWSDL;
-import br.com.adeusunibratec.adapter.AmbientesAdapter.LigarTask;
-import br.com.adeusunibratec.bean.Ambiente;
 import br.com.adeusunibratec.mb.R;
-import br.com.adeusunibratec.mb.LoginActivity.LoginTask;
+import br.com.homeautomex.acesso.AcessoWSDL;
+import br.com.homeautomex.adapter.AmbientesAdapter.LigarTask;
+import br.com.homeautomex.bean.Ambiente;
+import br.com.homeautomex.mb.LoginActivity.LoginTask;
 
 public class CadastroDispositivosCenarioAdapter extends
 		BaseExpandableListAdapter {

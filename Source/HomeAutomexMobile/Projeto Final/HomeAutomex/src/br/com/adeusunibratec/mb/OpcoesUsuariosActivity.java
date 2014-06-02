@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.mb;
+package br.com.homeautomex.mb;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -10,14 +10,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
 
-import br.com.adeusunibratec.acesso.AcessoWSDL;
-import br.com.adeusunibratec.adapter.ListaFavoritosAdapter;
-import br.com.adeusunibratec.bean.Ambiente;
-import br.com.adeusunibratec.bean.DispositivoGson;
-import br.com.adeusunibratec.bean.Residencia;
-import br.com.adeusunibratec.dao.UsuarioDAO;
-import br.com.adeusunibratec.mb.ListarFavoritos.ResidenciaTask;
-import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
+import br.com.adeusunibratec.mb.R;
+import br.com.homeautomex.acesso.AcessoWSDL;
+import br.com.homeautomex.adapter.ListaFavoritosAdapter;
+import br.com.homeautomex.bean.Ambiente;
+import br.com.homeautomex.bean.DispositivoGson;
+import br.com.homeautomex.bean.Residencia;
+import br.com.homeautomex.dao.UsuarioDAO;
+import br.com.homeautomex.mb.ListarFavoritos.ResidenciaTask;
+import br.com.homeautomex.parse.HomeAutomexJSONObject;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;

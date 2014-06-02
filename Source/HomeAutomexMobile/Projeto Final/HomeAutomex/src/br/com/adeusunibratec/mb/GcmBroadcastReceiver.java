@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.mb;
+package br.com.homeautomex.mb;
 
 /* http://techlovejump.in/2013/11/android-push-notification-using-google-cloud-messaging-gcm-php-google-play-service-library/
  * techlovejump.in

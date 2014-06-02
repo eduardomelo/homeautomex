@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.adapter;
+package br.com.homeautomex.adapter;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -11,12 +11,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
 
-import br.com.adeusunibratec.acesso.AcessoWSDL;
-import br.com.adeusunibratec.adapter.AmbientesAdapter.LigarTask;
-import br.com.adeusunibratec.bean.Ambiente;
 import br.com.adeusunibratec.mb.R;
-import br.com.adeusunibratec.mb.FavoritosActivity;
-
+import br.com.homeautomex.acesso.AcessoWSDL;
+import br.com.homeautomex.adapter.AmbientesAdapter.LigarTask;
+import br.com.homeautomex.bean.Ambiente;
+import br.com.homeautomex.mb.FavoritosActivity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.AsyncTask;

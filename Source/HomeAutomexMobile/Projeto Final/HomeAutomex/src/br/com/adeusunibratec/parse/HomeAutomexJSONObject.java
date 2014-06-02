@@ -1,8 +1,8 @@
-package br.com.adeusunibratec.parse;
+package br.com.homeautomex.parse;
 
 import java.util.ArrayList;
 
-import br.com.adeusunibratec.bean.Usuario;
+import br.com.homeautomex.bean.Usuario;
 
 
 

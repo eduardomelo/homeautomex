@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.mb;
+package br.com.homeautomex.mb;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -7,11 +7,11 @@ import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 import org.xmlpull.v1.XmlPullParserException;
 
-import br.com.adeusunibratec.acesso.AcessoWSDL;
-import br.com.adeusunibratec.dao.UsuarioDAO;
-
-import br.com.adeusunibratec.mb.CenarioActivity.CadastroCenarioTask;
-import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
+import br.com.adeusunibratec.mb.R;
+import br.com.homeautomex.acesso.AcessoWSDL;
+import br.com.homeautomex.dao.UsuarioDAO;
+import br.com.homeautomex.mb.CenarioActivity.CadastroCenarioTask;
+import br.com.homeautomex.parse.HomeAutomexJSONObject;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -175,7 +175,7 @@ public class ProgramacaoActivity extends Activity implements OnClickListener {
 		public CadastroCenarioTask(ProgressDialog params) {
 
 			this.progressDialog = params;
-			this.progressDialog.setMessage("Cadastro Cenário...");
+			this.progressDialog.setMessage("Cadastro Cenï¿½rio...");
 
 		}
 
@@ -222,7 +222,7 @@ public class ProgramacaoActivity extends Activity implements OnClickListener {
 
 			this.progressDialog.dismiss();
 			
-			Toast.makeText(getApplication(), "Cenário Cadastrado", Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplication(), "Cenï¿½rio Cadastrado", Toast.LENGTH_LONG).show();
 			
 			/*if (jResult != null) {
 

@@ -1,6 +1,7 @@
-package br.com.adeusunibratec.mb;
+package br.com.homeautomex.mb;
 
-import br.com.adeusunibratec.adapter.AmbientesAdapter.LigarTask;
+import br.com.adeusunibratec.mb.R;
+import br.com.homeautomex.adapter.AmbientesAdapter.LigarTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;

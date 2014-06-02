@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.mb;
+package br.com.homeautomex.mb;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -12,17 +12,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
 
-import br.com.adeusunibratec.acesso.AcessoWSDL;
-import br.com.adeusunibratec.adapter.ListaFavoritosAdapter;
-import br.com.adeusunibratec.adapter.ListaResidenciaAdapter;
-import br.com.adeusunibratec.adapter.ListarCenariosAdapter;
-import br.com.adeusunibratec.bean.Ambiente;
-import br.com.adeusunibratec.bean.Dispositivo;
-import br.com.adeusunibratec.bean.DispositivoGson;
-import br.com.adeusunibratec.bean.Residencia;
-import br.com.adeusunibratec.dao.UsuarioDAO;
 import br.com.adeusunibratec.mb.R;
-import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
+import br.com.homeautomex.acesso.AcessoWSDL;
+import br.com.homeautomex.adapter.ListaFavoritosAdapter;
+import br.com.homeautomex.adapter.ListaResidenciaAdapter;
+import br.com.homeautomex.adapter.ListarCenariosAdapter;
+import br.com.homeautomex.bean.Ambiente;
+import br.com.homeautomex.bean.Dispositivo;
+import br.com.homeautomex.bean.DispositivoGson;
+import br.com.homeautomex.bean.Residencia;
+import br.com.homeautomex.dao.UsuarioDAO;
+import br.com.homeautomex.parse.HomeAutomexJSONObject;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -161,8 +161,8 @@ public class ListarCenariosActivity extends Activity implements OnClickListener 
 
 		chave = HomeAutomexJSONObject.getInstance().getUsuario().getChave();
 
-		// lembrando que é para colocar a string chave dentro do parametro o "2"
-		// é só para testar o metodo
+		// lembrando que ï¿½ para colocar a string chave dentro do parametro o "2"
+		// ï¿½ sï¿½ para testar o metodo
 		new ResidenciaTask(this.progressDialog).execute(chave);
 
 	}
@@ -192,7 +192,7 @@ public class ListarCenariosActivity extends Activity implements OnClickListener 
 		public ResidenciaTask(ProgressDialog params) {
 
 			this.progressDialog = params;
-			this.progressDialog.setMessage("Listando Cenários...");
+			this.progressDialog.setMessage("Listando Cenï¿½rios...");
 
 		}
 
@@ -560,8 +560,8 @@ public class ListarCenariosActivity extends Activity implements OnClickListener 
 
 		chave = HomeAutomexJSONObject.getInstance().getUsuario().getChave();
 
-		// lembrando que é para colocar a string chave dentro do parametro o "2"
-		// é só para testar o metodo
+		// lembrando que ï¿½ para colocar a string chave dentro do parametro o "2"
+		// ï¿½ sï¿½ para testar o metodo
 		new ResidenciaTask(this.progressDialog).execute(chave);
 
 	}
@@ -591,7 +591,7 @@ public class ListarCenariosActivity extends Activity implements OnClickListener 
 		public ResidenciaTask(ProgressDialog params) {
 
 			this.progressDialog = params;
-			this.progressDialog.setMessage("Listando Cenários...");
+			this.progressDialog.setMessage("Listando Cenï¿½rios...");
 
 		}
 

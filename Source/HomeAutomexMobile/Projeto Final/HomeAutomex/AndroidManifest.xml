@@ -26,7 +26,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="br.com.adeusunibratec.mb.SplashActivity"
+            android:name="br.com.homeautomex.mb.SplashActivity"
             android:label="@string/app_name" 
                         android:screenOrientation="portrait">
             <intent-filter>
@@ -55,7 +55,7 @@
             android:value="@integer/google_play_services_version" />
  -->
         <activity
-            android:name="br.com.adeusunibratec.mb.LoginActivity"
+            android:name="br.com.homeautomex.mb.LoginActivity"
             android:label="@string/title_activity_login" 
             android:screenOrientation="portrait">
         </activity>
@@ -64,42 +64,42 @@
             android:label="@string/title_activity_receive" >
         </activity> -->
         <activity
-            android:name="br.com.adeusunibratec.mb.ResidenciasActivity"
+            android:name="br.com.homeautomex.mb.ResidenciasActivity"
             android:label="@string/title_activity_residencias" 
                         android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.mb.OpcoesUsuariosActivity"
+            android:name="br.com.homeautomex.mb.OpcoesUsuariosActivity"
             android:label="@string/title_activity_opcoes_usuarios" 
                         android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.mb.FavoritosActivity"
+            android:name="br.com.homeautomex.mb.FavoritosActivity"
             android:label="@string/title_activity_favoritos" 
                         android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.mb.AmbienteActivity"
+            android:name="br.com.homeautomex.mb.AmbienteActivity"
             android:label="@string/title_activity_ambiente" 
                         android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.mb.ConfiguracoesActivity"
+            android:name="br.com.homeautomex.mb.ConfiguracoesActivity"
             android:label="@string/title_activity_configuracoes" 
                         android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.mb.CenarioActivity"
+            android:name="br.com.homeautomex.mb.CenarioActivity"
             android:label="@string/title_activity_cenario" 
                         android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.mb.ProgramacaoActivity"
+            android:name="br.com.homeautomex.mb.ProgramacaoActivity"
             android:label="@string/title_activity_programacao" 
                         android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.mb.ListarFavoritosActivity"
+            android:name="br.com.homeautomex.mb.ListarFavoritosActivity"
             android:label="@string/title_activity_listar_favoritos" 
                         android:screenOrientation="portrait">
         </activity>
@@ -109,32 +109,32 @@
                         android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.mb.ListarFavoritos"
+            android:name="br.com.homeautomex.mb.ListarFavoritos"
             android:label="@string/title_activity_listar_favoritos" 
                         android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.mb.CadastroDispositivosCenarioActivity"
+            android:name="br.com.homeautomex.mb.CadastroDispositivosCenarioActivity"
             android:label="@string/title_activity_cadastro_dispositivos_cenario" 
                         android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.mb.ListarCenariosActivity"
+            android:name="br.com.homeautomex.mb.ListarCenariosActivity"
             android:label="@string/title_activity_listar_cenarios" 
                         android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.mb.ListarAgendamentoActivity"
+            android:name="br.com.homeautomex.mb.ListarAgendamentoActivity"
             android:label="@string/title_activity_listar_agendamento" 
                         android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.mb.CadastroDispositivosAgendamentoActivity"
+            android:name="br.com.homeautomex.mb.CadastroDispositivosAgendamentoActivity"
             android:label="@string/title_activity_cadastro_dispositivos_agendamento"
                         android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="br.com.adeusunibratec.mb.PortaoActivity"
+            android:name="br.com.homeautomex.mb.PortaoActivity"
             android:label="@string/title_activity_portao" 
                         android:screenOrientation="portrait">
         </activity>

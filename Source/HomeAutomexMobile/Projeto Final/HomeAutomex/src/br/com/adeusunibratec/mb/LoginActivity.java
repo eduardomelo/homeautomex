@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.mb;
+package br.com.homeautomex.mb;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -34,10 +34,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import br.com.adeusunibratec.acesso.AcessoWSDL;
-import br.com.adeusunibratec.parse.JSONFields;
-import br.com.adeusunibratec.util.HomeAutomexUtils;
-import br.com.adeusunibratec.util.Util;
+import br.com.adeusunibratec.mb.R;
+import br.com.homeautomex.acesso.AcessoWSDL;
+import br.com.homeautomex.parse.JSONFields;
+import br.com.homeautomex.util.HomeAutomexUtils;
+import br.com.homeautomex.util.Util;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;

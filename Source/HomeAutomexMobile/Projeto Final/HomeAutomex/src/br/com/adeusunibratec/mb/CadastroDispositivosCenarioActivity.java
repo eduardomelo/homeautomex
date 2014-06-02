@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.mb;
+package br.com.homeautomex.mb;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -20,22 +20,22 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
-import br.com.adeusunibratec.acesso.AcessoWSDL;
-import br.com.adeusunibratec.adapter.AmbientesAdapter;
-import br.com.adeusunibratec.adapter.CadastroDispositivosCenarioAdapter;
-import br.com.adeusunibratec.adapter.ListarCenariosAdapter.AtivaCenario;
-import br.com.adeusunibratec.bean.Ambiente;
-import br.com.adeusunibratec.bean.AmbienteGson;
-import br.com.adeusunibratec.bean.Cenario;
-import br.com.adeusunibratec.bean.Dispositivo;
-import br.com.adeusunibratec.bean.DispositivoGson;
-import br.com.adeusunibratec.bean.ListCenario;
-import br.com.adeusunibratec.bean.Residencia;
-import br.com.adeusunibratec.bean.TesteCenario;
-import br.com.adeusunibratec.dao.UsuarioDAO;
-
-import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
-import br.com.adeusunibratec.parse.JSONParserManager;
+import br.com.adeusunibratec.mb.R;
+import br.com.homeautomex.acesso.AcessoWSDL;
+import br.com.homeautomex.adapter.AmbientesAdapter;
+import br.com.homeautomex.adapter.CadastroDispositivosCenarioAdapter;
+import br.com.homeautomex.adapter.ListarCenariosAdapter.AtivaCenario;
+import br.com.homeautomex.bean.Ambiente;
+import br.com.homeautomex.bean.AmbienteGson;
+import br.com.homeautomex.bean.Cenario;
+import br.com.homeautomex.bean.Dispositivo;
+import br.com.homeautomex.bean.DispositivoGson;
+import br.com.homeautomex.bean.ListCenario;
+import br.com.homeautomex.bean.Residencia;
+import br.com.homeautomex.bean.TesteCenario;
+import br.com.homeautomex.dao.UsuarioDAO;
+import br.com.homeautomex.parse.HomeAutomexJSONObject;
+import br.com.homeautomex.parse.JSONParserManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -154,7 +154,7 @@ public class CadastroDispositivosCenarioActivity extends Activity {
 		chave = HomeAutomexJSONObject.getInstance().getUsuario().getChave();
 
 		// lembrando a qui vai o result da activity anterior ou seja algum id
-		// coloquei "2" só pra testar
+		// coloquei "2" sï¿½ pra testar
 		new ResidenciaTask(this.progressDialog).execute(chave);
 		// ----------------------------------------------------------------------------//
 		// get the listview

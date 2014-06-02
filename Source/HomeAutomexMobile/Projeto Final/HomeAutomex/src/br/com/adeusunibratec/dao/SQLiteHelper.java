@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.dao;
+package br.com.homeautomex.dao;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

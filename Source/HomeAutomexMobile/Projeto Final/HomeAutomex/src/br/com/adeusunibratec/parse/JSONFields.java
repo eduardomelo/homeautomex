@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.parse;
+package br.com.homeautomex.parse;
 
 public class JSONFields {
 

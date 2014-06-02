@@ -1,11 +1,11 @@
-package br.com.adeusunibratec.util;
+package br.com.homeautomex.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 
 public class Util {
 
-	/* Função para verificar existência de conexão com a internet 
+	/* Funï¿½ï¿½o para verificar existï¿½ncia de conexï¿½o com a internet 
 	*/  
 	public static  boolean verificaConexao(Context conte) {  
 	    boolean conectado;  

@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.mb;
+package br.com.homeautomex.mb;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -10,14 +10,14 @@ import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 import org.xmlpull.v1.XmlPullParserException;
 
-import br.com.adeusunibratec.acesso.AcessoWSDL;
-import br.com.adeusunibratec.adapter.AmbientesAdapter;
-import br.com.adeusunibratec.bean.Ambiente;
-import br.com.adeusunibratec.bean.DispositivoGson;
-import br.com.adeusunibratec.dao.UsuarioDAO;
-
-import br.com.adeusunibratec.mb.AmbienteActivity.ResidenciaTask;
-import br.com.adeusunibratec.parse.HomeAutomexJSONObject;
+import br.com.adeusunibratec.mb.R;
+import br.com.homeautomex.acesso.AcessoWSDL;
+import br.com.homeautomex.adapter.AmbientesAdapter;
+import br.com.homeautomex.bean.Ambiente;
+import br.com.homeautomex.bean.DispositivoGson;
+import br.com.homeautomex.dao.UsuarioDAO;
+import br.com.homeautomex.mb.AmbienteActivity.ResidenciaTask;
+import br.com.homeautomex.parse.HomeAutomexJSONObject;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -176,7 +176,7 @@ public class CenarioActivity extends Activity implements OnClickListener {
 		public CadastroCenarioTask(ProgressDialog params) {
 
 			this.progressDialog = params;
-			this.progressDialog.setMessage("Cadastro Cenário...");
+			this.progressDialog.setMessage("Cadastro Cenï¿½rio...");
 
 		}
 
@@ -223,7 +223,7 @@ public class CenarioActivity extends Activity implements OnClickListener {
 
 			this.progressDialog.dismiss();
 			
-			Toast.makeText(getApplication(), "Cenário Cadastrado", Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplication(), "Cenï¿½rio Cadastrado", Toast.LENGTH_LONG).show();
 			
 			/*if (jResult != null) {
 
@@ -249,7 +249,7 @@ public class CenarioActivity extends Activity implements OnClickListener {
 		
 		if(descricaoCenario.getText().toString().equals(null)){
 			
-			Toast.makeText(getApplication(), "Informe uma Descrição\n Para o Cenário ", Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplication(), "Informe uma Descriï¿½ï¿½o\n Para o Cenï¿½rio ", Toast.LENGTH_LONG).show();
 		}
 		else{
 			//Toast.makeText(getApplication(), "entrou no else", Toast.LENGTH_LONG).show();
@@ -259,7 +259,7 @@ public class CenarioActivity extends Activity implements OnClickListener {
 		
 		/*if(descricaoCenario.getText().equals("")){
 		
-			Toast.makeText(getApplication(), "Você tem que inserir \numa descrição do cenário", Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplication(), "Vocï¿½ tem que inserir \numa descriï¿½ï¿½o do cenï¿½rio", Toast.LENGTH_LONG).show();
 		}*/
 		/*else{
 			

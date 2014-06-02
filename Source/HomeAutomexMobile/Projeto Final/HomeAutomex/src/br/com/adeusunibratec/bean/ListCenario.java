@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.bean;
+package br.com.homeautomex.bean;
 
 public class ListCenario {
 

@@ -1,8 +1,9 @@
+package br.com.homeautomex.adapter;
 /*package br.com.adeusunibratec.adapter;
 
 
-Alberico essa classe não vamos precisar dela não ate por que não
-precisamos listar usuario mas fiz seguindo o meu exemplo só pra tu dar uma sacada 
+Alberico essa classe nï¿½o vamos precisar dela nï¿½o ate por que nï¿½o
+precisamos listar usuario mas fiz seguindo o meu exemplo sï¿½ pra tu dar uma sacada 
 
 import java.util.List;
 

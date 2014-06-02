@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.adapter;
+package br.com.homeautomex.adapter;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -19,12 +19,12 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
 import android.widget.TextView;
-import br.com.adeusunibratec.acesso.AcessoWSDL;
-import br.com.adeusunibratec.adapter.AmbientesAdapter.LigarTask;
-import br.com.adeusunibratec.bean.Ambiente;
-import br.com.adeusunibratec.bean.DispositivoGson;
-import br.com.adeusunibratec.bean.Residencia;
 import br.com.adeusunibratec.mb.R;
+import br.com.homeautomex.acesso.AcessoWSDL;
+import br.com.homeautomex.adapter.AmbientesAdapter.LigarTask;
+import br.com.homeautomex.bean.Ambiente;
+import br.com.homeautomex.bean.DispositivoGson;
+import br.com.homeautomex.bean.Residencia;
 
 public class ListaFavoritosAdapter extends BaseAdapter {
 

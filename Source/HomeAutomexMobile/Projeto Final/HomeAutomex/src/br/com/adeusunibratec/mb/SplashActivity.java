@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.mb;
+package br.com.homeautomex.mb;
 
 
 
@@ -18,12 +18,19 @@ import org.apache.http.message.BasicNameValuePair;
 
 
 
-import br.com.adeusunibratec.bean.Usuario;
-import br.com.adeusunibratec.dao.UsuarioDAO;
+
+
+
+import br.com.adeusunibratec.mb.R;
+import br.com.homeautomex.bean.Usuario;
+import br.com.homeautomex.dao.UsuarioDAO;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+
+
+
 
 
 

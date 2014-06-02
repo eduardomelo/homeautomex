@@ -1,6 +1,6 @@
-package br.com.adeusunibratec.dao;
+package br.com.homeautomex.dao;
 
-import br.com.adeusunibratec.bean.Usuario;
+import br.com.homeautomex.bean.Usuario;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;

@@ -1,4 +1,4 @@
-package br.com.adeusunibratec.acesso;
+package br.com.homeautomex.acesso;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -18,9 +18,8 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
 
-import br.com.adeusunibratec.bean.Usuario;
-import br.com.adeusunibratec.parse.JSONParserManager;
-
+import br.com.homeautomex.bean.Usuario;
+import br.com.homeautomex.parse.JSONParserManager;
 import android.util.Log;
 
 public class AcessoWSDL {

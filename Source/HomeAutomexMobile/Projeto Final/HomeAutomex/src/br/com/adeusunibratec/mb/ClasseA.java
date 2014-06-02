@@ -1,5 +1,6 @@
-package br.com.adeusunibratec.mb;
+package br.com.homeautomex.mb;
 
+import br.com.adeusunibratec.mb.R;
 import android.app.Activity;
 import android.os.Bundle;
 

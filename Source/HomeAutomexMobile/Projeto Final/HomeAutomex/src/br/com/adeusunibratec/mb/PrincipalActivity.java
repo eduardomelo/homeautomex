@@ -1,3 +1,4 @@
+package br.com.homeautomex.mb;
 /*package br.com.adeusunibratec.mb;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class PrincipalActivity extends ListActivity {
 		if(Util.verificaConexao(this)){
 			new Consultar().execute();
 		}else{
-			Toast.makeText(PrincipalActivity.this, "Não há Conexão com a Internet",Toast.LENGTH_LONG).show();
+			Toast.makeText(PrincipalActivity.this, "Nï¿½o hï¿½ Conexï¿½o com a Internet",Toast.LENGTH_LONG).show();
 		}
 		
 	}

@@ -1,3 +1,4 @@
+package br.com.homeautomex.adapter;
 /*package br.com.adeusunibratec.adapter;
 
 import java.util.ArrayList;
