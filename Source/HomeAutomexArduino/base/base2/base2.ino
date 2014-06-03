@@ -16,16 +16,17 @@ Ethernet shield w5100
 #include <Servo.h>
 
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+
 /*
-String ipString = "192.168.0.115";
-byte ip[] = { 192, 168, 0, 115 };
+String ipString = "192.168.0.116";
+byte ip[] = { 192, 168, 0, 116 };
 char servidor[] = "192.168.0.100";
 const unsigned short int porta = 80;
 String url = "/ws/index.php";
 */
 
-String ipString = "192.168.0.115";
-byte ip[] = { 192, 168, 0, 115 };
+String ipString = "192.168.0.116";
+byte ip[] = { 192, 168, 0, 116 };
 char servidor[] = "192.168.0.102";
 const unsigned short int porta = 80;
 String url = "/meuwebservice/HomeAutomexWS.asmx/StatusArduino";
@@ -41,29 +42,20 @@ const unsigned short int dispositivoA = 2;
 const unsigned short int dispositivoB = 3;
 const unsigned short int dispositivoC = 4;
 const unsigned short int dispositivoD = 5;
-
-//botoes
-/*
-const unsigned short int botaoA = 5;
-const unsigned short int botaoB = 6;
-const unsigned short int botaoC = 7;
-const unsigned short int botaoD = 8;
-*/
-//const unsigned short int intervaloBotao = 200;
+const unsigned short int dispositivoE = 6;
 
 //interruptores digitais
 boolean interruptorA;
 boolean interruptorB;
 boolean interruptorC;
 boolean interruptorD;
+boolean interruptorE;
 
 Thread threadConectar = Thread();
 Thread threadTarefas = Thread();
-Thread threadPortao = Thread();
 
-const unsigned short int intervaloConectar = 1000;
+const unsigned short int intervaloConectar = 1300;
 const unsigned short int intervaloTarefas = 20;
-const unsigned short int intervaloPortao = 35;
 
 ThreadController threadControle = ThreadController();
 
@@ -74,13 +66,8 @@ void setup() {
   pinMode(dispositivoA, OUTPUT);
   pinMode(dispositivoB, OUTPUT);
   pinMode(dispositivoC, OUTPUT);
-  meuServo.attach(dispositivoD);
-  /*
-  pinMode(botaoA, INPUT);
-  pinMode(botaoB, INPUT);
-  pinMode(botaoC, INPUT);
-  pinMode(botaoD, INPUT);
-  */
+  pinMode(dispositivoD, OUTPUT);
+  pinMode(dispositivoE, OUTPUT);
 
   Serial.begin(9600);
 
@@ -105,12 +92,8 @@ void setup() {
   threadTarefas.onRun(executarTarefas);
   threadTarefas.setInterval(intervaloTarefas);
   
-  threadPortao.onRun(controlePortao);
-  threadPortao.setInterval(intervaloPortao);
-  
   threadControle.add(&threadConectar);
   threadControle.add(&threadTarefas);
-  threadControle.add(&threadPortao);
 }
 
 void loop() {
@@ -160,6 +143,8 @@ void conectar() {
     data += interruptorC;
     data += "|D5:";
     data += interruptorD;
+    data += "|D6:";
+    data += interruptorE;
     data += "&ip=";
     data += ipString;
     data += "&submit=Submit";
@@ -235,24 +220,21 @@ void executarTarefas() {
       interruptorD = false;
     }
   //}
+    if (readString.indexOf("D6:1") > 0) {
+      interruptorE = true;
+    }
+    else if (readString.indexOf("D6:0") > 0) {
+      interruptorE = false;
+    }
 
   //-1 == string não encontrada.
   //if (readString.indexOf("HTTP/1.1 200") != -1) {
   (interruptorA) ? digitalWrite(dispositivoA, HIGH) : digitalWrite(dispositivoA, LOW);
   (interruptorB) ? digitalWrite(dispositivoB, HIGH) : digitalWrite(dispositivoB, LOW);
   (interruptorC) ? digitalWrite(dispositivoC, HIGH) : digitalWrite(dispositivoC, LOW);
+  (interruptorD) ? digitalWrite(dispositivoD, HIGH) : digitalWrite(dispositivoD, LOW);
+  (interruptorE) ? digitalWrite(dispositivoE, HIGH) : digitalWrite(dispositivoE, LOW);
   //}
   readString = "";
-}
-
-void controlePortao() {
-  if (interruptorD && posicao > 0) {
-      meuServo.write(posicao);
-      posicao -= 1;
-  }
-  else if (!interruptorD && posicao < 80) {
-      meuServo.write(posicao);
-      posicao += 1;
-  }
 }
 
